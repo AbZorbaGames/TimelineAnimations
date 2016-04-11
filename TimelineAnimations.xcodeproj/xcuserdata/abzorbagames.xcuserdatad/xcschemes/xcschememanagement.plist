@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>AnimitionsTest.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>TestAPp.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>TestApp.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>TimelineAnimationTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>TimelineAnimations.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>F824EC0B1C75D85B00FDA653</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F824EC261C75D86300FDA653</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F824EC441C75D89700FDA653</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F8A4412C1C75C69200C00A01</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F8A441571C75D0C500C00A01</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F8A441661C75D29E00C00A01</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
