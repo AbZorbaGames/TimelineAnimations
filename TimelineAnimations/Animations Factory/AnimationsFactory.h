@@ -1,5 +1,5 @@
 //
-//  AnimationsFactory.h
+//  TimelineAnimations.h
 //
 //  Created by AbZorba Games on 07/09/2015.
 //  Copyright (c) 2015-2016 AbZorba Games. All rights reserved.
@@ -30,16 +30,27 @@ NS_ASSUME_NONNULL_BEGIN
 + (CABasicAnimation *)animateWithKeyPath:(NSString *)keyPath
                                fromValue:(nullable id)fromValue
                                  toValue:(nullable id)toValue
-                                duration:(CGFloat)duration
-                                delegate:(id)delegate
-                          timingFunction:(ECustomTimingFunction)timingFunction;
+                                duration:(CFTimeInterval)duration
+                                delegate:(nullable id)delegate
+                          timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
+
++ (CABasicAnimation *)moveFromValue:(nullable NSValue *)fromValue
+                            toValue:(nullable NSValue *)toValue
+                           duration:(CFTimeInterval)duration
+                           delegate:(nullable id)delegate
+                     timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
 
 
 + (CABasicAnimation *)animateWithKeyPath:(NSString *)keyPath
                                  toValue:(id)toValue
-                                duration:(CGFloat)duration
-                                delegate:(id)delegate
-                          timingFunction:(ECustomTimingFunction)timingFunction;
+                                duration:(CFTimeInterval)duration
+                                delegate:(nullable id)delegate
+                          timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
+
++ (CABasicAnimation *)moveToValue:(nullable NSValue *)toValue
+                         duration:(CFTimeInterval)duration
+                         delegate:(nullable id)delegate
+                   timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
 
 /**
  * Creates a new CABasicAnimation with the passed parameters.
@@ -55,13 +66,22 @@ NS_ASSUME_NONNULL_BEGIN
 + (CABasicAnimation *)animateWithKeyPath:(NSString *)keyPath
                                fromValue:(nullable id)fromValue
                                  toValue:(nullable id)toValue
-                                duration:(CGFloat)duration
-                          timingFunction:(ECustomTimingFunction)timingFunction;
+                                duration:(CFTimeInterval)duration
+                          timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
+
++ (CABasicAnimation *)moveFromValue:(nullable NSValue *)fromValue
+                            toValue:(nullable NSValue *)toValue
+                           duration:(CFTimeInterval)duration
+                     timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
 
 + (CABasicAnimation *)animateWithKeyPath:(NSString *)keyPath
                                  toValue:(id)toValue
-                                duration:(CGFloat)duration
-                          timingFunction:(ECustomTimingFunction)timingFunction;
+                                duration:(CFTimeInterval)duration
+                          timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
+
++ (CABasicAnimation *)moveToValue:(nullable NSValue *)toValue
+                         duration:(CFTimeInterval)duration
+                   timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
 
 
 /**
@@ -73,8 +93,8 @@ NS_ASSUME_NONNULL_BEGIN
  * @returns A new instance of CAAnimationGroup with the passed duration.
  *
  */
-+ (CAAnimationGroup *)animationGroupWithAnimations:(NSArray *)animations
-                                       andDuration:(CGFloat)duration;
++ (CAAnimationGroup *)animationGroupWithAnimations:(NSArray<__kindof CAAnimation *> *)animations
+                                          duration:(CFTimeInterval)duration;
 
 
 /**
@@ -89,23 +109,23 @@ NS_ASSUME_NONNULL_BEGIN
  *
  */
 + (CAKeyframeAnimation *)keyframeAnimationWithKeyPath:(NSString *)keyPath
-                                             duration:(CGFloat)duration
-                                               values:(NSArray *)values
-                                             keyTimes:(nullable NSArray *)keyTimes
+                                             duration:(CFTimeInterval)duration
+                                               values:(NSArray<id> *)values
+                                             keyTimes:(nullable NSArray<id> *)keyTimes
                                        timingFunction:(ECustomTimingFunction)timingFunction;
 
-+ (CABasicAnimation *)fadeWithDuration:(CGFloat)duration
++ (CABasicAnimation *)fadeWithDuration:(CFTimeInterval)duration
                              fromValue:(CGFloat)fromValue
                                toValue:(CGFloat)toValue
-                        timingFunction:(ECustomTimingFunction)timingFunction;
+                        timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
 
-+ (CABasicAnimation *)fadeInWithDuration:(CGFloat)duration
-                          timingFunction:(ECustomTimingFunction)timingFunction;
++ (CABasicAnimation *)fadeInWithDuration:(CFTimeInterval)duration
+                          timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
 
-+ (CABasicAnimation *)fadeOutWithDuration:(CGFloat)duration
-                           timingFunction:(ECustomTimingFunction)timingFunction;
++ (CABasicAnimation *)fadeOutWithDuration:(CFTimeInterval)duration
+                           timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
 
-+ (CAKeyframeAnimation *)scaleWithBounceDuration:(CGFloat)duration
++ (CAKeyframeAnimation *)scaleWithBounceDuration:(CFTimeInterval)duration
                                        fromValue:(CGFloat)fromValue
                                          toValue:(CGFloat)toValue
                                          byValue:(CGFloat)byValue

@@ -11,20 +11,49 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GroupTimelineEntity : NSObject <NSCopying>
-@property (nonatomic, strong) __kindof TimelineAnimation * __nullable timeline;
+@interface GroupTimelineEntity : NSObject
+@property (nonatomic, strong) __kindof TimelineAnimation *timeline;
 
-+ (instancetype)groupTimelineEntityWithTimeline:(nullable __kindof TimelineAnimation *)timeline;
++ (instancetype)groupTimelineEntityWithTimeline:(__kindof TimelineAnimation *)timeline;
 
-- (instancetype)initWithTimeline:(nullable __kindof TimelineAnimation *)timeline NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithTimeline:(__kindof TimelineAnimation *)timeline NS_DESIGNATED_INITIALIZER;
 
-- (void)playOnStart:(VoidBlock)onStart onComplete:(BoolBlock)complete;
+@end
+
+
+@interface GroupTimelineEntity (Control)
+
+- (void)playAfterReverse:(nullable __kindof TimelineAnimation *)timeline
+                 onStart:(VoidBlock)onStart
+              onComplete:(BoolBlock)complete;
+- (void)playOnStart:(VoidBlock)onStart
+         onComplete:(BoolBlock)complete;
 - (void)pause;
 - (void)resume;
 - (void)reset;
 - (void)clear;
 
-- (instancetype)reversedCopyWithDuration:(NSTimeInterval)duration;
 @end
+
+@interface GroupTimelineEntity (Reverse)
+
+- (instancetype)reversedCopyWithDuration:(NSTimeInterval)duration;
+
+@end
+
+@interface GroupTimelineEntity (Copying)  <NSCopying>
+
+- (instancetype)copyWithDuration:(NSTimeInterval)newDuration
+           shouldAdjustBeginTime:(BOOL)adjust
+             usingTotalBeginTime:(RelativeTime)totalBeginTime;
+
+@end
+
+// extension
+@interface TimelineAnimation (GroupTimelineEntity)
+@property (nonatomic, weak) GroupTimelineEntity *groupTimelineEntity;
+@end
+
+
 
 NS_ASSUME_NONNULL_END

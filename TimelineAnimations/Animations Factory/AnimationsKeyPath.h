@@ -7,7 +7,7 @@
 
 @import Foundation;
 
-typedef NSString *const AnimationKeyPath;
+typedef NSString *const AnimationKeyPath NS_EXTENSIBLE_STRING_ENUM;
 
 
 extern AnimationKeyPath kAnimationKeyPathPosition;

@@ -5,15 +5,28 @@
 //  Copyright (c) 2015-2016 AbZorba Games. All rights reserved.
 //
 
-#import "AnimationsFactory.h"
+#import "TimelineAnimations.h"
 #import "AnimationsKeyPath.h"
 
 @implementation AnimationsFactory
 
++ (CABasicAnimation *)moveFromValue:(nullable NSValue *)fromValue
+                            toValue:(nullable NSValue *)toValue
+                           duration:(CFTimeInterval)duration
+                           delegate:(id)delegate
+                     timingFunction:(ECustomTimingFunction)timingFunction {
+    return [self animateWithKeyPath:kAnimationKeyPathPosition
+                          fromValue:fromValue
+                            toValue:toValue
+                           duration:duration
+                           delegate:delegate
+                     timingFunction:timingFunction];
+}
+
 + (CABasicAnimation *)animateWithKeyPath:(NSString *)keyPath
                                fromValue:(nullable id)fromValue
                                  toValue:(nullable id)toValue
-                                duration:(CGFloat)duration
+                                duration:(CFTimeInterval)duration
                                 delegate:(id)delegate
                           timingFunction:(ECustomTimingFunction)timingFunction {
 
@@ -31,9 +44,28 @@
     return animation;
 }
 
++ (CABasicAnimation *)moveFromValue:(id)fromValue toValue:(id)toValue duration:(CFTimeInterval)duration timingFunction:(ECustomTimingFunction)timingFunction {
+    return [self animateWithKeyPath:kAnimationKeyPathPosition
+                          fromValue:fromValue
+                            toValue:toValue
+                           duration:duration
+                     timingFunction:timingFunction];
+}
+
++ (CABasicAnimation *)moveToValue:(nullable NSValue *)toValue
+                         duration:(CFTimeInterval)duration
+                         delegate:(nullable id)delegate
+                   timingFunction:(ECustomTimingFunction)timingFunction {
+    return [self animateWithKeyPath:kAnimationKeyPathPosition
+                            toValue:toValue
+                           duration:duration
+                           delegate:delegate
+                     timingFunction:timingFunction];
+}
+
 + (CABasicAnimation *)animateWithKeyPath:(NSString *)keyPath
                                  toValue:(id)toValue
-                                duration:(CGFloat)duration
+                                duration:(CFTimeInterval)duration
                                 delegate:(id)delegate
                           timingFunction:(ECustomTimingFunction)timingFunction {
     CABasicAnimation *animation = [CABasicAnimation animation];
@@ -48,17 +80,26 @@
     return animation;
 }
 
++ (CABasicAnimation *)moveToValue:(nullable NSValue *)toValue
+                         duration:(CFTimeInterval)duration
+                   timingFunction:(ECustomTimingFunction)timingFunction {
+    return [self animateWithKeyPath:kAnimationKeyPathPosition
+                            toValue:toValue
+                           duration:duration
+                     timingFunction:timingFunction];
+}
+
 + (CABasicAnimation *)animateWithKeyPath:(NSString *)keyPath
                                fromValue:(nullable id)fromValue
                                  toValue:(nullable id)toValue
-                                duration:(CGFloat)duration
+                                duration:(CFTimeInterval)duration
                           timingFunction:(ECustomTimingFunction)timingFunction {
 
     CABasicAnimation *animation = [CABasicAnimation animation];
-    animation.keyPath = keyPath;
+    animation.keyPath   = keyPath;
     animation.fromValue = fromValue;
-    animation.toValue = toValue;
-    animation.duration = duration;
+    animation.toValue   = toValue;
+    animation.duration  = duration;
     animation.timingFunction = [EasingTimingHandler functionWithType:timingFunction];
 
     return animation;
@@ -66,7 +107,7 @@
 
 + (CABasicAnimation *)animateWithKeyPath:(NSString *)keyPath
                                  toValue:(id)toValue
-                                duration:(CGFloat)duration
+                                duration:(CFTimeInterval)duration
                           timingFunction:(ECustomTimingFunction)timingFunction {
     CABasicAnimation *animation = [CABasicAnimation animation];
     animation.keyPath = keyPath;
@@ -77,7 +118,7 @@
     return animation;
 }
 
-+ (CAAnimationGroup *)animationGroupWithAnimations:(NSArray *)animations andDuration:(CGFloat)duration {
++ (CAAnimationGroup *)animationGroupWithAnimations:(NSArray *)animations duration:(CFTimeInterval)duration {
     CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
     animationGroup.duration = duration;
     animationGroup.animations = animations;
@@ -85,7 +126,7 @@
 }
 
 + (CAKeyframeAnimation *)keyframeAnimationWithKeyPath:(NSString *)keyPath
-                                             duration:(CGFloat)duration
+                                             duration:(CFTimeInterval)duration
                                                values:(NSArray *)values
                                              keyTimes:(nullable NSArray *)keyTimes
                                        timingFunction:(ECustomTimingFunction)timingFunction {
@@ -100,88 +141,75 @@
     return animation;
 }
 
-+ (CABasicAnimation *)fadeWithDuration:(CGFloat)duration
++ (CABasicAnimation *)fadeWithDuration:(CFTimeInterval)duration
                              fromValue:(CGFloat)fromValue
                                toValue:(CGFloat)toValue
                         timingFunction:(ECustomTimingFunction)timingFunction {
 
-    CABasicAnimation *animation = [[self class] animateWithKeyPath:kAnimationKeyPathOpacity
-                                                         fromValue:@(fromValue)
-                                                           toValue:@(toValue)
-                                                          duration:duration
-                                                    timingFunction:timingFunction];
-
-    return animation;
+    return [[self class] animateWithKeyPath:kAnimationKeyPathOpacity
+                                  fromValue:@(fromValue)
+                                    toValue:@(toValue)
+                                   duration:duration
+                             timingFunction:timingFunction];
 }
 
 
-+ (CABasicAnimation *)fadeInWithDuration:(CGFloat)duration
++ (CABasicAnimation *)fadeInWithDuration:(CFTimeInterval)duration
                           timingFunction:(ECustomTimingFunction)timingFunction {
-
-    CABasicAnimation *animation = [[self class] animateWithKeyPath:kAnimationKeyPathOpacity
-                                                         fromValue:@(0.0)
-                                                           toValue:@(1.0)
-                                                          duration:duration
-                                                    timingFunction:timingFunction];
-
-    return animation;
+    return [[self class] fadeWithDuration:duration
+                                fromValue:0
+                                  toValue:1
+                           timingFunction:timingFunction];
 }
 
 
-+ (CABasicAnimation *)fadeOutWithDuration:(CGFloat)duration
-                           timingFunction:(ECustomTimingFunction)timingFunction {
-
-    CABasicAnimation *animation = [[self class] animateWithKeyPath:kAnimationKeyPathOpacity
-                                                         fromValue:nil // current layer's state
-                                                           toValue:@(0.0)
-                                                          duration:duration
-                                                    timingFunction:timingFunction];
-
-    return animation;
++ (CABasicAnimation *)fadeOutWithDuration:(CFTimeInterval)duration
+                           timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT {
+    return [[self class] fadeWithDuration:duration
+                                fromValue:1
+                                  toValue:0
+                           timingFunction:timingFunction];
 }
 
-+ (CABasicAnimation *)scaleWithDuration:(CGFloat)duration
++ (CABasicAnimation *)scaleWithDuration:(CFTimeInterval)duration
                               fromValue:(CGFloat)fromValue
                                 toValue:(CGFloat)toValue
                          timingFunction:(ECustomTimingFunction)timingFunction {
 
-    CABasicAnimation *animation = [[self class] animateWithKeyPath:kAnimationKeyPathScale
-                                                         fromValue:@(fromValue)
-                                                           toValue:@(toValue)
-                                                          duration:duration
-                                                    timingFunction:timingFunction];
-
-    return animation;
+    return [[self class] animateWithKeyPath:kAnimationKeyPathScale
+                                  fromValue:@(fromValue)
+                                    toValue:@(toValue)
+                                   duration:duration
+                             timingFunction:timingFunction];
 
 }
 
-+ (CAKeyframeAnimation *)scaleWithBounceDuration:(CGFloat)duration
++ (CAKeyframeAnimation *)scaleWithBounceDuration:(CFTimeInterval)duration
                                        fromValue:(CGFloat)fromValue
                                          toValue:(CGFloat)toValue
                                          byValue:(CGFloat)byValue
                                   timingFunction:(ECustomTimingFunction)timingFunction {
 
-    CAKeyframeAnimation *animation = [[self class] keyframeAnimationWithKeyPath:kAnimationKeyPathScale
-                                                                       duration:duration
-                                                                         values:@[@(fromValue), @(byValue), @(toValue)]
-                                                                       keyTimes:nil
-                                                                 timingFunction:timingFunction];
-    return animation;
+    return [[self class] keyframeAnimationWithKeyPath:kAnimationKeyPathScale
+                                             duration:duration
+                                               values:@[@(fromValue), @(byValue), @(toValue)]
+                                             keyTimes:nil
+                                       timingFunction:timingFunction];
 }
 
-+ (CAKeyframeAnimation *)bouncePositionWithDuration:(CGFloat)duration
-                                     targetPosition:(CGPoint)position
-                                       bounceOffset:(CGFloat)bounceOffset {
-    CAKeyframeAnimation *bounceAnimation = [CAKeyframeAnimation animationWithKeyPath:kAnimationKeyPathPosition];
-    bounceAnimation.duration    = duration;
-    //    bounceAnimation.values      = @[[NSValue valueWithCGPoint:CGPointMake(CGRectGetMidX(label.frame), CGRectGetMidY(label.frame))],
-    //                                    [NSValue valueWithCGPoint:CGPointMake(CGRectGetMidX(label.frame) + offsetX, CGRectGetMidY(label.frame) - maxOffsetY)],
-    //                                    [NSValue valueWithCGPoint:CGPointMake(CGRectGetMidX(label.frame) + offsetX, CGRectGetMidY(label.frame))],
-    //                                    [NSValue valueWithCGPoint:CGPointMake(CGRectGetMidX(label.frame) + offsetX, CGRectGetMidY(label.frame) - minOffsetY)],
-    //                                    [NSValue valueWithCGPoint:CGPointMake(CGRectGetMidX(label.frame) + offsetX, CGRectGetMidY(label.frame))]
-    //                                    ];
-
-    return bounceAnimation;
-}
+//+ (CAKeyframeAnimation *)bouncePositionWithDuration:(CFTimeInterval)duration
+//                                     targetPosition:(CGPoint)position
+//                                       bounceOffset:(CGFloat)bounceOffset {
+//    CAKeyframeAnimation *bounceAnimation = [CAKeyframeAnimation animationWithKeyPath:kAnimationKeyPathPosition];
+//    bounceAnimation.duration    = duration;
+//    //    bounceAnimation.values      = @[[NSValue valueWithCGPoint:CGPointMake(CGRectGetMidX(label.frame), CGRectGetMidY(label.frame))],
+//    //                                    [NSValue valueWithCGPoint:CGPointMake(CGRectGetMidX(label.frame) + offsetX, CGRectGetMidY(label.frame) - maxOffsetY)],
+//    //                                    [NSValue valueWithCGPoint:CGPointMake(CGRectGetMidX(label.frame) + offsetX, CGRectGetMidY(label.frame))],
+//    //                                    [NSValue valueWithCGPoint:CGPointMake(CGRectGetMidX(label.frame) + offsetX, CGRectGetMidY(label.frame) - minOffsetY)],
+//    //                                    [NSValue valueWithCGPoint:CGPointMake(CGRectGetMidX(label.frame) + offsetX, CGRectGetMidY(label.frame))]
+//    //                                    ];
+//
+//    return bounceAnimation;
+//}
 
 @end

@@ -17,9 +17,9 @@
     
     NSMutableArray<NSNumber *> *reversedKeytimes = [NSMutableArray arrayWithCapacity:self.keyTimes.count];
     NSArray<NSNumber *> *timeskey = self.keyTimes.reverseObjectEnumerator.allObjects.mutableCopy;
-    [timeskey enumerateObjectsUsingBlock:^(NSNumber * _Nonnull keytime, NSUInteger idx, BOOL * _Nonnull stop) {
+    for (NSNumber *keytime in timeskey) {
         [reversedKeytimes addObject:@(1 - keytime.doubleValue)];
-    }];
+    }
     reverse.keyTimes             = reversedKeytimes.copy;
     return reverse;
 }

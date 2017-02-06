@@ -7,20 +7,21 @@
 
 #import "AnimationsKeyPath.h"
 
-AnimationKeyPath kAnimationKeyPathPosition      = @"position";
-AnimationKeyPath kAnimationKeyPathPositionX     = @"position.x";
-AnimationKeyPath kAnimationKeyPathPositionY     = @"position.y";
-AnimationKeyPath kAnimationKeyPathWidth         = @"bounds.size.width";
-AnimationKeyPath kAnimationKeyPathHeight        = @"bounds.size.height";
+AnimationKeyPath kAnimationKeyPathPosition      = @"position"; // CGPoint
+AnimationKeyPath kAnimationKeyPathPositionX     = @"position.x"; // CGFloat
+AnimationKeyPath kAnimationKeyPathPositionY     = @"position.y"; // CGFloat
+AnimationKeyPath kAnimationKeyPathWidth         = @"bounds.size.width"; // CGFloat
+AnimationKeyPath kAnimationKeyPathHeight        = @"bounds.size.height"; // CGFloat
+AnimationKeyPath kAnimationKeyPathFrame         = @"frame"; // CGRect
 
-AnimationKeyPath kAnimationKeyPathTransform     = @"transform";
+AnimationKeyPath kAnimationKeyPathTransform     = @"transform"; // CATransform3D
 
-AnimationKeyPath kAnimationKeyPathRotation      = @"transform.rotation";
+AnimationKeyPath kAnimationKeyPathRotation      = @"transform.rotation"; // CGFloat in radians
 
-AnimationKeyPath kAnimationKeyPathScale         = @"transform.scale";
-AnimationKeyPath kAnimationKeyPathScaleX        = @"transform.scale.x";
-AnimationKeyPath kAnimationKeyPathScaleY        = @"transform.scale.y";
+AnimationKeyPath kAnimationKeyPathScale         = @"transform.scale"; // CGFloat?
+AnimationKeyPath kAnimationKeyPathScaleX        = @"transform.scale.x"; // CGFloat
+AnimationKeyPath kAnimationKeyPathScaleY        = @"transform.scale.y"; // CGFloat
 
-AnimationKeyPath kAnimationKeyPathOpacity       = @"opacity";
+AnimationKeyPath kAnimationKeyPathOpacity       = @"opacity"; // CGFloat
 
-AnimationKeyPath kAnimationKeyPathShadowOpacity = @"shadowOpacity";
+AnimationKeyPath kAnimationKeyPathShadowOpacity = @"shadowOpacity"; // CGFloat

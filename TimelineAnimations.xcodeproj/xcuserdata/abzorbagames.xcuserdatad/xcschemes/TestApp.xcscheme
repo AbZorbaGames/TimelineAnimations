@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0720"
+   LastUpgradeVersion = "0820"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F824EC261C75D86300FDA653"
+               BlueprintIdentifier = "F824EC441C75D89700FDA653"
                BuildableName = "TestApp.app"
                BlueprintName = "TestApp"
                ReferencedContainer = "container:TimelineAnimations.xcodeproj">
@@ -32,7 +32,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F824EC261C75D86300FDA653"
+            BlueprintIdentifier = "F824EC441C75D89700FDA653"
             BuildableName = "TestApp.app"
             BlueprintName = "TestApp"
             ReferencedContainer = "container:TimelineAnimations.xcodeproj">
@@ -55,7 +55,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F824EC261C75D86300FDA653"
+            BlueprintIdentifier = "F824EC441C75D89700FDA653"
             BuildableName = "TestApp.app"
             BlueprintName = "TestApp"
             ReferencedContainer = "container:TimelineAnimations.xcodeproj">
@@ -74,7 +74,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F824EC261C75D86300FDA653"
+            BlueprintIdentifier = "F824EC441C75D89700FDA653"
             BuildableName = "TestApp.app"
             BlueprintName = "TestApp"
             ReferencedContainer = "container:TimelineAnimations.xcodeproj">

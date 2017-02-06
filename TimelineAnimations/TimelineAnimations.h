@@ -8,8 +8,13 @@
 
 @import UIKit;
 @import Foundation;
+
 #import "TimelineAnimation.h"
 #import "GroupTimelineAnimation.h"
-#import "AnimationsFactory.h"
+#import "TimelineAudio.h"
 #import "AnimationsKeyPath.h"
 #import "EasingTimingHandler.h"
+#import "KeyValueBlockObservation.h"
+#import "AnimationsFactory.h"
+#import "TimelineAudio.h"
+#import "TimelineAudioAssociation.h"
