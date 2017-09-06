@@ -22,6 +22,8 @@ A Timeline is a group of animations (CAAnimation) (or other timeline animations)
 
 ## Example
 
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
 ### Visual
 This is a group timeline animation `gtl` consisted of:
 
@@ -42,49 +44,87 @@ Sequence:
 Move a view from the top left to the middle left.
 While animating **pause** and then **resume**.
 
-	```
-	UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0,0,100,100)];
-	view.backgroundColor = [UIColor redColor];
-	// add as subview
-	// ...
-	
-	// create a CABasicAnimation that moves a view from top to center
-	CABasicAnimation *ba = [AnimationsFactory animateWithKeyPath:kAnimationKeyPathPositionY
-    	                                                 toValue:@(CGRectGetHeight(self.view.bounds)-diameter)
-        	                                            duration:3
-            	                                  timingFunction:(ECustomTimingFunctionLinear)];
-    
-    TimelineAnimation *timeline = [[TimelineAnimation alloc] init];
-    
-    // set the model values of the CALayer before starting the animation and perfom the animaiton in reverse
-    // see https://gist.github.com/d-ronnqvist/11266321                                          
-    timeline.setsModelValues = YES;
-    
-    // add the animation in the timeline and indicate the layer concerned
-    [timeline insertAnimation:ba
-                      forLayer:view.layer
-                        atTime:.5
-                    onComplete:nil];
-    [timeline play];
-    
-    // pause and resume the animation
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [timeline pause];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [timeline play];
-        });
+```
+UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0,0,100,100)];
+view.backgroundColor = [UIColor redColor];
+// add as subview
+// ...
+
+// create a CABasicAnimation that moves a view from top to center
+CABasicAnimation *ba = [AnimationsFactory animateWithKeyPath:kAnimationKeyPathPositionY
+	                                                 toValue:@(CGRectGetHeight(self.view.bounds)-diameter)
+    	                                            duration:3
+        	                                  timingFunction:(ECustomTimingFunctionLinear)];
+
+TimelineAnimation *timeline = [[TimelineAnimation alloc] init];
+
+// set the model values of the CALayer before starting the animation and perfom the animaiton in reverse
+// see https://gist.github.com/d-ronnqvist/11266321                                          
+timeline.setsModelValues = YES;
+
+// add the animation in the timeline and indicate the layer concerned
+[timeline insertAnimation:ba
+                  forLayer:view.layer
+                    atTime:.5
+                onComplete:nil];
+[timeline play];
+
+// pause and resume the animation
+dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    [timeline pause];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [timeline play];
     });
-	```
+});
+```
+    
+    
+    
+## Installation
+
+TimelineAnimations is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod 'TimelineAnimations'
+```
+
+
+# Contributing
+By contributing to TimelineAnimations, you agree that your contributions will be licensed under its MIT license.
+
+
+## Author
+
+Georges Boumis, boumis@abzorbagames.com
 	
 	
 # License
 This code is MIT-licensed.
 
-# Contributing
-By contributing to TimelineAnimations, you agree that your contributions will be licensed under its MIT license.
 
 # Future work
 
-- Support Swift
-- Make it a framework for > iOS 8 deployment targets
+- ~~Support Swift~~
+- ~~Make it a framework for > iOS 8 deployment targets~~
+### Future work/ideas for version 3.0
+Rewrite using an abstract interface. This will be version 3.0.
+Something along the lines:
+
+```swift
+protocol TimelineAnimation {
+  func play()
+  func pause()
+  func clear()
+}
+```
+
+This approach permits to create decorators and extend the core functionality of this framework.
+
+
+
+## License
+
+TimelineAnimations is available under the MIT license. See the LICENSE file for more info.
+
 

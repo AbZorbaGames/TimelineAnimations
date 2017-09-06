@@ -1,0 +1,16 @@
+PODS:
+  - TimelineAnimations (2.43.1)
+
+DEPENDENCIES:
+  - TimelineAnimations (from `../`)
+
+EXTERNAL SOURCES:
+  TimelineAnimations:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  TimelineAnimations: 8de9b2f3ed661a40019fc69ee8e386baff4df5a0
+
+PODFILE CHECKSUM: 7793da11b2e6410c80174bd164f6005f5604edae
+
+COCOAPODS: 1.2.1

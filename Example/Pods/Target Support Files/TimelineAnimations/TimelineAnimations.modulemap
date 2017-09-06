@@ -1,0 +1,6 @@
+framework module TimelineAnimations {
+  umbrella header "TimelineAnimations-umbrella.h"
+
+  export *
+  module * { export * }
+}

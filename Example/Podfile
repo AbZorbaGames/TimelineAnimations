@@ -1,0 +1,7 @@
+use_frameworks!
+target 'TimelineAnimations_Tests' do
+  platform :ios, '8.0'
+  pod 'TimelineAnimations', :path => '../'
+  
+  
+end

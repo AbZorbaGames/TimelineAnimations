@@ -1,0 +1,6 @@
+framework module Pods_TimelineAnimations_Tests {
+  umbrella header "Pods-TimelineAnimations_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

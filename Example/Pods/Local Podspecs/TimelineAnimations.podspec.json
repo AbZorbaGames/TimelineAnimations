@@ -1,0 +1,37 @@
+{
+  "name": "TimelineAnimations",
+  "version": "2.43.1",
+  "summary": "A short description of TimelineAnimations.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/tspent/TimelineAnimations",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "tspent": "tspentzas@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/tspent/TimelineAnimations.git",
+    "tag": "2.43.1"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "TimelineAnimations/Classes/**/*",
+  "public_header_files": [
+    "TimelineAnimations/Classes/objc/AnimationsFactory.h",
+    "TimelineAnimations/Classes/objc/AnimationsKeyPath.h",
+    "TimelineAnimations/Classes/objc/AHEasing/CAKeyframeAnimation+AHEasing.h",
+    "TimelineAnimations/Classes/objc/EasingTiming/EasingTimingHandler.h",
+    "TimelineAnimations/Classes/objc/GroupTimelineAnimation.h",
+    "TimelineAnimations/Classes/objc/Helper/KeyValueBlockObservation.h",
+    "TimelineAnimations/Classes/objc/TimelineAnimation.h",
+    "TimelineAnimations/Classes/objc/TimelineAnimations.h",
+    "TimelineAnimations/Classes/objc/Audio/TimelineAudio.h",
+    "TimelineAnimations/Classes/objc/Audio/TimelineAudioAssociation.h",
+    "TimelineAnimations/Classes/objc/Types.h",
+    "TimelineAnimations/Classes/objc/AHEasing/easing.h",
+    "TimelineAnimations/Classes/objc/Helper/TimelineAnimationDescription.h"
+  ]
+}
