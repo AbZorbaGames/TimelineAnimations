@@ -1,9 +1,9 @@
 # Timeline Animations
 
-A powerfull wrapper around CoreAnimation that facilitates the sequencing of animations.
+A powerfull wrapper around `CoreAnimation` that facilitates the sequencing of animations.
 
 ## Timeline
-A Timeline is a group of animations (CAAnimation) (or other timeline animations) that form a logical animation sequence.
+A Timeline is a group of animations (`CAPropertyAnimation`) (or other timeline animations) that form a logical animation sequence.
 
 ## Features 
 
