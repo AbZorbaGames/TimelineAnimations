@@ -193,7 +193,7 @@ extension Animations {
         
         let range = (0...times)
         let part = 1.0/Float(times)
-        var keyTimes = range.map { Float($0).multiplied(by: part) }.map { RelativeTime($0) } // creates an array [0, ...(part * times - (2 or 1))..., 1]
+        var keyTimes = range.map { Float($0) * part }.map { RelativeTime($0) } // creates an array [0, ...(part * times - (2 or 1))..., 1]
         keyTimes[keyTimes.endIndex-1] = 1
         
         var i = 0

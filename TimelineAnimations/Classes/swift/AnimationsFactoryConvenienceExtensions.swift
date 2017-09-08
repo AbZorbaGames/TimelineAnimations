@@ -238,8 +238,8 @@ public extension AnimationsFactory {
         func position(center: CGPoint, deviation: CGFloat) -> (start: CGPoint, end: CGPoint) {
             let xSign: CGFloat = arc4random_uniform(2) == 0 ? -1 : 1
             let ySign: CGFloat = arc4random_uniform(2) == 0 ? -1 : 1
-            let x = CGFloat(arc4random_uniform(UInt32(deviation))) + deviation.divided(by: 2.0) * xSign //sign
-            let y = CGFloat(arc4random_uniform(UInt32(deviation))) + deviation.divided(by: 2.0) * ySign
+            let x = CGFloat(arc4random_uniform(UInt32(deviation))) + (deviation / 2.0) * xSign //sign
+            let y = CGFloat(arc4random_uniform(UInt32(deviation))) + (deviation / 2.0) * ySign
             let start = center
             let end = start.applying(CGAffineTransform(translationX: x, y: y))
             return (start: start, end: end)
