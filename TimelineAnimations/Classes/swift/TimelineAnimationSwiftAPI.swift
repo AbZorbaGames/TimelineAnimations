@@ -9,13 +9,13 @@
 import Foundation
 
 public extension TimelineAnimation {
- 
-    final internal func insert(animation: CAPropertyAnimation,
-                               forLayer layer: CALayer,
-                               atTime time: RelativeTime = RelativeTime(0.0),
-                               withDuration duration: TimeInterval = TimeInterval(1.0),
-                               onStart: TimelineAnimation.VoidBlock? = nil,
-                               onComplete: TimelineAnimation.BoolBlock? = nil) {
+    
+    @objc final internal func insert(animation: CAPropertyAnimation,
+                                     forLayer layer: CALayer,
+                                     atTime time: RelativeTime = RelativeTime(0.0),
+                                     withDuration duration: TimeInterval = TimeInterval(1.0),
+                                     onStart: TimelineAnimation.VoidBlock? = nil,
+                                     onComplete: TimelineAnimation.BoolBlock? = nil) {
         
         let anim = animation.copy() as! CAPropertyAnimation
         anim.duration = duration
@@ -27,12 +27,12 @@ public extension TimelineAnimation {
                       onComplete: onComplete)
     }
     
-    final internal func add(animation: CAPropertyAnimation,
-                            forLayer layer: CALayer,
-                            withDelay delay: RelativeTime = RelativeTime(0.0),
-                            withDuration duration: TimeInterval = TimeInterval(1.0),
-                            onStart: TimelineAnimation.VoidBlock? = nil,
-                            onComplete: TimelineAnimation.BoolBlock? = nil) {
+    @objc final internal func add(animation: CAPropertyAnimation,
+                                  forLayer layer: CALayer,
+                                  withDelay delay: RelativeTime = RelativeTime(0.0),
+                                  withDuration duration: TimeInterval = TimeInterval(1.0),
+                                  onStart: TimelineAnimation.VoidBlock? = nil,
+                                  onComplete: TimelineAnimation.BoolBlock? = nil) {
         
         let anim = animation.copy() as! CAPropertyAnimation
         anim.duration = duration
