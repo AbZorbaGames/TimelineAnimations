@@ -28,4 +28,4 @@ typedef NSMutableDictionary<RelativeTimeNumber *, NSMutableArray<TimelineAnimati
 
 typedef RelativeTimeNumber *_Nonnull (^TimeNotificationCalculation)(RelativeTimeNumber *_Nonnull);
 
-typedef CFTimeInterval(^TimelineAnimationCurrentMediaTimeBlock)();
+typedef CFTimeInterval(^TimelineAnimationCurrentMediaTimeBlock)(void);

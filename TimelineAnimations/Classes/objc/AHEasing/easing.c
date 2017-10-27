@@ -312,7 +312,7 @@ AHFloat SlowMotion(const AHFloat p) {
         elapsedTimeRate = 1 - (elapsedTimeRate/p1);
         return r - (elapsedTimeRate * elapsedTimeRate * elapsedTimeRate * elapsedTimeRate * r);
     } else if (elapsedTimeRate > p3) {
-        float elapsedTimeRate1 = (elapsedTimeRate - p3)/p1;
+        AHFloat elapsedTimeRate1 = (AHFloat)(elapsedTimeRate - p3)/p1;
         return r + (elapsedTimeRate - r) * (elapsedTimeRate1 * elapsedTimeRate1 * elapsedTimeRate1 * elapsedTimeRate1);
     }
     return r;

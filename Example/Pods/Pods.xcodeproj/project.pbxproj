@@ -103,12 +103,12 @@
 		1C315C92EAC6432C714A79D37C53D0FF /* TimelineAnimationNotifyBlockInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAnimationNotifyBlockInfo.h; sourceTree = "<group>"; };
 		26D25818219C32C2EC7D9D6320C9F223 /* AnimationsKeyPath.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = AnimationsKeyPath.m; sourceTree = "<group>"; };
 		2976F1461E8093C6F2E366BED6DB1C44 /* CAKeyframeAnimation+Reverse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CAKeyframeAnimation+Reverse.h"; sourceTree = "<group>"; };
-		2A9B5B42CFB070AB6CC6B8A9CADDE219 /* TimelineAnimations.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = TimelineAnimations.modulemap; sourceTree = "<group>"; };
+		2A9B5B42CFB070AB6CC6B8A9CADDE219 /* TimelineAnimations.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = TimelineAnimations.modulemap; sourceTree = "<group>"; };
 		2BB7EF6EF2DAF1D92ED548FE05C7DD92 /* TimelineAnimations.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAnimations.h; sourceTree = "<group>"; };
 		2C6F19CDA953ED6384FDD601F35CEFD9 /* TimelineAnimationsBlankLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAnimationsBlankLayer.h; sourceTree = "<group>"; };
 		2C709D2358F317C7A6F1FF01DCCE80D3 /* easing.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = easing.h; sourceTree = "<group>"; };
 		390C97437C52C669B0F308864D509B79 /* CABasicAnimation+Reverse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CABasicAnimation+Reverse.h"; sourceTree = "<group>"; };
-		3A72009E81483E9CB2D84CE3358D58FF /* Pods_TimelineAnimations_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TimelineAnimations_Tests.framework; path = "Pods-TimelineAnimations_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A72009E81483E9CB2D84CE3358D58FF /* Pods_TimelineAnimations_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimelineAnimations_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C280E160D01BDE77FC67E0FF6002734 /* TimelineAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAnimation.h; sourceTree = "<group>"; };
 		43F8FAFF5EADB55C48A9AE3040E99645 /* EasingTimingHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EasingTimingHandler.h; sourceTree = "<group>"; };
 		4933032D7B86D1075C10194C2B0D46A2 /* CAPropertyAnimation+TimelineEntity.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CAPropertyAnimation+TimelineEntity.h"; sourceTree = "<group>"; };
@@ -138,7 +138,7 @@
 		90E78D5DF8AC3212A9759211F878D633 /* TimelineAnimationUIViewExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TimelineAnimationUIViewExtensions.swift; sourceTree = "<group>"; };
 		9112165889EE6910703065408B0F75BF /* TimelineAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TimelineAnimation.m; sourceTree = "<group>"; };
 		922AC17D9ED7F1C68DF78CECC370B960 /* NSSet+TimelineSwiftyAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSSet+TimelineSwiftyAdditions.m"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		94E98D77DC304AE3BF098CC25A4B283A /* TimelineAudio.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAudio.h; sourceTree = "<group>"; };
 		9C5C55CF37346AA3EDD3B80B5B1FA1BA /* NSDictionary+TimelineSwiftyAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+TimelineSwiftyAdditions.m"; sourceTree = "<group>"; };
 		9D9621139F8BFA0B069ECC7417EE01D7 /* TimelineAnimations-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TimelineAnimations-umbrella.h"; sourceTree = "<group>"; };
@@ -146,7 +146,7 @@
 		9FD26FB24287818CF16759C8E3F24EED /* Types.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Types.h; sourceTree = "<group>"; };
 		A00EE543776103202233EFFB2DDABB0B /* Pods-TimelineAnimations_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TimelineAnimations_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		A046F269A986CAB6110D84A68701ADCE /* AnimationsFactoryTypedValueExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AnimationsFactoryTypedValueExtension.swift; sourceTree = "<group>"; };
-		A04ED5C2538321F10307AE96C84C85B6 /* Pods-TimelineAnimations_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-TimelineAnimations_Tests.modulemap"; sourceTree = "<group>"; };
+		A04ED5C2538321F10307AE96C84C85B6 /* Pods-TimelineAnimations_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-TimelineAnimations_Tests.modulemap"; sourceTree = "<group>"; };
 		A24F945CB9FBDEB21D2583BFA00BF4D8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3DFE22C5D4393F887AA19234EEBB244 /* TimelineAnimationNotifyBlockInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TimelineAnimationNotifyBlockInfo.m; sourceTree = "<group>"; };
 		A429830CE693C2094C188F48A18FBD02 /* Pods-TimelineAnimations_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TimelineAnimations_Tests-resources.sh"; sourceTree = "<group>"; };
@@ -175,11 +175,11 @@
 		E34C523A900E770C54E7AE5E7BC364E6 /* KeyValueBlockObservation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KeyValueBlockObservation.m; sourceTree = "<group>"; };
 		E4F43791D35B1C2E5C8914B9BB5DA4D4 /* TimelineAnimationPublicSwiftAPI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TimelineAnimationPublicSwiftAPI.swift; sourceTree = "<group>"; };
 		E6A66A9D88CBA281F9106C8B9B6143E6 /* TimelineAnimationProtected.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAnimationProtected.h; sourceTree = "<group>"; };
-		EAF5B179A824F6115560B81F8DD64679 /* easing.c */ = {isa = PBXFileReference; includeInIndex = 1; path = easing.c; sourceTree = "<group>"; };
+		EAF5B179A824F6115560B81F8DD64679 /* easing.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; path = easing.c; sourceTree = "<group>"; };
 		F2FE2111A9C7C5D962E8876DEBD612AB /* KeyValueBlockObservation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KeyValueBlockObservation.h; sourceTree = "<group>"; };
 		F3B02AF93EBECEBE8B80BC2042A64365 /* TimelineAnimationDescription.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAnimationDescription.h; sourceTree = "<group>"; };
 		FAABB051CD8FA5365CA50DF5AA6BF980 /* TimelineEntity.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineEntity.h; sourceTree = "<group>"; };
-		FC3F06C71BA18BCA197080B1110ECB0E /* TimelineAnimations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TimelineAnimations.framework; path = TimelineAnimations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC3F06C71BA18BCA197080B1110ECB0E /* TimelineAnimations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TimelineAnimations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC831888D004E0268CD1E5913C755DFA /* AnimationKeyPath.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AnimationKeyPath.swift; sourceTree = "<group>"; };
 		FEB8ACDC18937D099A856D4F31A18253 /* Pods-TimelineAnimations_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TimelineAnimations_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -226,7 +226,6 @@
 				EAF5B179A824F6115560B81F8DD64679 /* easing.c */,
 				2C709D2358F317C7A6F1FF01DCCE80D3 /* easing.h */,
 			);
-			name = AHEasing;
 			path = AHEasing;
 			sourceTree = "<group>";
 		};
@@ -236,7 +235,6 @@
 				E7FF5E41B294FEEDB81C89F676EAF805 /* objc */,
 				69DC5DBE89765FB10594ABB5B71A9079 /* swift */,
 			);
-			name = Classes;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -264,7 +262,6 @@
 				B5D4FCE86B350E96B3C2179C9B0D1F76 /* TimelineAudioAssociation.m */,
 				7C04D09650221B0210AA2B05B8291936 /* TimelineAudioAssociation_Internal.h */,
 			);
-			name = Audio;
 			path = Audio;
 			sourceTree = "<group>";
 		};
@@ -273,7 +270,6 @@
 			children = (
 				3BE1EF474A83058F13F9EBCBF5207557 /* Classes */,
 			);
-			name = TimelineAnimations;
 			path = TimelineAnimations;
 			sourceTree = "<group>";
 		};
@@ -293,7 +289,6 @@
 				90E78D5DF8AC3212A9759211F878D633 /* TimelineAnimationUIViewExtensions.swift */,
 				DB46FAFA44B1F6BBD75127B5FA0033D9 /* TypesRefinements.swift */,
 			);
-			name = swift;
 			path = swift;
 			sourceTree = "<group>";
 		};
@@ -342,7 +337,6 @@
 				43F8FAFF5EADB55C48A9AE3040E99645 /* EasingTimingHandler.h */,
 				C396FF95A63A1AEB980016A206F282C0 /* EasingTimingHandler.m */,
 			);
-			name = EasingTiming;
 			path = EasingTiming;
 			sourceTree = "<group>";
 		};
@@ -374,7 +368,6 @@
 				6C29825E0D9D7A310C16B3A65B47A093 /* NSSet+TimelineSwiftyAdditions.h */,
 				922AC17D9ED7F1C68DF78CECC370B960 /* NSSet+TimelineSwiftyAdditions.m */,
 			);
-			name = Categories;
 			path = Categories;
 			sourceTree = "<group>";
 		};
@@ -411,7 +404,6 @@
 				A8632141FEDC47E29F9534207217B4A3 /* EasingTiming */,
 				F6178974973AADEEF703A3915714734D /* Helper */,
 			);
-			name = objc;
 			path = objc;
 			sourceTree = "<group>";
 		};
@@ -442,7 +434,6 @@
 				629C3C0614309FC44359D5812DD9C5D5 /* TimelineAnimationsProgressMonitorLayer.h */,
 				BA9E9EBA690565B057920F4E798CFB95 /* TimelineAnimationsProgressMonitorLayer.m */,
 			);
-			name = Helper;
 			path = Helper;
 			sourceTree = "<group>";
 		};
@@ -541,7 +532,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0900;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -669,41 +660,74 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_INTEGER = YES;
+				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_NULLABILITY = YES;
+				CLANG_WARN_ASSIGN_ENUM = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES_ERROR;
+				CLANG_WARN_COMMA = YES_ERROR;
+				CLANG_WARN_CONSTANT_CONVERSION = YES_ERROR;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES_ERROR;
+				CLANG_WARN_FLOAT_CONVERSION = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES_ERROR;
 				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_INT_CONVERSION = YES_ERROR;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES_ERROR;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES_ERROR;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES_AGGRESSIVE;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES_ERROR;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES_AGGRESSIVE;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"POD_CONFIGURATION_RELEASE=1",
 					"$(inherited)",
 				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_SHORT_ENUMS = YES;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES_ERROR;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_VERSION = 4.0;
 				SYMROOT = "${SRCROOT}/../build";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -821,46 +845,79 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_INTEGER = YES;
+				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_NULLABILITY = YES;
+				CLANG_WARN_ASSIGN_ENUM = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES_ERROR;
+				CLANG_WARN_COMMA = YES_ERROR;
+				CLANG_WARN_CONSTANT_CONVERSION = YES_ERROR;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES_ERROR;
+				CLANG_WARN_FLOAT_CONVERSION = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES_ERROR;
 				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_INT_CONVERSION = YES_ERROR;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES_ERROR;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES_ERROR;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES_AGGRESSIVE;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES_ERROR;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES_AGGRESSIVE;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"POD_CONFIGURATION_DEBUG=1",
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				GCC_SHORT_ENUMS = YES;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES_ERROR;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_VERSION = 4.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;

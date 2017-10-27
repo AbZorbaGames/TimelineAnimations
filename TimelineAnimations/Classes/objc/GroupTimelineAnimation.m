@@ -272,10 +272,10 @@
         
         NSArray<TimelineEntity *> *const otherEntities = [self _entitiesOfTimelineAnimation:entity.timeline];
         [otherEntities enumerateObjectsUsingBlock:^(TimelineEntity * _Nonnull otherEntity, NSUInteger idx, BOOL * _Nonnull stop) {
-            [myEntities enumerateObjectsUsingBlock:^(TimelineEntity * _Nonnull myEntity, NSUInteger idx, BOOL * _Nonnull stop) {
+            [myEntities enumerateObjectsUsingBlock:^(TimelineEntity * _Nonnull myEntity, NSUInteger idx2, BOOL * _Nonnull stop2) {
                 BOOL conflicting = [otherEntity conflictingWith:myEntity];
                 if (conflicting) {
-                    *stop = YES;
+                    *stop2 = YES;
                     [self __raiseConflictingAnimationExceptionBetweenEntity:otherEntity
                                                                   andEntity:myEntity];
                     return;
@@ -296,8 +296,8 @@
             return entity.timeline;
         }];
         NSArray<TimelineEntity *> *const subEntities =
-        [timelines _flatMap:^NSArray * _Nonnull(__kindof TimelineAnimation * _Nonnull timeline) {
-            return [self _entitiesOfTimelineAnimation:timeline];
+        [timelines _flatMap:^NSArray * _Nonnull(__kindof TimelineAnimation * _Nonnull tl) {
+            return [self _entitiesOfTimelineAnimation:tl];
         }];
         return [subEntities copy];
     }

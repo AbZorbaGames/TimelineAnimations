@@ -33,6 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param fadeOut wether a fade out of the audio is requested or not.
  */
 - (void)stop:(BOOL)fadeOut;
+
 @end
 
 NS_ASSUME_NONNULL_END

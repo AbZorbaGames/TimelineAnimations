@@ -112,7 +112,7 @@ TimelineAnimationExceptionName TimelineAnimationInvalidNumberOfBlocksException =
 - (void)dealloc {
     [self _cleanUp];
 //    _blankLayers = nil;
-    _animations = nil;
+//    _animations = nil;
     _originate = nil;
     _parent = nil;
 }
@@ -838,7 +838,7 @@ va_end(arguments); \
                                  onStart:^{
                                      __strong typeof(welf) strelf = welf;
                                      guard (strelf != nil) else { return; }
-                                     [infos enumerateObjectsUsingBlock:^(TimelineAnimationNotifyBlockInfo * _Nonnull info, NSUInteger idx, BOOL * _Nonnull stop) {
+                                     [infos enumerateObjectsUsingBlock:^(TimelineAnimationNotifyBlockInfo * _Nonnull info, NSUInteger idx, BOOL * _Nonnull stop2) {
                                          [info call:strelf.muteAssociatedSounds];
                                      }];
                                  }
@@ -1679,20 +1679,6 @@ va_end(arguments); \
          self.name];
         return;
     }
-
-//    if (association.isOnStart) {
-//        self.onStart = ^{
-//            [audio play];
-//        };
-//        return;
-//    }
-//    
-//    if (association.isOnCompletion) {
-//        self.completion = ^(BOOL result){
-//            [audio play];
-//        };
-//        return;
-//    }
     
     const RelativeTime time = [association timeInTimelineAnimation:self];
     if (time < (RelativeTime)self.beginTime) {
@@ -1737,7 +1723,7 @@ va_end(arguments); \
                                                              [NotificationAssociations sharedKeySetForKeys:_timeNotificationAssociations.allKeys]];
         [_timeNotificationAssociations enumerateKeysAndObjectsUsingBlock:^(RelativeTimeNumber * _Nonnull timeKey, NSMutableArray<TimelineAnimationNotifyBlockInfo *> * _Nonnull infos, BOOL * _Nonnull stop) {
             // get all non-sound notifications
-            NSIndexSet *const indexes = [infos indexesOfObjectsPassingTest:^BOOL(TimelineAnimationNotifyBlockInfo * _Nonnull info, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSIndexSet *const indexes = [infos indexesOfObjectsPassingTest:^BOOL(TimelineAnimationNotifyBlockInfo * _Nonnull info, NSUInteger idx, BOOL * _Nonnull stop2) {
                 return !info.isSoundNotification;
             }];
             if (indexes.count == 0) {
@@ -1767,7 +1753,7 @@ va_end(arguments); \
                                                              [NotificationAssociations sharedKeySetForKeys:_timeNotificationAssociations.allKeys]];
         [_timeNotificationAssociations enumerateKeysAndObjectsUsingBlock:^(RelativeTimeNumber * _Nonnull timeKey, NSMutableArray<TimelineAnimationNotifyBlockInfo *> * _Nonnull infos, BOOL * _Nonnull stop) {
             // get all notifications where the sound is different from the requested one
-            NSIndexSet *const indexes = [infos indexesOfObjectsPassingTest:^BOOL(TimelineAnimationNotifyBlockInfo * _Nonnull info, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSIndexSet *const indexes = [infos indexesOfObjectsPassingTest:^BOOL(TimelineAnimationNotifyBlockInfo * _Nonnull info, NSUInteger idx, BOOL * _Nonnull stop2) {
                 return (info.sound != audio);
             }];
             if (indexes.count == 0) {
@@ -1844,9 +1830,10 @@ va_end(arguments); \
         const RelativeTime beginTime = keyTime.doubleValue;
         guard (time >= beginTime) else { return; }
         NSArray<TimelineAnimationNotifyBlockInfo *> *_ongoingSounds =
-        [infos _objectsPassingTest:^BOOL(TimelineAnimationNotifyBlockInfo * _Nonnull info, NSUInteger idx, BOOL * _Nonnull stop) {
-            guard (info.sound) else { return NO; }
-            const RelativeTime endTime = beginTime + info.sound.duration;
+        [infos _objectsPassingTest:^BOOL(TimelineAnimationNotifyBlockInfo * _Nonnull info, NSUInteger idx, BOOL * _Nonnull stop2) {
+            __strong typeof(info.sound) sound = info.sound;
+            guard (sound != nil) else { return NO; }
+            const RelativeTime endTime = beginTime + sound.duration;
             return (time <= endTime);
         }];
         [ongoingSounds addObjectsFromArray:_ongoingSounds];
@@ -1862,7 +1849,7 @@ va_end(arguments); \
     __block NSMutableArray<TimelineAnimationNotifyBlockInfo *> *blocks = [[NSMutableArray alloc] init];
     [_timeNotificationAssociations enumerateKeysAndObjectsUsingBlock:^(RelativeTimeNumber * _Nonnull timeKey, NSMutableArray<TimelineAnimationNotifyBlockInfo *> * _Nonnull infos, BOOL * _Nonnull stop) {
         // get all sound notifications
-        NSArray<TimelineAnimationNotifyBlockInfo *> *const sounds = [infos _objectsPassingTest:^BOOL(TimelineAnimationNotifyBlockInfo * _Nonnull info, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSArray<TimelineAnimationNotifyBlockInfo *> *const sounds = [infos _objectsPassingTest:^BOOL(TimelineAnimationNotifyBlockInfo * _Nonnull info, NSUInteger idx, BOOL * _Nonnull stop2) {
             return info.isSoundNotification;
         }];
         [blocks addObjectsFromArray:sounds];
@@ -2031,63 +2018,63 @@ va_end(arguments); \
 - (id)debugQuickLookObject {
     return self.debugDescription;
     
-    @autoreleasepool {
-        
-        NSArray<TimelineEntity *> *const entities = [self _sortedEntitesUsingKey:SortKey(beginTime)];
-        const RelativeTime enArxi = entities.firstObject.beginTime;
-        
-        CGSize size = [[entities _reduce:[NSValue valueWithCGSize:CGSizeZero]
-                                     transform:^NSValue *_Nonnull(NSValue  *_Nonnull partial, TimelineEntity * _Nonnull entity) {
-                                         CGSize size = partial.CGSizeValue;
-                                         const CGSize layerSize = entity.layer.preferredFrameSize;
-                                         size.width += layerSize.width;
-                                         size.height = MAX(size.height, layerSize.height);
-                                         return [NSValue valueWithCGSize:size];
-                                     }] CGSizeValue];
-        
-        size.height += 50.0;
-        UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
-        const SEL quickLook = @selector(debugQuickLookObject);
-        __block CGFloat currentX = 0.0;
-        [[UIColor blackColor] setFill];
-        [[UIBezierPath bezierPathWithRect:CGRectMake(0, 0, size.width, size.height)] fill];
-        
-        [entities enumerateObjectsUsingBlock:^(TimelineEntity * _Nonnull entity, NSUInteger idx, BOOL * _Nonnull stop) {
-            __kindof CALayer *const layer = entity.layer;
-
-            if ([layer respondsToSelector:quickLook]) {
-                _Pragma("clang diagnostic push");
-                _Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"");
-                UIImage *const image = [layer performSelector:quickLook];
-                _Pragma("clang diagnostic pop");
-                const CGSize imageSize = image.size;
-                const CGFloat width = imageSize.width;
-                const CGFloat height = imageSize.height;
-                const CGRect imageRect = CGRectMake(currentX, size.height - height,
-                                                    width, height);
-                
-                [image drawInRect:imageRect];
-                
-                {
-                    [self _drawString:[NSString stringWithFormat:
-                                       @"\"%@\" %ldms",
-                                       entity.animation.keyPath,
-                                       (long)(entity.duration * 1000.0)]
-                             inRect:CGRectMake(currentX, 0, width, 25.0)];
-                    [self _drawString:[NSString stringWithFormat:
-                                       @"[%.3lf,%.3lf]",
-                                       entity.beginTime - enArxi,
-                                       entity.endTime - enArxi]
-                               inRect:CGRectMake(currentX, 25.0, width, 25.0)];;
-                }
-                
-                currentX += width;
-            }
-        }];
-        UIImage *const preview = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        return preview;
-    }
+//    @autoreleasepool {
+//        
+//        NSArray<TimelineEntity *> *const entities = [self _sortedEntitesUsingKey:SortKey(beginTime)];
+//        const RelativeTime enArxi = entities.firstObject.beginTime;
+//        
+//        CGSize size = [[entities _reduce:[NSValue valueWithCGSize:CGSizeZero]
+//                                     transform:^NSValue *_Nonnull(NSValue  *_Nonnull partial, TimelineEntity * _Nonnull entity) {
+//                                         CGSize size = partial.CGSizeValue;
+//                                         const CGSize layerSize = entity.layer.preferredFrameSize;
+//                                         size.width += layerSize.width;
+//                                         size.height = MAX(size.height, layerSize.height);
+//                                         return [NSValue valueWithCGSize:size];
+//                                     }] CGSizeValue];
+//        
+//        size.height += 50.0;
+//        UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
+//        const SEL quickLook = @selector(debugQuickLookObject);
+//        __block CGFloat currentX = 0.0;
+//        [[UIColor blackColor] setFill];
+//        [[UIBezierPath bezierPathWithRect:CGRectMake(0, 0, size.width, size.height)] fill];
+//        
+//        [entities enumerateObjectsUsingBlock:^(TimelineEntity * _Nonnull entity, NSUInteger idx, BOOL * _Nonnull stop) {
+//            __kindof CALayer *const layer = entity.layer;
+//
+//            if ([layer respondsToSelector:quickLook]) {
+//                _Pragma("clang diagnostic push");
+//                _Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"");
+//                UIImage *const image = [layer performSelector:quickLook];
+//                _Pragma("clang diagnostic pop");
+//                const CGSize imageSize = image.size;
+//                const CGFloat width = imageSize.width;
+//                const CGFloat height = imageSize.height;
+//                const CGRect imageRect = CGRectMake(currentX, size.height - height,
+//                                                    width, height);
+//                
+//                [image drawInRect:imageRect];
+//                
+//                {
+//                    [self _drawString:[NSString stringWithFormat:
+//                                       @"\"%@\" %ldms",
+//                                       entity.animation.keyPath,
+//                                       (long)(entity.duration * 1000.0)]
+//                             inRect:CGRectMake(currentX, 0, width, 25.0)];
+//                    [self _drawString:[NSString stringWithFormat:
+//                                       @"[%.3lf,%.3lf]",
+//                                       entity.beginTime - enArxi,
+//                                       entity.endTime - enArxi]
+//                               inRect:CGRectMake(currentX, 25.0, width, 25.0)];;
+//                }
+//                
+//                currentX += width;
+//            }
+//        }];
+//        UIImage *const preview = UIGraphicsGetImageFromCurrentImageContext();
+//        UIGraphicsEndImageContext();
+//        return preview;
+//    }
 }
 
 - (void)_drawString:(NSString *)string inRect:(CGRect)rect {
