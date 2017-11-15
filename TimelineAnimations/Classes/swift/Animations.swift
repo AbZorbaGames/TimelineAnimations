@@ -229,7 +229,7 @@ extension Animations {
 
 extension Animations {
     
-    final fileprivate class func animate<Value>(
+    final public class func animate<Value>(
         _ view: UIView,
         keyPath: AnimationKeyPath,
         from: Value, to: Value,
@@ -264,11 +264,11 @@ extension Animations {
 extension Animations {
     
     final public class func oscillate<Value>(_ view: UIView,
-                                      keyPath: AnimationKeyPath,
-                                      percentages: (in: RelativeTime, out: RelativeTime),
-                                      values: (from: Value, to: Value),
-                                      withDuration duration: TimeInterval = 1.0,
-                                      timingFunctions tf: (from: TimelineAnimation.TimingFunction, to: TimelineAnimation.TimingFunction) = (.linear, .linear)) -> TimelineAnimation
+                                             keyPath: AnimationKeyPath,
+                                             percentages: (in: RelativeTime, out: RelativeTime),
+                                             values: (from: Value, to: Value),
+                                             withDuration duration: TimeInterval = 1.0,
+                                             timingFunctions tf: (from: TimelineAnimation.TimingFunction, to: TimelineAnimation.TimingFunction) = (.linear, .linear)) -> TimelineAnimation
         where Value: TypedValueConvertible {
             
             let timeline = TimelineAnimation()
