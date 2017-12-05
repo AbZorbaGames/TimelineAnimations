@@ -7,80 +7,81 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		007D100BCBF164C58275F1802BDB0054 /* AnimationsFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E09FE31F4EA3CDC5704E47F7FF19E0B /* AnimationsFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0080EE7A658606E44FC796A0271CAD72 /* Types.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B5D37FC77B389DD2B0F237F61EC75C4 /* Types.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		023B9ADEB4616953CD53A61B33EB3A27 /* GroupTimelineEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 57394E3BE670D9DB8E4B81173D652696 /* GroupTimelineEntity.m */; };
+		007D100BCBF164C58275F1802BDB0054 /* AnimationsFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 75A8A1FF8FC8B73A81FC28C66BAA9ABD /* AnimationsFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0080EE7A658606E44FC796A0271CAD72 /* Types.h in Headers */ = {isa = PBXBuildFile; fileRef = 15C7FF284645C838084208E5C657287A /* Types.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		068019DCDF8D0ECDA222759BC08ADFF1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		0E5C31503386E719565CEA30CC292CF0 /* CAKeyframeAnimation+Reverse.m in Sources */ = {isa = PBXBuildFile; fileRef = 2826C68AE8938C8C63698DF5FC747B51 /* CAKeyframeAnimation+Reverse.m */; };
-		0FAB46EF9A2F874E3ED69B859A039993 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393C0E30EB7122BFC2A376593F2A5FC2 /* Animations.swift */; };
-		16E692C3B0C42C38CB60D6972DD3F9F8 /* AnimationsFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1A1D00C0FF5C2408127277A3D6407D /* AnimationsFactory.m */; };
-		19192E0F4ABA1F98D45B6E1AC111997E /* TimelineAudioAssociation.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFACFB3120A3CC3A9897668EB57F4C4 /* TimelineAudioAssociation.m */; };
-		1CFC13F134B6AEAFBE9E038BE92578E1 /* CAKeyframeAnimation+AHEasing.h in Headers */ = {isa = PBXBuildFile; fileRef = 3485CECE044B732DC95F306CF68AB06C /* CAKeyframeAnimation+AHEasing.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1ED5810A8F3540C3831954A7A92CB830 /* TimelineAudioAssociation.h in Headers */ = {isa = PBXBuildFile; fileRef = 48C87F956435F5DE9915F588B9745542 /* TimelineAudioAssociation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2542B348141101E67F4D5193F4FB2DF3 /* NSSet+TimelineSwiftyAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE5E84678219CA01909FC7DD0E70DC4 /* NSSet+TimelineSwiftyAdditions.m */; };
-		33A27D4CB1B75F9BF05035E8643A5129 /* TimelineAnimationsProgressMonitorLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 186E9E9A2AB02A91F4643D35BAF13218 /* TimelineAnimationsProgressMonitorLayer.m */; };
-		33C0817A0BED74CA78FE7096336D3B45 /* TimelineAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 7910C9EF109BFA230B8485464B25B1EA /* TimelineAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		342709D2AAEDCAEC9760A25275280E8E /* TimelineAnimationAudioExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E110C8BD7AAAB9191E143DD9576D2A /* TimelineAnimationAudioExtension.swift */; };
-		36F4DE182C4FBA13E2F799CF069CF9E4 /* CAKeyframeAnimation+AHEasing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E80D666800A27038B978777246F6F59 /* CAKeyframeAnimation+AHEasing.m */; };
-		398614166B10B0C8A871DCD1BAD72F91 /* EasingTimingHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 77950E105A79D9806AE7FF700B3743A1 /* EasingTimingHandler.m */; };
-		3C972AA5B0266F3949DD38F75DB0E59E /* TimelineAnimationNotifyBlockInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 39643D6A913BEF31D403870E8A6BF07F /* TimelineAnimationNotifyBlockInfo.m */; };
-		3E179FB78A26FC38F4149EC3B94B9467 /* TimelineAnimationReverseCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD2294A3D21830495AB33C53038BA81 /* TimelineAnimationReverseCoordinator.m */; };
-		3F184F0F018C32319D72A684DDC06A87 /* NSDictionary+TimelineSwiftyAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 24C4C32160515BA0BB61A40270B11376 /* NSDictionary+TimelineSwiftyAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		416B13B7FC28E82C2F14B83C15E883BA /* TimelineAnimationRepeatCountExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBD7562AA2832BF30B108666CF3D9B1 /* TimelineAnimationRepeatCountExtensions.swift */; };
+		0AF06691D7C9C1C408968482AAFA1D8F /* GroupTimelineAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0367F493A738B48ABE5913F5AE52D230 /* GroupTimelineAnimation.m */; };
+		12C1D7F51D8578C53F3104135E5A2772 /* NSArray+TimelineSwiftyAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E3B6589955FB49FD8893F368C773BC /* NSArray+TimelineSwiftyAdditions.m */; };
+		1CFC13F134B6AEAFBE9E038BE92578E1 /* CAKeyframeAnimation+AHEasing.h in Headers */ = {isa = PBXBuildFile; fileRef = 656FBC1932DABD8C3AC7A2F93C6C9628 /* CAKeyframeAnimation+AHEasing.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1ED5810A8F3540C3831954A7A92CB830 /* TimelineAudioAssociation.h in Headers */ = {isa = PBXBuildFile; fileRef = B9B184BB31ED1557CD990CB0387341B6 /* TimelineAudioAssociation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29C40FB915BB048EAB5ED721FA3AF710 /* EasingTimingHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0B6972F2466EF78435102CE8ACA66 /* EasingTimingHandler.m */; };
+		2DEFC4E3A0B025C7F4145EC296F930C5 /* TimelineAnimationUIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B096BEFD3283CD588873A59E46118D9 /* TimelineAnimationUIViewExtensions.swift */; };
+		33C0817A0BED74CA78FE7096336D3B45 /* TimelineAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 82144179DDE02B04CB39AB9636902778 /* TimelineAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A47986D801D6EF8C7851B65DC7481DF /* AnimationKeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD0FD7878313C13DFD6658A28428384 /* AnimationKeyPath.swift */; };
+		3F184F0F018C32319D72A684DDC06A87 /* NSDictionary+TimelineSwiftyAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = DDC61C0C55A0C194945EE4A66C1D8B08 /* NSDictionary+TimelineSwiftyAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		418D2A20F75AFBD10518474E52C4519A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		454BD77BAEEF4CB58E8E7AA7E5CA866D /* TimelineAnimations.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B396791539EE5B31C277C2E8A809BAF /* TimelineAnimations.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		459FF3630D8F86A70EE1E22836D56D5E /* KeyValueBlockObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C12AEA56C74795F76EF54299FCD7AAF /* KeyValueBlockObservation.m */; };
-		4DD73A0C9B491C3B0C6D077752AA17EA /* TimelineAnimationProtected.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DF2E947B6E3630860C0671C586032E /* TimelineAnimationProtected.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		4E1824F234A691577C73CA9790CFB8CD /* TimelineAnimationsDisplayLink.h in Headers */ = {isa = PBXBuildFile; fileRef = 13C17A069DE19930748C21732C97DCCC /* TimelineAnimationsDisplayLink.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		4ED20C9B13F58C26A53B37A5019218EB /* GroupTimelineEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 088E72475DAC8227342BDD42A6F2B3CB /* GroupTimelineEntity.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		4FA953AFAA386D25797F0D95821EEBE3 /* PrivateTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = C2940029590CED0F34ECC587FBF1A0EE /* PrivateTypes.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		5654E0397B6EEA70ED3732C7E2332104 /* CAPropertyAnimationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4402FECB8FB57DC00C180CC85C3440 /* CAPropertyAnimationExtensions.swift */; };
-		56F25CA1ED01B3676B071A8DD6FCB01C /* NSArray+TimelineSwiftyAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9D7EC666AAD19AA079328FCC9265F6 /* NSArray+TimelineSwiftyAdditions.m */; };
-		5857B71E8098A55DEC18B1E6A7EA4B81 /* TimelineEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 48D41E80E9978E633F63B03EC3CC1A42 /* TimelineEntity.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		454BD77BAEEF4CB58E8E7AA7E5CA866D /* TimelineAnimations.h in Headers */ = {isa = PBXBuildFile; fileRef = C1DA543E62DC076E8384770617B36DEE /* TimelineAnimations.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		45D24757CFF6CBAA98ACD00DA4407468 /* TimelineAnimationNameExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E88882DB089D66DC84F69A5B528F2F1 /* TimelineAnimationNameExtensions.swift */; };
+		4DD73A0C9B491C3B0C6D077752AA17EA /* TimelineAnimationProtected.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CFDD26E09E30DF03B8ACA23945F437C /* TimelineAnimationProtected.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		4E1824F234A691577C73CA9790CFB8CD /* TimelineAnimationsDisplayLink.h in Headers */ = {isa = PBXBuildFile; fileRef = FB5113406D7B3ED2E5847F9224890FC8 /* TimelineAnimationsDisplayLink.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		4ED20C9B13F58C26A53B37A5019218EB /* GroupTimelineEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = BD7729EFDA33ED8F6AF6A96D91C2C752 /* GroupTimelineEntity.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		4FA953AFAA386D25797F0D95821EEBE3 /* PrivateTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 43AB581352C16D988379EF59165C489B /* PrivateTypes.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		5857B71E8098A55DEC18B1E6A7EA4B81 /* TimelineEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = CB881D776031333880AE096FAA69A8DF /* TimelineEntity.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		5961B54ABF776C9A237418BEBE747CE3 /* Pods-TimelineAnimations_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF2E2641B326375C4D92F3CAD55AE15 /* Pods-TimelineAnimations_Tests-dummy.m */; };
-		5E351E7894F8BBAA40D4F0CC1DB7D1C9 /* TimelineAnimationNotifyBlockInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = A01F554D2FF8F6D41C1DF5BACA826284 /* TimelineAnimationNotifyBlockInfo.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		604C965440AB199F01B271D387E6BDB0 /* TimelineAnimationsDisplayLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 621786085AA33D519326FE40A743A4BB /* TimelineAnimationsDisplayLink.m */; };
-		643BD208967AAF4B18EF69E1ED2234A7 /* TimelineAnimationsBlankLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 30BC4B7F0FE31355F23F173D42ADAC77 /* TimelineAnimationsBlankLayer.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		68BB69CFC2024EF17CA7582EFC4F43C4 /* CAPropertyAnimation+TimelineEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = E2F46122A539469CE1B404DA8450DD92 /* CAPropertyAnimation+TimelineEntity.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		790691D40B9C91C89459ED674B6E2ABB /* CALayer+TimelineAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2952D70D547EEF93C6DBF5EBC76134E0 /* CALayer+TimelineAnimation.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		799ABC05A67FF019A10785D10FCED866 /* TimelineAnimationUIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC7AFA5CF212D556CEDF2C07E29D46A /* TimelineAnimationUIViewExtensions.swift */; };
-		7B4B7E28947D33FC4A18F279EF6A2390 /* TimelineAnimationReverseCoordinator.h in Headers */ = {isa = PBXBuildFile; fileRef = DE83553EA885C76EECC77E56D5589CAC /* TimelineAnimationReverseCoordinator.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		82C7B851F166EB99B84A3E574519D078 /* TimelineAnimationsProgressMonitorLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0545A2B669D29465425291B648A54A44 /* TimelineAnimationsProgressMonitorLayer.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		837499952047C9367DBE6B917DDC8B96 /* TimelineAudioAssociation_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 1557F6E3595441AA7A4E3D1C5A2790B9 /* TimelineAudioAssociation_Internal.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		8391A7CE7EAC83CEF24F19EA00189300 /* TimelineEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D2016DE355C9D91FF7620F7E5DC4F8 /* TimelineEntity.m */; };
-		848F45B82594B66E6B3688A7DD275AD7 /* GroupTimelineAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 263F7ED11010CF37BE7C692D5B33BCE1 /* GroupTimelineAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		85BFB6D98056BBC250F1EBFDF35AEB1A /* TimelineAnimationDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 7816C5051978E631EF992878B4E48753 /* TimelineAnimationDescription.m */; };
-		87C252806779CA2586C8A5391B802C26 /* AnimationsFactoryTypedValueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD1A8ED31DBB8638EA3B3ED9758445A /* AnimationsFactoryTypedValueExtension.swift */; };
-		8EBE466A6208170637D887DFE2A2EB5A /* easing.c in Sources */ = {isa = PBXBuildFile; fileRef = 24FF3FB2F47B39AF1DA450D9ABDFE97E /* easing.c */; };
-		923E08A07E6F9FA1B5EFB408C3BAC395 /* TimelineAnimationsBlankLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA913A0F232275658D2B4CCBED4A746 /* TimelineAnimationsBlankLayer.m */; };
-		96B3C1B79612702A060F5D931BF2A185 /* CAPropertyAnimation+TimelineEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B412F31ED922A5D2C371D9C2D8339585 /* CAPropertyAnimation+TimelineEntity.m */; };
-		9710654C8FE065B828487D0DA097A3F9 /* NSArray+TimelineSwiftyAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 782D87A7CCAE81D99256DE24D88C0483 /* NSArray+TimelineSwiftyAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		98E29FC5026F67491E0176DCF389AB30 /* TimelineAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E75618100A0006596A005EAD22375D5D /* TimelineAnimation.m */; };
-		9975F6586F56DF27AE9913D34BF88658 /* NSDictionary+TimelineSwiftyAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2BBA71F7C441E898F31041F0C6FD5F /* NSDictionary+TimelineSwiftyAdditions.m */; };
-		9A74D387273030E660D1AC97C5E7913A /* AnimationKeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = D703BF51C53EDDA1D24F89301B70FFBC /* AnimationKeyPath.swift */; };
-		9AA41B20AD66F12615D0B037FA2DC19A /* AnimationsFactoryConvenienceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFF8B1FA1B66EAD5C9A97C4D2A3B01A /* AnimationsFactoryConvenienceExtensions.swift */; };
-		A23D837AB4B22B8B2BBD1A3A43296333 /* easing.h in Headers */ = {isa = PBXBuildFile; fileRef = 75D745CE321FA4210A3C117DCDB80CE1 /* easing.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7A71165755317D714578022C677783D /* TimelineAnimationSwiftAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CA421ADF227398BDD7C485D3F7065B /* TimelineAnimationSwiftAPI.swift */; };
-		AF5178648052BB6AB406897333A0F1D3 /* TimelineAnimationPublicSwiftAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D8811A55C5826BD4DD9D1BF47813D3 /* TimelineAnimationPublicSwiftAPI.swift */; };
-		BD681643CA5B732BDD41FF1F735F404C /* CAKeyframeAnimation+Reverse.h in Headers */ = {isa = PBXBuildFile; fileRef = 85116ED6DA24E6017B84365E1F476E5B /* CAKeyframeAnimation+Reverse.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		BE555AB448704C4A76DB096912C694C5 /* KeyValueBlockObservation.h in Headers */ = {isa = PBXBuildFile; fileRef = 7847060B742B477728352E502533694A /* KeyValueBlockObservation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BEB5CC67EAC69160F0F6F34C5F38B1C2 /* EasingTimingHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 035BD8E3E0C6FD0A43CCC6F0EFFAD3DF /* EasingTimingHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		59A1FE842E45E23E26F33628C573FC33 /* TimelineEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E12DB545BFEE273684DAFAB179087E4 /* TimelineEntity.m */; };
+		5CE82318A51F7DEDD47617E7F91F4FB6 /* CAKeyframeAnimation+AHEasing.m in Sources */ = {isa = PBXBuildFile; fileRef = 92281E792CDF75D4B12A0A244426D779 /* CAKeyframeAnimation+AHEasing.m */; };
+		5E351E7894F8BBAA40D4F0CC1DB7D1C9 /* TimelineAnimationNotifyBlockInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = FE3F43C085ED354DA78A3A3CA0D41184 /* TimelineAnimationNotifyBlockInfo.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		643BD208967AAF4B18EF69E1ED2234A7 /* TimelineAnimationsBlankLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = A74710031C15E10B85023218A2F96467 /* TimelineAnimationsBlankLayer.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		6673A59E232EAAB90FA756EC6158F578 /* TimelineAnimationAudioExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348FF300900A8A2A8A31F3F5554A83E0 /* TimelineAnimationAudioExtension.swift */; };
+		679D480C6D77F33BDFDFEA9751343B5F /* TimelineAnimationSwiftAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F386BB6EAEC0EBD6EEB2AF57CC8D7BE /* TimelineAnimationSwiftAPI.swift */; };
+		68BB69CFC2024EF17CA7582EFC4F43C4 /* CAPropertyAnimation+TimelineEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = D16594303D2C05BF30A1560656F3096C /* CAPropertyAnimation+TimelineEntity.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		6E05DB239960B551D0B700698A86BDB1 /* CAPropertyAnimation+TimelineEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = E8F1C49EE89B0E19210D7802C303D607 /* CAPropertyAnimation+TimelineEntity.m */; };
+		6E67BC7691AD5D88E6C061E8801E599E /* CAPropertyAnimationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3765A0AD173AA1381A00A92CDC7CED /* CAPropertyAnimationExtensions.swift */; };
+		6E709E206FE70DDAA2EAE2EBA854A0F0 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A026135FAA5336A5F98CFBF7196E6728 /* Animations.swift */; };
+		73E47FFF53B836108FF702DBB25675F5 /* TimelineAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = A3E393E4EE875CAC7661507B47397796 /* TimelineAnimation.m */; };
+		753AE02319E1E46825366CFCAA179A0D /* CALayer+TimelineAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9160DA08A2A9F5FFCB27CB4D2D09E9 /* CALayer+TimelineAnimation.m */; };
+		790691D40B9C91C89459ED674B6E2ABB /* CALayer+TimelineAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 99CA48AF1A33DB51147E8EE9A57C2210 /* CALayer+TimelineAnimation.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		7B4B7E28947D33FC4A18F279EF6A2390 /* TimelineAnimationReverseCoordinator.h in Headers */ = {isa = PBXBuildFile; fileRef = E02710FD92EE16C1F05806FC7925122F /* TimelineAnimationReverseCoordinator.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		82C7B851F166EB99B84A3E574519D078 /* TimelineAnimationsProgressMonitorLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = D2A5E63B83E54BC9EE68E50341153B5E /* TimelineAnimationsProgressMonitorLayer.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		837499952047C9367DBE6B917DDC8B96 /* TimelineAudioAssociation_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 53F0718F35BE330BD0EB90CFD3A7C84D /* TimelineAudioAssociation_Internal.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		848F45B82594B66E6B3688A7DD275AD7 /* GroupTimelineAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E6478E9441497765E1821F72C83795 /* GroupTimelineAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		899ED6A722AD48EAEFA0EA6818A38F1E /* TimelineAnimationPublicSwiftAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14020CBB455A068A4BEBD21D91121E85 /* TimelineAnimationPublicSwiftAPI.swift */; };
+		8C802452BFB77CF1320854895D30D611 /* CABasicAnimation+Reverse.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBE9B5B0F65E14F9B9D586D1C40B4F9 /* CABasicAnimation+Reverse.m */; };
+		9710654C8FE065B828487D0DA097A3F9 /* NSArray+TimelineSwiftyAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 34B416F6B0BB2F867703B9AF8096B5E2 /* NSArray+TimelineSwiftyAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		9908A82DF1F860066AF91BE1AE27CA6C /* easing.c in Sources */ = {isa = PBXBuildFile; fileRef = 2E16EB8A10BF5FF18AFDC2E9EB6FFCC2 /* easing.c */; };
+		993F4C062D73735DA884686DB2AB4BE8 /* TimelineAnimationReverseCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B1351B28C28C117296443A51C88481A1 /* TimelineAnimationReverseCoordinator.m */; };
+		99C00A61D8BAE0A5FEA8893F68EC0D12 /* NSDictionary+TimelineSwiftyAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA31FCECACD8E85A5F835B292D77BA30 /* NSDictionary+TimelineSwiftyAdditions.m */; };
+		9AE675D51BF9783C2C1DB9520AD9CCBF /* TimelineAnimationsBlankLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9638F29C3BFC6CC374C5C5D835EE8E65 /* TimelineAnimationsBlankLayer.m */; };
+		9FD4199B64A3A553A6B0E7A46E43DFDD /* TimelineAnimationsDisplayLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 14EDD8DF731E0A6A6EE2FA882029C691 /* TimelineAnimationsDisplayLink.m */; };
+		A23D837AB4B22B8B2BBD1A3A43296333 /* easing.h in Headers */ = {isa = PBXBuildFile; fileRef = 69AE43ED793E574651918ACBE2B1478E /* easing.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A8CA3C09170B5446FE6E882964F0F63C /* CAPropertyAnimation+Reverse.m in Sources */ = {isa = PBXBuildFile; fileRef = E09AE9F5A6BA66673081DD7928B195A6 /* CAPropertyAnimation+Reverse.m */; };
+		AA9166330B5940FA33B84F2FD424E999 /* NSSet+TimelineSwiftyAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D24FA4AB04CF4C2D85C44A802D3AF96 /* NSSet+TimelineSwiftyAdditions.m */; };
+		B00D8770ED236E88BDA479B533EF7B0E /* TimelineAnimationNotifyBlockInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 56883E660F1F31BA626225F8E497977C /* TimelineAnimationNotifyBlockInfo.m */; };
+		B05BEDC4155C89EA99450CC96CEF44B2 /* AnimationsFactoryTypedValueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E59C769853AF6E82EDA8022266761D4 /* AnimationsFactoryTypedValueExtension.swift */; };
+		B14332D25F294EE5BE641F16482CF0AE /* AnimationsKeyPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 132DE04D1CD9EE3C42C6875D28F469E3 /* AnimationsKeyPath.m */; };
+		B66677637E49FD7B4CC4993D53F1FA2A /* CAKeyframeAnimation+Reverse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FAEDA754A1D7C1E85EACBF898BE51DA /* CAKeyframeAnimation+Reverse.m */; };
+		BD681643CA5B732BDD41FF1F735F404C /* CAKeyframeAnimation+Reverse.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C897462F3DA4FB810C4A01291AF22A5 /* CAKeyframeAnimation+Reverse.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		BDADB66A23B7841379D69B1B2888E450 /* CAKeyframeAnimationAHEasingExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3EFF6EB04607ACC191508108EC3696 /* CAKeyframeAnimationAHEasingExtensions.swift */; };
+		BE555AB448704C4A76DB096912C694C5 /* KeyValueBlockObservation.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A78E377FD05E1C2342FCBF43DE1232 /* KeyValueBlockObservation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEB5CC67EAC69160F0F6F34C5F38B1C2 /* EasingTimingHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 33705182E036166FCF5B4AF0AE29BF82 /* EasingTimingHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEF7C50D8AEEB290C4C76B747CAE29FD /* TimelineAnimationRepeatCountExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB8802A0758EB5B55533E4808767EA8 /* TimelineAnimationRepeatCountExtensions.swift */; };
 		C0238FDCC0B4EBAAD75B6FD6B919A7BD /* Pods-TimelineAnimations_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 549AB0E2BC214D8D17CC80AB9CEE89B3 /* Pods-TimelineAnimations_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C0C67EB37368CDC6E3EEC108EE1E4609 /* CALayer+TimelineAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D795E1B17DDF19F0B9A8B3A1599001 /* CALayer+TimelineAnimation.m */; };
-		C0FCF4972B384A778582EA7CB9E361B4 /* CABasicAnimation+Reverse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1778F8AF1F393CB8757831BE706A1D30 /* CABasicAnimation+Reverse.m */; };
-		C2CCAF45C2A87AEED4B2C183D1BA7E8F /* CABasicAnimation+Reverse.h in Headers */ = {isa = PBXBuildFile; fileRef = 05A6CD4AED7D8D4CE51EA51AD5B550EA /* CABasicAnimation+Reverse.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		C3630120D54463FCE5AE86962DF622E5 /* NSSet+TimelineSwiftyAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = A6E2DF0ED8BCB24481B40C36B70D8645 /* NSSet+TimelineSwiftyAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		C9B64B24A12138BA2E3D6CB3A587280F /* CAPropertyAnimation+Reverse.h in Headers */ = {isa = PBXBuildFile; fileRef = 86C494C9967DF34FC234AB1E1F0B2801 /* CAPropertyAnimation+Reverse.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		CDDBF5A80B3409C5A5FF74FD69ECC25A /* TimelineAnimations-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D3075A7354A87FFBCA649370AD518DB4 /* TimelineAnimations-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CEA5F7173DA5400D5B91EAC7282D9558 /* TimelineAnimationDescription.h in Headers */ = {isa = PBXBuildFile; fileRef = 79CA895FDAC16965D0E229DD6BE078A1 /* TimelineAnimationDescription.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D10A2A5B8EA50ECE33DDDBD6FFCB0A88 /* TimelineAudio.h in Headers */ = {isa = PBXBuildFile; fileRef = 27DBF0AB90310A8A57735192741F3B8E /* TimelineAudio.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D14A4971AD77203A460B842E71883347 /* AnimationsKeyPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD022FEB29989CDE882F39E1437DA5F /* AnimationsKeyPath.m */; };
-		D3016E7289E7CDDE2E9D0608DAA0BC65 /* TimelineAnimationNameExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77781993B8C9470C4903D12C34570CFC /* TimelineAnimationNameExtensions.swift */; };
-		D8F85E483B4EAC5797ACCBF35C277BDB /* GroupTimelineAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 70AAC62F3E7D6CEDC5A47594D1CCEAAC /* GroupTimelineAnimation.m */; };
-		EA36B467B1216A603513FAD23F4C89E0 /* CAPropertyAnimation+Reverse.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3D5483A99749BD70E9BABA51708BF5 /* CAPropertyAnimation+Reverse.m */; };
-		EAB91DA3E388772FB87743E15EB97E8C /* TimelineAnimations-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4912A1377977ABB08BF0B8E8EF606AB9 /* TimelineAnimations-dummy.m */; };
-		EC6073F02840650DF5DCF908BFCB049A /* AnimationsKeyPath.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C46F6DF8A29B3177BCFEE2FB8336A78 /* AnimationsKeyPath.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FCC8FCB0C48E4B7B9899B18BE7CF3A1D /* TypesRefinements.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E5C545A9C8016FF494F758029FD42B /* TypesRefinements.swift */; };
+		C2CCAF45C2A87AEED4B2C183D1BA7E8F /* CABasicAnimation+Reverse.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DE37CA8DD0A520D3435A07F17B7022F /* CABasicAnimation+Reverse.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		C3630120D54463FCE5AE86962DF622E5 /* NSSet+TimelineSwiftyAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A9F21FF517288682F14E661B81A5FB3 /* NSSet+TimelineSwiftyAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		C9B64B24A12138BA2E3D6CB3A587280F /* CAPropertyAnimation+Reverse.h in Headers */ = {isa = PBXBuildFile; fileRef = 534AF2E219C165093F6E6226F79FA8E6 /* CAPropertyAnimation+Reverse.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		C9D0CF7F1698CAD50AF76193B19503FA /* TimelineAnimations-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 455AAFCE89BF185314879F9BEEBCA86C /* TimelineAnimations-dummy.m */; };
+		CDDBF5A80B3409C5A5FF74FD69ECC25A /* TimelineAnimations-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 74083468F8012930C9CCEC83DDD5D1E6 /* TimelineAnimations-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CEA5F7173DA5400D5B91EAC7282D9558 /* TimelineAnimationDescription.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A584CF20D180228DC7EC2147EE37D92 /* TimelineAnimationDescription.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D10A2A5B8EA50ECE33DDDBD6FFCB0A88 /* TimelineAudio.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A18234550ECE978BA8722A9B3486452 /* TimelineAudio.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D5044D28703E3D8588A1E742B052A8AB /* TimelineAudioAssociation.m in Sources */ = {isa = PBXBuildFile; fileRef = 275DE58E6DEF4A1FF309591D16CFD6CA /* TimelineAudioAssociation.m */; };
+		D8DC046B79D835232EE3B4D5D77DDC59 /* KeyValueBlockObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = 159DD71FEACEFC51A4D504FF3AA2A654 /* KeyValueBlockObservation.m */; };
+		DAAE8197147A69EA89D78969C0A74209 /* TimelineAnimationsProgressMonitorLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFEEEF0DB3B38EBDE1816594AD0E765 /* TimelineAnimationsProgressMonitorLayer.m */; };
+		DC568520AC3277B40DCE6ADDF0F597AC /* TypesRefinements.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7578F457AC72C9002EEDF9D6539B242 /* TypesRefinements.swift */; };
+		E1116ED4B32746A8959E0A75EAF02004 /* TimelineAnimationDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9E1D542D963A10B9021A06969200D9 /* TimelineAnimationDescription.m */; };
+		EC6073F02840650DF5DCF908BFCB049A /* AnimationsKeyPath.h in Headers */ = {isa = PBXBuildFile; fileRef = 89F67F1C8ECC4CA4539C5A2C68C354F7 /* AnimationsKeyPath.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EE38D229FC5C49B33B45B10AA007B8DF /* AnimationsFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 763BAF2C88C40B8BACD715DA2445D024 /* AnimationsFactory.m */; };
+		F1AC7BE672A8DE59FDC75E8222539E36 /* GroupTimelineEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 618F75D8F21B0ADF9913C7C666209A5F /* GroupTimelineEntity.m */; };
+		F89A46F3715C97C12931E50242E193D4 /* AnimationsFactoryConvenienceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAEBB73BD94BD46022DB6CC0FF32A2E /* AnimationsFactoryConvenienceExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,93 +95,94 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00DF2E947B6E3630860C0671C586032E /* TimelineAnimationProtected.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAnimationProtected.h; sourceTree = "<group>"; };
-		035BD8E3E0C6FD0A43CCC6F0EFFAD3DF /* EasingTimingHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EasingTimingHandler.h; sourceTree = "<group>"; };
-		0545A2B669D29465425291B648A54A44 /* TimelineAnimationsProgressMonitorLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAnimationsProgressMonitorLayer.h; sourceTree = "<group>"; };
-		05A6CD4AED7D8D4CE51EA51AD5B550EA /* CABasicAnimation+Reverse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CABasicAnimation+Reverse.h"; sourceTree = "<group>"; };
-		088E72475DAC8227342BDD42A6F2B3CB /* GroupTimelineEntity.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GroupTimelineEntity.h; sourceTree = "<group>"; };
-		09D795E1B17DDF19F0B9A8B3A1599001 /* CALayer+TimelineAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CALayer+TimelineAnimation.m"; sourceTree = "<group>"; };
-		0E09FE31F4EA3CDC5704E47F7FF19E0B /* AnimationsFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AnimationsFactory.h; sourceTree = "<group>"; };
+		0367F493A738B48ABE5913F5AE52D230 /* GroupTimelineAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GroupTimelineAnimation.m; sourceTree = "<group>"; };
+		0A18234550ECE978BA8722A9B3486452 /* TimelineAudio.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAudio.h; sourceTree = "<group>"; };
+		0DE37CA8DD0A520D3435A07F17B7022F /* CABasicAnimation+Reverse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CABasicAnimation+Reverse.h"; sourceTree = "<group>"; };
+		0EAEBB73BD94BD46022DB6CC0FF32A2E /* AnimationsFactoryConvenienceExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AnimationsFactoryConvenienceExtensions.swift; sourceTree = "<group>"; };
 		0FF2E2641B326375C4D92F3CAD55AE15 /* Pods-TimelineAnimations_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TimelineAnimations_Tests-dummy.m"; sourceTree = "<group>"; };
-		13C17A069DE19930748C21732C97DCCC /* TimelineAnimationsDisplayLink.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAnimationsDisplayLink.h; sourceTree = "<group>"; };
-		1557F6E3595441AA7A4E3D1C5A2790B9 /* TimelineAudioAssociation_Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAudioAssociation_Internal.h; sourceTree = "<group>"; };
-		1778F8AF1F393CB8757831BE706A1D30 /* CABasicAnimation+Reverse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CABasicAnimation+Reverse.m"; sourceTree = "<group>"; };
-		186E9E9A2AB02A91F4643D35BAF13218 /* TimelineAnimationsProgressMonitorLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TimelineAnimationsProgressMonitorLayer.m; sourceTree = "<group>"; };
-		24C4C32160515BA0BB61A40270B11376 /* NSDictionary+TimelineSwiftyAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+TimelineSwiftyAdditions.h"; sourceTree = "<group>"; };
-		24FF3FB2F47B39AF1DA450D9ABDFE97E /* easing.c */ = {isa = PBXFileReference; includeInIndex = 1; path = easing.c; sourceTree = "<group>"; };
-		263F7ED11010CF37BE7C692D5B33BCE1 /* GroupTimelineAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GroupTimelineAnimation.h; sourceTree = "<group>"; };
-		27DBF0AB90310A8A57735192741F3B8E /* TimelineAudio.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAudio.h; sourceTree = "<group>"; };
-		2826C68AE8938C8C63698DF5FC747B51 /* CAKeyframeAnimation+Reverse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CAKeyframeAnimation+Reverse.m"; sourceTree = "<group>"; };
-		2952D70D547EEF93C6DBF5EBC76134E0 /* CALayer+TimelineAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CALayer+TimelineAnimation.h"; sourceTree = "<group>"; };
-		2C12AEA56C74795F76EF54299FCD7AAF /* KeyValueBlockObservation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KeyValueBlockObservation.m; sourceTree = "<group>"; };
-		2C46F6DF8A29B3177BCFEE2FB8336A78 /* AnimationsKeyPath.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AnimationsKeyPath.h; sourceTree = "<group>"; };
-		30BC4B7F0FE31355F23F173D42ADAC77 /* TimelineAnimationsBlankLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAnimationsBlankLayer.h; sourceTree = "<group>"; };
-		3485CECE044B732DC95F306CF68AB06C /* CAKeyframeAnimation+AHEasing.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CAKeyframeAnimation+AHEasing.h"; sourceTree = "<group>"; };
-		393C0E30EB7122BFC2A376593F2A5FC2 /* Animations.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
-		39643D6A913BEF31D403870E8A6BF07F /* TimelineAnimationNotifyBlockInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TimelineAnimationNotifyBlockInfo.m; sourceTree = "<group>"; };
+		132DE04D1CD9EE3C42C6875D28F469E3 /* AnimationsKeyPath.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = AnimationsKeyPath.m; sourceTree = "<group>"; };
+		14020CBB455A068A4BEBD21D91121E85 /* TimelineAnimationPublicSwiftAPI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TimelineAnimationPublicSwiftAPI.swift; sourceTree = "<group>"; };
+		14EDD8DF731E0A6A6EE2FA882029C691 /* TimelineAnimationsDisplayLink.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TimelineAnimationsDisplayLink.m; sourceTree = "<group>"; };
+		159DD71FEACEFC51A4D504FF3AA2A654 /* KeyValueBlockObservation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KeyValueBlockObservation.m; sourceTree = "<group>"; };
+		15C7FF284645C838084208E5C657287A /* Types.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Types.h; sourceTree = "<group>"; };
+		1AD0FD7878313C13DFD6658A28428384 /* AnimationKeyPath.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AnimationKeyPath.swift; sourceTree = "<group>"; };
+		1CFEEEF0DB3B38EBDE1816594AD0E765 /* TimelineAnimationsProgressMonitorLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TimelineAnimationsProgressMonitorLayer.m; sourceTree = "<group>"; };
+		275DE58E6DEF4A1FF309591D16CFD6CA /* TimelineAudioAssociation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TimelineAudioAssociation.m; sourceTree = "<group>"; };
+		2E16EB8A10BF5FF18AFDC2E9EB6FFCC2 /* easing.c */ = {isa = PBXFileReference; includeInIndex = 1; path = easing.c; sourceTree = "<group>"; };
+		2E88882DB089D66DC84F69A5B528F2F1 /* TimelineAnimationNameExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TimelineAnimationNameExtensions.swift; sourceTree = "<group>"; };
+		2F386BB6EAEC0EBD6EEB2AF57CC8D7BE /* TimelineAnimationSwiftAPI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TimelineAnimationSwiftAPI.swift; sourceTree = "<group>"; };
+		30A78E377FD05E1C2342FCBF43DE1232 /* KeyValueBlockObservation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KeyValueBlockObservation.h; sourceTree = "<group>"; };
+		33705182E036166FCF5B4AF0AE29BF82 /* EasingTimingHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EasingTimingHandler.h; sourceTree = "<group>"; };
+		348FF300900A8A2A8A31F3F5554A83E0 /* TimelineAnimationAudioExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TimelineAnimationAudioExtension.swift; sourceTree = "<group>"; };
+		34B416F6B0BB2F867703B9AF8096B5E2 /* NSArray+TimelineSwiftyAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSArray+TimelineSwiftyAdditions.h"; sourceTree = "<group>"; };
 		3A72009E81483E9CB2D84CE3358D58FF /* Pods_TimelineAnimations_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TimelineAnimations_Tests.framework; path = "Pods-TimelineAnimations_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		48C87F956435F5DE9915F588B9745542 /* TimelineAudioAssociation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAudioAssociation.h; sourceTree = "<group>"; };
-		48D41E80E9978E633F63B03EC3CC1A42 /* TimelineEntity.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineEntity.h; sourceTree = "<group>"; };
-		4912A1377977ABB08BF0B8E8EF606AB9 /* TimelineAnimations-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TimelineAnimations-dummy.m"; sourceTree = "<group>"; };
-		49B0CEDC0AE4D20A8600B44C8035FA6A /* TimelineAnimations.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TimelineAnimations.xcconfig; sourceTree = "<group>"; };
+		3A9F21FF517288682F14E661B81A5FB3 /* NSSet+TimelineSwiftyAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSSet+TimelineSwiftyAdditions.h"; sourceTree = "<group>"; };
+		3CFDD26E09E30DF03B8ACA23945F437C /* TimelineAnimationProtected.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAnimationProtected.h; sourceTree = "<group>"; };
+		3DBE9B5B0F65E14F9B9D586D1C40B4F9 /* CABasicAnimation+Reverse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CABasicAnimation+Reverse.m"; sourceTree = "<group>"; };
+		3E12DB545BFEE273684DAFAB179087E4 /* TimelineEntity.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TimelineEntity.m; sourceTree = "<group>"; };
+		3E59C769853AF6E82EDA8022266761D4 /* AnimationsFactoryTypedValueExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AnimationsFactoryTypedValueExtension.swift; sourceTree = "<group>"; };
+		43AB581352C16D988379EF59165C489B /* PrivateTypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PrivateTypes.h; sourceTree = "<group>"; };
+		455AAFCE89BF185314879F9BEEBCA86C /* TimelineAnimations-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TimelineAnimations-dummy.m"; sourceTree = "<group>"; };
+		4C9160DA08A2A9F5FFCB27CB4D2D09E9 /* CALayer+TimelineAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CALayer+TimelineAnimation.m"; sourceTree = "<group>"; };
+		534AF2E219C165093F6E6226F79FA8E6 /* CAPropertyAnimation+Reverse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CAPropertyAnimation+Reverse.h"; sourceTree = "<group>"; };
+		53F0718F35BE330BD0EB90CFD3A7C84D /* TimelineAudioAssociation_Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAudioAssociation_Internal.h; sourceTree = "<group>"; };
 		549AB0E2BC214D8D17CC80AB9CEE89B3 /* Pods-TimelineAnimations_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TimelineAnimations_Tests-umbrella.h"; sourceTree = "<group>"; };
-		56242CEBBD5D0C56C7AD6089DDB8D0A2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		57394E3BE670D9DB8E4B81173D652696 /* GroupTimelineEntity.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GroupTimelineEntity.m; sourceTree = "<group>"; };
-		5AD022FEB29989CDE882F39E1437DA5F /* AnimationsKeyPath.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = AnimationsKeyPath.m; sourceTree = "<group>"; };
+		56883E660F1F31BA626225F8E497977C /* TimelineAnimationNotifyBlockInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TimelineAnimationNotifyBlockInfo.m; sourceTree = "<group>"; };
+		5A584CF20D180228DC7EC2147EE37D92 /* TimelineAnimationDescription.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAnimationDescription.h; sourceTree = "<group>"; };
+		5B096BEFD3283CD588873A59E46118D9 /* TimelineAnimationUIViewExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TimelineAnimationUIViewExtensions.swift; sourceTree = "<group>"; };
+		5C897462F3DA4FB810C4A01291AF22A5 /* CAKeyframeAnimation+Reverse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CAKeyframeAnimation+Reverse.h"; sourceTree = "<group>"; };
 		5E0996EC6FBB9B17CA767EC6E80CE8ED /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F11E8655457914B7CAC55AD0EF96125 /* Pods-TimelineAnimations_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TimelineAnimations_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		621786085AA33D519326FE40A743A4BB /* TimelineAnimationsDisplayLink.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TimelineAnimationsDisplayLink.m; sourceTree = "<group>"; };
+		618F75D8F21B0ADF9913C7C666209A5F /* GroupTimelineEntity.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GroupTimelineEntity.m; sourceTree = "<group>"; };
+		656FBC1932DABD8C3AC7A2F93C6C9628 /* CAKeyframeAnimation+AHEasing.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CAKeyframeAnimation+AHEasing.h"; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		6B396791539EE5B31C277C2E8A809BAF /* TimelineAnimations.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAnimations.h; sourceTree = "<group>"; };
-		70AAC62F3E7D6CEDC5A47594D1CCEAAC /* GroupTimelineAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GroupTimelineAnimation.m; sourceTree = "<group>"; };
-		75D745CE321FA4210A3C117DCDB80CE1 /* easing.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = easing.h; sourceTree = "<group>"; };
-		77781993B8C9470C4903D12C34570CFC /* TimelineAnimationNameExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TimelineAnimationNameExtensions.swift; sourceTree = "<group>"; };
-		77950E105A79D9806AE7FF700B3743A1 /* EasingTimingHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EasingTimingHandler.m; sourceTree = "<group>"; };
-		7816C5051978E631EF992878B4E48753 /* TimelineAnimationDescription.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TimelineAnimationDescription.m; sourceTree = "<group>"; };
-		782D87A7CCAE81D99256DE24D88C0483 /* NSArray+TimelineSwiftyAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSArray+TimelineSwiftyAdditions.h"; sourceTree = "<group>"; };
-		7847060B742B477728352E502533694A /* KeyValueBlockObservation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KeyValueBlockObservation.h; sourceTree = "<group>"; };
-		7910C9EF109BFA230B8485464B25B1EA /* TimelineAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAnimation.h; sourceTree = "<group>"; };
-		79CA895FDAC16965D0E229DD6BE078A1 /* TimelineAnimationDescription.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAnimationDescription.h; sourceTree = "<group>"; };
-		7B5D37FC77B389DD2B0F237F61EC75C4 /* Types.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Types.h; sourceTree = "<group>"; };
-		7CA913A0F232275658D2B4CCBED4A746 /* TimelineAnimationsBlankLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TimelineAnimationsBlankLayer.m; sourceTree = "<group>"; };
-		85116ED6DA24E6017B84365E1F476E5B /* CAKeyframeAnimation+Reverse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CAKeyframeAnimation+Reverse.h"; sourceTree = "<group>"; };
-		86C494C9967DF34FC234AB1E1F0B2801 /* CAPropertyAnimation+Reverse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CAPropertyAnimation+Reverse.h"; sourceTree = "<group>"; };
-		89D8811A55C5826BD4DD9D1BF47813D3 /* TimelineAnimationPublicSwiftAPI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TimelineAnimationPublicSwiftAPI.swift; sourceTree = "<group>"; };
-		8BBD7562AA2832BF30B108666CF3D9B1 /* TimelineAnimationRepeatCountExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TimelineAnimationRepeatCountExtensions.swift; sourceTree = "<group>"; };
-		8E80D666800A27038B978777246F6F59 /* CAKeyframeAnimation+AHEasing.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CAKeyframeAnimation+AHEasing.m"; sourceTree = "<group>"; };
+		69AE43ED793E574651918ACBE2B1478E /* easing.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = easing.h; sourceTree = "<group>"; };
+		74083468F8012930C9CCEC83DDD5D1E6 /* TimelineAnimations-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TimelineAnimations-umbrella.h"; sourceTree = "<group>"; };
+		75A8A1FF8FC8B73A81FC28C66BAA9ABD /* AnimationsFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AnimationsFactory.h; sourceTree = "<group>"; };
+		763BAF2C88C40B8BACD715DA2445D024 /* AnimationsFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = AnimationsFactory.m; sourceTree = "<group>"; };
+		7D3EFF6EB04607ACC191508108EC3696 /* CAKeyframeAnimationAHEasingExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CAKeyframeAnimationAHEasingExtensions.swift; sourceTree = "<group>"; };
+		82144179DDE02B04CB39AB9636902778 /* TimelineAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAnimation.h; sourceTree = "<group>"; };
+		89F67F1C8ECC4CA4539C5A2C68C354F7 /* AnimationsKeyPath.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AnimationsKeyPath.h; sourceTree = "<group>"; };
+		8CA0B6972F2466EF78435102CE8ACA66 /* EasingTimingHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EasingTimingHandler.m; sourceTree = "<group>"; };
+		8CD75587569533E4BBC8A7E2FBB15FDF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D6C96C69842DFC0F666E79B55CE2936 /* TimelineAnimations.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = TimelineAnimations.modulemap; sourceTree = "<group>"; };
+		92281E792CDF75D4B12A0A244426D779 /* CAKeyframeAnimation+AHEasing.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CAKeyframeAnimation+AHEasing.m"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		93DA84848B460723B661B0444895BB26 /* TimelineAnimations-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TimelineAnimations-prefix.pch"; sourceTree = "<group>"; };
-		9AD2294A3D21830495AB33C53038BA81 /* TimelineAnimationReverseCoordinator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TimelineAnimationReverseCoordinator.m; sourceTree = "<group>"; };
-		9DC7AFA5CF212D556CEDF2C07E29D46A /* TimelineAnimationUIViewExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TimelineAnimationUIViewExtensions.swift; sourceTree = "<group>"; };
+		9638F29C3BFC6CC374C5C5D835EE8E65 /* TimelineAnimationsBlankLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TimelineAnimationsBlankLayer.m; sourceTree = "<group>"; };
+		99CA48AF1A33DB51147E8EE9A57C2210 /* CALayer+TimelineAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CALayer+TimelineAnimation.h"; sourceTree = "<group>"; };
+		9D24FA4AB04CF4C2D85C44A802D3AF96 /* NSSet+TimelineSwiftyAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSSet+TimelineSwiftyAdditions.m"; sourceTree = "<group>"; };
+		9F9E1D542D963A10B9021A06969200D9 /* TimelineAnimationDescription.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TimelineAnimationDescription.m; sourceTree = "<group>"; };
+		9FAEDA754A1D7C1E85EACBF898BE51DA /* CAKeyframeAnimation+Reverse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CAKeyframeAnimation+Reverse.m"; sourceTree = "<group>"; };
 		A00EE543776103202233EFFB2DDABB0B /* Pods-TimelineAnimations_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TimelineAnimations_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		A01F554D2FF8F6D41C1DF5BACA826284 /* TimelineAnimationNotifyBlockInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAnimationNotifyBlockInfo.h; sourceTree = "<group>"; };
+		A026135FAA5336A5F98CFBF7196E6728 /* Animations.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		A04ED5C2538321F10307AE96C84C85B6 /* Pods-TimelineAnimations_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-TimelineAnimations_Tests.modulemap"; sourceTree = "<group>"; };
+		A3E393E4EE875CAC7661507B47397796 /* TimelineAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TimelineAnimation.m; sourceTree = "<group>"; };
 		A429830CE693C2094C188F48A18FBD02 /* Pods-TimelineAnimations_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TimelineAnimations_Tests-resources.sh"; sourceTree = "<group>"; };
-		A6E2DF0ED8BCB24481B40C36B70D8645 /* NSSet+TimelineSwiftyAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSSet+TimelineSwiftyAdditions.h"; sourceTree = "<group>"; };
+		A74710031C15E10B85023218A2F96467 /* TimelineAnimationsBlankLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAnimationsBlankLayer.h; sourceTree = "<group>"; };
+		AA31FCECACD8E85A5F835B292D77BA30 /* NSDictionary+TimelineSwiftyAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+TimelineSwiftyAdditions.m"; sourceTree = "<group>"; };
 		AA575C386A3FBD954D19CB1FEA3A2ABE /* Pods-TimelineAnimations_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TimelineAnimations_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		B3CA421ADF227398BDD7C485D3F7065B /* TimelineAnimationSwiftAPI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TimelineAnimationSwiftAPI.swift; sourceTree = "<group>"; };
-		B412F31ED922A5D2C371D9C2D8339585 /* CAPropertyAnimation+TimelineEntity.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CAPropertyAnimation+TimelineEntity.m"; sourceTree = "<group>"; };
+		B1351B28C28C117296443A51C88481A1 /* TimelineAnimationReverseCoordinator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TimelineAnimationReverseCoordinator.m; sourceTree = "<group>"; };
 		B6ADFD17B3DB9B4667BB06A30813869F /* Pods-TimelineAnimations_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TimelineAnimations_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		BAFACFB3120A3CC3A9897668EB57F4C4 /* TimelineAudioAssociation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TimelineAudioAssociation.m; sourceTree = "<group>"; };
-		BBD1A8ED31DBB8638EA3B3ED9758445A /* AnimationsFactoryTypedValueExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AnimationsFactoryTypedValueExtension.swift; sourceTree = "<group>"; };
-		BD4402FECB8FB57DC00C180CC85C3440 /* CAPropertyAnimationExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CAPropertyAnimationExtensions.swift; sourceTree = "<group>"; };
-		BEFF8B1FA1B66EAD5C9A97C4D2A3B01A /* AnimationsFactoryConvenienceExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AnimationsFactoryConvenienceExtensions.swift; sourceTree = "<group>"; };
-		BF9D7EC666AAD19AA079328FCC9265F6 /* NSArray+TimelineSwiftyAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSArray+TimelineSwiftyAdditions.m"; sourceTree = "<group>"; };
-		C2940029590CED0F34ECC587FBF1A0EE /* PrivateTypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PrivateTypes.h; sourceTree = "<group>"; };
-		CB2BBA71F7C441E898F31041F0C6FD5F /* NSDictionary+TimelineSwiftyAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+TimelineSwiftyAdditions.m"; sourceTree = "<group>"; };
-		CFE5E84678219CA01909FC7DD0E70DC4 /* NSSet+TimelineSwiftyAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSSet+TimelineSwiftyAdditions.m"; sourceTree = "<group>"; };
-		D3075A7354A87FFBCA649370AD518DB4 /* TimelineAnimations-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TimelineAnimations-umbrella.h"; sourceTree = "<group>"; };
-		D6E110C8BD7AAAB9191E143DD9576D2A /* TimelineAnimationAudioExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TimelineAnimationAudioExtension.swift; sourceTree = "<group>"; };
-		D703BF51C53EDDA1D24F89301B70FFBC /* AnimationKeyPath.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AnimationKeyPath.swift; sourceTree = "<group>"; };
-		D8E5C545A9C8016FF494F758029FD42B /* TypesRefinements.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TypesRefinements.swift; sourceTree = "<group>"; };
-		D9502304C8A95F11F32B6541CD35A29C /* TimelineAnimations.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = TimelineAnimations.modulemap; sourceTree = "<group>"; };
-		DE83553EA885C76EECC77E56D5589CAC /* TimelineAnimationReverseCoordinator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAnimationReverseCoordinator.h; sourceTree = "<group>"; };
-		E2F46122A539469CE1B404DA8450DD92 /* CAPropertyAnimation+TimelineEntity.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CAPropertyAnimation+TimelineEntity.h"; sourceTree = "<group>"; };
-		E75618100A0006596A005EAD22375D5D /* TimelineAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TimelineAnimation.m; sourceTree = "<group>"; };
-		EE1A1D00C0FF5C2408127277A3D6407D /* AnimationsFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = AnimationsFactory.m; sourceTree = "<group>"; };
-		F7D2016DE355C9D91FF7620F7E5DC4F8 /* TimelineEntity.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TimelineEntity.m; sourceTree = "<group>"; };
-		FA3D5483A99749BD70E9BABA51708BF5 /* CAPropertyAnimation+Reverse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CAPropertyAnimation+Reverse.m"; sourceTree = "<group>"; };
+		B7578F457AC72C9002EEDF9D6539B242 /* TypesRefinements.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TypesRefinements.swift; sourceTree = "<group>"; };
+		B9B184BB31ED1557CD990CB0387341B6 /* TimelineAudioAssociation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAudioAssociation.h; sourceTree = "<group>"; };
+		BD7729EFDA33ED8F6AF6A96D91C2C752 /* GroupTimelineEntity.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GroupTimelineEntity.h; sourceTree = "<group>"; };
+		C1DA543E62DC076E8384770617B36DEE /* TimelineAnimations.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAnimations.h; sourceTree = "<group>"; };
+		C7E6478E9441497765E1821F72C83795 /* GroupTimelineAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GroupTimelineAnimation.h; sourceTree = "<group>"; };
+		CB881D776031333880AE096FAA69A8DF /* TimelineEntity.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineEntity.h; sourceTree = "<group>"; };
+		CDB8802A0758EB5B55533E4808767EA8 /* TimelineAnimationRepeatCountExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TimelineAnimationRepeatCountExtensions.swift; sourceTree = "<group>"; };
+		D16594303D2C05BF30A1560656F3096C /* CAPropertyAnimation+TimelineEntity.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CAPropertyAnimation+TimelineEntity.h"; sourceTree = "<group>"; };
+		D2A5E63B83E54BC9EE68E50341153B5E /* TimelineAnimationsProgressMonitorLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAnimationsProgressMonitorLayer.h; sourceTree = "<group>"; };
+		DDC61C0C55A0C194945EE4A66C1D8B08 /* NSDictionary+TimelineSwiftyAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+TimelineSwiftyAdditions.h"; sourceTree = "<group>"; };
+		E02710FD92EE16C1F05806FC7925122F /* TimelineAnimationReverseCoordinator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAnimationReverseCoordinator.h; sourceTree = "<group>"; };
+		E09AE9F5A6BA66673081DD7928B195A6 /* CAPropertyAnimation+Reverse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CAPropertyAnimation+Reverse.m"; sourceTree = "<group>"; };
+		E674B7EE5D3B3D556BB068102D2BA94B /* TimelineAnimations.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TimelineAnimations.xcconfig; sourceTree = "<group>"; };
+		E8F1C49EE89B0E19210D7802C303D607 /* CAPropertyAnimation+TimelineEntity.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CAPropertyAnimation+TimelineEntity.m"; sourceTree = "<group>"; };
+		F4E3B6589955FB49FD8893F368C773BC /* NSArray+TimelineSwiftyAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSArray+TimelineSwiftyAdditions.m"; sourceTree = "<group>"; };
+		F7EB3E5B49479E5E82C92BDF93F61349 /* TimelineAnimations-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TimelineAnimations-prefix.pch"; sourceTree = "<group>"; };
+		FB5113406D7B3ED2E5847F9224890FC8 /* TimelineAnimationsDisplayLink.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAnimationsDisplayLink.h; sourceTree = "<group>"; };
+		FC3765A0AD173AA1381A00A92CDC7CED /* CAPropertyAnimationExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CAPropertyAnimationExtensions.swift; sourceTree = "<group>"; };
 		FC3F06C71BA18BCA197080B1110ECB0E /* TimelineAnimations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TimelineAnimations.framework; path = TimelineAnimations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE3F43C085ED354DA78A3A3CA0D41184 /* TimelineAnimationNotifyBlockInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAnimationNotifyBlockInfo.h; sourceTree = "<group>"; };
 		FEB8ACDC18937D099A856D4F31A18253 /* Pods-TimelineAnimations_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TimelineAnimations_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -204,79 +206,89 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0199718EA905FF861112A0A2243A1584 /* objc */ = {
+		0017A79FD3F594699C395404EFD4BBC5 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				0E09FE31F4EA3CDC5704E47F7FF19E0B /* AnimationsFactory.h */,
-				EE1A1D00C0FF5C2408127277A3D6407D /* AnimationsFactory.m */,
-				2C46F6DF8A29B3177BCFEE2FB8336A78 /* AnimationsKeyPath.h */,
-				5AD022FEB29989CDE882F39E1437DA5F /* AnimationsKeyPath.m */,
-				263F7ED11010CF37BE7C692D5B33BCE1 /* GroupTimelineAnimation.h */,
-				70AAC62F3E7D6CEDC5A47594D1CCEAAC /* GroupTimelineAnimation.m */,
-				088E72475DAC8227342BDD42A6F2B3CB /* GroupTimelineEntity.h */,
-				57394E3BE670D9DB8E4B81173D652696 /* GroupTimelineEntity.m */,
-				C2940029590CED0F34ECC587FBF1A0EE /* PrivateTypes.h */,
-				7910C9EF109BFA230B8485464B25B1EA /* TimelineAnimation.h */,
-				E75618100A0006596A005EAD22375D5D /* TimelineAnimation.m */,
-				00DF2E947B6E3630860C0671C586032E /* TimelineAnimationProtected.h */,
-				6B396791539EE5B31C277C2E8A809BAF /* TimelineAnimations.h */,
-				48D41E80E9978E633F63B03EC3CC1A42 /* TimelineEntity.h */,
-				F7D2016DE355C9D91FF7620F7E5DC4F8 /* TimelineEntity.m */,
-				7B5D37FC77B389DD2B0F237F61EC75C4 /* Types.h */,
-				D19C8023417D8D0E97417D4D3F018B23 /* AHEasing */,
-				BDFB0ABEAC8B4F7D84C96B8347A9D5EA /* Audio */,
-				37DA5EFCC9E2E8EF7ECA774D8C2A9ECC /* Categories */,
-				F25A311804D114C9CECBEA4282B9D5B6 /* EasingTiming */,
-				03C8C6843CFF1200DC3E34C9DE73D3A5 /* Helper */,
-			);
-			name = objc;
-			path = TimelineAnimations/Classes/objc;
-			sourceTree = "<group>";
-		};
-		03C8C6843CFF1200DC3E34C9DE73D3A5 /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-				7847060B742B477728352E502533694A /* KeyValueBlockObservation.h */,
-				2C12AEA56C74795F76EF54299FCD7AAF /* KeyValueBlockObservation.m */,
-				79CA895FDAC16965D0E229DD6BE078A1 /* TimelineAnimationDescription.h */,
-				7816C5051978E631EF992878B4E48753 /* TimelineAnimationDescription.m */,
-				A01F554D2FF8F6D41C1DF5BACA826284 /* TimelineAnimationNotifyBlockInfo.h */,
-				39643D6A913BEF31D403870E8A6BF07F /* TimelineAnimationNotifyBlockInfo.m */,
-				DE83553EA885C76EECC77E56D5589CAC /* TimelineAnimationReverseCoordinator.h */,
-				9AD2294A3D21830495AB33C53038BA81 /* TimelineAnimationReverseCoordinator.m */,
-				30BC4B7F0FE31355F23F173D42ADAC77 /* TimelineAnimationsBlankLayer.h */,
-				7CA913A0F232275658D2B4CCBED4A746 /* TimelineAnimationsBlankLayer.m */,
-				13C17A069DE19930748C21732C97DCCC /* TimelineAnimationsDisplayLink.h */,
-				621786085AA33D519326FE40A743A4BB /* TimelineAnimationsDisplayLink.m */,
-				0545A2B669D29465425291B648A54A44 /* TimelineAnimationsProgressMonitorLayer.h */,
-				186E9E9A2AB02A91F4643D35BAF13218 /* TimelineAnimationsProgressMonitorLayer.m */,
+				30A78E377FD05E1C2342FCBF43DE1232 /* KeyValueBlockObservation.h */,
+				159DD71FEACEFC51A4D504FF3AA2A654 /* KeyValueBlockObservation.m */,
+				5A584CF20D180228DC7EC2147EE37D92 /* TimelineAnimationDescription.h */,
+				9F9E1D542D963A10B9021A06969200D9 /* TimelineAnimationDescription.m */,
+				FE3F43C085ED354DA78A3A3CA0D41184 /* TimelineAnimationNotifyBlockInfo.h */,
+				56883E660F1F31BA626225F8E497977C /* TimelineAnimationNotifyBlockInfo.m */,
+				E02710FD92EE16C1F05806FC7925122F /* TimelineAnimationReverseCoordinator.h */,
+				B1351B28C28C117296443A51C88481A1 /* TimelineAnimationReverseCoordinator.m */,
+				A74710031C15E10B85023218A2F96467 /* TimelineAnimationsBlankLayer.h */,
+				9638F29C3BFC6CC374C5C5D835EE8E65 /* TimelineAnimationsBlankLayer.m */,
+				FB5113406D7B3ED2E5847F9224890FC8 /* TimelineAnimationsDisplayLink.h */,
+				14EDD8DF731E0A6A6EE2FA882029C691 /* TimelineAnimationsDisplayLink.m */,
+				D2A5E63B83E54BC9EE68E50341153B5E /* TimelineAnimationsProgressMonitorLayer.h */,
+				1CFEEEF0DB3B38EBDE1816594AD0E765 /* TimelineAnimationsProgressMonitorLayer.m */,
 			);
 			name = Helper;
 			path = Helper;
 			sourceTree = "<group>";
 		};
-		37DA5EFCC9E2E8EF7ECA774D8C2A9ECC /* Categories */ = {
+		017E165651DB013FE56E7E01497D48D6 /* AHEasing */ = {
 			isa = PBXGroup;
 			children = (
-				05A6CD4AED7D8D4CE51EA51AD5B550EA /* CABasicAnimation+Reverse.h */,
-				1778F8AF1F393CB8757831BE706A1D30 /* CABasicAnimation+Reverse.m */,
-				85116ED6DA24E6017B84365E1F476E5B /* CAKeyframeAnimation+Reverse.h */,
-				2826C68AE8938C8C63698DF5FC747B51 /* CAKeyframeAnimation+Reverse.m */,
-				2952D70D547EEF93C6DBF5EBC76134E0 /* CALayer+TimelineAnimation.h */,
-				09D795E1B17DDF19F0B9A8B3A1599001 /* CALayer+TimelineAnimation.m */,
-				86C494C9967DF34FC234AB1E1F0B2801 /* CAPropertyAnimation+Reverse.h */,
-				FA3D5483A99749BD70E9BABA51708BF5 /* CAPropertyAnimation+Reverse.m */,
-				E2F46122A539469CE1B404DA8450DD92 /* CAPropertyAnimation+TimelineEntity.h */,
-				B412F31ED922A5D2C371D9C2D8339585 /* CAPropertyAnimation+TimelineEntity.m */,
-				782D87A7CCAE81D99256DE24D88C0483 /* NSArray+TimelineSwiftyAdditions.h */,
-				BF9D7EC666AAD19AA079328FCC9265F6 /* NSArray+TimelineSwiftyAdditions.m */,
-				24C4C32160515BA0BB61A40270B11376 /* NSDictionary+TimelineSwiftyAdditions.h */,
-				CB2BBA71F7C441E898F31041F0C6FD5F /* NSDictionary+TimelineSwiftyAdditions.m */,
-				A6E2DF0ED8BCB24481B40C36B70D8645 /* NSSet+TimelineSwiftyAdditions.h */,
-				CFE5E84678219CA01909FC7DD0E70DC4 /* NSSet+TimelineSwiftyAdditions.m */,
+				656FBC1932DABD8C3AC7A2F93C6C9628 /* CAKeyframeAnimation+AHEasing.h */,
+				92281E792CDF75D4B12A0A244426D779 /* CAKeyframeAnimation+AHEasing.m */,
+				2E16EB8A10BF5FF18AFDC2E9EB6FFCC2 /* easing.c */,
+				69AE43ED793E574651918ACBE2B1478E /* easing.h */,
 			);
-			name = Categories;
-			path = Categories;
+			name = AHEasing;
+			path = AHEasing;
+			sourceTree = "<group>";
+		};
+		0CECDA0B57F703FACECB3417123B469E /* objc */ = {
+			isa = PBXGroup;
+			children = (
+				75A8A1FF8FC8B73A81FC28C66BAA9ABD /* AnimationsFactory.h */,
+				763BAF2C88C40B8BACD715DA2445D024 /* AnimationsFactory.m */,
+				89F67F1C8ECC4CA4539C5A2C68C354F7 /* AnimationsKeyPath.h */,
+				132DE04D1CD9EE3C42C6875D28F469E3 /* AnimationsKeyPath.m */,
+				C7E6478E9441497765E1821F72C83795 /* GroupTimelineAnimation.h */,
+				0367F493A738B48ABE5913F5AE52D230 /* GroupTimelineAnimation.m */,
+				BD7729EFDA33ED8F6AF6A96D91C2C752 /* GroupTimelineEntity.h */,
+				618F75D8F21B0ADF9913C7C666209A5F /* GroupTimelineEntity.m */,
+				43AB581352C16D988379EF59165C489B /* PrivateTypes.h */,
+				82144179DDE02B04CB39AB9636902778 /* TimelineAnimation.h */,
+				A3E393E4EE875CAC7661507B47397796 /* TimelineAnimation.m */,
+				3CFDD26E09E30DF03B8ACA23945F437C /* TimelineAnimationProtected.h */,
+				C1DA543E62DC076E8384770617B36DEE /* TimelineAnimations.h */,
+				CB881D776031333880AE096FAA69A8DF /* TimelineEntity.h */,
+				3E12DB545BFEE273684DAFAB179087E4 /* TimelineEntity.m */,
+				15C7FF284645C838084208E5C657287A /* Types.h */,
+				017E165651DB013FE56E7E01497D48D6 /* AHEasing */,
+				390DB7E0D66FD3DFD7A04965C24B5DD1 /* Audio */,
+				D3CE889D8219B7E4B9D1B03528427740 /* Categories */,
+				1F8AD6DAE961322B1EA1CCA5AF491E9D /* EasingTiming */,
+				0017A79FD3F594699C395404EFD4BBC5 /* Helper */,
+			);
+			name = objc;
+			path = TimelineAnimations/Classes/objc;
+			sourceTree = "<group>";
+		};
+		1F8AD6DAE961322B1EA1CCA5AF491E9D /* EasingTiming */ = {
+			isa = PBXGroup;
+			children = (
+				33705182E036166FCF5B4AF0AE29BF82 /* EasingTimingHandler.h */,
+				8CA0B6972F2466EF78435102CE8ACA66 /* EasingTimingHandler.m */,
+			);
+			name = EasingTiming;
+			path = EasingTiming;
+			sourceTree = "<group>";
+		};
+		390DB7E0D66FD3DFD7A04965C24B5DD1 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				0A18234550ECE978BA8722A9B3486452 /* TimelineAudio.h */,
+				B9B184BB31ED1557CD990CB0387341B6 /* TimelineAudioAssociation.h */,
+				275DE58E6DEF4A1FF309591D16CFD6CA /* TimelineAudioAssociation.m */,
+				53F0718F35BE330BD0EB90CFD3A7C84D /* TimelineAudioAssociation_Internal.h */,
+			);
+			name = Audio;
+			path = Audio;
 			sourceTree = "<group>";
 		};
 		3EBB825A214E16B1C9AC4803CE4622AF /* Targets Support Files */ = {
@@ -287,15 +299,15 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		52F1BB34A04679045BCE6CB710BDC9E6 /* Support Files */ = {
+		44230979A99AA587AFAB265D0333D622 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				56242CEBBD5D0C56C7AD6089DDB8D0A2 /* Info.plist */,
-				D9502304C8A95F11F32B6541CD35A29C /* TimelineAnimations.modulemap */,
-				49B0CEDC0AE4D20A8600B44C8035FA6A /* TimelineAnimations.xcconfig */,
-				4912A1377977ABB08BF0B8E8EF606AB9 /* TimelineAnimations-dummy.m */,
-				93DA84848B460723B661B0444895BB26 /* TimelineAnimations-prefix.pch */,
-				D3075A7354A87FFBCA649370AD518DB4 /* TimelineAnimations-umbrella.h */,
+				8CD75587569533E4BBC8A7E2FBB15FDF /* Info.plist */,
+				8D6C96C69842DFC0F666E79B55CE2936 /* TimelineAnimations.modulemap */,
+				E674B7EE5D3B3D556BB068102D2BA94B /* TimelineAnimations.xcconfig */,
+				455AAFCE89BF185314879F9BEEBCA86C /* TimelineAnimations-dummy.m */,
+				F7EB3E5B49479E5E82C92BDF93F61349 /* TimelineAnimations-prefix.pch */,
+				74083468F8012930C9CCEC83DDD5D1E6 /* TimelineAnimations-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "Example/Pods/Target Support Files/TimelineAnimations";
@@ -319,26 +331,6 @@
 			path = "Target Support Files/Pods-TimelineAnimations_Tests";
 			sourceTree = "<group>";
 		};
-		705B9C87C2F7CBBB45E3A52B9D1DA496 /* swift */ = {
-			isa = PBXGroup;
-			children = (
-				D703BF51C53EDDA1D24F89301B70FFBC /* AnimationKeyPath.swift */,
-				393C0E30EB7122BFC2A376593F2A5FC2 /* Animations.swift */,
-				BEFF8B1FA1B66EAD5C9A97C4D2A3B01A /* AnimationsFactoryConvenienceExtensions.swift */,
-				BBD1A8ED31DBB8638EA3B3ED9758445A /* AnimationsFactoryTypedValueExtension.swift */,
-				BD4402FECB8FB57DC00C180CC85C3440 /* CAPropertyAnimationExtensions.swift */,
-				D6E110C8BD7AAAB9191E143DD9576D2A /* TimelineAnimationAudioExtension.swift */,
-				77781993B8C9470C4903D12C34570CFC /* TimelineAnimationNameExtensions.swift */,
-				89D8811A55C5826BD4DD9D1BF47813D3 /* TimelineAnimationPublicSwiftAPI.swift */,
-				8BBD7562AA2832BF30B108666CF3D9B1 /* TimelineAnimationRepeatCountExtensions.swift */,
-				B3CA421ADF227398BDD7C485D3F7065B /* TimelineAnimationSwiftAPI.swift */,
-				9DC7AFA5CF212D556CEDF2C07E29D46A /* TimelineAnimationUIViewExtensions.swift */,
-				D8E5C545A9C8016FF494F758029FD42B /* TypesRefinements.swift */,
-			);
-			name = swift;
-			path = TimelineAnimations/Classes/swift;
-			sourceTree = "<group>";
-		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
@@ -353,20 +345,30 @@
 		888835FE3DAA07F810CF68178662CA83 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A94BF17EE9C6F9103717486AB10466F6 /* TimelineAnimations */,
+				F142BA43D3DE77905548D1DAD9CE83B9 /* TimelineAnimations */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
 		};
-		A94BF17EE9C6F9103717486AB10466F6 /* TimelineAnimations */ = {
+		AB3B69D2B9749CFE99D886AACFE756B2 /* swift */ = {
 			isa = PBXGroup;
 			children = (
-				0199718EA905FF861112A0A2243A1584 /* objc */,
-				52F1BB34A04679045BCE6CB710BDC9E6 /* Support Files */,
-				705B9C87C2F7CBBB45E3A52B9D1DA496 /* swift */,
+				1AD0FD7878313C13DFD6658A28428384 /* AnimationKeyPath.swift */,
+				A026135FAA5336A5F98CFBF7196E6728 /* Animations.swift */,
+				0EAEBB73BD94BD46022DB6CC0FF32A2E /* AnimationsFactoryConvenienceExtensions.swift */,
+				3E59C769853AF6E82EDA8022266761D4 /* AnimationsFactoryTypedValueExtension.swift */,
+				7D3EFF6EB04607ACC191508108EC3696 /* CAKeyframeAnimationAHEasingExtensions.swift */,
+				FC3765A0AD173AA1381A00A92CDC7CED /* CAPropertyAnimationExtensions.swift */,
+				348FF300900A8A2A8A31F3F5554A83E0 /* TimelineAnimationAudioExtension.swift */,
+				2E88882DB089D66DC84F69A5B528F2F1 /* TimelineAnimationNameExtensions.swift */,
+				14020CBB455A068A4BEBD21D91121E85 /* TimelineAnimationPublicSwiftAPI.swift */,
+				CDB8802A0758EB5B55533E4808767EA8 /* TimelineAnimationRepeatCountExtensions.swift */,
+				2F386BB6EAEC0EBD6EEB2AF57CC8D7BE /* TimelineAnimationSwiftAPI.swift */,
+				5B096BEFD3283CD588873A59E46118D9 /* TimelineAnimationUIViewExtensions.swift */,
+				B7578F457AC72C9002EEDF9D6539B242 /* TypesRefinements.swift */,
 			);
-			name = TimelineAnimations;
-			path = ../..;
+			name = swift;
+			path = TimelineAnimations/Classes/swift;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -377,36 +379,47 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		BDFB0ABEAC8B4F7D84C96B8347A9D5EA /* Audio */ = {
-			isa = PBXGroup;
-			children = (
-				27DBF0AB90310A8A57735192741F3B8E /* TimelineAudio.h */,
-				48C87F956435F5DE9915F588B9745542 /* TimelineAudioAssociation.h */,
-				BAFACFB3120A3CC3A9897668EB57F4C4 /* TimelineAudioAssociation.m */,
-				1557F6E3595441AA7A4E3D1C5A2790B9 /* TimelineAudioAssociation_Internal.h */,
-			);
-			name = Audio;
-			path = Audio;
-			sourceTree = "<group>";
-		};
-		D19C8023417D8D0E97417D4D3F018B23 /* AHEasing */ = {
-			isa = PBXGroup;
-			children = (
-				3485CECE044B732DC95F306CF68AB06C /* CAKeyframeAnimation+AHEasing.h */,
-				8E80D666800A27038B978777246F6F59 /* CAKeyframeAnimation+AHEasing.m */,
-				24FF3FB2F47B39AF1DA450D9ABDFE97E /* easing.c */,
-				75D745CE321FA4210A3C117DCDB80CE1 /* easing.h */,
-			);
-			name = AHEasing;
-			path = AHEasing;
-			sourceTree = "<group>";
-		};
 		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
 			isa = PBXGroup;
 			children = (
 				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
 			);
 			name = iOS;
+			sourceTree = "<group>";
+		};
+		D3CE889D8219B7E4B9D1B03528427740 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				0DE37CA8DD0A520D3435A07F17B7022F /* CABasicAnimation+Reverse.h */,
+				3DBE9B5B0F65E14F9B9D586D1C40B4F9 /* CABasicAnimation+Reverse.m */,
+				5C897462F3DA4FB810C4A01291AF22A5 /* CAKeyframeAnimation+Reverse.h */,
+				9FAEDA754A1D7C1E85EACBF898BE51DA /* CAKeyframeAnimation+Reverse.m */,
+				99CA48AF1A33DB51147E8EE9A57C2210 /* CALayer+TimelineAnimation.h */,
+				4C9160DA08A2A9F5FFCB27CB4D2D09E9 /* CALayer+TimelineAnimation.m */,
+				534AF2E219C165093F6E6226F79FA8E6 /* CAPropertyAnimation+Reverse.h */,
+				E09AE9F5A6BA66673081DD7928B195A6 /* CAPropertyAnimation+Reverse.m */,
+				D16594303D2C05BF30A1560656F3096C /* CAPropertyAnimation+TimelineEntity.h */,
+				E8F1C49EE89B0E19210D7802C303D607 /* CAPropertyAnimation+TimelineEntity.m */,
+				34B416F6B0BB2F867703B9AF8096B5E2 /* NSArray+TimelineSwiftyAdditions.h */,
+				F4E3B6589955FB49FD8893F368C773BC /* NSArray+TimelineSwiftyAdditions.m */,
+				DDC61C0C55A0C194945EE4A66C1D8B08 /* NSDictionary+TimelineSwiftyAdditions.h */,
+				AA31FCECACD8E85A5F835B292D77BA30 /* NSDictionary+TimelineSwiftyAdditions.m */,
+				3A9F21FF517288682F14E661B81A5FB3 /* NSSet+TimelineSwiftyAdditions.h */,
+				9D24FA4AB04CF4C2D85C44A802D3AF96 /* NSSet+TimelineSwiftyAdditions.m */,
+			);
+			name = Categories;
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		F142BA43D3DE77905548D1DAD9CE83B9 /* TimelineAnimations */ = {
+			isa = PBXGroup;
+			children = (
+				0CECDA0B57F703FACECB3417123B469E /* objc */,
+				44230979A99AA587AFAB265D0333D622 /* Support Files */,
+				AB3B69D2B9749CFE99D886AACFE756B2 /* swift */,
+			);
+			name = TimelineAnimations;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		F16FEAA1B56D9609C16DBD2A0B422A49 /* Products */ = {
@@ -416,16 +429,6 @@
 				FC3F06C71BA18BCA197080B1110ECB0E /* TimelineAnimations.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		F25A311804D114C9CECBEA4282B9D5B6 /* EasingTiming */ = {
-			isa = PBXGroup;
-			children = (
-				035BD8E3E0C6FD0A43CCC6F0EFFAD3DF /* EasingTimingHandler.h */,
-				77950E105A79D9806AE7FF700B3743A1 /* EasingTimingHandler.m */,
-			);
-			name = EasingTiming;
-			path = EasingTiming;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -503,7 +506,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6C49BB755F8021E088482BD4CC9BCB40 /* Build configuration list for PBXNativeTarget "TimelineAnimations" */;
 			buildPhases = (
-				95F0E08B011E8315EB55CE0F5EC78904 /* Sources */,
+				E6DA9FFE384E27743FE39E3D3289A9BD /* Sources */,
 				E2A06E937BBF9BC5B33B2C7808116042 /* Frameworks */,
 				2D6563B9A002AE0A469863BEF0AEEED3 /* Headers */,
 			);
@@ -552,48 +555,49 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		95F0E08B011E8315EB55CE0F5EC78904 /* Sources */ = {
+		E6DA9FFE384E27743FE39E3D3289A9BD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A74D387273030E660D1AC97C5E7913A /* AnimationKeyPath.swift in Sources */,
-				0FAB46EF9A2F874E3ED69B859A039993 /* Animations.swift in Sources */,
-				16E692C3B0C42C38CB60D6972DD3F9F8 /* AnimationsFactory.m in Sources */,
-				9AA41B20AD66F12615D0B037FA2DC19A /* AnimationsFactoryConvenienceExtensions.swift in Sources */,
-				87C252806779CA2586C8A5391B802C26 /* AnimationsFactoryTypedValueExtension.swift in Sources */,
-				D14A4971AD77203A460B842E71883347 /* AnimationsKeyPath.m in Sources */,
-				C0FCF4972B384A778582EA7CB9E361B4 /* CABasicAnimation+Reverse.m in Sources */,
-				36F4DE182C4FBA13E2F799CF069CF9E4 /* CAKeyframeAnimation+AHEasing.m in Sources */,
-				0E5C31503386E719565CEA30CC292CF0 /* CAKeyframeAnimation+Reverse.m in Sources */,
-				C0C67EB37368CDC6E3EEC108EE1E4609 /* CALayer+TimelineAnimation.m in Sources */,
-				EA36B467B1216A603513FAD23F4C89E0 /* CAPropertyAnimation+Reverse.m in Sources */,
-				96B3C1B79612702A060F5D931BF2A185 /* CAPropertyAnimation+TimelineEntity.m in Sources */,
-				5654E0397B6EEA70ED3732C7E2332104 /* CAPropertyAnimationExtensions.swift in Sources */,
-				8EBE466A6208170637D887DFE2A2EB5A /* easing.c in Sources */,
-				398614166B10B0C8A871DCD1BAD72F91 /* EasingTimingHandler.m in Sources */,
-				D8F85E483B4EAC5797ACCBF35C277BDB /* GroupTimelineAnimation.m in Sources */,
-				023B9ADEB4616953CD53A61B33EB3A27 /* GroupTimelineEntity.m in Sources */,
-				459FF3630D8F86A70EE1E22836D56D5E /* KeyValueBlockObservation.m in Sources */,
-				56F25CA1ED01B3676B071A8DD6FCB01C /* NSArray+TimelineSwiftyAdditions.m in Sources */,
-				9975F6586F56DF27AE9913D34BF88658 /* NSDictionary+TimelineSwiftyAdditions.m in Sources */,
-				2542B348141101E67F4D5193F4FB2DF3 /* NSSet+TimelineSwiftyAdditions.m in Sources */,
-				98E29FC5026F67491E0176DCF389AB30 /* TimelineAnimation.m in Sources */,
-				342709D2AAEDCAEC9760A25275280E8E /* TimelineAnimationAudioExtension.swift in Sources */,
-				85BFB6D98056BBC250F1EBFDF35AEB1A /* TimelineAnimationDescription.m in Sources */,
-				D3016E7289E7CDDE2E9D0608DAA0BC65 /* TimelineAnimationNameExtensions.swift in Sources */,
-				3C972AA5B0266F3949DD38F75DB0E59E /* TimelineAnimationNotifyBlockInfo.m in Sources */,
-				AF5178648052BB6AB406897333A0F1D3 /* TimelineAnimationPublicSwiftAPI.swift in Sources */,
-				416B13B7FC28E82C2F14B83C15E883BA /* TimelineAnimationRepeatCountExtensions.swift in Sources */,
-				3E179FB78A26FC38F4149EC3B94B9467 /* TimelineAnimationReverseCoordinator.m in Sources */,
-				EAB91DA3E388772FB87743E15EB97E8C /* TimelineAnimations-dummy.m in Sources */,
-				923E08A07E6F9FA1B5EFB408C3BAC395 /* TimelineAnimationsBlankLayer.m in Sources */,
-				604C965440AB199F01B271D387E6BDB0 /* TimelineAnimationsDisplayLink.m in Sources */,
-				33A27D4CB1B75F9BF05035E8643A5129 /* TimelineAnimationsProgressMonitorLayer.m in Sources */,
-				A7A71165755317D714578022C677783D /* TimelineAnimationSwiftAPI.swift in Sources */,
-				799ABC05A67FF019A10785D10FCED866 /* TimelineAnimationUIViewExtensions.swift in Sources */,
-				19192E0F4ABA1F98D45B6E1AC111997E /* TimelineAudioAssociation.m in Sources */,
-				8391A7CE7EAC83CEF24F19EA00189300 /* TimelineEntity.m in Sources */,
-				FCC8FCB0C48E4B7B9899B18BE7CF3A1D /* TypesRefinements.swift in Sources */,
+				3A47986D801D6EF8C7851B65DC7481DF /* AnimationKeyPath.swift in Sources */,
+				6E709E206FE70DDAA2EAE2EBA854A0F0 /* Animations.swift in Sources */,
+				EE38D229FC5C49B33B45B10AA007B8DF /* AnimationsFactory.m in Sources */,
+				F89A46F3715C97C12931E50242E193D4 /* AnimationsFactoryConvenienceExtensions.swift in Sources */,
+				B05BEDC4155C89EA99450CC96CEF44B2 /* AnimationsFactoryTypedValueExtension.swift in Sources */,
+				B14332D25F294EE5BE641F16482CF0AE /* AnimationsKeyPath.m in Sources */,
+				8C802452BFB77CF1320854895D30D611 /* CABasicAnimation+Reverse.m in Sources */,
+				5CE82318A51F7DEDD47617E7F91F4FB6 /* CAKeyframeAnimation+AHEasing.m in Sources */,
+				B66677637E49FD7B4CC4993D53F1FA2A /* CAKeyframeAnimation+Reverse.m in Sources */,
+				BDADB66A23B7841379D69B1B2888E450 /* CAKeyframeAnimationAHEasingExtensions.swift in Sources */,
+				753AE02319E1E46825366CFCAA179A0D /* CALayer+TimelineAnimation.m in Sources */,
+				A8CA3C09170B5446FE6E882964F0F63C /* CAPropertyAnimation+Reverse.m in Sources */,
+				6E05DB239960B551D0B700698A86BDB1 /* CAPropertyAnimation+TimelineEntity.m in Sources */,
+				6E67BC7691AD5D88E6C061E8801E599E /* CAPropertyAnimationExtensions.swift in Sources */,
+				9908A82DF1F860066AF91BE1AE27CA6C /* easing.c in Sources */,
+				29C40FB915BB048EAB5ED721FA3AF710 /* EasingTimingHandler.m in Sources */,
+				0AF06691D7C9C1C408968482AAFA1D8F /* GroupTimelineAnimation.m in Sources */,
+				F1AC7BE672A8DE59FDC75E8222539E36 /* GroupTimelineEntity.m in Sources */,
+				D8DC046B79D835232EE3B4D5D77DDC59 /* KeyValueBlockObservation.m in Sources */,
+				12C1D7F51D8578C53F3104135E5A2772 /* NSArray+TimelineSwiftyAdditions.m in Sources */,
+				99C00A61D8BAE0A5FEA8893F68EC0D12 /* NSDictionary+TimelineSwiftyAdditions.m in Sources */,
+				AA9166330B5940FA33B84F2FD424E999 /* NSSet+TimelineSwiftyAdditions.m in Sources */,
+				73E47FFF53B836108FF702DBB25675F5 /* TimelineAnimation.m in Sources */,
+				6673A59E232EAAB90FA756EC6158F578 /* TimelineAnimationAudioExtension.swift in Sources */,
+				E1116ED4B32746A8959E0A75EAF02004 /* TimelineAnimationDescription.m in Sources */,
+				45D24757CFF6CBAA98ACD00DA4407468 /* TimelineAnimationNameExtensions.swift in Sources */,
+				B00D8770ED236E88BDA479B533EF7B0E /* TimelineAnimationNotifyBlockInfo.m in Sources */,
+				899ED6A722AD48EAEFA0EA6818A38F1E /* TimelineAnimationPublicSwiftAPI.swift in Sources */,
+				BEF7C50D8AEEB290C4C76B747CAE29FD /* TimelineAnimationRepeatCountExtensions.swift in Sources */,
+				993F4C062D73735DA884686DB2AB4BE8 /* TimelineAnimationReverseCoordinator.m in Sources */,
+				C9D0CF7F1698CAD50AF76193B19503FA /* TimelineAnimations-dummy.m in Sources */,
+				9AE675D51BF9783C2C1DB9520AD9CCBF /* TimelineAnimationsBlankLayer.m in Sources */,
+				9FD4199B64A3A553A6B0E7A46E43DFDD /* TimelineAnimationsDisplayLink.m in Sources */,
+				DAAE8197147A69EA89D78969C0A74209 /* TimelineAnimationsProgressMonitorLayer.m in Sources */,
+				679D480C6D77F33BDFDFEA9751343B5F /* TimelineAnimationSwiftAPI.swift in Sources */,
+				2DEFC4E3A0B025C7F4145EC296F930C5 /* TimelineAnimationUIViewExtensions.swift in Sources */,
+				D5044D28703E3D8588A1E742B052A8AB /* TimelineAudioAssociation.m in Sources */,
+				59A1FE842E45E23E26F33628C573FC33 /* TimelineEntity.m in Sources */,
+				DC568520AC3277B40DCE6ADDF0F597AC /* TypesRefinements.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -611,7 +615,7 @@
 /* Begin XCBuildConfiguration section */
 		39B42E258CEB9430A3E31DEBF4FE94AE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 49B0CEDC0AE4D20A8600B44C8035FA6A /* TimelineAnimations.xcconfig */;
+			baseConfigurationReference = E674B7EE5D3B3D556BB068102D2BA94B /* TimelineAnimations.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -642,7 +646,7 @@
 		};
 		5B1780325160D0F1EE29ED2F3EDD3809 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 49B0CEDC0AE4D20A8600B44C8035FA6A /* TimelineAnimations.xcconfig */;
+			baseConfigurationReference = E674B7EE5D3B3D556BB068102D2BA94B /* TimelineAnimations.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";

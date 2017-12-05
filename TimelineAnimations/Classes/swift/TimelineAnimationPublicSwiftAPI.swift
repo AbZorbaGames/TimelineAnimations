@@ -102,6 +102,23 @@ public extension TimelineAnimation {
         case backOut
         case backInOut
         
+        // special
+        case elasticIn
+        case elasticOut
+        case elasticInOut
+        case bounceIn
+        case bounceOut
+        case bounceInOut
+        
+        private var isSpecial: Bool {
+            return (self == TimelineAnimation.TimingFunction.elasticIn)
+                || (self == TimelineAnimation.TimingFunction.elasticOut)
+                || (self == TimelineAnimation.TimingFunction.elasticInOut)
+                || (self == TimelineAnimation.TimingFunction.bounceIn)
+                || (self == TimelineAnimation.TimingFunction.bounceOut)
+                || (self == TimelineAnimation.TimingFunction.bounceInOut)
+        }
+        
         public var customTimingFunction: ECustomTimingFunction {
             return ECustomTimingFunction(rawValue: self.rawValue)!
         }

@@ -104,7 +104,14 @@
         case ECustomTimingFunctionBackInOut:
             return [CAMediaTimingFunction functionWithControlPoints:(float)0.68 :(float)-0.55 :(float)0.265 :(float)1.55];
         default:
-            break;
+            //            ECustomTimingFunctionElasticIn,
+            //            ECustomTimingFunctionElasticOut,
+            //            ECustomTimingFunctionElasticInOut,
+            //            ECustomTimingFunctionBounceIn,
+            //            ECustomTimingFunctionBounceOut,
+            //            ECustomTimingFunctionBounceInOut
+            NSAssert(false, @"Should not happen.");
+            return nil;
     }
 }
 

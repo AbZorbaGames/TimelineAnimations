@@ -38,7 +38,15 @@ typedef NS_ENUM(NSUInteger, ECustomTimingFunction) {
     ECustomTimingFunctionCircInOut,
     ECustomTimingFunctionBackIn,
     ECustomTimingFunctionBackOut,
-    ECustomTimingFunctionBackInOut
+    ECustomTimingFunctionBackInOut,
+    
+    // special
+    ECustomTimingFunctionElasticIn,
+    ECustomTimingFunctionElasticOut,
+    ECustomTimingFunctionElasticInOut,
+    ECustomTimingFunctionBounceIn,
+    ECustomTimingFunctionBounceOut,
+    ECustomTimingFunctionBounceInOut
 };
 
 
