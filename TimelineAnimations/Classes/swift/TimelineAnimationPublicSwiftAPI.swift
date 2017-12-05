@@ -131,119 +131,103 @@ public extension TimelineAnimation {
 }
 
 public extension TimelineAnimation.Animation {
-
-        public var animation: CAPropertyAnimation {
-            var anim: CAPropertyAnimation!
-            switch self {
-            case let TimelineAnimation.Animation.move(from, to, tf):
-                anim = AnimationsFactory.move(fromPoint: from,
-                                              toPoint: to,
-                                              timingFunction: tf.unwrap(defaultValue: TimelineAnimation.TimingFunction.linear).customTimingFunction)
-                
-            case let TimelineAnimation.Animation.fade(from, to, tf):
-                anim = AnimationsFactory.fade(fromOpacity: from,
-                                              toOpacity: to,
-                                              timingFunction: tf.unwrap(defaultValue: TimelineAnimation.TimingFunction.linear).customTimingFunction)
-                
-            case let TimelineAnimation.Animation.fadeIn(tf):
-                anim = AnimationsFactory.fadeIn(timingFunction: tf.unwrap(defaultValue: TimelineAnimation.TimingFunction.linear).customTimingFunction)
-                
-            case let TimelineAnimation.Animation.fadeOut(tf):
-                anim = AnimationsFactory.fadeOut(timinFunction: tf.unwrap(defaultValue: TimelineAnimation.TimingFunction.linear).customTimingFunction)
-                
-            case let TimelineAnimation.Animation.scale(from, to, tf):
-                anim = AnimationsFactory.scale(from: from,
-                                               to: to,
-                                               timingFunction: tf.unwrap(defaultValue: TimelineAnimation.TimingFunction.linear).customTimingFunction)
-                
-            case let TimelineAnimation.Animation.scaleX(from, to, tf):
-                anim = AnimationsFactory.scaleX(from: from,
-                                                to: to,
-                                                timingFunction: tf.unwrap(defaultValue: TimelineAnimation.TimingFunction.linear).customTimingFunction)
-                
-            case let TimelineAnimation.Animation.scaleY(from, to, tf):
-                anim = AnimationsFactory.scaleY(from: from,
-                                                to: to,
-                                                timingFunction: tf.unwrap(defaultValue: TimelineAnimation.TimingFunction.linear).customTimingFunction)
-                
-            case let TimelineAnimation.Animation.rotate(from, to, tf):
-                let _from = (from == nil) ? nil : CGFloat(from!)
-                let _to = (to == nil) ? nil : CGFloat(to!)
-                anim = AnimationsFactory.animate(keyPath: AnimationKeyPath.rotation,
-                                                 fromValue: _from.asTypedValue,
-                                                 toValue: _to.asTypedValue,
-                                                 timingFunction: tf.unwrap(defaultValue: TimelineAnimation.TimingFunction.linear).customTimingFunction)
-                
-            case let TimelineAnimation.Animation.rotateY(from, to, tf):
-                let _from = (from == nil) ? nil : CGFloat(from!)
-                let _to = (to == nil) ? nil : CGFloat(to!)
-                anim = AnimationsFactory.animate(keyPath: AnimationKeyPath.rotationY,
-                                                 fromValue: _from.asTypedValue,
-                                                 toValue: _to.asTypedValue,
-                                                 timingFunction: tf.unwrap(defaultValue: TimelineAnimation.TimingFunction.linear).customTimingFunction)
-                
-            case let TimelineAnimation.Animation.transform(from, to, tf):
-                anim = AnimationsFactory.animate(keyPath: AnimationKeyPath.transform,
-                                                 fromValue: from.asTypedValue,
-                                                 toValue: to.asTypedValue,
-                                                 timingFunction: tf.unwrap(defaultValue: TimelineAnimation.TimingFunction.linear).customTimingFunction)
-                
-            case TimelineAnimation.Animation.hide:
-                anim = AnimationsFactory.animate(keyPath: AnimationKeyPath.isHidden,
-                                                 fromValue: false.asTypedValue,
-                                                 toValue: true.asTypedValue,
-                                                 timingFunction: TimelineAnimation.TimingFunction.linear.customTimingFunction)
-                
-            case TimelineAnimation.Animation.unhide:
-                anim = AnimationsFactory.animate(keyPath: AnimationKeyPath.isHidden,
-                                                 fromValue: true.asTypedValue,
-                                                 toValue: false.asTypedValue,
-                                                 timingFunction: TimelineAnimation.TimingFunction.linear.customTimingFunction)
-                
-            case let TimelineAnimation.Animation.shadowOpacity(from, to, tf):
-                anim = AnimationsFactory.animate(keyPath: AnimationKeyPath.shadowOpacity,
-                                                 fromValue: from.asTypedValue,
-                                                 toValue: to.asTypedValue,
-                                                 timingFunction: tf.unwrap(defaultValue: TimelineAnimation.TimingFunction.linear).customTimingFunction)
-                
-            case let TimelineAnimation.Animation.strokeStart(from, to, tf):
-                anim = AnimationsFactory.animate(keyPath: AnimationKeyPath.strokeStart,
-                                                 fromValue: from.asTypedValue,
-                                                 toValue: to.asTypedValue,
-                                                 timingFunction: tf.unwrap(defaultValue: TimelineAnimation.TimingFunction.linear).customTimingFunction)
-                
-            case let TimelineAnimation.Animation.strokeEnd(from, to, tf):
-                anim = AnimationsFactory.animate(keyPath: AnimationKeyPath.strokeEnd,
-                                                 fromValue: from.asTypedValue,
-                                                 toValue: to.asTypedValue,
-                                                 timingFunction: tf.unwrap(defaultValue: TimelineAnimation.TimingFunction.linear).customTimingFunction)
-                
-                
-            case let TimelineAnimation.Animation.custom(application):
-                anim = application()
-            }
-            return anim
-        }
-    }
-
-internal extension TimelineAnimation.Animation {
     
-    internal var isHide: Bool {
+    public var animation: CAPropertyAnimation {
+        var anim: CAPropertyAnimation!
         switch self {
-        case TimelineAnimation.Animation.hide: return true
-        default: return false
+        case let TimelineAnimation.Animation.move(from, to, tf):
+            anim = AnimationsFactory.move(fromPoint: from,
+                                          toPoint: to,
+                                          timingFunction: tf.unwrap(defaultValue: TimelineAnimation.TimingFunction.linear).customTimingFunction)
+            
+        case let TimelineAnimation.Animation.fade(from, to, tf):
+            anim = AnimationsFactory.fade(fromOpacity: from,
+                                          toOpacity: to,
+                                          timingFunction: tf.unwrap(defaultValue: TimelineAnimation.TimingFunction.linear).customTimingFunction)
+            
+        case let TimelineAnimation.Animation.fadeIn(tf):
+            anim = AnimationsFactory.fadeIn(timingFunction: tf.unwrap(defaultValue: TimelineAnimation.TimingFunction.linear).customTimingFunction)
+            
+        case let TimelineAnimation.Animation.fadeOut(tf):
+            anim = AnimationsFactory.fadeOut(timinFunction: tf.unwrap(defaultValue: TimelineAnimation.TimingFunction.linear).customTimingFunction)
+            
+        case let TimelineAnimation.Animation.scale(from, to, tf):
+            anim = AnimationsFactory.scale(from: from,
+                                           to: to,
+                                           timingFunction: tf.unwrap(defaultValue: TimelineAnimation.TimingFunction.linear).customTimingFunction)
+            
+        case let TimelineAnimation.Animation.scaleX(from, to, tf):
+            anim = AnimationsFactory.scaleX(from: from,
+                                            to: to,
+                                            timingFunction: tf.unwrap(defaultValue: TimelineAnimation.TimingFunction.linear).customTimingFunction)
+            
+        case let TimelineAnimation.Animation.scaleY(from, to, tf):
+            anim = AnimationsFactory.scaleY(from: from,
+                                            to: to,
+                                            timingFunction: tf.unwrap(defaultValue: TimelineAnimation.TimingFunction.linear).customTimingFunction)
+            
+        case let TimelineAnimation.Animation.rotate(from, to, tf):
+            let _from = (from == nil) ? nil : CGFloat(from!)
+            let _to = (to == nil) ? nil : CGFloat(to!)
+            anim = AnimationsFactory.animate(keyPath: AnimationKeyPath.rotation,
+                                             fromValue: _from.asTypedValue,
+                                             toValue: _to.asTypedValue,
+                                             timingFunction: tf.unwrap(defaultValue: TimelineAnimation.TimingFunction.linear).customTimingFunction)
+            
+        case let TimelineAnimation.Animation.rotateY(from, to, tf):
+            let _from = (from == nil) ? nil : CGFloat(from!)
+            let _to = (to == nil) ? nil : CGFloat(to!)
+            anim = AnimationsFactory.animate(keyPath: AnimationKeyPath.rotationY,
+                                             fromValue: _from.asTypedValue,
+                                             toValue: _to.asTypedValue,
+                                             timingFunction: tf.unwrap(defaultValue: TimelineAnimation.TimingFunction.linear).customTimingFunction)
+            
+        case let TimelineAnimation.Animation.transform(from, to, tf):
+            anim = AnimationsFactory.animate(keyPath: AnimationKeyPath.transform,
+                                             fromValue: from.asTypedValue,
+                                             toValue: to.asTypedValue,
+                                             timingFunction: tf.unwrap(defaultValue: TimelineAnimation.TimingFunction.linear).customTimingFunction)
+            
+        case TimelineAnimation.Animation.hide:
+            anim = AnimationsFactory.animate(keyPath: AnimationKeyPath.isHidden,
+                                             fromValue: false.asTypedValue,
+                                             toValue: true.asTypedValue,
+                                             timingFunction: TimelineAnimation.TimingFunction.linear.customTimingFunction)
+            
+        case TimelineAnimation.Animation.unhide:
+            anim = AnimationsFactory.animate(keyPath: AnimationKeyPath.isHidden,
+                                             fromValue: true.asTypedValue,
+                                             toValue: false.asTypedValue,
+                                             timingFunction: TimelineAnimation.TimingFunction.linear.customTimingFunction)
+            
+        case let TimelineAnimation.Animation.shadowOpacity(from, to, tf):
+            anim = AnimationsFactory.animate(keyPath: AnimationKeyPath.shadowOpacity,
+                                             fromValue: from.asTypedValue,
+                                             toValue: to.asTypedValue,
+                                             timingFunction: tf.unwrap(defaultValue: TimelineAnimation.TimingFunction.linear).customTimingFunction)
+            
+        case let TimelineAnimation.Animation.strokeStart(from, to, tf):
+            anim = AnimationsFactory.animate(keyPath: AnimationKeyPath.strokeStart,
+                                             fromValue: from.asTypedValue,
+                                             toValue: to.asTypedValue,
+                                             timingFunction: tf.unwrap(defaultValue: TimelineAnimation.TimingFunction.linear).customTimingFunction)
+            
+        case let TimelineAnimation.Animation.strokeEnd(from, to, tf):
+            anim = AnimationsFactory.animate(keyPath: AnimationKeyPath.strokeEnd,
+                                             fromValue: from.asTypedValue,
+                                             toValue: to.asTypedValue,
+                                             timingFunction: tf.unwrap(defaultValue: TimelineAnimation.TimingFunction.linear).customTimingFunction)
+            
+            
+        case let TimelineAnimation.Animation.custom(application):
+            anim = application()
         }
-    }
-    internal var isUnhide: Bool {
-        switch self {
-        case TimelineAnimation.Animation.unhide: return true
-        default: return false
-        }
+        return anim
     }
 }
 
 public extension TimelineAnimation {
-
+    
     /// Inserts an animation in the TimelineAnimation for the provided layer at the given time.
     ///
     /// - Parameter animation: a `TimelineAnimation.Animation` to be applied to the layer
@@ -267,18 +251,6 @@ public extension TimelineAnimation {
                        withDuration duration: TimeInterval = TimeInterval(1.0),
                        onStart: TimelineAnimation.VoidBlock? = nil,
                        onComplete: TimelineAnimation.BoolBlock? = nil) {
-//        var dur = duration
-//        var t = time
-//        if animation.isHide {
-//            dur = 0.001
-//            t = time - dur
-//            if t < 0.001 {
-//                t = 0.001
-//            }
-//        }
-//        else if animation.isUnhide {
-//            dur = 0.001
-//        }
         self.insert(animation: animation.animation,
                     forLayer: layer,
                     atTime: time,
@@ -289,7 +261,7 @@ public extension TimelineAnimation {
 }
 
 public extension TimelineAnimation {
-
+    
     /// Appends an animation at the end of the timeline, after a delay
     ///
     /// - Parameter animation: a `TimelineAnimation.Animation` to be applied to the layer
