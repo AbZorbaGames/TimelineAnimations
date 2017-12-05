@@ -686,10 +686,10 @@ FOUNDATION_EXTERN TimelineAnimationExceptionName TimelineAnimationMethodNotImple
 @end
 
 @interface TimelineAnimation (Debug)
+
 @property (nonatomic, readonly) NSString *summary;
 - (NSArray<__kindof CAPropertyAnimation *> *)animationsBeginingAtTime:(RelativeTime)time;
 - (NSArray<__kindof CAPropertyAnimation *> *)animationsOngoingAtTime:(RelativeTime)time;
-
 
 @property (nonatomic, readonly, strong) NSArray<__kindof CAPropertyAnimation *> *allPropertyAnimations;
 

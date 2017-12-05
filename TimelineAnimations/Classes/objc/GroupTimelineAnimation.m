@@ -547,8 +547,8 @@
         return;
     }
     if (timelineAnimation == nil) {
-        [NSException raise:NSInvalidArgumentException
-                    format:@"TimelineAnimations: Tried to add a 'nil' TimelineAnimation to a %@",
+        [self __raiseInvalidArgumentExceptionWithReason:
+         @"TimelineAnimations: Tried to add a 'nil' TimelineAnimation to a %@",
          NSStringFromClass(self.class)];
         return;
     }
@@ -586,7 +586,9 @@
     }
     
     if (timelineAnimation == nil) {
-        [NSException raise:NSInvalidArgumentException format:@"Tried to add a 'nil' TimelineAnimation to a %@", NSStringFromClass(self.class)];
+        [self __raiseInvalidArgumentExceptionWithReason:
+         @"Tried to add a 'nil' TimelineAnimation to a %@",
+         NSStringFromClass(self.class)];
         return;
     }
 

@@ -638,14 +638,15 @@ TimelineAnimationExceptionName TimelineAnimationInvalidNumberOfBlocksException =
 }
 
 - (void)___raiseException:(NSString *)exception
-                 format:(NSString *)format
-              arguments:(va_list)arguments {
+                   format:(NSString *)format
+                arguments:(va_list)arguments {
     NSString *const reason = [[NSString alloc] initWithFormat:format
                                                     arguments:arguments];
     NSDictionary<NSString *, id> *userInfo = @{
                                                @"name": self.name,
                                                @"summary": self.summary,
                                                };
+    
     @throw [NSException exceptionWithName:exception
                                    reason:[@"TimelineAnimations: " stringByAppendingString:reason]
                                  userInfo:userInfo];
@@ -686,6 +687,9 @@ va_end(arguments); \
 }
 - (void)__raiseInvalidNumberOfBlocksExceptionWithReason:(nonnull NSString *)format, ... {
     _RAISE_WITH_VA_LIST(TimelineAnimationInvalidNumberOfBlocksException);
+}
+- (void)__raiseInvalidArgumentExceptionWithReason:(nonnull NSString *)format, ... {
+    _RAISE_WITH_VA_LIST(NSInvalidArgumentException);
 }
 
 #undef _RAISE_WITH_VA_LIST
@@ -987,11 +991,15 @@ va_end(arguments); \
         return;
     }
     if (animation == nil) {
-        [NSException raise:NSInvalidArgumentException format:@"Tried to add a 'nil' animation to a %@", NSStringFromClass(self.class)];
+        [self __raiseInvalidArgumentExceptionWithReason:
+         @"Tried to add a 'nil' animation to a %@",
+         NSStringFromClass(self.class)];
         return;
     }
     if (layer == nil) {
-        [NSException raise:NSInvalidArgumentException format:@"Tried to add an animation with a 'nil' layer to a %@", NSStringFromClass(self.class)];
+        [self __raiseInvalidArgumentExceptionWithReason:
+         @"Tried to add an animation with a 'nil' layer to a %@",
+         NSStringFromClass(self.class)];
         return;
     }
 
@@ -1023,11 +1031,15 @@ va_end(arguments); \
         return;
     }
     if (animation == nil) {
-        [NSException raise:NSInvalidArgumentException format:@"Tried to add a 'nil' animation to a %@", NSStringFromClass(self.class)];
+        [self __raiseInvalidArgumentExceptionWithReason:
+         @"Tried to add a 'nil' animation to a %@",
+         NSStringFromClass(self.class)];
         return;
     }
     if (layer == nil) {
-        [NSException raise:NSInvalidArgumentException format:@"Tried to add an animation with a 'nil' layer to a %@", NSStringFromClass(self.class)];
+        [self __raiseInvalidArgumentExceptionWithReason:
+         @"Tried to add an animation with a 'nil' layer to a %@",
+         NSStringFromClass(self.class)];
         return;
     }
 

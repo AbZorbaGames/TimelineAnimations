@@ -109,6 +109,7 @@
 - (void)__raiseUnsupportedMessageExceptionWithReason:(nonnull NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
 - (void)__raiseConflictingAnimationExceptionWithReason:(nonnull NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
 - (void)__raiseInvalidNumberOfBlocksExceptionWithReason:(nonnull NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
+- (void)__raiseInvalidArgumentExceptionWithReason:(nonnull NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
 
 // protected
 - (void)__raiseConflictingAnimationExceptionBetweenEntity:(nonnull TimelineEntity *)entity1
