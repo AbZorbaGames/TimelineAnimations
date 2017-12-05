@@ -8,6 +8,7 @@
 
 @import UIKit;
 #import "EasingTimingHandler.h"
+#import "AnimationsKeyPath.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -28,61 +29,61 @@ NS_ASSUME_NONNULL_BEGIN
  * @returns A new instance of CABasicAnimation with the key path set to keyPath.
  *
  */
-+ (CABasicAnimation *)animateWithKeyPath:(NSString *)keyPath
-                               fromValue:(nullable id)fromValue
-                                 toValue:(nullable id)toValue
-                                duration:(CFTimeInterval)duration
-                                delegate:(nullable id)delegate
-                          timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
++ (CAPropertyAnimation *)animateWithKeyPath:(AnimationKeyPath)keyPath
+                                  fromValue:(nullable id)fromValue
+                                    toValue:(nullable id)toValue
+                                   duration:(CFTimeInterval)duration
+                                   delegate:(nullable id)delegate
+                             timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
 
-+ (CABasicAnimation *)moveFromValue:(nullable NSValue *)fromValue
-                            toValue:(nullable NSValue *)toValue
-                           duration:(CFTimeInterval)duration
-                           delegate:(nullable id)delegate
-                     timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
+// like the above without `delegate`
++ (CAPropertyAnimation *)animateWithKeyPath:(AnimationKeyPath)keyPath
+                                  fromValue:(nullable id)fromValue
+                                    toValue:(nullable id)toValue
+                                   duration:(CFTimeInterval)duration
+                             timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
+
+// like the above-above but without `fromValue`
++ (CAPropertyAnimation *)animateWithKeyPath:(AnimationKeyPath)keyPath
+                                    toValue:(id)toValue
+                                   duration:(CFTimeInterval)duration
+                                   delegate:(nullable id)delegate
+                             timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
+
+// like the above but without delegate
++ (CAPropertyAnimation *)animateWithKeyPath:(AnimationKeyPath)keyPath
+                                    toValue:(id)toValue
+                                   duration:(CFTimeInterval)duration
+                             timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
 
 
-+ (CABasicAnimation *)animateWithKeyPath:(NSString *)keyPath
-                                 toValue:(id)toValue
-                                duration:(CFTimeInterval)duration
-                                delegate:(nullable id)delegate
-                          timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
+/* Move */
+#pragma mark - Move
 
-+ (CABasicAnimation *)moveToValue:(nullable NSValue *)toValue
-                         duration:(CFTimeInterval)duration
-                         delegate:(nullable id)delegate
-                   timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
++ (CAPropertyAnimation *)moveFromValue:(nullable NSValue *)fromValue
+                               toValue:(nullable NSValue *)toValue
+                              duration:(CFTimeInterval)duration
+                              delegate:(nullable id)delegate
+                        timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
 
-/**
- * Creates a new CABasicAnimation with the passed parameters.
- *
- * @param keyPath           The key-path describing the property to be animated.
- * @param fromValue         Defines the value the receiver uses to start interpolation.
- * @param toValue           Defines the value the receiver uses to end interpolation.
- * @param duration          The basic duration of the object.
- *
- * @returns A new instance of CABasicAnimation with the key path set to keyPath.
- *
- */
-+ (CABasicAnimation *)animateWithKeyPath:(NSString *)keyPath
-                               fromValue:(nullable id)fromValue
-                                 toValue:(nullable id)toValue
-                                duration:(CFTimeInterval)duration
-                          timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
 
-+ (CABasicAnimation *)moveFromValue:(nullable NSValue *)fromValue
-                            toValue:(nullable NSValue *)toValue
-                           duration:(CFTimeInterval)duration
-                     timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
++ (CAPropertyAnimation *)moveToValue:(nullable NSValue *)toValue
+                            duration:(CFTimeInterval)duration
+                            delegate:(nullable id)delegate
+                      timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
 
-+ (CABasicAnimation *)animateWithKeyPath:(NSString *)keyPath
-                                 toValue:(id)toValue
-                                duration:(CFTimeInterval)duration
-                          timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
 
-+ (CABasicAnimation *)moveToValue:(nullable NSValue *)toValue
-                         duration:(CFTimeInterval)duration
-                   timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
+
++ (CAPropertyAnimation *)moveFromValue:(nullable NSValue *)fromValue
+                               toValue:(nullable NSValue *)toValue
+                              duration:(CFTimeInterval)duration
+                        timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
+
+
+
++ (CAPropertyAnimation *)moveToValue:(nullable NSValue *)toValue
+                            duration:(CFTimeInterval)duration
+                      timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
 
 
 /**
@@ -115,16 +116,27 @@ NS_ASSUME_NONNULL_BEGIN
                                              keyTimes:(nullable NSArray<NSNumber *> *)keyTimes
                                        timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
 
-+ (CABasicAnimation *)fadeWithDuration:(CFTimeInterval)duration
-                             fromValue:(CGFloat)fromValue
-                               toValue:(CGFloat)toValue
-                        timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
+/* Fade */
+#pragma mark - Fade
 
-+ (CABasicAnimation *)fadeInWithDuration:(CFTimeInterval)duration
-                          timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
-
-+ (CABasicAnimation *)fadeOutWithDuration:(CFTimeInterval)duration
++ (CAPropertyAnimation *)fadeWithDuration:(CFTimeInterval)duration
+                                fromValue:(CGFloat)fromValue
+                                  toValue:(CGFloat)toValue
                            timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
+
++ (CAPropertyAnimation *)fadeInWithDuration:(CFTimeInterval)duration
+                             timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
+
++ (CAPropertyAnimation *)fadeOutWithDuration:(CFTimeInterval)duration
+                              timingFunction:(ECustomTimingFunction)timingFunction NS_REFINED_FOR_SWIFT;
+
+/* Scale & Bounce */
+#pragma mark - Scale
+
++ (CAPropertyAnimation *)scaleWithDuration:(CFTimeInterval)duration
+                                 fromValue:(CGFloat)fromValue
+                                   toValue:(CGFloat)toValue
+                            timingFunction:(ECustomTimingFunction)timingFunction;
 
 + (CAKeyframeAnimation *)scaleWithBounceDuration:(CFTimeInterval)duration
                                        fromValue:(CGFloat)fromValue
