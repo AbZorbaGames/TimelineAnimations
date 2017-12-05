@@ -39,6 +39,30 @@ extension Animations {
 
 extension Animations {
     
+    final public class func fade(_ view: UIView,
+                                 from: CGFloat,
+                                 to: CGFloat,
+                                 withDuration duration: TimeInterval = 1.0,
+                                 timingFunction tf: TimelineAnimation.TimingFunction = .linear,
+                                 transition: TimelineAnimation.Transition? = nil) -> TimelineAnimation {
+        let timeline = TimelineAnimation()
+        timeline.name = String(describing: type(of: view)) + ".fade(\(from),\(to))"
+        
+        timeline.onStart = { [weak view] in
+            guard let sview = view else { return }
+            sview.alpha = to
+        }
+        
+        timeline.insert(animation: .fade(from: from, to: to, timingFunction: tf),
+                        forLayer: view.layer,
+                        withDuration: duration)
+        
+        return timeline
+    }
+}
+
+extension Animations {
+    
     final public class func hide(_ view: UIView,
                                  withDuration duration: TimeInterval = 1.0,
                                  timingFunction tf: TimelineAnimation.TimingFunction = .linear,

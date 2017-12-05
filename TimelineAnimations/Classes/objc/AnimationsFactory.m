@@ -11,38 +11,6 @@
 
 @implementation AnimationsFactory
 
-+ (AHEasingFunction)_easingFunctionFromTimingFunction:(ECustomTimingFunction)timingFunction {
-    switch (timingFunction) {
-        case ECustomTimingFunctionElasticIn:
-            return ElasticEaseIn;
-        case ECustomTimingFunctionElasticOut:
-            return ElasticEaseOut;
-        case ECustomTimingFunctionElasticInOut:
-            return ElasticEaseInOut;
-        case ECustomTimingFunctionBounceIn:
-            return BounceEaseIn;
-        case ECustomTimingFunctionBounceOut:
-            return BounceEaseOut;
-        case ECustomTimingFunctionBounceInOut:
-            return BounceEaseInOut;
-        default:
-            return (AHEasingFunction)nil;
-    }
-}
-
-+ (BOOL)_specialTimingFunction:(ECustomTimingFunction)timingFunction {
-    switch (timingFunction) {
-        case ECustomTimingFunctionElasticIn:
-        case ECustomTimingFunctionElasticOut:
-        case ECustomTimingFunctionElasticInOut:
-        case ECustomTimingFunctionBounceIn:
-        case ECustomTimingFunctionBounceOut:
-        case ECustomTimingFunctionBounceInOut:
-            return YES;
-        default: return NO;
-    }
-}
-
 #pragma mark - Generic Methods
 
 + (CAPropertyAnimation *)animateWithKeyPath:(AnimationKeyPath)keyPath
@@ -52,28 +20,28 @@
                                    delegate:(nullable id)delegate
                              timingFunction:(ECustomTimingFunction)timingFunction {
     
-    CAPropertyAnimation *animation = nil;
-    if ([self _specialTimingFunction:timingFunction]) {
-        CAKeyframeAnimation *const keyframe =
-        [CAKeyframeAnimation animationWithKeyPath:keyPath
-                                         function:[self _easingFunctionFromTimingFunction:timingFunction]
-                                             from:fromValue
-                                               to:toValue
-                                    keyframeCount:(size_t)60];
-        keyframe.delegate = delegate;
-        animation         = keyframe;
-    }
-    else {
-        CABasicAnimation *const basic = [CABasicAnimation animation];
-        basic.keyPath                 = keyPath;
-        basic.fromValue               = fromValue;
-        basic.toValue                 = toValue;
-        basic.duration                = duration;
-        basic.timingFunction          = [EasingTimingHandler functionWithType:timingFunction];
-        basic.delegate                = delegate;
-        
-        animation = basic;
-    }
+    CAPropertyAnimation *const animation = ^CAPropertyAnimation *(void) {
+        if ([EasingTimingHandler isSpecialTimingFunction:timingFunction]) {
+            CAKeyframeAnimation *const keyframe =
+            [CAKeyframeAnimation animationWithKeyPath:keyPath
+                                             function:[EasingTimingHandler easingFunctionFromTimingFunction:timingFunction]
+                                                 from:fromValue
+                                                   to:toValue
+                                        keyframeCount:(size_t)60];
+            NSAssert(keyframe != nil, @"Incompatible arguments. Invalid configuration.");
+            return keyframe;
+        }
+        else {
+            CABasicAnimation *const basic = [CABasicAnimation animationWithKeyPath:keyPath];
+            basic.fromValue               = fromValue;
+            basic.toValue                 = toValue;
+            basic.timingFunction          = [EasingTimingHandler functionWithType:timingFunction];
+            return basic;
+        }
+    }();
+    animation.duration = duration;
+    animation.delegate = delegate;
+    
     return animation;
 }
 

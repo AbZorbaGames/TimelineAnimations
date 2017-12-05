@@ -88,7 +88,7 @@ public extension AnimationsFactory {
     final public class func animate(keyPath: AnimationKeyPath,
                                     toValue: AnimationsFactory.TypedValue?,
                                     duration: TimeInterval = TimeInterval(1.0),
-                                    timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CABasicAnimation {
+                                    timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CAPropertyAnimation {
         return self.animate(keyPath: keyPath,
                             fromValue: nil,
                             toValue: toValue,
@@ -99,7 +99,7 @@ public extension AnimationsFactory {
     final public class func animate(keyPath: AnimationKeyPath,
                                     fromValue: AnimationsFactory.TypedValue?,
                                     duration: TimeInterval = TimeInterval(1.0),
-                                    timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CABasicAnimation {
+                                    timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CAPropertyAnimation {
         return self.animate(keyPath: keyPath,
                             fromValue: fromValue,
                             toValue: nil,

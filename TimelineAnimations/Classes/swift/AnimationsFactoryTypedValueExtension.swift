@@ -102,12 +102,24 @@ public extension AnimationsFactory {
                                     fromValue: AnimationsFactory.TypedValue?,
                                     toValue: AnimationsFactory.TypedValue?,
                                     duration: TimeInterval = TimeInterval(1.0),
-                                    timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CABasicAnimation {
-        let animation = CABasicAnimation(keyPath: keyPath)
-        animation.fromValue = fromValue?.value
-        animation.toValue = toValue?.value
+                                    timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CAPropertyAnimation {
+        let animation = { () -> CAPropertyAnimation in
+            if EasingTimingHandler.isSpecialTimingFunction(tf) {
+                let animation = CAKeyframeAnimation.animation(keyPath: keyPath,
+                                                              function: EasingTimingHandler.easingFunction(from: tf),
+                                                              from: fromValue!,
+                                                              to: toValue!)
+                return animation as CAPropertyAnimation
+            }
+            else {
+                let animation = CABasicAnimation(keyPath: keyPath)
+                animation.fromValue = fromValue?.value
+                animation.toValue = toValue?.value
+                animation.timingFunction = EasingTimingHandler.function(withType: tf)
+                return animation as CAPropertyAnimation
+            }
+        }()
         animation.duration = CFTimeInterval(duration)
-        animation.timingFunction = EasingTimingHandler.function(withType: tf)
         return animation
     }
 

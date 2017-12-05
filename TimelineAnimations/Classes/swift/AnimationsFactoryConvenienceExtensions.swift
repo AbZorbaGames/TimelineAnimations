@@ -16,7 +16,7 @@ public extension AnimationsFactory {
     final public class func move(fromPoint from: CGPoint?,
                                  toPoint to: CGPoint?,
                                  duration: TimeInterval = TimeInterval(1.0),
-                                 timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CABasicAnimation {
+                                 timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CAPropertyAnimation {
         return self.animate(keyPath: AnimationKeyPath.position,
                             fromValue: from?.asTypedValue,
                             toValue: to?.asTypedValue,
@@ -26,7 +26,7 @@ public extension AnimationsFactory {
     
     @objc final public class func move(toPoint to: CGPoint,
                                        duration: TimeInterval = TimeInterval(1.0),
-                                       timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CABasicAnimation {
+                                       timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CAPropertyAnimation {
         return self.move(fromPoint: nil,
                          toPoint: to,
                          duration: duration,
@@ -35,7 +35,7 @@ public extension AnimationsFactory {
     
     @objc final public class func move(fromPoint from: CGPoint,
                                        duration: TimeInterval = TimeInterval(1.0),
-                                       timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CABasicAnimation {
+                                       timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CAPropertyAnimation {
         return self.move(fromPoint: from,
                          toPoint: nil,
                          duration: duration,
@@ -52,7 +52,7 @@ public extension AnimationsFactory {
     final public class func scale(withDuration duration: TimeInterval = TimeInterval(1.0),
                                   from: CGFloat?,
                                   to: CGFloat?,
-                                  timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CABasicAnimation {
+                                  timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CAPropertyAnimation {
         return self.animate(keyPath: AnimationKeyPath.scale,
                             fromValue: from?.asTypedValue,
                             toValue: to?.asTypedValue,
@@ -64,7 +64,7 @@ public extension AnimationsFactory {
     @objc final public class func objc_scale(withDuration duration: TimeInterval = TimeInterval(1.0),
                                              from: CGFloat,
                                              to: CGFloat,
-                                             timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CABasicAnimation {
+                                             timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CAPropertyAnimation {
         return self.animate(keyPath: AnimationKeyPath.scale,
                             fromValue: from.asTypedValue,
                             toValue: to.asTypedValue,
@@ -75,7 +75,7 @@ public extension AnimationsFactory {
     final public class func scaleX(withDuration duration: TimeInterval = TimeInterval(1.0),
                                    from: CGFloat?,
                                    to: CGFloat?,
-                                   timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CABasicAnimation {
+                                   timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CAPropertyAnimation {
         
         return self.animate(keyPath: AnimationKeyPath.scaleX,
                             fromValue: from?.asTypedValue,
@@ -88,7 +88,7 @@ public extension AnimationsFactory {
     final public class func scaleY(withDuration duration: TimeInterval = TimeInterval(1.0),
                                    from: CGFloat?,
                                    to: CGFloat?,
-                                   timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CABasicAnimation {
+                                   timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CAPropertyAnimation {
         return self.animate(keyPath: AnimationKeyPath.scaleY,
                             fromValue: from?.asTypedValue,
                             toValue: to?.asTypedValue,
@@ -99,7 +99,7 @@ public extension AnimationsFactory {
     
     @objc final public class func scale(withDuration duration: TimeInterval = TimeInterval(1.0),
                                         from: CGFloat,
-                                        timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CABasicAnimation {
+                                        timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CAPropertyAnimation {
         return self.animate(keyPath: AnimationKeyPath.scale,
                             fromValue: from.asTypedValue,
                             toValue: nil,
@@ -110,7 +110,7 @@ public extension AnimationsFactory {
     
     @objc final public class func scaleX(withDuration duration: TimeInterval = TimeInterval(1.0),
                                          from: CGFloat,
-                                         timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CABasicAnimation {
+                                         timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CAPropertyAnimation {
         return self.animate(keyPath: AnimationKeyPath.scaleX,
                             fromValue: from.asTypedValue,
                             toValue: nil,
@@ -121,7 +121,7 @@ public extension AnimationsFactory {
     
     @objc final public class func scaleY(withDuration duration: TimeInterval = TimeInterval(1.0),
                                          from: CGFloat,
-                                         timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CABasicAnimation {
+                                         timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CAPropertyAnimation {
         return self.animate(keyPath: AnimationKeyPath.scaleY,
                             fromValue: from.asTypedValue,
                             toValue: nil,
@@ -132,7 +132,7 @@ public extension AnimationsFactory {
     
     @objc final public class func scale(withDuration duration: TimeInterval = TimeInterval(1.0),
                                         to: CGFloat,
-                                        timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CABasicAnimation {
+                                        timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CAPropertyAnimation {
         return self.animate(keyPath: AnimationKeyPath.scale,
                             fromValue: nil,
                             toValue: to.asTypedValue,
@@ -143,7 +143,7 @@ public extension AnimationsFactory {
     
     @objc final public class func scaleX(withDuration duration: TimeInterval = TimeInterval(1.0),
                                          to: CGFloat,
-                                         timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CABasicAnimation {
+                                         timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CAPropertyAnimation {
         return self.animate(keyPath: AnimationKeyPath.scaleX,
                             fromValue: nil,
                             toValue: to.asTypedValue,
@@ -154,7 +154,7 @@ public extension AnimationsFactory {
     
     @objc final public class func scaleY(withDuration duration: TimeInterval = TimeInterval(1.0),
                                          to: CGFloat,
-                                         timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CABasicAnimation {
+                                         timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CAPropertyAnimation {
         return self.animate(keyPath: AnimationKeyPath.scaleY,
                             fromValue: nil,
                             toValue: to.asTypedValue,
@@ -172,7 +172,7 @@ public extension AnimationsFactory {
     final public class func fade(withDuration duration: TimeInterval = TimeInterval(1.0),
                                  fromOpacity from: CGFloat?,
                                  toOpacity to: CGFloat?,
-                                 timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CABasicAnimation {
+                                 timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CAPropertyAnimation {
         return self.animate(keyPath: AnimationKeyPath.opacity,
                             fromValue: from?.asTypedValue,
                             toValue: to?.asTypedValue,
@@ -181,7 +181,7 @@ public extension AnimationsFactory {
     }
     
     @objc final public class func fadeOut(duration: TimeInterval = TimeInterval(1.0),
-                                          timinFunction: ECustomTimingFunction = ECustomTimingFunction.linear) -> CABasicAnimation {
+                                          timinFunction: ECustomTimingFunction = ECustomTimingFunction.linear) -> CAPropertyAnimation {
         return self.fade(withDuration: duration,
                          fromOpacity: 1.0,
                          toOpacity: 0.0,
@@ -189,7 +189,7 @@ public extension AnimationsFactory {
     }
     
     @objc final public class func fadeIn(duration: TimeInterval = TimeInterval(1.0),
-                                         timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CABasicAnimation {
+                                         timingFunction tf: ECustomTimingFunction = ECustomTimingFunction.linear) -> CAPropertyAnimation {
         return self.fade(withDuration: duration,
                          fromOpacity: 0.0,
                          toOpacity: 1.0,

@@ -8,6 +8,7 @@
 
 @import Foundation;
 @import QuartzCore;
+#import "easing.h"
 
 typedef NS_ENUM(NSUInteger, ECustomTimingFunction) {
     ECustomTimingFunctionDefault = 0,
@@ -54,4 +55,8 @@ typedef NS_ENUM(NSUInteger, ECustomTimingFunction) {
 
 +(CAMediaTimingFunction *)functionWithType:(ECustomTimingFunction)type NS_SWIFT_NAME(function(withType:));
 
++ (BOOL)isSpecialTimingFunction:(ECustomTimingFunction)timingFunction;
++ (AHEasingFunction)easingFunctionFromTimingFunction:(ECustomTimingFunction)timingFunction;
+
 @end
+

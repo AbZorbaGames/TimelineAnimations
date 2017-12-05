@@ -115,4 +115,36 @@
     }
 }
 
++ (BOOL)isSpecialTimingFunction:(ECustomTimingFunction)timingFunction {
+    switch (timingFunction) {
+        case ECustomTimingFunctionElasticIn:
+        case ECustomTimingFunctionElasticOut:
+        case ECustomTimingFunctionElasticInOut:
+        case ECustomTimingFunctionBounceIn:
+        case ECustomTimingFunctionBounceOut:
+        case ECustomTimingFunctionBounceInOut:
+            return YES;
+        default: return NO;
+    }
+}
+
++ (AHEasingFunction)easingFunctionFromTimingFunction:(ECustomTimingFunction)timingFunction {
+    switch (timingFunction) {
+        case ECustomTimingFunctionElasticIn:
+            return ElasticEaseIn;
+        case ECustomTimingFunctionElasticOut:
+            return ElasticEaseOut;
+        case ECustomTimingFunctionElasticInOut:
+            return ElasticEaseInOut;
+        case ECustomTimingFunctionBounceIn:
+            return BounceEaseIn;
+        case ECustomTimingFunctionBounceOut:
+            return BounceEaseOut;
+        case ECustomTimingFunctionBounceInOut:
+            return BounceEaseInOut;
+        default:
+            return (AHEasingFunction)nil;
+    }
+}
+
 @end

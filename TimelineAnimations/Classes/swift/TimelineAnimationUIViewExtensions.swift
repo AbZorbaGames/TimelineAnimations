@@ -49,6 +49,10 @@ public extension UIView {
         return Animations.hide(self, timingFunction: tf)
     }
     
+    final public func fadeAnimation(from: CGFloat, to: CGFloat, timingFunction tf: TimelineAnimation.TimingFunction = .linear) -> TimelineAnimation {
+        return Animations.fade(self, from: from, to: to, timingFunction: tf)
+    }
+    
     final public func blinkAnimation(options: Animations.BlinkOptions) -> TimelineAnimation {
         return Animations.blink(self, times: options)
     }
