@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+A powerfull wrapper around CoreAnimation that facilitates the sequencing of animations.
                        DESC
 
   s.homepage         = 'https://github.com/AbZorbaGames/TimelineAnimations'
