@@ -13,12 +13,6 @@
 
 @interface CAKeyframeAnimation (SpecialEasing)
 
-+ (instancetype)animationWithKeyPath:(AnimationKeyPath)path
-                            function:(TimelineAnimationSpecialTimingFunction)function
-                                from:(id)fromValue
-                                  to:(id)toValue
-                       keyframeCount:(size_t)keyframeCount NS_REFINED_FOR_SWIFT;
-
 /// Factory method to create a keyframe animation for animating a scalar value
 + (instancetype)animationWithKeyPath:(AnimationKeyPath)path
                             function:(TimelineAnimationSpecialTimingFunction)function

@@ -20,16 +20,14 @@
                                    delegate:(nullable id)delegate
                              timingFunction:(ECustomTimingFunction)timingFunction {
     
+    NSParameterAssert([EasingTimingHandler isSpecialTimingFunction:timingFunction] == NO);
+    
     CAPropertyAnimation *const animation = ^CAPropertyAnimation *(void) {
         if ([EasingTimingHandler isSpecialTimingFunction:timingFunction]) {
-            CAKeyframeAnimation *const keyframe =
-            [CAKeyframeAnimation animationWithKeyPath:keyPath
-                                             function:[EasingTimingHandler easingFunctionFromTimingFunction:timingFunction]
-                                                 from:fromValue
-                                                   to:toValue
-                                        keyframeCount:(size_t)60];
-            NSAssert(keyframe != nil, @"Incompatible arguments. Invalid configuration.");
-            return keyframe;
+            NSAssert(false,
+                     @"Use CAKeyframe+SpecialEasing extensions directly "
+                     "to create animation with special timing functions.");
+            return nil;
         }
         else {
             CABasicAnimation *const basic = [CABasicAnimation animationWithKeyPath:keyPath];
