@@ -128,7 +128,7 @@
     }
 }
 
-+ (AHEasingFunction)easingFunctionFromTimingFunction:(ECustomTimingFunction)timingFunction {
++ (TimelineAnimationSpecialTimingFunction)easingFunctionFromTimingFunction:(ECustomTimingFunction)timingFunction {
     switch (timingFunction) {
         case ECustomTimingFunctionElasticIn:
             return ElasticEaseIn;
@@ -143,7 +143,7 @@
         case ECustomTimingFunctionBounceInOut:
             return BounceEaseInOut;
         default:
-            return (AHEasingFunction)nil;
+            return (TimelineAnimationSpecialTimingFunction)nil;
     }
 }
 

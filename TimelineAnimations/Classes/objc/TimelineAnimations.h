@@ -15,7 +15,7 @@
 #import "AnimationsKeyPath.h"
 #import "EasingTimingHandler.h"
 #import "KeyValueBlockObservation.h"
-#import "CAKeyframeAnimation+AHEasing.h"
+#import "CAKeyframeAnimation+SpecialEasing.h"
 #import "AnimationsFactory.h"
 #import "TimelineAudio.h"
 #import "TimelineAudioAssociation.h"

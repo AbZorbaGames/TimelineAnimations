@@ -1,5 +1,5 @@
 //
-//  CAKeyframeAnimationAHEasingExtensions.swift
+//  CAKeyframeAnimationSpecialEasingExtensions.swift
 //  TimelineAnimations
 //
 //  Created by Georges Boumis on 05/12/2017.
@@ -10,7 +10,7 @@ import Foundation
 public extension CAKeyframeAnimation {
     
     final public class func animation(keyPath: AnimationKeyPath,
-                                      function: AHEasingFunction,
+                                      function: TimelineAnimationSpecialTimingFunction,
                                       from: AnimationsFactory.TypedValue,
                                       to: AnimationsFactory.TypedValue,
                                       delegate: CAAnimationDelegate? = nil,
@@ -26,7 +26,7 @@ public extension CAKeyframeAnimation {
     
     final private class func values(from: AnimationsFactory.TypedValue,
                                     to: AnimationsFactory.TypedValue,
-                                    function: AHEasingFunction,
+                                    function: TimelineAnimationSpecialTimingFunction,
                                     keyframeCount: size_t) -> [Any] {
         switch (from, to) {
         case (AnimationsFactory.TypedValue.point(let f), AnimationsFactory.TypedValue.point(let t)):
@@ -53,7 +53,7 @@ public extension CAKeyframeAnimation {
     
     final private class func values(from: CGFloat,
                                     to: CGFloat,
-                                    function: AHEasingFunction,
+                                    function: TimelineAnimationSpecialTimingFunction,
                                     keyframeCount: size_t) -> [Any] {
         var t = CGFloat(0.0)
         let dt = CGFloat(1.0)/CGFloat((keyframeCount-1))
@@ -71,7 +71,7 @@ public extension CAKeyframeAnimation {
     
     final private class func values(from: CGPoint,
                                     to: CGPoint,
-                                    function: AHEasingFunction,
+                                    function: TimelineAnimationSpecialTimingFunction,
                                     keyframeCount: size_t) -> [Any] {
         var t = CGFloat(0.0)
         let dt = CGFloat(1.0)/CGFloat((keyframeCount-1))
@@ -92,7 +92,7 @@ public extension CAKeyframeAnimation {
     
     final private class func values(from: CGSize,
                                     to: CGSize,
-                                    function: AHEasingFunction,
+                                    function: TimelineAnimationSpecialTimingFunction,
                                     keyframeCount: size_t) -> [Any] {
         var t = CGFloat(0.0)
         let dt = CGFloat(1.0)/CGFloat((keyframeCount-1))
@@ -113,7 +113,7 @@ public extension CAKeyframeAnimation {
     
     final private class func values(from f: CATransform3D,
                                     to t : CATransform3D,
-                                    function: AHEasingFunction,
+                                    function: TimelineAnimationSpecialTimingFunction,
                                     keyframeCount: size_t) -> [Any] {
         
         let from = CATransform3DGetAffineTransform(f)
@@ -169,7 +169,7 @@ public extension CAKeyframeAnimation {
     
     final private class func values(from: CGRect,
                                     to: CGRect,
-                                    function: AHEasingFunction,
+                                    function: TimelineAnimationSpecialTimingFunction,
                                     keyframeCount: size_t) -> [Any] {
         var t = CGFloat(0.0)
         let dt = CGFloat(1.0)/CGFloat((keyframeCount-1))

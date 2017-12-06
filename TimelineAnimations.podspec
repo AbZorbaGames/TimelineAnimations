@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TimelineAnimations'
-  s.version          = '2.6.1'
+  s.version          = '2.6.2'
   s.summary          = 'A powerfull wrapper around CoreAnimation that facilitates the sequencing of animations.'
 
 # This description is used to generate tags and improve search results.
@@ -31,7 +31,7 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'TimelineAnimations/Classes/**/*'
-  s.public_header_files = 'TimelineAnimations/Classes/objc/AnimationsFactory.h', 'TimelineAnimations/Classes/objc/AnimationsKeyPath.h', 'TimelineAnimations/Classes/objc/AHEasing/CAKeyframeAnimation+AHEasing.h', 'TimelineAnimations/Classes/objc/EasingTiming/EasingTimingHandler.h', 'TimelineAnimations/Classes/objc/GroupTimelineAnimation.h', 'TimelineAnimations/Classes/objc/Helper/KeyValueBlockObservation.h', 'TimelineAnimations/Classes/objc/TimelineAnimation.h', 'TimelineAnimations/Classes/objc/TimelineAnimations.h', 'TimelineAnimations/Classes/objc/Audio/TimelineAudio.h', 'TimelineAnimations/Classes/objc/Audio/TimelineAudioAssociation.h', 'TimelineAnimations/Classes/objc/Types.h', 'TimelineAnimations/Classes/objc/AHEasing/easing.h', 'TimelineAnimations/Classes/objc/Helper/TimelineAnimationDescription.h'
+  s.public_header_files = 'TimelineAnimations/Classes/objc/AnimationsFactory.h', 'TimelineAnimations/Classes/objc/AnimationsKeyPath.h', 'TimelineAnimations/Classes/objc/SpecialEasing/CAKeyframeAnimation+SpecialEasing.h', 'TimelineAnimations/Classes/objc/EasingTiming/EasingTimingHandler.h', 'TimelineAnimations/Classes/objc/GroupTimelineAnimation.h', 'TimelineAnimations/Classes/objc/Helper/KeyValueBlockObservation.h', 'TimelineAnimations/Classes/objc/TimelineAnimation.h', 'TimelineAnimations/Classes/objc/TimelineAnimations.h', 'TimelineAnimations/Classes/objc/Audio/TimelineAudio.h', 'TimelineAnimations/Classes/objc/Audio/TimelineAudioAssociation.h', 'TimelineAnimations/Classes/objc/Types.h', 'TimelineAnimations/Classes/objc/SpecialEasing/TimelineAnimationSpecialTimingFunction.h', 'TimelineAnimations/Classes/objc/Helper/TimelineAnimationDescription.h'
 
   
   # s.resource_bundles = {

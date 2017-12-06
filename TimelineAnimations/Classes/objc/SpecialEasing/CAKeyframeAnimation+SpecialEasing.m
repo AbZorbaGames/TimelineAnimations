@@ -1,32 +1,29 @@
-//
-//  CAKeyframeAnimation+AHEasing.m
-//
-//  Copyright (c) 2011, Auerhaus Development, LLC
-//
-//  This program is free software. It comes without any warranty, to
-//  the extent permitted by applicable law. You can redistribute it
-//  and/or modify it under the terms of the Do What The Fuck You Want
-//  To Public License, Version 2, as published by Sam Hocevar. See
-//  http://sam.zoy.org/wtfpl/COPYING for more details.
-//
+/*!
+ *  @file CAKeyframeAnimation+SpecialEasing.m
+ *  @brief TimelineAnimations
+ *
+ *  Created by @author Georges Boumis
+ *  @date 01/03/2016.
+ *  @copyright Copyright © 2016-2017 Abzorba Games. All rights reserved.
+ */
 
-#import "CAKeyframeAnimation+AHEasing.h"
+#import "CAKeyframeAnimation+SpecialEasing.h"
 #import "AnimationsKeyPath.h"
 @import UIKit;
 @import QuartzCore;
 @import Foundation;
 
-#if !defined(AHEasingDefaultKeyframeCount)
+#if !defined(DefaultKeyframeCount)
 
 // The larger this number, the smoother the animation
-#define AHEasingDefaultKeyframeCount 60
+#define DefaultKeyframeCount 60
 
 #endif
 
-@implementation CAKeyframeAnimation (AHEasing)
+@implementation CAKeyframeAnimation (SpecialEasing)
 
 + (instancetype)animationWithKeyPath:(AnimationKeyPath)path
-                            function:(AHEasingFunction)function
+                            function:(TimelineAnimationSpecialTimingFunction)function
                                 from:(id)fromValue
                                   to:(id)toValue
                        keyframeCount:(size_t)keyframeCount {
@@ -47,7 +44,7 @@
 }
 
 + (instancetype)animationWithKeyPath:(AnimationKeyPath)path
-                            function:(AHEasingFunction)function
+                            function:(TimelineAnimationSpecialTimingFunction)function
                            fromValue:(CGFloat)fromValue
                              toValue:(CGFloat)toValue
                        keyframeCount:(size_t)keyframeCount {
@@ -67,18 +64,18 @@
 }
 
 + (instancetype)animationWithKeyPath:(AnimationKeyPath)path
-                            function:(AHEasingFunction)function
+                            function:(TimelineAnimationSpecialTimingFunction)function
                            fromValue:(CGFloat)fromValue
                              toValue:(CGFloat)toValue {
     return [self animationWithKeyPath:path
                              function:function
                             fromValue:fromValue
                               toValue:toValue
-                        keyframeCount:AHEasingDefaultKeyframeCount];
+                        keyframeCount:DefaultKeyframeCount];
 }
 
 + (instancetype)animationWithKeyPath:(AnimationKeyPath)path
-                            function:(AHEasingFunction)function
+                            function:(TimelineAnimationSpecialTimingFunction)function
                            fromPoint:(CGPoint)fromPoint
                              toPoint:(CGPoint)toPoint
                        keyframeCount:(size_t)keyframeCount {
@@ -102,18 +99,18 @@
 }
 
 + (instancetype)animationWithKeyPath:(AnimationKeyPath)path
-                            function:(AHEasingFunction)function
+                            function:(TimelineAnimationSpecialTimingFunction)function
                            fromPoint:(CGPoint)fromPoint
                              toPoint:(CGPoint)toPoint {
     return [self animationWithKeyPath:path
                              function:function
                             fromPoint:fromPoint
                               toPoint:toPoint
-                        keyframeCount:AHEasingDefaultKeyframeCount];
+                        keyframeCount:DefaultKeyframeCount];
 }
 
 + (instancetype)animationWithKeyPath:(AnimationKeyPath)path
-                            function:(AHEasingFunction)function
+                            function:(TimelineAnimationSpecialTimingFunction)function
                             fromSize:(CGSize)fromSize
                               toSize:(CGSize)toSize
                        keyframeCount:(size_t)keyframeCount {
@@ -137,18 +134,18 @@
 }
 
 + (instancetype)animationWithKeyPath:(AnimationKeyPath)path
-                            function:(AHEasingFunction)function
+                            function:(TimelineAnimationSpecialTimingFunction)function
                             fromSize:(CGSize)fromSize
                               toSize:(CGSize)toSize {
     return [self animationWithKeyPath:path
                              function:function
                              fromSize:fromSize
                                toSize:toSize
-                        keyframeCount:AHEasingDefaultKeyframeCount];
+                        keyframeCount:DefaultKeyframeCount];
 }
 
 + (instancetype)animationWithKeyPath:(AnimationKeyPath)path
-                            function:(AHEasingFunction)function
+                            function:(TimelineAnimationSpecialTimingFunction)function
                        fromTransform:(CGAffineTransform)fromTransform
                          toTransform:(CGAffineTransform)toTransform
                        keyframeCount:(size_t)keyframeCount {
@@ -199,7 +196,7 @@
 }
 
 + (instancetype)animationWithKeyPath:(AnimationKeyPath)path
-                            function:(AHEasingFunction)function
+                            function:(TimelineAnimationSpecialTimingFunction)function
                        fromTransform:(CGAffineTransform)fromTransform
                          toTransform:(CGAffineTransform)toTransform
 {
@@ -207,7 +204,7 @@
                              function:function
                         fromTransform:fromTransform
                           toTransform:toTransform
-                        keyframeCount:AHEasingDefaultKeyframeCount];
+                        keyframeCount:DefaultKeyframeCount];
 }
 
 @end

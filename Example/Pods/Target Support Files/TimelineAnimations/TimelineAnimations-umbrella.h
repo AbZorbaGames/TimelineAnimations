@@ -12,7 +12,7 @@
 
 #import "AnimationsFactory.h"
 #import "AnimationsKeyPath.h"
-#import "CAKeyframeAnimation+AHEasing.h"
+#import "CAKeyframeAnimation+SpecialEasing.h"
 #import "EasingTimingHandler.h"
 #import "GroupTimelineAnimation.h"
 #import "KeyValueBlockObservation.h"
@@ -21,7 +21,7 @@
 #import "TimelineAudio.h"
 #import "TimelineAudioAssociation.h"
 #import "Types.h"
-#import "easing.h"
+#import "TimelineAnimationSpecialTimingFunction.h"
 #import "TimelineAnimationDescription.h"
 
 FOUNDATION_EXPORT double TimelineAnimationsVersionNumber;
