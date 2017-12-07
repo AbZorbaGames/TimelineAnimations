@@ -51,11 +51,31 @@ extension Animations {
         timeline.onStart = { [weak view] in
             guard let sview = view else { return }
             sview.alpha = to
+            if (from == 0.0) {
+                sview.isHidden = false
+            }
+        }
+        timeline.completion = { [weak view] _ in
+            guard let sview = view else { return }
+            if (to == 0.0) {
+                sview.isHidden = true
+            }
         }
         
         timeline.insert(animation: .fade(from: from, to: to, timingFunction: tf),
                         forLayer: view.layer,
                         withDuration: duration)
+        if (from == 0.0) {
+            timeline.insert(animation: .unhide,
+                            forLayer: view.layer,
+                            withDuration: TimelineAnimationMillisecond)
+        }
+        if (to == 0.0) {
+            timeline.insert(animation: .hide,
+                            forLayer: view.layer,
+                            atTime: duration-TimelineAnimationMillisecond,
+                            withDuration: TimelineAnimationMillisecond)
+        }
         
         return timeline
     }
