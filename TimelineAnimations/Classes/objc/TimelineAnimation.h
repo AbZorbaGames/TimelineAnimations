@@ -38,6 +38,8 @@ FOUNDATION_EXTERN TimelineAnimationExceptionName TimelineAnimationConflictingAni
 FOUNDATION_EXTERN TimelineAnimationExceptionName TimelineAnimationInvalidNumberOfBlocksException;
 /** Thrown when features of TimelineAnimations are not implemented yet ^_^. */
 FOUNDATION_EXTERN TimelineAnimationExceptionName TimelineAnimationMethodNotImplementedYetException;
+/** Thrown when playing (or repeating) an animation and any of its layers is not part of a layer hierarchy. */
+FOUNDATION_EXTERN TimelineAnimationExceptionName TimelineAnimationElementsNotInHierarchyException;
 
 /**
  @public 

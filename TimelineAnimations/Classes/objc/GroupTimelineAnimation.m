@@ -368,6 +368,15 @@
 }
 
 
+- (BOOL)_checkForOutOfHierarchyIssues {
+    
+    for (GroupTimelineEntity *const entity in self.timelinesEntities) {
+        guard ([entity.timeline _checkForOutOfHierarchyIssues] == NO) else { return YES; }
+    }
+    return NO;
+}
+
+
 #pragma mark - Unsupported methods
 
 - (void)setSetsModelValues:(BOOL)setsModelValues {
@@ -391,7 +400,7 @@
     [self __raiseUnsupportedMessageExceptionWithReason:
      @"GroupTimelineAnimation does not respond to -%@. Use a TimelineAnimation instead.",
      NSStringFromSelector(sel)
-    ];
+     ];
 }
 
 - (BOOL)respondsToSelector:(SEL)aSelector {
@@ -420,8 +429,18 @@
                           withDuration:helperDuration];
     {
         NSAssert(helper != nil && helper.isNonEmpty, @"TimelineAnimations: WTF?");
+        
+        {   /* fix out-of-hierarchy issues */
+            __strong __kindof CALayer *const anyLayer = _timelinesEntities.anyObject.timeline.animations.firstObject.layer;
+            NSAssert(anyLayer != nil, @"TimelineAnimations: Try to add blank animation but there is no layer to add it to.");
+            for (TimelineAnimationsBlankLayer *const blankHelperLayer in helper.blankLayers) {
+                guard (blankHelperLayer.superlayer == nil) else { continue; }
+                [anyLayer addSublayer:blankHelperLayer];
+            }
+        }
         GroupTimelineEntity *const groupTimelineEntity = [GroupTimelineEntity groupTimelineEntityWithTimeline:helper];
         [_timelinesEntities addObject:groupTimelineEntity];
+        
         groupTimelineEntity.timeline.parent = self;
     }
     [self _setupTimeNotifications];
@@ -435,8 +454,9 @@
         strelf.progress = progress;
     };
     
-    __kindof CALayer *const layer = _timelinesEntities.anyObject.timeline.animations.firstObject.layer;
-    [layer addSublayer:self.progressLayer];
+    __strong __kindof CALayer *const anyLayer = _timelinesEntities.anyObject.timeline.animations.firstObject.layer;
+    NSAssert(anyLayer != nil, @"TimelineAnimations: Try to add blank animation but there is no layer to add it to.");
+    [anyLayer addSublayer:self.progressLayer];
     
     CABasicAnimation *const anim = [CABasicAnimation animationWithKeyPath:@"progress"];
     anim.duration            = self.duration;
@@ -660,6 +680,10 @@
 
 - (void)_playWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime {
     
+    NSAssert(self.name != nil, @"TimelineAnimations: You should name your animations");
+    NSAssert(self.isNonEmpty, @"TimelineAnimations: Why are you trying to play an empty %@?",
+             NSStringFromClass(self.class));
+    
     if (self.isPaused) {
         [self resume];
         return;
@@ -682,8 +706,6 @@
         return;
     }
     
-    NSAssert(self.name != nil, @"TimelineAnimations: You should name your animations");
-    NSAssert(self.isNonEmpty, @"TimelineAnimations: Why are you trying to play an empty %@?", NSStringFromClass(self.class));
     
     if (self.isEmpty) {
         if (self.onStart) {
@@ -697,6 +719,13 @@
     
     [self __setupTimeNotifications];
     [self _setupProgressNotifications];
+    
+    if ([self _checkForOutOfHierarchyIssues]) {
+        [self __raiseElementsNotInHierarchyExceptionWithReason:
+         @"TimelineAnimations: You tried to play an animation with lost layers %@.\"%@\".",
+         NSStringFromClass(self.class),
+         self.name];
+    }
     
     self.started = YES;
     self.onStartCalled = NO;
@@ -933,15 +962,17 @@
     guard (self.isNonEmpty) else { return; }
     NSAssert(_helperTimeline != nil, @"TimelineAnimations: WTF?");
     NSParameterAssert(duration > 0.0);
-
+    
     TimelineAnimationsBlankLayer *const blankLayer = [[TimelineAnimationsBlankLayer alloc] init];
     CABasicAnimation *const blankAnimation = [CABasicAnimation animationWithKeyPath:TimelineAnimationsBlankLayer.keyPath];
     blankAnimation.duration = duration;
-
-    __kindof CALayer *const layer = _timelinesEntities.anyObject.timeline.animations.firstObject.layer;
-    [layer addSublayer:blankLayer];
+    
+    __strong __kindof CALayer *const anyLayer = _timelinesEntities.anyObject.timeline.animations.firstObject.layer;
+    NSAssert(anyLayer != nil, @"TimelineAnimations: Try to add blank animation but there is no layer to add it to.");
+    
+    [anyLayer addSublayer:blankLayer];
     [self.blankLayers addObject:blankLayer];
-
+    
     [_helperTimeline insertAnimation:blankAnimation
                             forLayer:blankLayer
                               atTime:time
