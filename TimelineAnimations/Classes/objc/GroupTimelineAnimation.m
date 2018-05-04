@@ -72,9 +72,20 @@
     NSParameterAssert(animations != nil);
     
     GroupTimelineAnimation *const group = [self groupTimelineAnimation];
+    NSString *const name = [animations _reduce:[NSMutableString string]
+                                     transform:^NSMutableString *_Nonnull(NSMutableString *_Nonnull partial, __kindof TimelineAnimation * _Nonnull animation) {
+                                         if (partial.length > 0) {
+                                             [partial appendString:@" || "];
+                                         }
+                                         [partial appendFormat:@"[%@]", animation.name];
+                                         return partial;
+                                     }];
+    group.name = name;
+    
     [animations enumerateObjectsUsingBlock:^(__kindof TimelineAnimation * _Nonnull timeline, NSUInteger idx, BOOL * _Nonnull stop) {
         [group insertTimelineAnimation:timeline atTime:0.0];
     }];
+    
     return group;
 }
 
@@ -82,9 +93,20 @@
     NSParameterAssert(animations != nil);
     
     GroupTimelineAnimation *const group = [self groupTimelineAnimation];
+    NSString *const name = [animations _reduce:[NSMutableString string]
+                                     transform:^NSMutableString *_Nonnull(NSMutableString *_Nonnull partial, __kindof TimelineAnimation * _Nonnull animation) {
+                                         if (partial.length > 0) {
+                                             [partial appendString:@" ^ "];
+                                         }
+                                         [partial appendFormat:@"[%@]", animation.name];
+                                         return partial;
+                                     }];
+    group.name = name;
+    
     [animations enumerateObjectsUsingBlock:^(__kindof TimelineAnimation * _Nonnull timeline, NSUInteger idx, BOOL * _Nonnull stop) {
         [group addTimelineAnimation:timeline];
     }];
+    
     return group;
 }
 

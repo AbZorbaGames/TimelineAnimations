@@ -655,7 +655,7 @@ TimelineAnimationExceptionName TimelineAnimationElementsNotInHierarchyException 
     NSString *const reason = [[NSString alloc] initWithFormat:format
                                                     arguments:arguments];
     NSDictionary<NSString *, id> *userInfo = @{
-                                               @"name": self.name,
+                                               @"name": self.name ?: @"<no-name>",
                                                @"summary": self.summary,
                                                };
     
