@@ -153,10 +153,10 @@
 
 - (instancetype)reversedCopyWithDuration:(NSTimeInterval)duration {
     GroupTimelineEntity *const reversedCopy = [self copy];
-    NSTimeInterval newDuration = duration;
-    if ([_timeline isKindOfClass:[GroupTimelineAnimation class]]) {
-        newDuration = _timeline.duration;
-    }
+    const NSTimeInterval newDuration = duration;
+//    if ([_timeline isKindOfClass:[GroupTimelineAnimation class]]) {
+//        newDuration = _timeline.duration;
+//    }
     reversedCopy.timeline = [_timeline reversedWithDuration:newDuration];
     reversedCopy.timeline.groupTimelineEntity = reversedCopy;
     return reversedCopy;

@@ -1,6 +1,6 @@
 {
   "name": "TimelineAnimations",
-  "version": "2.7",
+  "version": "2.7.1",
   "summary": "A powerfull wrapper around CoreAnimation that facilitates the sequencing of animations.",
   "description": "A powerfull wrapper around CoreAnimation that facilitates the sequencing of animations.",
   "homepage": "https://github.com/AbZorbaGames/TimelineAnimations",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/AbZorbaGames/TimelineAnimations",
-    "tag": "2.7"
+    "tag": "2.7.1"
   },
   "platforms": {
     "ios": "8.0"

@@ -1481,7 +1481,8 @@ va_end(arguments); \
         // reverse time
         TimelineEntity *const reversedTimelineEntity = [entity reversedCopy];
         const RelativeTime endTime = reversedTimelineEntity.endTime;
-        reversedTimelineEntity.beginTime = timelineDuration - endTime;
+        const RelativeTime beginTime = (timelineDuration - endTime);
+        reversedTimelineEntity.beginTime = beginTime;
         [reversedEntities addObject:reversedTimelineEntity];
     };
 

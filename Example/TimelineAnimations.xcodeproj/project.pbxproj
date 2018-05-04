@@ -7,20 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		539E7DF3FEAFD60C982E896B /* Pods_TimelineAnimations_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF29DFCF3E4435063BA7E240 /* Pods_TimelineAnimations_Tests.framework */; };
+		432BAAA0CEFF65969841D5A3 /* Pods_TimelineAnimations_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70076E15602F99C1268C94D /* Pods_TimelineAnimations_Tests.framework */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		21F5FD787127A716850AAC7F /* Pods-TimelineAnimations_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimelineAnimations_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimelineAnimations_Tests/Pods-TimelineAnimations_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		2608F6252CABC5C01445C361 /* Pods-TimelineAnimations_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimelineAnimations_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TimelineAnimations_Tests/Pods-TimelineAnimations_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* TimelineAnimations_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimelineAnimations_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		7DF0FDEB75756812EDA11E7B /* TimelineAnimations.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = TimelineAnimations.podspec; path = ../TimelineAnimations.podspec; sourceTree = "<group>"; };
 		9EBC82B3A1A16869719C456C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		AF29190D961CCEC556CDD8AD /* Pods-TimelineAnimations_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimelineAnimations_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimelineAnimations_Tests/Pods-TimelineAnimations_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		C5EB4B51E30D309167AC31D0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		CF29DFCF3E4435063BA7E240 /* Pods_TimelineAnimations_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimelineAnimations_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FC41E996E1D62F9EC8F04F84 /* Pods-TimelineAnimations_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimelineAnimations_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TimelineAnimations_Tests/Pods-TimelineAnimations_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		F70076E15602F99C1268C94D /* Pods_TimelineAnimations_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimelineAnimations_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,21 +28,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				539E7DF3FEAFD60C982E896B /* Pods_TimelineAnimations_Tests.framework in Frameworks */,
+				432BAAA0CEFF65969841D5A3 /* Pods_TimelineAnimations_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5707510D3742162EF45DB310 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F70076E15602F99C1268C94D /* Pods_TimelineAnimations_Tests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
-				D1E092A63F5ED20E11D4B8FF /* Pods */,
-				CFFDBEF6D6D411E5391811B5 /* Frameworks */,
+				A2D91B4E720E463F8AEA752E /* Pods */,
+				5707510D3742162EF45DB310 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,19 +89,11 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		CFFDBEF6D6D411E5391811B5 /* Frameworks */ = {
+		A2D91B4E720E463F8AEA752E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				CF29DFCF3E4435063BA7E240 /* Pods_TimelineAnimations_Tests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D1E092A63F5ED20E11D4B8FF /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				FC41E996E1D62F9EC8F04F84 /* Pods-TimelineAnimations_Tests.debug.xcconfig */,
-				21F5FD787127A716850AAC7F /* Pods-TimelineAnimations_Tests.release.xcconfig */,
+				2608F6252CABC5C01445C361 /* Pods-TimelineAnimations_Tests.debug.xcconfig */,
+				AF29190D961CCEC556CDD8AD /* Pods-TimelineAnimations_Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -105,11 +105,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "TimelineAnimations_Tests" */;
 			buildPhases = (
-				D34811E1170BDC5B9541B92C /* [CP] Check Pods Manifest.lock */,
+				416C7783D51A335D40A15A12 /* [CP] Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
-				E50BAB10B12375879BA3ACAD /* [CP] Embed Pods Frameworks */,
+				5C4169BDACE430DCFE45B6B9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -166,7 +166,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		D34811E1170BDC5B9541B92C /* [CP] Check Pods Manifest.lock */ = {
+		416C7783D51A335D40A15A12 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -184,7 +184,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E50BAB10B12375879BA3ACAD /* [CP] Embed Pods Frameworks */ = {
+		5C4169BDACE430DCFE45B6B9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -353,7 +353,7 @@
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FC41E996E1D62F9EC8F04F84 /* Pods-TimelineAnimations_Tests.debug.xcconfig */;
+			baseConfigurationReference = 2608F6252CABC5C01445C361 /* Pods-TimelineAnimations_Tests.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -373,7 +373,7 @@
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 21F5FD787127A716850AAC7F /* Pods-TimelineAnimations_Tests.release.xcconfig */;
+			baseConfigurationReference = AF29190D961CCEC556CDD8AD /* Pods-TimelineAnimations_Tests.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
