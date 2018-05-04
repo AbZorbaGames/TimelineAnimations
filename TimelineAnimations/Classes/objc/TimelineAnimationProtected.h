@@ -96,6 +96,8 @@
 
 - (nonnull NotificationAssociations *)timeNotificationConvertedUsing:(nonnull NS_NOESCAPE TimeNotificationCalculation)calculation;
 
+- (BOOL)_checkForOutOfHierarchyIssues;
+
 // exceptions
 - (void)___raiseException:(nonnull NSString *)exception
                    format:(nonnull NSString *)format
@@ -110,6 +112,8 @@
 - (void)__raiseConflictingAnimationExceptionWithReason:(nonnull NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
 - (void)__raiseInvalidNumberOfBlocksExceptionWithReason:(nonnull NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
 - (void)__raiseInvalidArgumentExceptionWithReason:(nonnull NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
+- (void)__raiseElementsNotInHierarchyExceptionWithReason:(nonnull NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
+
 
 // protected
 - (void)__raiseConflictingAnimationExceptionBetweenEntity:(nonnull TimelineEntity *)entity1

@@ -33,6 +33,7 @@ TimelineAnimationExceptionName TimelineAnimationMethodNotImplementedYetException
 TimelineAnimationExceptionName TimelineAnimationUnsupportedMessageException = @"UnsupportedMessage";
 TimelineAnimationExceptionName TimelineAnimationConflictingAnimationsException = @"ConflictingAnimations";
 TimelineAnimationExceptionName TimelineAnimationInvalidNumberOfBlocksException = @"TimelineAnimationInvalidNumberOfBlocksException";
+TimelineAnimationExceptionName TimelineAnimationElementsNotInHierarchyException = @"TimelineAnimationElementsNotInHierarchyException";
 
 @interface TimelineAnimation ()
 
@@ -598,6 +599,17 @@ TimelineAnimationExceptionName TimelineAnimationInvalidNumberOfBlocksException =
 
 #pragma mark - Exceptions
 
+- (BOOL)_checkForOutOfHierarchyIssues {
+    
+    // check for out of hierarchy problems
+    for (TimelineEntity *const entity in self.animations) {
+        __strong typeof(entity.layer) layer = entity.layer;
+        guard (layer != nil) else { return YES; }
+        guard (layer.superlayer != nil) else { return YES; }
+    }
+    return NO;
+}
+
 - (void)__raiseConflictingAnimationExceptionBetweenEntity:(TimelineEntity *)entity1
                                                 andEntity:(TimelineEntity *)entity2 {
     
@@ -690,6 +702,9 @@ va_end(arguments); \
 }
 - (void)__raiseInvalidArgumentExceptionWithReason:(nonnull NSString *)format, ... {
     _RAISE_WITH_VA_LIST(NSInvalidArgumentException);
+}
+- (void)__raiseElementsNotInHierarchyExceptionWithReason:(nonnull NSString *)format, ... {
+    _RAISE_WITH_VA_LIST(TimelineAnimationElementsNotInHierarchyException);
 }
 
 #undef _RAISE_WITH_VA_LIST
@@ -858,16 +873,17 @@ va_end(arguments); \
     
     // do not uncomment this. it will break GroupTimelineAnimation
 //    guard (self.isNonEmpty) else { return; }
-
+    
     NSParameterAssert(duration > 0.0);
-
+    
     TimelineAnimationsBlankLayer *const blankLayer = [[TimelineAnimationsBlankLayer alloc] init];
     CABasicAnimation *const blankAnimation = [CABasicAnimation animationWithKeyPath:TimelineAnimationsBlankLayer.keyPath];
     blankAnimation.duration = duration;
-
-    [_animations.firstObject.layer addSublayer:blankLayer];
+    
+    __strong __kindof CALayer *const anyLayer = _animations.firstObject.layer;
+    [anyLayer addSublayer:blankLayer];
     [_blankLayers addObject:blankLayer];
-
+    
     [self insertAnimation:blankAnimation
                  forLayer:blankLayer
                    atTime:time
@@ -1219,6 +1235,11 @@ va_end(arguments); \
 
 - (void)_playWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime {
     
+    NSAssert(self.name != nil, @"TimelineAnimations: You should name your animations.");
+    NSAssert(self.isNonEmpty || self.onUpdate != nil,
+             @"TimelineAnimations: Why are you trying to play an empty %@?",
+             NSStringFromClass(self.class));
+    
     if (self.isPaused) {
         [self resume];
         return;
@@ -1226,7 +1247,7 @@ va_end(arguments); \
     
     if (self.hasStarted) {
         [self __raiseOngoingTimelineAnimationWithReason:
-         @"TimelineAnimations: You tried to play an non paused or finished %@.\"%@\".",
+         @"TimelineAnimations: You tried to play a non paused or finished %@.\"%@\".",
          NSStringFromClass(self.class),
          self.name];
         return;
@@ -1240,12 +1261,6 @@ va_end(arguments); \
          ];
         return;
     }
-    
-    NSAssert(self.name != nil, @"TimelineAnimations: You should name your animations.");
-    NSAssert(self.isNonEmpty || self.onUpdate != nil,
-             @"TimelineAnimations: Why are you trying to play an empty %@?",
-             NSStringFromClass(self.class));
-    
     
     self.paused = NO;
     
@@ -1262,6 +1277,13 @@ va_end(arguments); \
     [self _setupTimeNotifications];
     [self _setupProgressNotifications];
     
+    if ([self _checkForOutOfHierarchyIssues]) {
+        [self __raiseElementsNotInHierarchyExceptionWithReason:
+         @"TimelineAnimations: You tried to play an animation with lost layers %@.\"%@\".",
+         NSStringFromClass(self.class),
+         self.name];
+    }
+    
     self.started = YES;
     
     
@@ -1277,7 +1299,7 @@ va_end(arguments); \
                                 [self callOnComplete:result];
                             } setModelValues:self.setsModelValues];
     }];
-
+    
     [self _startDisplayLinkIfNeeded];
 }
 
@@ -1625,14 +1647,17 @@ va_end(arguments); \
     guard (self.isNonEmpty) else { return; }
     
     NSParameterAssert(duration > 0.0);
-
+    
     TimelineAnimationsBlankLayer *const blankLayer = [[TimelineAnimationsBlankLayer alloc] init];
     CABasicAnimation *const blankAnimation = [CABasicAnimation animationWithKeyPath:TimelineAnimationsBlankLayer.keyPath];
     blankAnimation.duration = duration;
-
-    [_animations.firstObject.layer addSublayer:blankLayer];
+    
+    __strong __kindof CALayer *const anyLayer = _animations.firstObject.layer;
+    NSAssert(anyLayer != nil, @"TimelineAnimations: Try to add blank animation but there is no layer to add it to.");
+    
+    [anyLayer addSublayer:blankLayer];
     [_blankLayers addObject:blankLayer];
-
+    
     [self addAnimation:blankAnimation
               forLayer:blankLayer
                onStart:start
