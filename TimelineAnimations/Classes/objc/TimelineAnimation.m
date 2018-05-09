@@ -65,8 +65,8 @@ TimelineAnimationExceptionName TimelineAnimationElementsNotInHierarchyException 
         _timeNotificationAssociations     = [[NotificationAssociations alloc] init];
 
         _paused        = NO;
-        _speed         = 1;
-		_progress      = 0;
+        _speed         = 1.0f;
+        _progress      = 0.0f;
     }
     return self;
 }

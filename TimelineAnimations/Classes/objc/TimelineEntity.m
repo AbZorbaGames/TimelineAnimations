@@ -77,7 +77,7 @@
                       onStart:(nullable TimelineAnimationOnStartBlock)onStart
                    onComplete:(nullable TimelineAnimationCompletionBlock)completion
             timelineAnimation:(TimelineAnimation *)timelineAnimation {
-
+    
     NSString *key = [NSString stringWithFormat:@"timelineEntity.animationKey.%@", animation.keyPath];
     return [self initWithLayer:layer
                      animation:animation
@@ -85,7 +85,7 @@
                      beginTime:beginTime
                        onStart:onStart
                     onComplete:completion
-            timelineAnimation:timelineAnimation];
+             timelineAnimation:timelineAnimation];
 }
 
 - (instancetype)initWithLayer:(__kindof CALayer *)layer
@@ -115,21 +115,21 @@
                     format:@"TimelineAnimations: The animation provided is not a subclass of 'CAPropertyAnimation'. animation: %@.", animation];
         return nil;
     }
-
+    
     self = [super init];
     if (self) {
         _layer               = layer;
         _animation           = animation.copy;
         _animationKey        = key.copy;
         _actualAnimationKey  = key.copy;
-        _speed               = 1.0;
+        _speed               = 1.0f;
         _onStart             = [onStart copy];
         _completion          = [completion copy];
         _timelineAnimation   = timelineAnimation;
-
+        
         _animation.beginTime = Round(beginTime);
         _animation.duration  = Round(_animation.duration);
-
+        
         _initialAnimation    = _animation.copy;
         _initialAnimationKey = key.copy;
         [self _storeInitialValues];
@@ -149,9 +149,9 @@
 - (void)_storeInitialValues {
     __strong typeof(_layer) slayer = _layer;
     guard (slayer != nil) else { return; };
-
+    
     NSString *const keyPath = _animation.keyPath;
-
+    
     // values used for reset
     id value = [slayer valueForKeyPath:keyPath];
     if ([_animation isKindOfClass:[CABasicAnimation class]]) {
@@ -192,7 +192,7 @@
 - (void)setSpeed:(float)speed {
     __strong typeof(_layer) slayer = _layer;
     guard (slayer != nil) else { _raise(EmptyTimelineAnimationException); return; };
-
+    
     if (speed < 0.0f) {
         speed = 0.0f;
     }
@@ -201,7 +201,7 @@
         fabsf(speed - slayer.speed) < TimelineAnimationMillisecond) {
         return;
     }
-
+    
     slayer.timeOffset = [slayer convertTime:CACurrentMediaTime()
                                   fromLayer:slayer];
     slayer.beginTime  = CACurrentMediaTime();
@@ -224,24 +224,24 @@
     if (self == object) {
         return YES;
     }
-
+    
     if (![object isKindOfClass:[TimelineEntity class]]) {
         return NO;
     }
-
+    
     TimelineEntity *const other = (TimelineEntity *)object;
     if (other.layer != _layer) {
         return NO;
     }
-
+    
     if (![other.animationKey isEqualToString:_animationKey]) {
         return NO;
     }
-
+    
     if (![other.animation.keyPath isEqualToString:_animation.keyPath]) {
         return NO;
     }
-
+    
     if (other.beginTime != self.beginTime) {
         return NO;
     }
@@ -350,19 +350,19 @@
                     onStart:(TimelineAnimationOnStartBlock)callerOnStart
                  onComplete:(TimelineAnimationCompletionBlock)callerCompletion
              setModelValues:(BOOL)setsModelVaules {
-
-    NSParameterAssert(callerOnStart);
-    NSParameterAssert(callerCompletion);
-
+    
+    NSParameterAssert(callerOnStart != nil);
+    NSParameterAssert(callerCompletion != nil);
+    
     __strong typeof(_layer) slayer = _layer;
     NSAssert(slayer, @"TimelineAnimations: The layer of the entity is `nil`. Something's wrong. Check it out. entity description follows: %@", self);
     guard (slayer != nil) else { return; };
-
+    
     if (self.isPaused) {
         [self resumeWithCurrentTime:currentTime];
         return;
     }
-
+    
     {   // hack for completion
         TimelineAnimationOnStartBlock userOnStart = [_onStart copy];
         
@@ -372,11 +372,11 @@
             guard (strelf != nil) else { _raise(EmptyTimelineAnimationException); return; }
             guard (strelf.cleared == NO) else { _raise(EmptyTimelineAnimationException); return; }
             
-            if (callerOnStart) {
+            if (callerOnStart != nil) {
                 callerOnStart();
             }
             
-            if (userOnStart) {
+            if (userOnStart != nil) {
                 userOnStart();
             }
             
@@ -386,18 +386,18 @@
     
     {   // hack for completion
         TimelineAnimationCompletionBlock userCompletion = [_completion copy];
-    
+        
         __weak typeof(self) welf = self;
         self.completion = ^(BOOL result){
             __strong typeof(welf) strelf = welf;
             guard (strelf != nil) else { _raise(EmptyTimelineAnimationException); return; }
             guard (strelf.cleared == NO) else { _raise(EmptyTimelineAnimationException); return; }
             
-            if (userCompletion) {
+            if (userCompletion != nil) {
                 userCompletion(result);
             }
             
-            if (callerCompletion) {
+            if (callerCompletion != nil) {
                 callerCompletion(result);
             }
             
@@ -406,10 +406,10 @@
     }
     
     
-
+    
     _animation.delegate = self;
-    const CFTimeInterval gap = _animation.duration * _progress;
-    _animation.beginTime += currentTime();
+    const CFTimeInterval gap = _animation.duration * (CFTimeInterval)_progress;
+    _animation.beginTime += (RelativeTime)currentTime();
     NSString *const key = [[NSString alloc] initWithFormat:@"timelineEntity.animationKey<%@>.%.3lf", _animation.keyPath, _initialAnimation.beginTime];
     _actualAnimationKey = [key copy];
 //    [_animation setValue:_actualAnimationKey forKey:_animationKey];
@@ -421,48 +421,48 @@
     _animation.beginTime -= gap;
     [slayer addAnimation:_animation forKey:_actualAnimationKey];
     slayer.timelineAnimation = _timelineAnimation;
-
+    
     _animation.delegate = nil;
 }
 
 - (void)pauseWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime {
     __strong typeof(_layer) slayer = _layer;
     guard (slayer != nil) else { _raise(EmptyTimelineAnimationException); return; };
-
+    
     if (self.isPaused) {
         return;
     }
-
+    
     _paused = YES;
-
+    
     const CFTimeInterval pausedTime = [slayer convertTime:currentTime()
                                                 fromLayer:nil];
-    slayer.speed = 0.0;
+    slayer.speed = 0.0f;
     slayer.timeOffset = pausedTime;
 }
 
 - (void)resumeWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime {
     __strong typeof(_layer) slayer = _layer;
     guard (slayer != nil) else { _raise(EmptyTimelineAnimationException); return; };
-
+    
     if (!self.isPaused) {
         return;
     }
-
+    
     const CFTimeInterval pausedTime = slayer.timeOffset;
     slayer.speed                    = _speed;
-    slayer.timeOffset               = 0.0;
-    slayer.beginTime                = 0.0;
+    slayer.timeOffset               = (CFTimeInterval)0.0;
+    slayer.beginTime                = (CFTimeInterval)0.0;
     const CFTimeInterval timeSincePause = [slayer convertTime:currentTime()
                                                     fromLayer:nil] - pausedTime;
     slayer.beginTime                = timeSincePause;
-
+    
     _paused = NO;
 }
 
 - (void)clear {
     __strong typeof(_layer) slayer = _layer;
-
+    
     _cleared = YES;
     _paused = NO;
     _animation.delegate = nil;
@@ -474,21 +474,21 @@
     guard (slayer != nil) else {
         return;
     }
-
+    
     [slayer removeAnimationForKey:_actualAnimationKey];
     slayer.timelineAnimation = nil;
     
-    if (slayer.speed != 1.0) {
-        slayer.speed = 1.0;
+    if (slayer.speed != 1.0f) {
+        slayer.speed = 1.0f;
     }
-    if (slayer.timeOffset != 0.0) {
-        slayer.timeOffset = 0.0;
+    if (slayer.timeOffset != (CFTimeInterval)0.0) {
+        slayer.timeOffset = (CFTimeInterval)0.0;
     }
-    if (slayer.repeatCount != 0.0) {
-        slayer.repeatCount = 0.0;
+    if (slayer.repeatCount != 0.0f) {
+        slayer.repeatCount = 0.0f;
     }
-    if (slayer.repeatDuration != 0.0) {
-        slayer.repeatDuration = 0.0;
+    if (slayer.repeatDuration != (CFTimeInterval)0.0) {
+        slayer.repeatDuration = (CFTimeInterval)0.0;
     }
     if (slayer.duration != INFINITY) {
         slayer.duration = INFINITY;
@@ -499,8 +499,8 @@
     if (![slayer.fillMode isEqualToString:kCAFillModeRemoved]) {
         slayer.fillMode = kCAFillModeRemoved;
     }
-    if (slayer.beginTime != 0.0) {
-        slayer.beginTime = 0.0;
+    if (slayer.beginTime != (CFTimeInterval)0.0) {
+        slayer.beginTime = (CFTimeInterval)0.0;
     }
     slayer = nil;
 }
@@ -515,7 +515,7 @@
 - (void)_restoreInitialValues {
     __strong typeof(_layer) slayer = _layer;
     guard (slayer != nil) else { _raise(EmptyTimelineAnimationException); return; };
-
+    
     NSString *const keyPath = _animation.keyPath;
     [slayer setValue:_initialValue forKeyPath:keyPath];
 }
@@ -617,15 +617,15 @@
     if (other.layer != _layer) {
         return NO;
     }
-
+    
     if (![other.animationKey isEqualToString:_animationKey]) {
         return NO;
     }
-
+    
     if (![other.animation.keyPath isEqualToString:_animation.keyPath]) {
         return NO;
     }
-
+    
     // at this instant we have:
     // - same layer
     // - same animation key
@@ -634,18 +634,18 @@
     // there is snag you see…,
     // due to bad planning float comparison sucks, so we transform everything
     // in milliseconds and treat them as integers
-    NSInteger selfBeginTime = (NSInteger)(self.beginTime * 1000.0); // make it ms
-    NSInteger selfEndTime = (NSInteger)(self.endTime * 1000.0); // make it ms
+    const int64_t selfBeginTime = (int64_t)(self.beginTime * (RelativeTime)1000.0); // make it ms
+    const int64_t selfEndTime = (int64_t)(self.endTime * (RelativeTime)1000.0); // make it ms
     
-    NSInteger otherBeginTime = (NSInteger)(other.beginTime * 1000.0); // make it ms
-    NSInteger otherEndTime = (NSInteger)(other.endTime * 1000.0); // make it ms
-
+    int64_t otherBeginTime = (int64_t)(other.beginTime * (RelativeTime)1000.0); // make it ms
+    int64_t otherEndTime = (int64_t)(other.endTime * (RelativeTime)1000.0); // make it ms
+    
     // if I begin before the other ends, |or| the other begins before I end! - boumis the painter
     if ( ((selfBeginTime > otherBeginTime) && (selfBeginTime < otherEndTime)) ||
         ((otherBeginTime > selfBeginTime) && (otherBeginTime < selfEndTime)) ) {
         return YES; // conflict
     }
-
+    
     return NO;
 }
 
@@ -656,14 +656,14 @@
 - (instancetype)copyWithDuration:(NSTimeInterval)newDuration
            shouldAdjustBeginTime:(BOOL)adjust
              usingTotalBeginTime:(RelativeTime)totalBeginTime {
-
+    
     const NSTimeInterval oldDuration = self.duration;
     const NSTimeInterval factor      = newDuration / oldDuration;
-
+    
     __kindof CAPropertyAnimation *const animation = (__kindof CAPropertyAnimation *)self.animation.copy;
     const NSTimeInterval newAnimationDuration = (NSTimeInterval) (((NSTimeInterval)animation.duration) * factor);
     animation.duration  = newAnimationDuration;
-
+    
     TimelineEntity *entity = [[TimelineEntity alloc] initWithLayer:_layer
                                                          animation:animation
                                                       animationKey:_animationKey
@@ -675,7 +675,7 @@
         entity.beginTime = totalBeginTime + ((self.beginTime - totalBeginTime) * factor);
     }
     if (newAnimationDuration < TimelineAnimationMillisecond) {
-        entity.beginTime = MAX(entity.beginTime - TimelineAnimationMillisecond, 0);
+        entity.beginTime = MAX(entity.beginTime - TimelineAnimationMillisecond, (RelativeTime)0);
         entity.animation.duration = TimelineAnimationMillisecond; // 1ms
     }
     else {
