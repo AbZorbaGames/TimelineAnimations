@@ -58,7 +58,7 @@
 
 @interface TimelineEntity (CoreAnimationDelegate)
 - (void)_callOnStartIfNeeded;
-- (void)_callCompletionIfNeededWithResult:(BOOL)result;
+- (void)_callCompletionIfNeededHasGracefullyFinished:(BOOL)result;
 @end
 
 
@@ -214,7 +214,7 @@
 }
 
 - (void)setTimelineAnimation:(TimelineAnimation *)timelineAnimation {
-    NSParameterAssert(timelineAnimation);
+    NSParameterAssert(timelineAnimation != nil);
     _timelineAnimation = timelineAnimation;
 }
 
@@ -323,8 +323,8 @@
     [self _callOnStartIfNeeded];
 }
 
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
-    [self _callCompletionIfNeededWithResult:flag];
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)finished {
+    [self _callCompletionIfNeededHasGracefullyFinished:finished];
 }
 
 - (void)_callOnStartIfNeeded {
@@ -333,11 +333,11 @@
     }
 }
 
-- (void)_callCompletionIfNeededWithResult:(BOOL)result {
+- (void)_callCompletionIfNeededHasGracefullyFinished:(BOOL)gracefullyFinished {
     _animation.delegate = nil;
     _finished           = YES;
-    if (_completion) {
-        const BOOL res = _cleared ? NO : result;
+    if (_completion != nil) {
+        const BOOL res = _cleared ? NO : gracefullyFinished;
         _completion(res);
     }
 }
@@ -412,7 +412,7 @@
     _animation.beginTime += (RelativeTime)currentTime();
     NSString *const key = [[NSString alloc] initWithFormat:@"timelineEntity.animationKey<%@>.%.3lf", _animation.keyPath, _initialAnimation.beginTime];
     _actualAnimationKey = [key copy];
-//    [_animation setValue:_actualAnimationKey forKey:_animationKey];
+    //    [_animation setValue:_actualAnimationKey forKey:_animationKey];
     if (setsModelVaules) {
         [self _updateAnimationForSetModelValues];
     }

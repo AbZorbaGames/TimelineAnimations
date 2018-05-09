@@ -59,7 +59,7 @@
             }];
         }
         _unfinishedEntities = [[NSMutableSet alloc] init];
-        _speed = 1;
+        _speed = 1.0f;
     }
     return self;
 }
@@ -83,7 +83,7 @@
     group.name = name;
     
     [animations enumerateObjectsUsingBlock:^(__kindof TimelineAnimation * _Nonnull timeline, NSUInteger idx, BOOL * _Nonnull stop) {
-        [group insertTimelineAnimation:timeline atTime:0.0];
+        [group insertTimelineAnimation:timeline atTime:(RelativeTime)0.0];
     }];
     
     return group;
@@ -158,7 +158,7 @@
 
 - (TimelineAnimation *)lastTimeline {
     __block TimelineAnimation *res = nil;
-    __block RelativeTime maxTime = 0;
+    __block RelativeTime maxTime = (RelativeTime)0.0;
     for (GroupTimelineEntity *entity in _timelinesEntities) {
         RelativeTime endTime = entity.endTime;
         if (endTime >= maxTime) {
@@ -175,14 +175,14 @@
 }
 
 - (void)delay:(NSTimeInterval)delay {
-
+    
     if (self.hasStarted) {
         [self __raiseImmutableGroupTimelineExceptionWithSelector:_cmd];
         return;
     }
     
-    guard (delay != 0.0) else { return; }
-
+    guard (delay != (NSTimeInterval)0.0) else { return; }
+    
     for (GroupTimelineEntity *entity in _timelinesEntities) {
         entity.timeline.beginTime += delay;
     };
@@ -219,11 +219,11 @@
 
 
 - (void)setSpeed:(float)speed {
-    if (speed < 0) {
-        speed = 0;
+    if (speed < 0.0f) {
+        speed = 0.0f;
     }
     float changePercentage = speed / _speed;
-    guard (changePercentage != 1.0) else { return; }
+    guard (changePercentage != 1.0f) else { return; }
     
     _speed = speed;
     for (GroupTimelineEntity *entity in _timelinesEntities) {
@@ -277,7 +277,7 @@
     if (![self containsTimelineAnimation:timelineAnimation]) {
         return nil;
     }
-
+    
     __block __kindof TimelineAnimation *tl = nil;
     [_timelinesEntities enumerateObjectsUsingBlock:^(GroupTimelineEntity *_Nonnull entity, BOOL *_Nonnull stop) {
         if ([entity.timeline isEqual:timelineAnimation]) {
@@ -377,7 +377,6 @@
     }];
 }
 
-
 - (void)resumeWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime
          alreadyResumedLayers:(nonnull NSMutableSet<__kindof CALayer *> *)resumedLayers {
     
@@ -389,15 +388,14 @@
     self.paused = NO;
 }
 
-
 - (BOOL)_checkForOutOfHierarchyIssues {
     
     for (GroupTimelineEntity *const entity in self.timelinesEntities) {
-        guard ([entity.timeline _checkForOutOfHierarchyIssues] == NO) else { return YES; }
+        const BOOL outOfHierarchy = [entity.timeline _checkForOutOfHierarchyIssues];
+        guard (not(outOfHierarchy)) else { return YES; }
     }
     return NO;
 }
-
 
 #pragma mark - Unsupported methods
 
@@ -576,7 +574,7 @@
 #pragma mark - Group
 
 - (void)addTimelineAnimation:(__kindof TimelineAnimation *)timelineAnimation {
-    [self addTimelineAnimation:timelineAnimation withDelay:0.0];
+    [self addTimelineAnimation:timelineAnimation withDelay:(NSTimeInterval)0.0];
 }
 
 - (void)addTimelineAnimation:(__kindof TimelineAnimation *)timelineAnimation
@@ -594,9 +592,9 @@
          NSStringFromClass(self.class)];
         return;
     }
-
+    
     __kindof TimelineAnimation *tl = timelineAnimation.copy;
-
+    
     TimelineAnimation *const lastTimeline = [self lastTimeline];
     tl.beginTime += lastTimeline.endTime + delay;
     GroupTimelineEntity *const entity = [GroupTimelineEntity groupTimelineEntityWithTimeline:tl];
@@ -633,9 +631,9 @@
          NSStringFromClass(self.class)];
         return;
     }
-
+    
     __kindof TimelineAnimation *const tl = timelineAnimation.copy;
-
+    
     tl.beginTime = time;
     
     GroupTimelineEntity *const entity = [GroupTimelineEntity groupTimelineEntityWithTimeline:tl];
@@ -665,7 +663,7 @@
     if (timelineAnimation == nil) {
         return NO;
     }
-
+    
     __kindof TimelineAnimation *const timeline = timelineAnimation;
     GroupTimelineEntity *const gte = [GroupTimelineEntity groupTimelineEntityWithTimeline:timeline];
     GroupTimelineEntity *const res = [_timelinesEntities member:gte];
@@ -839,19 +837,19 @@
     for (GroupTimelineEntity *const entity in _timelinesEntities) {
         [entity clear];
     }
-
+    
     for (GroupTimelineEntity *const entity in _unfinishedEntities) {
         [entity clear];
     }
-
+    
     [_timelinesEntities removeAllObjects];
     [_unfinishedEntities removeAllObjects];
-
+    
     self.paused = NO;
     self.started = NO;
     self.cleared = YES;
-
-
+    
+    
     self.onUpdate = nil;
     [self removeOnStartBlocks];
     [self removeCompletionBlocks];
@@ -862,8 +860,8 @@
     [self reset];
     
     const RelativeTime begin = self.beginTime;
-    if (begin != 0.0) {
-        self.beginTime = 0.0;
+    if (begin != (RelativeTime)0.0) {
+        self.beginTime = (RelativeTime)0.0;
     }
 }
 
@@ -899,7 +897,7 @@
     
     const NSTimeInterval currentDuration = self.nonRepeatingDuration;
     guard (duration != currentDuration) else { return updatedTimeline; }
-
+    
     NSArray<GroupTimelineEntity *> *const sortedEntities = self.sortedEntities.copy;
     NSMutableArray<GroupTimelineEntity *> *const updatedEntities = [[NSMutableArray alloc] initWithCapacity:sortedEntities.count];
     const NSTimeInterval newTimelineDuration = duration;
@@ -913,8 +911,8 @@
                                                         usingTotalBeginTime:self.beginTime];
         [updatedEntities addObject:updatedEntity];
     };
-
-
+    
+    
     NSMutableSet<GroupTimelineEntity *> *timelineEntities = [[NSMutableSet alloc] initWithArray:updatedEntities];
     [timelineEntities enumerateObjectsUsingBlock:^(GroupTimelineEntity * _Nonnull entity, BOOL * _Nonnull stop) {
         entity.timeline.parent = updatedTimeline;
@@ -954,13 +952,13 @@
     NSArray<GroupTimelineEntity *> *const sortedEntities = self.sortedEntities.copy;
     NSMutableArray<GroupTimelineEntity *> *const reversedEntities = [[NSMutableArray alloc] initWithCapacity:sortedEntities.count];
     const NSTimeInterval groupTimelineDuration = duration;
-
+    
     for (GroupTimelineEntity *const entity in sortedEntities) {
         // reverse time
         GroupTimelineEntity *const reversedTimelineEntity = [entity reversedCopyWithDuration:groupTimelineDuration];
         [reversedEntities addObject:reversedTimelineEntity];
     }
-
+    
     GroupTimelineAnimation *const reversed = [self copy];
     NSMutableSet<GroupTimelineEntity *> *const timelineEntities = [[NSMutableSet alloc] initWithArray:reversedEntities];
     [timelineEntities enumerateObjectsUsingBlock:^(GroupTimelineEntity * _Nonnull entity, BOOL * _Nonnull stop) {
@@ -1010,38 +1008,38 @@
 
 - (id)copyWithZone:(NSZone *)zone {
     GroupTimelineAnimation *const copy = [[GroupTimelineAnimation alloc] initWithTimelines:nil];
-
+    
     copy.timelinesEntities = [[NSMutableSet alloc] initWithSet:_timelinesEntities copyItems:YES];
     [copy.timelinesEntities enumerateObjectsUsingBlock:^(GroupTimelineEntity * _Nonnull entity, BOOL * _Nonnull stop) {
         entity.timeline.parent = copy;
     }];
-
+    
     copy.paused             = self.paused;
     copy.finished           = self.finished;
-
+    
     copy.speed              = _speed;
-
+    
     copy.beginTime          = self.beginTime;
     copy.repeatCount        = self.repeatCount;
     copy.repeatOnStart      = [self.repeatOnStart copy];
     copy.repeatCompletion   = [self.repeatCompletion copy];
-
+    
     copy.name               = self.name.copy;
     copy.userInfo           = self.userInfo.copy;
-
+    
     
     [copy _setOnStart:[self.onStart copy]];
     [copy _setCompletion:[self.completion copy]];
     copy.onUpdate           = [self.onUpdate copy];
-
+    
     copy.reversed         = self.reversed;
     copy.originate        = self.originate;
-
+    
     copy.muteAssociatedSounds = self.muteAssociatedSounds;
-
+    
     copy.progressNotificationAssociations = self.progressNotificationAssociations.mutableCopy;
     copy.timeNotificationAssociations     = self.timeNotificationAssociations.mutableCopy;
-
+    
     return copy;
 }
 

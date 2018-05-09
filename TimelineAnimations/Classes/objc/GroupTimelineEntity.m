@@ -179,8 +179,8 @@
                     onStart:(TimelineAnimationOnStartBlock)callerOnStart
                  onComplete:(TimelineAnimationCompletionBlock)callerCompletion {
 
-    NSParameterAssert(callerOnStart);
-    NSParameterAssert(callerCompletion);
+    NSParameterAssert(callerOnStart != nil);
+    NSParameterAssert(callerCompletion != nil);
 
     if (_cleared) {
         _raise(EmptyTimelineAnimationException);

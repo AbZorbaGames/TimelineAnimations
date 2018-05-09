@@ -25,12 +25,13 @@ typedef void (^TimelineAnimationBoolBlock)(BOOL result);
 
 typedef TimelineAnimationBoolBlock TimelineAnimationCompletionBlock;
 
-
 /** Empty block that does nothing. */
 static const _Nonnull TimelineAnimationOnStartBlock TimelineAnimationOnStartBlockNull = ^{};
 /** Empty block that does nothing. */
-static const _Nonnull TimelineAnimationCompletionBlock TimelineAnimationCompletionBlockNull = ^(BOOL completion){};
+static const _Nonnull TimelineAnimationCompletionBlock TimelineAnimationCompletionBlockNull = ^(BOOL copmeleted){};
 
+/** The repeat iteration type for repeating animations. */
+typedef uint64_t TimelineAnimationRepeatIteration;
 
 /**
  @param result a Boolean indicating the result of the animation.
@@ -40,15 +41,15 @@ static const _Nonnull TimelineAnimationCompletionBlock TimelineAnimationCompleti
  block continues to run until it’s finished. The `stop` argument is an out-only
  argument. You should only ever set this Boolean to `YES` within the block.
  */
-typedef void (^RepeatCompletionBlock)(BOOL result, NSUInteger iteration, BOOL * _Nonnull stop);
+typedef void (^RepeatCompletionBlock)(BOOL result, TimelineAnimationRepeatIteration iteration, BOOL * _Nonnull stop);
 
-typedef void (^RepeatOnStartBlock)(NSUInteger iteration);
+typedef void (^RepeatOnStartBlock)(TimelineAnimationRepeatIteration iteration);
 
 /** The repeat count type for repeating animations. */
-typedef NSUInteger TimelineAnimationRepeatCount NS_REFINED_FOR_SWIFT;// __attribute__((swift_wrapper(enum)))// NS_REFINED_FOR_SWIFT;
+typedef uint64_t TimelineAnimationRepeatCount NS_REFINED_FOR_SWIFT;// __attribute__((swift_wrapper(enum)))// NS_REFINED_FOR_SWIFT;
 /** This will cause a repeating TimelineAnimation to repeat forever. */
-static const TimelineAnimationRepeatCount TimelineAnimationRepeatCountInfinite NS_REFINED_FOR_SWIFT = NSUIntegerMax;
+static const TimelineAnimationRepeatCount TimelineAnimationRepeatCountInfinite NS_REFINED_FOR_SWIFT = UINT64_MAX;
 
-static const NSTimeInterval TimelineAnimationMillisecond = 0.001;
+static const NSTimeInterval TimelineAnimationMillisecond = (NSTimeInterval)0.001;
 
 //#endif /* Types_h */

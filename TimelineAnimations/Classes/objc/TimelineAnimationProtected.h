@@ -15,13 +15,13 @@
 #import "PrivateTypes.h"
 
 @interface TimelineAnimation () {
-    @protected
+@protected
     float _speed;
     float _progress;
-   
+    
     struct {
-        NSUInteger count;
-        NSUInteger iteration;
+        TimelineAnimationRepeatCount count;
+        uint64_t iteration;
         BOOL isRepeating;
         BOOL onStartCalled;
         BOOL onCompleteCalled;
@@ -33,7 +33,7 @@
 @property (nonatomic, assign, getter=hasStarted) BOOL started;
 @property (nonatomic, assign, getter=hasFinished) BOOL finished;
 @property (nonatomic, readwrite, strong, nonnull) NSMutableArray<TimelineEntity *> *animations;
-@property (nonatomic, assign) NSUInteger repeatCounter;
+
 @property (nonatomic, assign, getter=wasOnStartCalled) BOOL onStartCalled;
 @property (nonatomic, assign, getter=wasOnCompletionCalled) BOOL onCompletionCalled;
 @property (nonatomic, readwrite, getter=isReversed) BOOL reversed;
@@ -68,7 +68,7 @@
 - (void)_prepareForRepeat;
 - (void)_prepareForReplay;
 - (void)_replay;
-- (BOOL)_repeatIfNeededWithResult:(BOOL)result;
+- (BOOL)_repeatIfNeededHasGracefullyFinished:(BOOL)gracefullyFinished;
 
 - (void)callOnStart;
 - (void)callOnComplete:(BOOL)result;
@@ -117,7 +117,7 @@
 
 // protected
 - (void)__raiseConflictingAnimationExceptionBetweenEntity:(nonnull TimelineEntity *)entity1
-                                               andEntity:(nonnull TimelineEntity *)entity;
+                                                andEntity:(nonnull TimelineEntity *)entity;
 
 @end
 

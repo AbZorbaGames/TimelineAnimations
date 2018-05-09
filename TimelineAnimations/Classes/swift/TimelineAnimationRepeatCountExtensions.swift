@@ -14,14 +14,14 @@ public extension TimelineAnimation {
     public enum RepeatCount {
         /// the time to repeat the timeline
         /// - Note: a `repeatCount` of `1` is equivalent to calling `-play`.
-        case times(UInt)
+        case times(UInt64)
         /// an infinite repeatition
         case infinite
     }
     
     
-     /// The number of repeats to perform
-     /// - Note: A `repeatCount` of `1` is equivalent to calling `-play`.
+    /// The number of repeats to perform
+    /// - Note: A `repeatCount` of `1` is equivalent to calling `-play`.
     final public var repeatCount: TimelineAnimation.RepeatCount {
         get {
             let count = self.__repeatCount
@@ -44,7 +44,7 @@ public extension TimelineAnimation {
 
 public extension TimelineAnimation.RepeatCount {
     
-    public init?(_ i: UInt) {
+    public init?(_ i: UInt64) {
         guard i >= 1 else { return nil }
         if i == __TimelineAnimationRepeatCountInfinite {
             self = TimelineAnimation.RepeatCount.infinite
