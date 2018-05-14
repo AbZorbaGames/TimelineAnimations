@@ -99,9 +99,14 @@
 - (BOOL)_checkForOutOfHierarchyIssues;
 
 // exceptions
-- (void)___raiseException:(nonnull NSString *)exception
+- (void)___raiseOrLogException:(nonnull TimelineAnimationExceptionName)exception
+                        format:(nonnull NSString *)format
+                     arguments:(va_list)arguments NS_FORMAT_FUNCTION(2, 0);
+
+- (void)___raiseException:(nonnull TimelineAnimationExceptionName)exception
                    format:(nonnull NSString *)format
                 arguments:(va_list)arguments NS_FORMAT_FUNCTION(2, 0) TIMELINE_ANIMATION_NO_RETURN;
+
 - (void)__raiseTimeNotificationOutOfBoundsExceptionWithReason:(nonnull NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
 - (void)__raiseNotImplementedMethodExceptionWithReason:(nonnull NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
 - (void)__raiseOngoingTimelineAnimationWithReason:(nonnull NSString *)format, ... NS_FORMAT_FUNCTION(1,2);

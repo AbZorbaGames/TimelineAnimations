@@ -35,6 +35,11 @@ TimelineAnimationExceptionName TimelineAnimationConflictingAnimationsException =
 TimelineAnimationExceptionName TimelineAnimationInvalidNumberOfBlocksException = @"TimelineAnimationInvalidNumberOfBlocksException";
 TimelineAnimationExceptionName TimelineAnimationElementsNotInHierarchyException = @"TimelineAnimationElementsNotInHierarchyException";
 
+NSErrorDomain const TimelineAnimationsErrorDomain = @"TimelineAnimationsErrorDomain";
+
+NSErrorUserInfoKey const TimelineAnimationNameKey = @"name";
+NSErrorUserInfoKey const TimelineAnimationSummaryKey = @"summary";
+
 @interface TimelineAnimation ()
 
 @property (nonatomic, strong) TimelineAnimationsDisplayLink *displayLink;
@@ -659,25 +664,86 @@ TimelineAnimationExceptionName TimelineAnimationElementsNotInHierarchyException 
      NSStringFromSelector(sel)];
 }
 
-- (void)___raiseException:(NSString *)exception
-                   format:(NSString *)format
-                arguments:(va_list)arguments {
+- (void)___raiseOrLogException:(nonnull TimelineAnimationExceptionName)exception
+                        format:(nonnull NSString *)format
+                     arguments:(va_list)arguments {
+
+    guard (self.class.errorReporting != nil) else {
+        [self ___raiseException:exception
+                         format:format
+                      arguments:arguments];
+        return;
+    }
+
     NSString *const reason = [[NSString alloc] initWithFormat:format
                                                     arguments:arguments];
-    NSDictionary<NSString *, id> *userInfo = @{
-                                               @"name": self.name ?: @"<no-name>",
-                                               @"summary": self.summary,
-                                               };
-    
+    NSDictionary<NSErrorUserInfoKey, id> *const userInfo = @{
+                                                             TimelineAnimationNameKey: self.name ?: @"<no-name>",
+                                                             TimelineAnimationSummaryKey: self.summary,
+                                                             NSLocalizedDescriptionKey: exception,
+                                                             NSLocalizedFailureReasonErrorKey: reason
+                                                             };
+    const TimelineAnimationsErrorDomainCode code = [self.class errorCodeForException:exception];
+    NSError *const error = [NSError errorWithDomain:TimelineAnimationsErrorDomain
+                                               code:code
+                                           userInfo:userInfo];
+    self.class.errorReporting(self, error);
+}
+
+- (void)___raiseException:(nonnull TimelineAnimationExceptionName)exception
+                   format:(nonnull NSString *)format
+                arguments:(va_list)arguments {
+
+    NSString *const reason = [[NSString alloc] initWithFormat:format
+                                                    arguments:arguments];
+    NSDictionary<NSErrorUserInfoKey, id> *const userInfo = @{
+                                                             TimelineAnimationNameKey: self.name ?: @"<no-name>",
+                                                             TimelineAnimationSummaryKey: self.summary,
+                                                             };
+
     @throw [NSException exceptionWithName:exception
                                    reason:[@"TimelineAnimations: " stringByAppendingString:reason]
                                  userInfo:userInfo];
 }
 
++ (TimelineAnimationsErrorDomainCode)errorCodeForException:(TimelineAnimationExceptionName)exception {
+    if ([exception isEqual:ImmutableTimelineAnimationException]) {
+        return TimelineAnimationsErrorDomainCodeImmutbaleTimelineAnimation;
+    }
+    else if ([exception isEqual:EmptyTimelineAnimationException]) {
+        return TimelineAnimationsErrorDomainCodeEmptyTimelineAnimation;
+    }
+    else if ([exception isEqual:ClearedTimelineAnimationException]) {
+        return TimelineAnimationsErrorDomainCodeClearedTimelineAnimation;
+    }
+    else if ([exception isEqual:OngoingTimelineAnimationException]) {
+        return TimelineAnimationsErrorDomainCodeOngoingTimelineAnimation;
+    }
+    else if ([exception isEqual:TimelineAnimationTimeNotificationOutOfBoundsException]) {
+        return TimelineAnimationsErrorDomainCodeTimeNotificationOutOfBounds;
+    }
+    else if ([exception isEqual:TimelineAnimationUnsupportedMessageException]) {
+        return TimelineAnimationsErrorDomainCodeUnsupportedMesasge;
+    }
+    else if ([exception isEqual:TimelineAnimationConflictingAnimationsException]) {
+        return TimelineAnimationsErrorDomainCodeConflictingAnimations;
+    }
+    else if ([exception isEqual:TimelineAnimationInvalidNumberOfBlocksException]) {
+        return TimelineAnimationsErrorDomainCodeInvalidNumberOfBlocks;
+    }
+    else if ([exception isEqual:TimelineAnimationMethodNotImplementedYetException]) {
+        return TimelineAnimationsErrorDomainCodeMethodNotImplementedYet;
+    }
+    else if ([exception isEqual:TimelineAnimationElementsNotInHierarchyException]) {
+        return TimelineAnimationsErrorDomainCodeOutOfHierarchyException;
+    }
+    return TimelineAnimationsErrorDomainCodeMethodNotImplementedYet;
+}
+
 #define _RAISE_WITH_VA_LIST(e) {\
 va_list arguments; \
 va_start(arguments, format); \
-[self ___raiseException:(e) \
+[self ___raiseOrLogException:(e) \
 format:format \
 arguments:arguments]; \
 va_end(arguments); \
@@ -2018,7 +2084,7 @@ va_end(arguments); \
 
 @end
 
-@implementation TimelineAnimation (Baccarat)
+@implementation TimelineAnimation (Plumbing)
 
 - (NSArray<TimelineAnimationDescription *> *)animationDescriptions {
     if (self.hasStarted) {

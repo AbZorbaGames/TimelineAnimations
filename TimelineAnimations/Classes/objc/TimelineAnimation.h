@@ -697,11 +697,16 @@ FOUNDATION_EXTERN TimelineAnimationExceptionName TimelineAnimationElementsNotInH
 
 @end
 
-// for baccarat
-@interface TimelineAnimation (Baccarat)
+@interface TimelineAnimation (Plumbing)
 
 @property (nonatomic, readonly, strong) NSArray<TimelineAnimationDescription *> *animationDescriptions;
 - (void)combineAnimationDescriptions:(NSArray<TimelineAnimationDescription *> *)animationDescriptions;
+
+@end
+
+@interface TimelineAnimation (ErrorReporting)
+
+@property (nonatomic, class, copy) TimelineAnimationErrorReportingBlock errorReporting;
 
 @end
 

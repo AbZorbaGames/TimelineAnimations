@@ -9,7 +9,13 @@
 //#ifndef Types_h
 //#define Types_h
 
+@import Foundation;
+
+@class TimelineAnimation;
+
 // Types
+
+/** The time representation for TimelineAnimation. */
 typedef double RelativeTime;
 
 /** Block used for onStart, onUpdate and time notifications. */
@@ -19,6 +25,42 @@ typedef TimelineAnimationVoidBlock TimelineAnimationOnStartBlock;
 typedef TimelineAnimationVoidBlock TimelineAnimationNotifyBlock;
 typedef TimelineAnimationVoidBlock TimelineAnimationOnUpdateBlock;
 
+/** Block used for error reporting instead of exceptions. */
+typedef void (^TimelineAnimationErrorReportingBlock)(TimelineAnimation *const _Nonnull animation,
+                                                     NSError *const _Nonnull error);
+
+/** The error domain of the framework. */
+FOUNDATION_EXTERN NSErrorDomain const TimelineAnimationsErrorDomain;
+
+/** The error codes of the framework. */
+typedef NS_ENUM(NSInteger, TimelineAnimationsErrorDomainCode) {
+    /** This error occurs when a mutation is attempted on an already started TimelineAnimation. */
+    TimelineAnimationsErrorDomainCodeImmutbaleTimelineAnimation,
+    /** This error occurs when a trying to associate audio or a time notification to an empty TimelineAnimation. */
+    TimelineAnimationsErrorDomainCodeEmptyTimelineAnimation,
+    /** This error occurs when a -play message is sent to a cleared TimelineAnimation. */
+    TimelineAnimationsErrorDomainCodeClearedTimelineAnimation,
+    /** This error occurs when trying to play an non finished (that is already playing) TimelineAnimation. */
+    TimelineAnimationsErrorDomainCodeOngoingTimelineAnimation,
+    /** This error occurs when registering for a time notification after the `.endTime` of the TimelineAnimation. */
+    TimelineAnimationsErrorDomainCodeTimeNotificationOutOfBounds,
+    /** This error occurs when adding the number of blocks passed to the method does not correspond with the animations provided */
+    TimelineAnimationsErrorDomainCodeInvalidNumberOfBlocks,
+    /** This error occurs when adding an animation that directly conflicts with an existing animation, that is already present, in the TimelineAnimation. */
+    TimelineAnimationsErrorDomainCodeConflictingAnimations,
+    /** This error occurs when playing (or repeating) an animation and any of its layers is not part of a layer hierarchy. */
+    TimelineAnimationsErrorDomainCodeOutOfHierarchyException,
+    /** This error occurs when adding bare animations to a GroupTimelineAnimation. */
+    TimelineAnimationsErrorDomainCodeUnsupportedMesasge,
+    /** This error occurs when features of TimelineAnimations are not implemented yet ^_^. */
+    TimelineAnimationsErrorDomainCodeMethodNotImplementedYet
+
+};
+
+/** The error key containing the name of the TimelineAnimation. */
+FOUNDATION_EXTERN NSErrorUserInfoKey const TimelineAnimationNameKey;
+/** The error key containing the summarry of the TimelineAnimation. */
+FOUNDATION_EXTERN NSErrorUserInfoKey const TimelineAnimationSummaryKey;
 
 /** Block used for completion */
 typedef void (^TimelineAnimationBoolBlock)(BOOL result);
