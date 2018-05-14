@@ -668,7 +668,7 @@ NSErrorUserInfoKey const TimelineAnimationSummaryKey = @"summary";
                         format:(nonnull NSString *)format
                      arguments:(va_list)arguments {
 
-    guard (self.class.errorReporting != nil) else {
+    guard (TimelineAnimation.errorReporting != nil) else {
         [self ___raiseException:exception
                          format:format
                       arguments:arguments];
@@ -687,7 +687,7 @@ NSErrorUserInfoKey const TimelineAnimationSummaryKey = @"summary";
     NSError *const error = [NSError errorWithDomain:TimelineAnimationsErrorDomain
                                                code:code
                                            userInfo:userInfo];
-    self.class.errorReporting(self, error);
+    TimelineAnimation.errorReporting(self, error);
 }
 
 - (void)___raiseException:(nonnull TimelineAnimationExceptionName)exception
@@ -2226,3 +2226,20 @@ va_end(arguments); \
 
 @end
 
+@implementation TimelineAnimation (ErrorReporting)
+
+static const void *const __kErrorReportingKey = &__kErrorReportingKey;
+
++ (void)setErrorReporting:(TimelineAnimationErrorReportingBlock)errorReporting {
+    objc_setAssociatedObject(self,
+                             __kErrorReportingKey,
+                             errorReporting,
+                             OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
++ (TimelineAnimationErrorReportingBlock)errorReporting {
+    TimelineAnimationErrorReportingBlock block = objc_getAssociatedObject(self, __kErrorReportingKey);
+    return [block copy];
+}
+
+@end
