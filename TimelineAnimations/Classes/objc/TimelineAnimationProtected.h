@@ -10,6 +10,7 @@
 @class TimelineEntity;
 @class TimelineAnimationsBlankLayer;
 @class TimelineAnimationNotifyBlockInfo;
+@class TimelineAnimationWeakLayerBox;
 
 #import "Types.h"
 #import "PrivateTypes.h"
@@ -26,6 +27,8 @@
         BOOL onStartCalled;
         BOOL onCompleteCalled;
     } _repeat;
+
+    NSSet<TimelineAnimationWeakLayerBox *> *_cachedAffectedLayers;
 }
 
 @property (nonatomic, assign) NSTimeInterval duration;
@@ -63,6 +66,8 @@
 @property (nonatomic, readonly, nonnull) NSSet<__kindof CALayer *> *affectedLayers;
 
 @property (nonatomic, readonly, copy, nonnull) TimelineAnimationCurrentMediaTimeBlock currentTime;
+
+@property (nonatomic, readonly, strong) NSSet<TimelineAnimationWeakLayerBox *> *cachedAffectedLayers;
 
 - (void)reset;
 - (void)_prepareForRepeat;
