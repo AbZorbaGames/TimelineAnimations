@@ -32,9 +32,9 @@ public extension TimelineAnimation {
         }
         set {
             switch newValue {
-            case let .times(count):
+            case let TimelineAnimation.RepeatCount.times(count):
                 self.__repeatCount = count
-            case .infinite:
+            case TimelineAnimation.RepeatCount.infinite:
                 self.__repeatCount = __TimelineAnimationRepeatCountInfinite;
             }
             

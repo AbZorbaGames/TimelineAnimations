@@ -30,19 +30,22 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)playWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime
                afterReverse:(nullable __kindof TimelineAnimation *)revereseTimeline
                     onStart:(TimelineAnimationOnStartBlock)onStart
-                 onComplete:(TimelineAnimationCompletionBlock)complete;
+                 onComplete:(TimelineAnimationCompletionBlock)complete
+                repeatCount:(TimelineAnimationRepeatCount)repeatCount;
 
 - (void)playWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime
                     onStart:(TimelineAnimationOnStartBlock)onStart
-                 onComplete:(TimelineAnimationCompletionBlock)complete;
+                 onComplete:(TimelineAnimationCompletionBlock)complete
+                repeatCount:(TimelineAnimationRepeatCount)repeatCount;
 
 - (void)pauseWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime
          alreadyPausedLayers:(nonnull NSMutableSet<__kindof CALayer *> *)resumedLayers;
 
 - (void)resumeWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime
+                  repeatCount:(TimelineAnimationRepeatCount)repeatCount
          alreadyResumedLayers:(nonnull NSMutableSet<__kindof CALayer *> *)pausedLayers;
 
-- (void)reset;
+- (void)resetWithRepeatCount:(TimelineAnimationRepeatCount)count;
 - (void)clear;
 
 @end

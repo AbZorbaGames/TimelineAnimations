@@ -120,7 +120,7 @@
 		3281AF80579FB290E3E3DDDD64036119 /* Pods-TimelineAnimations_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TimelineAnimations_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		3580CEEA2CAA595FEDF31F1553DB90A8 /* CABasicAnimation+Reverse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CABasicAnimation+Reverse.h"; sourceTree = "<group>"; };
 		3629E6078AF60016FEF6F04874C8101F /* GroupTimelineEntity.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GroupTimelineEntity.h; sourceTree = "<group>"; };
-		3A72009E81483E9CB2D84CE3358D58FF /* Pods_TimelineAnimations_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TimelineAnimations_Tests.framework; path = "Pods-TimelineAnimations_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A72009E81483E9CB2D84CE3358D58FF /* Pods_TimelineAnimations_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimelineAnimations_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC0BD8BC22C2BC246A61101CE8B789F /* Pods-TimelineAnimations_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TimelineAnimations_Tests-umbrella.h"; sourceTree = "<group>"; };
 		3EBC7DFB5D2C0DBFB33A8562EEB5D720 /* TimelineAudio.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAudio.h; sourceTree = "<group>"; };
 		45DF03C9C218A848504FD91EE3A577F9 /* TimelineAnimationsBlankLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAnimationsBlankLayer.h; sourceTree = "<group>"; };
@@ -156,7 +156,7 @@
 		8E4C5381440773D1F7E6F2CB0DCD07CD /* NSSet+TimelineSwiftyAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSSet+TimelineSwiftyAdditions.m"; sourceTree = "<group>"; };
 		9249103B0DDA7CD0086DAF6AADEDA937 /* NSArray+TimelineSwiftyAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSArray+TimelineSwiftyAdditions.m"; sourceTree = "<group>"; };
 		93361BF2C9C991025FD5920410540B36 /* TimelineAudioAssociation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TimelineAudioAssociation.m; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		96D58318E0CCECFEA9E2301550B79883 /* AnimationsFactoryTypedValueExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AnimationsFactoryTypedValueExtension.swift; sourceTree = "<group>"; };
 		976C616099FE7EF4D18662FB3409BA0E /* TimelineAnimations-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TimelineAnimations-umbrella.h"; sourceTree = "<group>"; };
 		987431AEB8C4C2C845514C69767BE642 /* TimelineAnimationSwiftAPI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TimelineAnimationSwiftAPI.swift; sourceTree = "<group>"; };
@@ -167,7 +167,7 @@
 		A3D0BF7D5EB50F19CFCBCDE6868626F0 /* TimelineAnimationRepeatCountExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TimelineAnimationRepeatCountExtensions.swift; sourceTree = "<group>"; };
 		A4C499D203F7A420E22993D890E50650 /* TimelineAnimations-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TimelineAnimations-prefix.pch"; sourceTree = "<group>"; };
 		A6CBC516DE465901405D2E8BDF90C9A3 /* TimelineAnimationReverseCoordinator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAnimationReverseCoordinator.h; sourceTree = "<group>"; };
-		AA1D7DFBAF179DE0C7D04070082B09FA /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		AA1D7DFBAF179DE0C7D04070082B09FA /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		B6763F19BD8589B87E6E5B8E4FF5AB73 /* AnimationsKeyPath.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = AnimationsKeyPath.m; sourceTree = "<group>"; };
 		B9D4AEC7F4AEA8537BCA058C06DCDF89 /* CAPropertyAnimation+TimelineEntity.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CAPropertyAnimation+TimelineEntity.h"; sourceTree = "<group>"; };
 		BC8D174E69C1C038F1BB3571DCF2221A /* CALayer+TimelineAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CALayer+TimelineAnimation.m"; sourceTree = "<group>"; };
@@ -177,19 +177,19 @@
 		C8E5336A36C0A11FC8C1A1F58C1E12ED /* TimelineAnimations.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = TimelineAnimations.modulemap; sourceTree = "<group>"; };
 		CD774D7927D523FEA7E0416615ECF88A /* TimelineEntity.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineEntity.h; sourceTree = "<group>"; };
 		CFFE2B3B2E3C9AC45794FCAF0B63A138 /* Pods-TimelineAnimations_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TimelineAnimations_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		D622277F6E29661B22CE066843F3F49B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		D622277F6E29661B22CE066843F3F49B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DC71C0FF9036969040DE20345211926E /* TimelineAnimationDescription.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TimelineAnimationDescription.m; sourceTree = "<group>"; };
 		DF586623217BA4C4387E477ECA08DEE8 /* CAKeyframeAnimation+Reverse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CAKeyframeAnimation+Reverse.h"; sourceTree = "<group>"; };
 		E0A0D4510B4F6B88DE5026B33E47AABA /* CAPropertyAnimation+TimelineEntity.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CAPropertyAnimation+TimelineEntity.m"; sourceTree = "<group>"; };
 		E2B605F9224B8F01DE8906E0213263B2 /* TimelineAnimationPublicSwiftAPI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TimelineAnimationPublicSwiftAPI.swift; sourceTree = "<group>"; };
-		E55511735001F4F57F487B20A9018107 /* TimelineAnimationSpecialTimingFunction.c */ = {isa = PBXFileReference; includeInIndex = 1; path = TimelineAnimationSpecialTimingFunction.c; sourceTree = "<group>"; };
+		E55511735001F4F57F487B20A9018107 /* TimelineAnimationSpecialTimingFunction.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; path = TimelineAnimationSpecialTimingFunction.c; sourceTree = "<group>"; };
 		E60501ED7F7CA643E46AE3DAE7C7F2B7 /* CAKeyframeAnimation+SpecialEasing.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CAKeyframeAnimation+SpecialEasing.m"; sourceTree = "<group>"; };
 		E8D3FE9269DE4F28DB7FA4D7E96E060C /* TimelineAnimationNotifyBlockInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TimelineAnimationNotifyBlockInfo.m; sourceTree = "<group>"; };
 		EAE3F26438B44A944BABAA25A2C98BD0 /* TimelineAnimationsDisplayLink.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TimelineAnimationsDisplayLink.m; sourceTree = "<group>"; };
-		F2B119669C5C56D2D3BB993EA7E4E687 /* TimelineAnimations.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = TimelineAnimations.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		F2B119669C5C56D2D3BB993EA7E4E687 /* TimelineAnimations.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = TimelineAnimations.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		F37B00E1D0889EB5D5B13B782A2A2030 /* AnimationsFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = AnimationsFactory.m; sourceTree = "<group>"; };
 		FB273390A2B6FE67DCF8B9E979AC54BD /* TimelineAnimationReverseCoordinator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TimelineAnimationReverseCoordinator.m; sourceTree = "<group>"; };
-		FC3F06C71BA18BCA197080B1110ECB0E /* TimelineAnimations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TimelineAnimations.framework; path = TimelineAnimations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC3F06C71BA18BCA197080B1110ECB0E /* TimelineAnimations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TimelineAnimations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFD23EA5AB9086192BF1C5AB2BB2F6A1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -263,7 +263,6 @@
 				E55511735001F4F57F487B20A9018107 /* TimelineAnimationSpecialTimingFunction.c */,
 				661A07312280299FB27E04B8D78FEFA2 /* TimelineAnimationSpecialTimingFunction.h */,
 			);
-			name = SpecialEasing;
 			path = SpecialEasing;
 			sourceTree = "<group>";
 		};
@@ -372,7 +371,6 @@
 				93361BF2C9C991025FD5920410540B36 /* TimelineAudioAssociation.m */,
 				C1CB6780FABDDE0839947AA7D3CF58EA /* TimelineAudioAssociation_Internal.h */,
 			);
-			name = Audio;
 			path = Audio;
 			sourceTree = "<group>";
 		};
@@ -396,7 +394,6 @@
 				8BF37DA3BFD66BBFB398E309E5F398A1 /* TimelineAnimationWeakLayerBox.h */,
 				620FA2468197EDBC2FE3C1F0825049FA /* TimelineAnimationWeakLayerBox.m */,
 			);
-			name = Helper;
 			path = Helper;
 			sourceTree = "<group>";
 		};
@@ -406,7 +403,6 @@
 				63D0221E468A252F8876CA9C04CD1786 /* EasingTimingHandler.h */,
 				6C911EA82D9CA75ED0CD5BCF217DB462 /* EasingTimingHandler.m */,
 			);
-			name = EasingTiming;
 			path = EasingTiming;
 			sourceTree = "<group>";
 		};
@@ -447,7 +443,6 @@
 				07A19C77B59EFA6A7CD29C7C23B026B6 /* NSSet+TimelineSwiftyAdditions.h */,
 				8E4C5381440773D1F7E6F2CB0DCD07CD /* NSSet+TimelineSwiftyAdditions.m */,
 			);
-			name = Categories;
 			path = Categories;
 			sourceTree = "<group>";
 		};

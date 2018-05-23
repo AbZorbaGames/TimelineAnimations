@@ -14,6 +14,7 @@
 
 #import "Types.h"
 #import "PrivateTypes.h"
+#import "AnimationsKeyPath.h"
 
 @interface TimelineAnimation () {
 @protected
@@ -68,8 +69,8 @@
 @property (nonatomic, readonly, copy, nonnull) TimelineAnimationCurrentMediaTimeBlock currentTime;
 
 @property (nonatomic, readonly, strong) NSSet<TimelineAnimationWeakLayerBox *> *cachedAffectedLayers;
+@property (nonatomic, strong) NSMutableDictionary<AnimationKeyPath, TimelineEntity *> *firstKeyPathEntities;
 
-- (void)reset;
 - (void)_prepareForRepeat;
 - (void)_prepareForReplay;
 - (void)_replay;
@@ -85,6 +86,8 @@
 - (void)_setupTimeNotifications;
 - (void)_setupProgressNotifications;
 - (void)_setupProgressMonitoring;
+- (void)_setupObserversForRepeatingAnimations;
+- (void)_setupRestoresValues;
 
 - (void)_cleanUp;
 
@@ -92,7 +95,10 @@
          alreadyPausedLayers:(nonnull NSMutableSet<__kindof CALayer *> *)pausedLayers;
 
 - (void)resumeWithCurrentTime:(nonnull TimelineAnimationCurrentMediaTimeBlock)currentTime
+                  repeatCount:(TimelineAnimationRepeatCount)repeatCount
          alreadyResumedLayers:(nonnull NSMutableSet<__kindof CALayer *> *)resumedLayers;
+
+- (void)resetWithRepeatCount:(TimelineAnimationRepeatCount)repeatCount;
 
 - (void)insertBlankAnimationAtTime:(RelativeTime)time
                            onStart:(nullable TimelineAnimationOnStartBlock)start
@@ -132,7 +138,8 @@
 @end
 
 @interface TimelineAnimation (ProtectedControl)
-- (void)_playWithCurrentTime:(nonnull TimelineAnimationCurrentMediaTimeBlock)currentTime;
+- (void)_playWithCurrentTime:(nonnull TimelineAnimationCurrentMediaTimeBlock)currentTime
+                 repeatCount:(TimelineAnimationRepeatCount)repeatCount;
 @end
 
 @interface TimelineAnimation (ReverseProtected)

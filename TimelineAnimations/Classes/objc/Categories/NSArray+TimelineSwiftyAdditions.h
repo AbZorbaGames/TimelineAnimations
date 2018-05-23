@@ -31,6 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable ObjectType)_max:(BOOL(NS_NOESCAPE ^)(ObjectType o1, ObjectType o2))areInIncreasingOrder NS_REFINED_FOR_SWIFT;
 - (nullable ObjectType)_min:(BOOL(NS_NOESCAPE ^)(ObjectType o1, ObjectType o2))areInIncreasingOrder NS_REFINED_FOR_SWIFT;
 
+- (NSDictionary<id<NSCopying>, NSArray<ObjectType> *> *)_groupingBy:(id<NSCopying> _Nonnull (^)(ObjectType value))keyForValue;
+
 @end
 
 NS_ASSUME_NONNULL_END

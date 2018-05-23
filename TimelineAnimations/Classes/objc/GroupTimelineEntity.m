@@ -177,7 +177,8 @@
 - (void)playWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime
                afterReverse:(nullable __kindof TimelineAnimation *)revereseTimeline
                     onStart:(TimelineAnimationOnStartBlock)callerOnStart
-                 onComplete:(TimelineAnimationCompletionBlock)callerCompletion {
+                 onComplete:(TimelineAnimationCompletionBlock)callerCompletion
+                repeatCount:(TimelineAnimationRepeatCount)repeatCount {
 
     NSParameterAssert(callerOnStart != nil);
     NSParameterAssert(callerCompletion != nil);
@@ -253,21 +254,24 @@
             self.TimelineAnimationReverseCoordinator = coordinator;
         }
     } else {
-        [_timeline _playWithCurrentTime:currentTime];
+        [_timeline _playWithCurrentTime:currentTime
+                            repeatCount:repeatCount];
     }
 }
 
 - (void)playWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime
                     onStart:(TimelineAnimationOnStartBlock)onStart
-                 onComplete:(TimelineAnimationCompletionBlock)complete {
+                 onComplete:(TimelineAnimationCompletionBlock)complete
+                repeatCount:(TimelineAnimationRepeatCount)repeatCount {
     [self playWithCurrentTime:currentTime
                  afterReverse:nil
                       onStart:onStart
-                   onComplete:complete];
+                   onComplete:complete
+                  repeatCount:repeatCount];
 }
 
-- (void)reset {
-    [_timeline reset];
+- (void)resetWithRepeatCount:(TimelineAnimationRepeatCount)count {
+    [_timeline resetWithRepeatCount:count];
 }
 
 - (void)pauseWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime
@@ -277,8 +281,10 @@
 }
 
 - (void)resumeWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime
+                  repeatCount:(TimelineAnimationRepeatCount)repeatCount
          alreadyResumedLayers:(nonnull NSMutableSet<__kindof CALayer *> *)resumedLayers {
     [_timeline resumeWithCurrentTime:currentTime
+                         repeatCount:repeatCount
                 alreadyResumedLayers:resumedLayers];
 }
 

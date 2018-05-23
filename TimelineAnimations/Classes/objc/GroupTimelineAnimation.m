@@ -15,6 +15,7 @@
 #import "NSArray+TimelineSwiftyAdditions.h"
 #import "NSSet+TimelineSwiftyAdditions.h"
 #import "PrivateTypes.h"
+#import "NSDictionary+TimelineSwiftyAdditions.h"
 
 @interface GroupTimelineAnimation ()
 @property (nonatomic, strong) TimelineAnimation *helperTimeline;
@@ -231,6 +232,30 @@
     };
 }
 
+- (void)setTimelinesEntities:(NSMutableSet<GroupTimelineEntity *> *)timelinesEntities {
+    _timelinesEntities = timelinesEntities;
+
+    // map new entities
+    NSArray<TimelineEntity *> *const entities =
+    [timelinesEntities _flatMap:^NSArray<TimelineEntity *> * _Nonnull(GroupTimelineEntity * _Nonnull entity) {
+        return [self _entitiesOfTimelineAnimation:entity.timeline];
+    }];
+    NSDictionary<NSString *, NSArray<TimelineEntity *> *> *const keyPathEntities = (NSDictionary<NSString *, NSArray<TimelineEntity *> *> *)
+    [entities _groupingBy:^id<NSCopying> _Nonnull(TimelineEntity * _Nonnull entity) {
+        return entity.animation.keyPath;
+    }];
+    id sharedSet = [NSDictionary sharedKeySetForKeys:keyPathEntities.allKeys];
+    self.firstKeyPathEntities = [keyPathEntities _reduce:[NSMutableDictionary dictionaryWithSharedKeySet:sharedSet]
+                                               transform:^NSMutableDictionary<NSString *, TimelineEntity *> *_Nonnull(NSMutableDictionary<NSString *, TimelineEntity *> *_Nonnull partial,
+                                                                                                                      NSString * _Nonnull key,
+                                                                                                                      NSArray<TimelineEntity *> * _Nonnull value) {
+                                                   partial[key] = [value _min:^BOOL(TimelineEntity * _Nonnull o1, TimelineEntity * _Nonnull o2) {
+                                                       return (o1.beginTime < o1.beginTime);
+                                                   }];
+                                                   return partial;
+                                               }];
+}
+
 // protected
 
 - (TimelineAnimation *)helperTimeline {
@@ -338,6 +363,18 @@
     
     [_timelinesEntities addObject:entity];
     entity.timeline.parent = self;
+
+
+    [self.firstKeyPathEntities _mergeWith:entity.timeline.firstKeyPathEntities
+                         uniquingKeysWith:^TimelineEntity * _Nonnull(TimelineEntity * _Nonnull current, TimelineEntity * _Nonnull new) {
+                             current.restoresValues = NO;
+                             new.restoresValues = NO;
+                             TimelineEntity *const final = (current.beginTime < new.beginTime)
+                             ? current
+                             : new;
+                             final.restoresValues = YES;
+                             return final;
+                         }];
 }
 
 #pragma mark - 
@@ -378,10 +415,12 @@
 }
 
 - (void)resumeWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime
+                  repeatCount:(TimelineAnimationRepeatCount)repeatCount
          alreadyResumedLayers:(nonnull NSMutableSet<__kindof CALayer *> *)resumedLayers {
     
     [_timelinesEntities enumerateObjectsUsingBlock:^(GroupTimelineEntity * _Nonnull entity, BOOL * _Nonnull stop) {
         [entity resumeWithCurrentTime:currentTime
+                          repeatCount:repeatCount
                  alreadyResumedLayers:resumedLayers];
     }];
     
@@ -483,6 +522,20 @@
     anim.fromValue           = @(0.0);
     anim.toValue             = @(1.0);
     [self.progressLayer addAnimation:anim forKey:@"progress"];
+}
+
+- (void)_setupRestoresValues {
+    guard (self.parent == nil) else { return; }
+    NSArray<TimelineEntity *> *const entities =
+    [_timelinesEntities _flatMap:^NSArray<TimelineEntity *> * _Nonnull(GroupTimelineEntity * _Nonnull entity) {
+        return [self _entitiesOfTimelineAnimation:entity.timeline];
+    }];
+    [entities enumerateObjectsUsingBlock:^(TimelineEntity * _Nonnull entity, NSUInteger idx, BOOL * _Nonnull stop) {
+        entity.restoresValues = NO;
+    }];
+    [self.firstKeyPathEntities enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, TimelineEntity * _Nonnull entity, BOOL * _Nonnull stop) {
+        entity.restoresValues = YES;
+    }];
 }
 
 @end
@@ -698,7 +751,8 @@
 
 @implementation GroupTimelineAnimation (ProtectedControl)
 
-- (void)_playWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime {
+- (void)_playWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime
+                 repeatCount:(TimelineAnimationRepeatCount)repeatCount {
     
     NSAssert(self.name != nil, @"TimelineAnimations: You should name your animations");
     NSAssert(self.isNonEmpty, @"TimelineAnimations: Why are you trying to play an empty %@?",
@@ -739,6 +793,8 @@
     
     [self __setupTimeNotifications];
     [self _setupProgressNotifications];
+    [self _setupObserversForRepeatingAnimations];
+    [self _setupRestoresValues];
     
     if ([self _checkForOutOfHierarchyIssues]) {
         [self __raiseElementsNotInHierarchyExceptionWithReason:
@@ -774,7 +830,7 @@
                             } onComplete:^(BOOL result) {
                                 [self.unfinishedEntities removeObject:entity];
                                 [self callOnComplete:result];
-                            }];
+                            } repeatCount:repeatCount];
     };
     
     for (GroupTimelineEntity *const entity in reversedEntities) {
@@ -788,7 +844,7 @@
                             } onComplete:^(BOOL result) {
                                 [self.unfinishedEntities removeObject:entity];
                                 [self callOnComplete:result];
-                            }];
+                            } repeatCount:repeatCount];
     };
     
     self.paused = NO;
@@ -799,35 +855,20 @@
 @implementation GroupTimelineAnimation (Control)
 
 - (void)play {
-    [self _playWithCurrentTime:self.currentTime];
+    [self _playWithCurrentTime:self.currentTime
+                   repeatCount:self.repeatCount];
 }
 
 - (void)resume {
-    if (!self.isPaused) {
-        return;
-    }
+    guard (self.isPaused) else { return; }
     
     [self resumeWithCurrentTime:self.currentTime
+                    repeatCount:self.repeatCount
            alreadyResumedLayers:[[NSMutableSet alloc] init]];
-//    NSMutableSet<CALayer *> *const resumedLayers = [[NSMutableSet alloc] init];
-//    NSArray<GroupTimelineEntity *> *const sortedEntities = self.sortedEntities;
-//    for (GroupTimelineEntity *const groupEntity in sortedEntities) {
-//        for (TimelineEntity *const entity in groupEntity.timeline.animations) {
-//            __strong __kindof CALayer *const slayer = entity.layer;
-//            if ([resumedLayers member:slayer]) {
-//                return;
-//            }
-//            [entity resumeWithCurrentTime:currentTime];
-//            [resumedLayers addObject:slayer];
-//        }
-//    }
-//    self.paused = NO;
 }
 
 - (void)pause {
-    if (!self.hasStarted) {
-        return;
-    }
+    guard (self.hasStarted) else { return; }
     
     [self pauseWithCurrentTime:self.currentTime
            alreadyPausedLayers:[[NSMutableSet alloc] init]];
@@ -857,7 +898,7 @@
 
 
 - (void)_prepareForRepeat {
-    [self reset];
+    [self resetWithRepeatCount:self.repeatCount];
     
     const RelativeTime begin = self.beginTime;
     if (begin != (RelativeTime)0.0) {
@@ -865,7 +906,7 @@
     }
 }
 
-- (void)reset {
+- (void)resetWithRepeatCount:(TimelineAnimationRepeatCount)repeatCount {
     
     if (self.hasStarted) {
         [self __raiseImmutableGroupTimelineExceptionWithSelector:_cmd];
@@ -874,7 +915,7 @@
     
     NSArray<GroupTimelineEntity *> *const sortedEntities = self.sortedEntities;
     for (GroupTimelineEntity *const entity in sortedEntities) {
-        [entity reset];
+        [entity resetWithRepeatCount:self.repeatCount];
     }
     
     _repeat.onStartCalled = NO;

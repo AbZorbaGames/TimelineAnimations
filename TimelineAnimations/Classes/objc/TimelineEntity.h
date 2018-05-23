@@ -7,8 +7,9 @@
 //
 
 @import UIKit;
-#import "TimelineAnimation.h"
 #import "PrivateTypes.h"
+
+@class TimelineAnimation;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -26,8 +27,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, readonly, nullable) TimelineAnimationOnStartBlock onStart;
 @property (nonatomic, copy, readonly, nullable) TimelineAnimationCompletionBlock completion;
 
+@property (nonatomic, assign, getter=hasStarted) BOOL started;
 @property (nonatomic, assign, getter=hasFinished) BOOL finished;
 @property (nonatomic, assign, getter=isPaused)    BOOL paused;
+
+@property (nonatomic, assign) BOOL restoresValues;
 
 /** 
  The speed of the animation.
@@ -52,11 +56,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)playWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime
                     onStart:(TimelineAnimationOnStartBlock)callerOnStart
                  onComplete:(TimelineAnimationCompletionBlock)comlete
+                repeatCount:(TimelineAnimationRepeatCount)repeatCount
              setModelValues:(BOOL)setsModelVaules;
 
 - (void)pauseWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime;
-- (void)resumeWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime;
-- (void)reset;
+- (void)resumeWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime
+                  repeatCount:(TimelineAnimationRepeatCount)repeatCount;
+- (void)resetWithRepeatCount:(TimelineAnimationRepeatCount)repeatCount;
 
 - (void)clear;
 

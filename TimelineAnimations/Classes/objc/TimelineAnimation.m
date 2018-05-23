@@ -17,13 +17,14 @@
 #import "TimelineAudioAssociation_Internal.h"
 #import "TimelineAnimationNotifyBlockInfo.h"
 #import "TimelineAnimationsDisplayLink.h"
-#import "NSArray+TimelineSwiftyAdditions.h"
 #import "TimelineAnimationDescription.h"
 #import "PrivateTypes.h"
 @import ObjectiveC;
 #import "GroupTimelineAnimation.h"
 #import "TimelineAudioAssociation_Internal.h"
+#import "NSArray+TimelineSwiftyAdditions.h"
 #import "NSSet+TimelineSwiftyAdditions.h"
+#import "NSDictionary+TimelineSwiftyAdditions.h"
 #import "TimelineAnimationWeakLayerBox.h"
 
 TimelineAnimationExceptionName ImmutableTimelineAnimationException = @"ImmutableTimelineAnimation";
@@ -67,6 +68,7 @@ NSErrorUserInfoKey const TimelineAnimationSummaryKey = @"summary";
 
         _animations    = [[NSMutableArray alloc] init];
         _blankLayers   = [[NSMutableArray alloc] init];
+        _firstKeyPathEntities = [[NSMutableDictionary alloc] init];
 
         _progressNotificationAssociations = [[ProgressNotificationAssociations alloc] init];
         _timeNotificationAssociations     = [[NotificationAssociations alloc] init];
@@ -119,6 +121,7 @@ NSErrorUserInfoKey const TimelineAnimationSummaryKey = @"summary";
 
 - (void)dealloc {
     [self _cleanUp];
+    [NSNotificationCenter.defaultCenter removeObserver:self];
     //    _blankLayers = nil;
     //    _animations = nil;
     _originate = nil;
@@ -196,7 +199,7 @@ NSErrorUserInfoKey const TimelineAnimationSummaryKey = @"summary";
 
     {   // check if already in
         const BOOL alreadyIn = [_animations containsObject:timelineEntity];
-        guard (!alreadyIn) else {
+        guard (not(alreadyIn)) else {
             NSIndexSet *const indexes = [_animations indexesOfObjectsPassingTest:^BOOL(TimelineEntity * _Nonnull entity, NSUInteger idx, BOOL * _Nonnull stop) {
                 const BOOL result = [entity isEqual:timelineEntity];
                 *stop = result;
@@ -228,6 +231,22 @@ NSErrorUserInfoKey const TimelineAnimationSummaryKey = @"summary";
 
     // add the timeline entity
     [_animations addObject:timelineEntity];
+
+    AnimationKeyPath const keyPath = timelineEntity.animation.keyPath;
+    NSDictionary<AnimationKeyPath, TimelineEntity *> *const new =
+    @{
+      keyPath: timelineEntity
+      };
+    [_firstKeyPathEntities _mergeWith:new
+                     uniquingKeysWith:^TimelineEntity * _Nonnull(TimelineEntity * _Nonnull current, TimelineEntity * _Nonnull new) {
+                         current.restoresValues = NO;
+                         new.restoresValues = NO;
+                         TimelineEntity *const final = (current.beginTime < new.beginTime)
+                         ? current
+                         : new;
+                         final.restoresValues = YES;
+                         return final;
+                     }];
 }
 
 #pragma mark - Animation Control Methods -
@@ -257,12 +276,15 @@ NSErrorUserInfoKey const TimelineAnimationSummaryKey = @"summary";
 
 - (void)_callOnComplete:(BOOL)gracefullyFinished {
 
-    self.finished = YES;
     self.started = NO;
+    self.finished = YES;
 
     // repeat
     const BOOL repeats = [self _repeatIfNeededHasGracefullyFinished:gracefullyFinished];
-    if (repeats) { return; }
+    if (repeats) {
+//        [self _replay];
+        return;
+    }
 
     if ((_onCompletionCalled == NO) && (_completion != nil)) {
         _completion(gracefullyFinished);
@@ -294,10 +316,10 @@ NSErrorUserInfoKey const TimelineAnimationSummaryKey = @"summary";
     guard (hasMoreIterations) else { return NO; }
 
     // increment iteration count
-    if (UINT64_MAX - _repeat.iteration < (TimelineAnimationRepeatIteration)1LL) {
-        _repeat.iteration = (TimelineAnimationRepeatIteration)0LL;
+    if (UINT64_MAX - _repeat.iteration < (TimelineAnimationRepeatIteration)1ULL) {
+        _repeat.iteration = (TimelineAnimationRepeatIteration)0ULL;
     }
-    _repeat.iteration += (TimelineAnimationRepeatIteration)1;
+    _repeat.iteration += (TimelineAnimationRepeatIteration)1ULL;
 
     guard (self.isNonEmpty) else { return NO; } // has animations
 
@@ -315,11 +337,11 @@ NSErrorUserInfoKey const TimelineAnimationSummaryKey = @"summary";
 
 - (TimelineAnimationRepeatCount)repeatCount {
     // not possible to overflow as -setRepeatCount: always subtracts 1
-    return _repeat.count + (TimelineAnimationRepeatCount)1LL;
+    return _repeat.count + (TimelineAnimationRepeatCount)1ULL;
 }
 
 - (void)setRepeatCount:(TimelineAnimationRepeatCount)repeatCount {
-    guard (repeatCount >= (TimelineAnimationRepeatCount)1LL) else {
+    guard (repeatCount >= (TimelineAnimationRepeatCount)1ULL) else {
         NSAssert(false, @"TimelineAnimations: Wrong repeat count. Should be greater than 0.");
         return;
     }
@@ -328,11 +350,11 @@ NSErrorUserInfoKey const TimelineAnimationSummaryKey = @"summary";
         return;
     }
 
-    const TimelineAnimationRepeatCount realRepeatCount = repeatCount - (TimelineAnimationRepeatCount)1LL;
+    const TimelineAnimationRepeatCount realRepeatCount = repeatCount - (TimelineAnimationRepeatCount)1ULL;
 
     _repeat.count = realRepeatCount;
-    _repeat.iteration = (TimelineAnimationRepeatIteration)0LL;
-    _repeat.isRepeating = (realRepeatCount != (TimelineAnimationRepeatCount)0LL);
+    _repeat.iteration = (TimelineAnimationRepeatIteration)0ULL;
+    _repeat.isRepeating = (realRepeatCount != (TimelineAnimationRepeatCount)0ULL);
 }
 
 - (void)_replay {
@@ -341,7 +363,7 @@ NSErrorUserInfoKey const TimelineAnimationSummaryKey = @"summary";
 }
 
 - (void)_prepareForRepeat {
-    [self reset];
+    [self resetWithRepeatCount:self.repeatCount];
 
     // restore the begin time for repeating animations.
     // when a repeating timeline is included in a group timeline at an non-zero
@@ -349,11 +371,11 @@ NSErrorUserInfoKey const TimelineAnimationSummaryKey = @"summary";
     // is called. Trust boumis on this.
     const RelativeTime begin = self.beginTime;
     if (begin != 0.0) {
-        self.beginTime = 0.0;
+        self.beginTime = (RelativeTime)0.0;
     }
 }
 
-- (void)reset {
+- (void)resetWithRepeatCount:(TimelineAnimationRepeatCount)repeatCount {
 
     if (self.hasStarted) {
         [self __raiseImmutableTimelineExceptionWithSelector:_cmd];
@@ -361,7 +383,7 @@ NSErrorUserInfoKey const TimelineAnimationSummaryKey = @"summary";
     }
     // prepare for replay
     for (TimelineEntity *const entity in _animations) {
-        [entity reset];
+        [entity resetWithRepeatCount:repeatCount];
     };
 
     _repeat.onStartCalled = NO;
@@ -379,7 +401,7 @@ NSErrorUserInfoKey const TimelineAnimationSummaryKey = @"summary";
     _onCompletionCalled = NO;
     self.finished = NO;
 
-    _repeat.iteration = (TimelineAnimationRepeatIteration)0LL;
+    _repeat.iteration = (TimelineAnimationRepeatIteration)0ULL;
     _repeat.onStartCalled = NO;
     _repeat.onCompleteCalled = NO;
 }
@@ -402,6 +424,7 @@ NSErrorUserInfoKey const TimelineAnimationSummaryKey = @"summary";
 }
 
 - (void)resumeWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime
+                  repeatCount:(TimelineAnimationRepeatCount)repeatCount
          alreadyResumedLayers:(nonnull NSMutableSet<__kindof CALayer *> *)resumedLayers {
     [_animations enumerateObjectsUsingBlock:^(TimelineEntity * _Nonnull entity, NSUInteger idx, BOOL * _Nonnull stop) {
         __strong __kindof CALayer *const slayer = entity.layer;
@@ -409,7 +432,7 @@ NSErrorUserInfoKey const TimelineAnimationSummaryKey = @"summary";
             entity.paused = NO;
             return;
         }
-        [entity resumeWithCurrentTime:currentTime];
+        [entity resumeWithCurrentTime:currentTime repeatCount:repeatCount];
         [resumedLayers addObject:slayer];
     }];
     self.paused = NO;
@@ -470,6 +493,26 @@ NSErrorUserInfoKey const TimelineAnimationSummaryKey = @"summary";
             onStart();
         }
     }];
+}
+
+- (void)setAnimations:(NSMutableArray<TimelineEntity *> *)animations {
+    _animations = animations;
+
+    // map new entities
+    NSDictionary<NSString *, NSArray<TimelineEntity *> *> *const keyPathEntities = (NSDictionary<NSString *, NSArray<TimelineEntity *> *> *)
+    [animations _groupingBy:^id<NSCopying> _Nonnull(TimelineEntity * _Nonnull entity) {
+        return entity.animation.keyPath;
+    }];
+    id sharedSet = [NSDictionary sharedKeySetForKeys:keyPathEntities.allKeys];
+    _firstKeyPathEntities = [keyPathEntities _reduce:[NSMutableDictionary dictionaryWithSharedKeySet:sharedSet]
+                                           transform:^NSMutableDictionary<NSString *, TimelineEntity *> *_Nonnull(NSMutableDictionary<NSString *, TimelineEntity *> *_Nonnull partial,
+                                                                                                                  NSString * _Nonnull key,
+                                                                                                                  NSArray<TimelineEntity *> * _Nonnull value) {
+                                               partial[key] = [value _min:^BOOL(TimelineEntity * _Nonnull o1, TimelineEntity * _Nonnull o2) {
+                                                   return (o1.beginTime < o1.beginTime);
+                                               }];
+                                               return partial;
+                                           }];
 }
 
 // protected
@@ -979,6 +1022,50 @@ va_end(arguments); \
                onComplete:complete];
 }
 
+#pragma mark - Repeating
+
+- (void)_setupObserversForRepeatingAnimations {
+    guard (self.repeatCount == TimelineAnimationRepeatCountInfinite) else { return; }
+    guard (self.parent == nil) else { return; }
+
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+    [NSNotificationCenter.defaultCenter addObserver:self
+                                           selector:@selector(_didEnterBackground)
+                                               name:UIApplicationDidEnterBackgroundNotification
+                                             object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self
+                                           selector:@selector(_willEnterForeground)
+                                               name:UIApplicationWillEnterForegroundNotification
+                                             object:nil];
+}
+
+- (void)_didEnterBackground {
+    guard (self.parent == nil) else { return; }
+    [self pause];
+    self.paused = NO;
+}
+
+- (void)_willEnterForeground {
+    guard (self.parent == nil) else { return; }
+    // hacking
+    _started = NO;
+
+    [self.cachedAffectedLayers enumerateObjectsUsingBlock:^(TimelineAnimationWeakLayerBox * _Nonnull box, BOOL * _Nonnull stop) {
+        box.layer.beginTime = 0.0;
+    }];
+    [self play];
+}
+
+- (void)_setupRestoresValues {
+    guard (self.parent == nil) else { return; }
+    [_animations enumerateObjectsUsingBlock:^(TimelineEntity * _Nonnull entity, NSUInteger idx, BOOL * _Nonnull stop) {
+        entity.restoresValues = NO;
+    }];
+    [_firstKeyPathEntities enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, TimelineEntity * _Nonnull entity, BOOL * _Nonnull stop) {
+        entity.restoresValues = YES;
+    }];
+}
+
 @end
 
 #pragma mark - Populate
@@ -1321,7 +1408,8 @@ va_end(arguments); \
 
 @implementation TimelineAnimation (ProtectedControl)
 
-- (void)_playWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime {
+- (void)_playWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime
+                 repeatCount:(TimelineAnimationRepeatCount)repeatCount {
 
     NSAssert(self.name != nil, @"TimelineAnimations: You should name your animations.");
     NSAssert(self.isNonEmpty || self.onUpdate != nil,
@@ -1364,6 +1452,8 @@ va_end(arguments); \
 
     [self _setupTimeNotifications];
     [self _setupProgressNotifications];
+    [self _setupObserversForRepeatingAnimations];
+    [self _setupRestoresValues];
 
     if ([self _checkForOutOfHierarchyIssues]) {
         [self __raiseElementsNotInHierarchyExceptionWithReason:
@@ -1385,7 +1475,9 @@ va_end(arguments); \
                             } onComplete:^(BOOL gracefullyFinished) {
                                 [self.unfinishedEntities removeObject:entity];
                                 [self callOnComplete:gracefullyFinished];
-                            } setModelValues:self.setsModelValues];
+                            }
+                        repeatCount:repeatCount
+                     setModelValues:self.setsModelValues];
     }];
 
     [self _startDisplayLinkIfNeeded];
@@ -1396,7 +1488,8 @@ va_end(arguments); \
 @implementation TimelineAnimation (Control)
 
 - (void)play {
-    [self _playWithCurrentTime:self.currentTime];
+    [self _playWithCurrentTime:self.currentTime
+                   repeatCount:self.repeatCount];
 }
 
 - (void)replay {
@@ -1417,6 +1510,7 @@ va_end(arguments); \
     guard (self.isPaused) else { return; }
 
     [self resumeWithCurrentTime:self.currentTime
+                    repeatCount:self.repeatCount
            alreadyResumedLayers:[[NSMutableSet alloc] init]];
 }
 
@@ -1428,6 +1522,8 @@ va_end(arguments); \
 }
 
 - (void)clear {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+
     for (TimelineEntity *const entity in _animations) {
         [entity clear];
     };
@@ -1544,7 +1640,6 @@ va_end(arguments); \
             }
             return @(Round(value));
         }];
-
         return updatedTimeline;
     }
 }
@@ -1995,9 +2090,9 @@ va_end(arguments); \
                     completion:timeline.completion];
     if (self) {
         _preferredFramesPerSecond = timeline.preferredFramesPerSecond;
-        self.onUpdate     = timeline.onUpdate;
-        _animations       = [[NSMutableArray alloc] initWithArray:timeline.animations
-                                                        copyItems:YES];
+        self.onUpdate = timeline.onUpdate;
+        self.animations = [[NSMutableArray alloc] initWithArray:timeline.animations
+                                                      copyItems:YES];
 
         [_animations enumerateObjectsUsingBlock:^(TimelineEntity * _Nonnull entity, NSUInteger idx, BOOL * _Nonnull stop) {
             entity.timelineAnimation = self;

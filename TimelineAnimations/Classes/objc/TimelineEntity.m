@@ -16,6 +16,7 @@
 #import "CALayer+TimelineAnimation.h"
 #import "CAPropertyAnimation+TimelineEntity.h"
 #import "PrivateTypes.h"
+#import "TimelineAnimation.h"
 
 #ifdef DEBUG
 #define _raise(e) ([TimelineEntity _raiseEmptyTimelineAnimationException])
@@ -40,6 +41,8 @@
 @property (nonatomic, readwrite) BOOL cleared;
 
 @property (nonatomic, copy) NSString *actualAnimationKey;
+
+@property (nonatomic, readwrite) BOOL resetBeginTimeOnNextIteration;
 
 - (instancetype)init NS_DESIGNATED_INITIALIZER;
 
@@ -132,6 +135,8 @@
         
         _initialAnimation    = _animation.copy;
         _initialAnimationKey = key.copy;
+
+        _restoresValues = YES;
         [self _storeInitialValues];
     }
     return self;
@@ -323,21 +328,36 @@
     [self _callOnStartIfNeeded];
 }
 
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)finished {
-    [self _callCompletionIfNeededHasGracefullyFinished:finished];
-}
-
-- (void)_callOnStartIfNeeded {
-    if (_onStart) {
-        _onStart();
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)gracefullyFinished {
+    [self _callCompletionIfNeededHasGracefullyFinished:gracefullyFinished];
+    if (self.resetBeginTimeOnNextIteration) {
+        _layer.beginTime = _initialAnimation.beginTime;
+        self.resetBeginTimeOnNextIteration = NO;
     }
 }
 
+- (void)_callOnStartIfNeeded {
+    if (_onStart != nil) {
+        _onStart();
+    }
+    _started = YES;
+}
+
 - (void)_callCompletionIfNeededHasGracefullyFinished:(BOOL)gracefullyFinished {
+    const BOOL started = _started;
     _animation.delegate = nil;
-    _finished           = YES;
+    _started = NO;
+    _finished = YES;
     if (_completion != nil) {
-        const BOOL res = _cleared ? NO : gracefullyFinished;
+        const BOOL hasNoLayer = (_layer == nil);
+        const BOOL res = hasNoLayer
+        ? YES
+        : (_cleared
+           ? NO
+           : (_paused
+              ? YES
+              : (started ? gracefullyFinished : YES))
+           );
         _completion(res);
     }
 }
@@ -349,7 +369,8 @@
 - (void)playWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime
                     onStart:(TimelineAnimationOnStartBlock)callerOnStart
                  onComplete:(TimelineAnimationCompletionBlock)callerCompletion
-             setModelValues:(BOOL)setsModelVaules {
+                repeatCount:(TimelineAnimationRepeatCount)repeatCount
+             setModelValues:(BOOL)setsModelValues {
     
     NSParameterAssert(callerOnStart != nil);
     NSParameterAssert(callerCompletion != nil);
@@ -359,61 +380,74 @@
     guard (slayer != nil) else { return; };
     
     if (self.isPaused) {
-        [self resumeWithCurrentTime:currentTime];
+        [self resumeWithCurrentTime:currentTime
+                        repeatCount:repeatCount];
         return;
     }
-    
+
+    [self _prepareCallbacksOnStart:callerOnStart onComplete:callerCompletion];
+    [self _scheduleWithCurrentTime:currentTime setsModelValues:setsModelValues];
+}
+
+- (void)_prepareCallbacksOnStart:(TimelineAnimationOnStartBlock)callerOnStart
+                      onComplete:(TimelineAnimationCompletionBlock)callerCompletion {
+
     {   // hack for completion
         TimelineAnimationOnStartBlock userOnStart = [_onStart copy];
-        
+
         __weak typeof(self) welf = self;
         self.onStart = ^{
             __strong typeof(welf) strelf = welf;
             guard (strelf != nil) else { _raise(EmptyTimelineAnimationException); return; }
             guard (strelf.cleared == NO) else { _raise(EmptyTimelineAnimationException); return; }
-            
+
             if (callerOnStart != nil) {
                 callerOnStart();
             }
-            
+
             if (userOnStart != nil) {
                 userOnStart();
             }
-            
+
             strelf.onStart = userOnStart;
         };
     }
-    
+
     {   // hack for completion
         TimelineAnimationCompletionBlock userCompletion = [_completion copy];
-        
+
         __weak typeof(self) welf = self;
         self.completion = ^(BOOL result){
             __strong typeof(welf) strelf = welf;
             guard (strelf != nil) else { _raise(EmptyTimelineAnimationException); return; }
             guard (strelf.cleared == NO) else { _raise(EmptyTimelineAnimationException); return; }
-            
+
             if (userCompletion != nil) {
                 userCompletion(result);
             }
-            
+
             if (callerCompletion != nil) {
                 callerCompletion(result);
             }
-            
+
             strelf.completion = userCompletion;
         };
     }
-    
-    
-    
+}
+
+- (void)_scheduleWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime
+                 setsModelValues:(BOOL)setsModelValues {
+    __strong typeof(_layer) slayer = _layer;
+    NSAssert(slayer, @"TimelineAnimations: The layer of the entity is `nil`. Something's wrong. Check it out. entity description follows: %@", self);
+    guard (slayer != nil) else { return; };
+
     _animation.delegate = self;
     const CFTimeInterval gap = _animation.duration * (CFTimeInterval)_progress;
     _animation.beginTime += (RelativeTime)currentTime();
     NSString *const key = [[NSString alloc] initWithFormat:@"timelineEntity.animationKey<%@>.%.3lf", _animation.keyPath, _initialAnimation.beginTime];
     _actualAnimationKey = [key copy];
     //    [_animation setValue:_actualAnimationKey forKey:_animationKey];
-    if (setsModelVaules) {
+    if (setsModelValues) {
         [self _updateAnimationForSetModelValues];
     }
     self.speed = _speed;
@@ -421,7 +455,7 @@
     _animation.beginTime -= gap;
     [slayer addAnimation:_animation forKey:_actualAnimationKey];
     slayer.timelineAnimation = _timelineAnimation;
-    
+
     _animation.delegate = nil;
 }
 
@@ -441,22 +475,26 @@
     slayer.timeOffset = pausedTime;
 }
 
-- (void)resumeWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime {
+- (void)resumeWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime
+                  repeatCount:(TimelineAnimationRepeatCount)repeatCount {
     __strong typeof(_layer) slayer = _layer;
     guard (slayer != nil) else { _raise(EmptyTimelineAnimationException); return; };
-    
-    if (!self.isPaused) {
-        return;
-    }
-    
+    guard (self.isPaused) else { return; }
+
     const CFTimeInterval pausedTime = slayer.timeOffset;
     slayer.speed                    = _speed;
     slayer.timeOffset               = (CFTimeInterval)0.0;
     slayer.beginTime                = (CFTimeInterval)0.0;
     const CFTimeInterval timeSincePause = [slayer convertTime:currentTime()
                                                     fromLayer:nil] - pausedTime;
-    slayer.beginTime                = timeSincePause;
-    
+    slayer.beginTime = timeSincePause;
+
+    // if associated timelines are indefenitely repeating then do not set a
+    // deffered .beginTime
+    if (repeatCount == TimelineAnimationRepeatCountInfinite) {
+        self.resetBeginTimeOnNextIteration = YES;
+    }
+
     _paused = NO;
 }
 
@@ -505,11 +543,13 @@
     slayer = nil;
 }
 
-- (void)reset {
+- (void)resetWithRepeatCount:(TimelineAnimationRepeatCount)repeatCount {
     self.animationKey = _initialAnimationKey;
     self.animation    = _initialAnimation;
-    
-    [self _restoreInitialValues];
+
+    if ((repeatCount == (TimelineAnimationRepeatCount)0LL) || self.restoresValues) {
+        [self _restoreInitialValues];
+    }
 }
 
 - (void)_restoreInitialValues {
@@ -580,13 +620,16 @@
 @implementation TimelineEntity (Copying)
 
 -(instancetype)initWithTimelineEntity:(TimelineEntity *)timelineEntity {
-    return [self initWithLayer:timelineEntity.layer
-                     animation:timelineEntity.animation
-                  animationKey:timelineEntity.animationKey
-                     beginTime:timelineEntity.initialAnimation.beginTime
-                       onStart:timelineEntity.onStart
-                    onComplete:timelineEntity.completion
-             timelineAnimation:timelineEntity.timelineAnimation];
+    TimelineEntity *const entity =
+    [self initWithLayer:timelineEntity.layer
+              animation:timelineEntity.animation
+           animationKey:timelineEntity.animationKey
+              beginTime:timelineEntity.initialAnimation.beginTime
+                onStart:timelineEntity.onStart
+             onComplete:timelineEntity.completion
+      timelineAnimation:timelineEntity.timelineAnimation];
+    entity.restoresValues = self.restoresValues;
+    return entity;
 }
 
 - (id)copyWithZone:(NSZone *)zone {
@@ -606,6 +649,7 @@
                                                                  onStart:_onStart
                                                               onComplete:_completion
                                                        timelineAnimation:_timelineAnimation];
+    reversedCopy.restoresValues = self.restoresValues;
     return reversedCopy;
 }
 
@@ -681,6 +725,7 @@
     else {
         entity.animation.duration = (CFTimeInterval)Round(entity.animation.duration);
     }
+    entity.restoresValues = self.restoresValues;
     return entity;
 }
 
