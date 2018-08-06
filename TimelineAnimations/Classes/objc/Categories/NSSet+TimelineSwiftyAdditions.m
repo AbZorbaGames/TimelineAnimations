@@ -11,7 +11,7 @@
 
 @implementation NSSet (TimelineSwiftyAdditions)
 
-- (NSArray *)_map:(id(^)(id))transform {
+- (NSArray *)_map:(NS_NOESCAPE id(^)(id))transform {
     NSMutableArray *new = [[NSMutableArray alloc] initWithCapacity:self.count];
     [self enumerateObjectsUsingBlock:^(id  _Nonnull obj, BOOL * _Nonnull stop) {
         id newObj = transform(obj);
@@ -20,7 +20,7 @@
     return [new copy];
 }
 
-- (id)_reduce:(id)result transform:(id(^)(id,id))next {
+- (id)_reduce:(id)result transform:(NS_NOESCAPE id(^)(id,id))next {
     __block id res = result;
     [self enumerateObjectsUsingBlock:^(id  _Nonnull obj, BOOL * _Nonnull stop) {
         res = next(res,obj);
@@ -28,7 +28,7 @@
     return res;
 }
 
-- (NSArray *)_filter:(id(^)(id))isIncluded {
+- (NSArray *)_filter:(NS_NOESCAPE id(^)(id))isIncluded {
     NSMutableArray *new = [[NSMutableArray alloc] initWithCapacity:self.count];
     [self enumerateObjectsUsingBlock:^(id  _Nonnull obj, BOOL * _Nonnull stop) {
         if (isIncluded(obj)) {

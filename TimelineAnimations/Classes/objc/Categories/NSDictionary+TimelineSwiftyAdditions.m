@@ -11,7 +11,7 @@
 
 @implementation NSDictionary (TimelineSwiftyAdditions)
 
-- (NSDictionary *)_mapValues:(id(^)(id))transform {
+- (NSDictionary *)_mapValues:(NS_NOESCAPE id(^)(id))transform {
     @autoreleasepool {
         id sharedKeyes = [NSDictionary sharedKeySetForKeys:self.allKeys];
         NSMutableDictionary *new = [NSMutableDictionary sharedKeySetForKeys:sharedKeyes];
@@ -22,7 +22,7 @@
     }
 }
 
-- (NSDictionary *)_map:(id(^)(id,id))transform {
+- (NSDictionary *)_map:(NS_NOESCAPE id(^)(id,id))transform {
     id sharedKeyes = [NSDictionary sharedKeySetForKeys:self.allKeys];
     NSMutableDictionary *new = [NSMutableDictionary sharedKeySetForKeys:sharedKeyes];
     
@@ -32,7 +32,7 @@
     return [new copy];
 }
 
-- (id)_reduce:(id)result transform:(id(^)(id,id,id))next {
+- (id)_reduce:(id)result transform:(NS_NOESCAPE id(^)(id,id,id))next {
     __block id res = result;
     [self enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         res = next(res,key,obj);
@@ -40,7 +40,7 @@
     return res;
 }
 
-- (NSDictionary *)_filter:(id(^)(id,id))isIncluded {
+- (NSDictionary *)_filter:(NS_NOESCAPE id(^)(id,id))isIncluded {
     id sharedKeyes = [NSDictionary sharedKeySetForKeys:self.allKeys];
     NSMutableDictionary *new = [NSMutableDictionary sharedKeySetForKeys:sharedKeyes];
     [new enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
