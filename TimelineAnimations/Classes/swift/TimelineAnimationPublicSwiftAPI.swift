@@ -31,16 +31,16 @@ public extension TimelineAnimation {
             case fromTop
             case fromBottom
             
-            internal var value: String {
+            internal var value: CATransitionSubtype {
                 switch self {
                 case TimelineAnimation.Transition.Subtype.fromRight:
-                    return kCATransitionFromRight
+                    return CATransitionSubtype.fromRight
                 case TimelineAnimation.Transition.Subtype.fromLeft:
-                    return kCATransitionFromLeft
+                    return CATransitionSubtype.fromLeft
                 case TimelineAnimation.Transition.Subtype.fromTop:
-                    return kCATransitionFromTop
+                    return CATransitionSubtype.fromTop
                 case TimelineAnimation.Transition.Subtype.fromBottom:
-                    return kCATransitionFromBottom
+                    return CATransitionSubtype.fromBottom
                 }
             }
         }
@@ -53,15 +53,15 @@ public extension TimelineAnimation {
             let transition = CATransition()
             switch self {
             case TimelineAnimation.Transition.fade:
-                transition.type = kCATransitionFade
+                transition.type = CATransitionType.fade
             case let TimelineAnimation.Transition.moveIn(subtype):
-                transition.type = kCATransitionMoveIn
+                transition.type = CATransitionType.moveIn
                 transition.subtype = subtype.value
             case let TimelineAnimation.Transition.push(subtype):
-                transition.type = kCATransitionPush
+                transition.type = CATransitionType.push
                 transition.subtype = subtype.value
             case let TimelineAnimation.Transition.reveal(subtype):
-                transition.type = kCATransitionReveal
+                transition.type = CATransitionType.reveal
                 transition.subtype = subtype.value
             }
             return transition
@@ -310,4 +310,8 @@ public extension TimelineAnimation {
                  onComplete: onComplete)
     }
 }
-
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalCATransitionSubtype(_ input: String?) -> CATransitionSubtype? {
+	guard let input = input else { return nil }
+	return CATransitionSubtype(rawValue: input)
+}

@@ -8,19 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		B597F685449DBB9EE5DA851E /* Pods_TimelineAnimations_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 344EDF0ADA1B393F7F5AFF7B /* Pods_TimelineAnimations_Tests.framework */; };
+		7B5E80068C952ACE828095C7 /* Pods_TimelineAnimations_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F0467E0359B02B05F33C26A /* Pods_TimelineAnimations_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		29C010EBD257E90827B5EFE3 /* Pods-TimelineAnimations_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimelineAnimations_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TimelineAnimations_Tests/Pods-TimelineAnimations_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		3251E89E527BFD838DA22B68 /* Pods-TimelineAnimations_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimelineAnimations_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimelineAnimations_Tests/Pods-TimelineAnimations_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		344EDF0ADA1B393F7F5AFF7B /* Pods_TimelineAnimations_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimelineAnimations_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F0467E0359B02B05F33C26A /* Pods_TimelineAnimations_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimelineAnimations_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACE51AFB9204008FA782 /* TimelineAnimations_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimelineAnimations_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		7DF0FDEB75756812EDA11E7B /* TimelineAnimations.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = TimelineAnimations.podspec; path = ../TimelineAnimations.podspec; sourceTree = "<group>"; };
 		9EBC82B3A1A16869719C456C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		A9B65E8AD377A0DDADB92874 /* Pods-TimelineAnimations_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimelineAnimations_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimelineAnimations_Tests/Pods-TimelineAnimations_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		C5EB4B51E30D309167AC31D0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		D0DD605D2D46C99763210870 /* Pods-TimelineAnimations_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimelineAnimations_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TimelineAnimations_Tests/Pods-TimelineAnimations_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,21 +28,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B597F685449DBB9EE5DA851E /* Pods_TimelineAnimations_Tests.framework in Frameworks */,
+				7B5E80068C952ACE828095C7 /* Pods_TimelineAnimations_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		56811A8AA91AF01E8CF23A59 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3F0467E0359B02B05F33C26A /* Pods_TimelineAnimations_Tests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
-				C259756D89AD6DC4BC339535 /* Pods */,
-				E00589FB69197D88231FE83D /* Frameworks */,
+				6A9571704811F90B076BD3E5 /* Pods */,
+				56811A8AA91AF01E8CF23A59 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,21 +89,13 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		C259756D89AD6DC4BC339535 /* Pods */ = {
+		6A9571704811F90B076BD3E5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				29C010EBD257E90827B5EFE3 /* Pods-TimelineAnimations_Tests.debug.xcconfig */,
-				3251E89E527BFD838DA22B68 /* Pods-TimelineAnimations_Tests.release.xcconfig */,
+				D0DD605D2D46C99763210870 /* Pods-TimelineAnimations_Tests.debug.xcconfig */,
+				A9B65E8AD377A0DDADB92874 /* Pods-TimelineAnimations_Tests.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		E00589FB69197D88231FE83D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				344EDF0ADA1B393F7F5AFF7B /* Pods_TimelineAnimations_Tests.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -105,11 +105,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "TimelineAnimations_Tests" */;
 			buildPhases = (
-				E0FEEA26C352FAA287BEA938 /* [CP] Check Pods Manifest.lock */,
+				7A056B6DA35AEBB4DC4B72EA /* [CP] Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
-				504DD0057A506F143339AB3E /* [CP] Embed Pods Frameworks */,
+				F25050CD2A1FF315EE6969DA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,7 +132,7 @@
 				TargetAttributes = {
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1000;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
@@ -166,29 +166,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		504DD0057A506F143339AB3E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TimelineAnimations_Tests/Pods-TimelineAnimations_Tests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/TimelineAnimations/TimelineAnimations.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TimelineAnimations.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TimelineAnimations_Tests/Pods-TimelineAnimations_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E0FEEA26C352FAA287BEA938 /* [CP] Check Pods Manifest.lock */ = {
+		7A056B6DA35AEBB4DC4B72EA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -208,6 +186,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F25050CD2A1FF315EE6969DA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TimelineAnimations_Tests/Pods-TimelineAnimations_Tests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/TimelineAnimations/TimelineAnimations.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TimelineAnimations.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TimelineAnimations_Tests/Pods-TimelineAnimations_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -361,7 +361,7 @@
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 29C010EBD257E90827B5EFE3 /* Pods-TimelineAnimations_Tests.debug.xcconfig */;
+			baseConfigurationReference = D0DD605D2D46C99763210870 /* Pods-TimelineAnimations_Tests.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -375,13 +375,13 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3251E89E527BFD838DA22B68 /* Pods-TimelineAnimations_Tests.release.xcconfig */;
+			baseConfigurationReference = A9B65E8AD377A0DDADB92874 /* Pods-TimelineAnimations_Tests.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -391,7 +391,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

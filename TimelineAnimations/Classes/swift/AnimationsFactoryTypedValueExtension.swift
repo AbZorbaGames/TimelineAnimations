@@ -22,18 +22,18 @@ public extension CAKeyframeAnimation {
         case cubic
         case cubicPaced
         
-        internal var value: String {
+        internal var value: CAAnimationCalculationMode {
             switch self {
             case CAKeyframeAnimation.CalculationMode.linear:
-                return kCAAnimationLinear
+                return CAAnimationCalculationMode.linear
             case CAKeyframeAnimation.CalculationMode.discrete:
-                return kCAAnimationDiscrete
+                return CAAnimationCalculationMode.discrete
             case CAKeyframeAnimation.CalculationMode.paced:
-                return kCAAnimationPaced
+                return CAAnimationCalculationMode.paced
             case CAKeyframeAnimation.CalculationMode.cubic:
-                return kCAAnimationCubic
+                return CAAnimationCalculationMode.cubic
             case CAKeyframeAnimation.CalculationMode.cubicPaced:
-                return kCAAnimationCubicPaced
+                return CAAnimationCalculationMode.cubicPaced
             }
         }
     }
@@ -42,12 +42,12 @@ public extension CAKeyframeAnimation {
         case auto
         case autoreverse
         
-        internal var value: String {
+        internal var value: CAAnimationRotationMode {
             switch self {
             case CAKeyframeAnimation.RotationMode.auto:
-                return kCAAnimationRotateAuto
+                return CAAnimationRotationMode.rotateAuto
             case CAKeyframeAnimation.RotationMode.autoreverse:
-                return kCAAnimationRotateAutoReverse
+                return CAAnimationRotationMode.rotateAutoReverse
             }
         }
     }
