@@ -294,10 +294,10 @@ NSErrorUserInfoKey const TimelineAnimationSummaryKey = @"summary";
     guard (hasMoreIterations) else { return NO; }
 
     // increment iteration count
-    if (UINT64_MAX - _repeat.iteration < (TimelineAnimationRepeatIteration)1LL) {
-        _repeat.iteration = (TimelineAnimationRepeatIteration)0LL;
+    if ((TimelineAnimationRepeatIteration)UINT64_MAX - _repeat.iteration < (TimelineAnimationRepeatIteration)1ULL) {
+        _repeat.iteration = (TimelineAnimationRepeatIteration)0ULL;
     }
-    _repeat.iteration += (TimelineAnimationRepeatIteration)1;
+    _repeat.iteration += (TimelineAnimationRepeatIteration)1ULL;
 
     guard (self.isNonEmpty) else { return NO; } // has animations
 

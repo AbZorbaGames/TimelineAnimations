@@ -22,7 +22,7 @@
     
     struct {
         TimelineAnimationRepeatCount count;
-        uint64_t iteration;
+        TimelineAnimationRepeatIteration iteration;
         BOOL isRepeating;
         BOOL onStartCalled;
         BOOL onCompleteCalled;
