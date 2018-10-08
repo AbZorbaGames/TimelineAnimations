@@ -613,6 +613,10 @@ NSErrorUserInfoKey const TimelineAnimationSummaryKey = @"summary";
     return [currentTime copy];
 }
 
+- (CALayer *)anyLayer {
+    return self.cachedAffectedLayers.anyObject.layer;
+}
+
 #pragma mark - Exceptions
 
 - (NSSet<TimelineAnimationWeakLayerBox *> *)cachedAffectedLayers {

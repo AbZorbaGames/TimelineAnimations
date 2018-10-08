@@ -63,11 +63,13 @@
 
 @property (nonatomic, readonly) RelativeTime endTimeWithNoRepeating;
 
-@property (nonatomic, readonly, nonnull) NSSet<__kindof CALayer *> *affectedLayers;
+@property (nonatomic, readonly, nullable) NSSet<__kindof CALayer *> *affectedLayers;
 
 @property (nonatomic, readonly, copy, nonnull) TimelineAnimationCurrentMediaTimeBlock currentTime;
 
 @property (nonatomic, readonly, strong) NSSet<TimelineAnimationWeakLayerBox *> *cachedAffectedLayers;
+
+@property (nonatomic, readonly, strong, nullable) __kindof CALayer *anyLayer;
 
 - (void)reset;
 - (void)_prepareForRepeat;

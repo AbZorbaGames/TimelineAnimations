@@ -451,7 +451,7 @@
         NSAssert(helper != nil && helper.isNonEmpty, @"TimelineAnimations: WTF?");
         
         {   /* fix out-of-hierarchy issues */
-            __strong __kindof CALayer *const anyLayer = _timelinesEntities.anyObject.timeline.animations.firstObject.layer;
+            __strong __kindof CALayer *const anyLayer = self.anyLayer;
             NSAssert(anyLayer != nil, @"TimelineAnimations: Try to add blank animation but there is no layer to add it to.");
             for (TimelineAnimationsBlankLayer *const blankHelperLayer in helper.blankLayers) {
                 guard (blankHelperLayer.superlayer == nil) else { continue; }
@@ -466,6 +466,10 @@
     [self _setupTimeNotifications];
 }
 
+- (CALayer *)anyLayer {
+    return _timelinesEntities.anyObject.timeline.anyLayer;
+}
+
 - (void)_setupProgressMonitoring {
     self.progressLayer = [TimelineAnimationsProgressMonitorLayer layer];
     __weak typeof(self) welf = self;
@@ -474,7 +478,7 @@
         strelf.progress = progress;
     };
     
-    __strong __kindof CALayer *const anyLayer = _timelinesEntities.anyObject.timeline.animations.firstObject.layer;
+    __strong __kindof CALayer *const anyLayer = self.anyLayer;
     NSAssert(anyLayer != nil, @"TimelineAnimations: Try to add blank animation but there is no layer to add it to.");
     [anyLayer addSublayer:self.progressLayer];
     
