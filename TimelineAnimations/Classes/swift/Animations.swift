@@ -74,7 +74,13 @@ extension Animations {
             timeline.insert(animation: .hide,
                             forLayer: view.layer,
                             atTime: duration-TimelineAnimationOneFrame,
-                            withDuration: TimelineAnimationOneFrame)
+                            withDuration: TimelineAnimationOneFrame,
+                            onStart: { [weak view] in
+                                guard let sview = view else { return }
+                                if (to == 0.0) {
+                                    sview.isHidden = true
+                                }
+            })
         }
         
         return timeline
@@ -108,7 +114,11 @@ extension Animations {
         timeline.insert(animation: .hide,
                         forLayer: view.layer,
                         atTime: duration-TimelineAnimationOneFrame,
-                        withDuration: TimelineAnimationOneFrame)
+                        withDuration: TimelineAnimationOneFrame,
+                        onStart: { [weak view] in
+                            guard let sview = view else { return }
+                            sview.isHidden = true
+        })
         
         return timeline
     }
