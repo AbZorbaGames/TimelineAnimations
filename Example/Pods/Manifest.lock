@@ -1,5 +1,5 @@
 PODS:
-  - TimelineAnimations (2.10.1)
+  - TimelineAnimations (2.10.2)
 
 DEPENDENCIES:
   - TimelineAnimations (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  TimelineAnimations: 0f5822100b47d63a9d3c996e6b4b42296633fb7e
+  TimelineAnimations: ae7a4913a554cced766cc10fb424eaac26bf5b02
 
 PODFILE CHECKSUM: 7793da11b2e6410c80174bd164f6005f5604edae
 

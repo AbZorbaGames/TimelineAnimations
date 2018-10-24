@@ -31,7 +31,7 @@ extension Animations {
                         withDuration: duration)
         timeline.insert(animation: .unhide,
                         forLayer: view.layer,
-                        withDuration: TimelineAnimationMillisecond)
+                        withDuration: TimelineAnimationOneFrame)
         
         return timeline
     }
@@ -68,13 +68,13 @@ extension Animations {
         if (from == 0.0) {
             timeline.insert(animation: .unhide,
                             forLayer: view.layer,
-                            withDuration: TimelineAnimationMillisecond)
+                            withDuration: TimelineAnimationOneFrame)
         }
         if (to == 0.0) {
             timeline.insert(animation: .hide,
                             forLayer: view.layer,
-                            atTime: duration-TimelineAnimationMillisecond,
-                            withDuration: TimelineAnimationMillisecond)
+                            atTime: duration-TimelineAnimationOneFrame,
+                            withDuration: TimelineAnimationOneFrame)
         }
         
         return timeline
@@ -107,8 +107,8 @@ extension Animations {
         
         timeline.insert(animation: .hide,
                         forLayer: view.layer,
-                        atTime: duration-TimelineAnimationMillisecond,
-                        withDuration: TimelineAnimationMillisecond)
+                        atTime: duration-TimelineAnimationOneFrame,
+                        withDuration: TimelineAnimationOneFrame)
         
         return timeline
     }

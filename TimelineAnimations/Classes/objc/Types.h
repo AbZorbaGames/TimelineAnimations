@@ -94,4 +94,7 @@ static const TimelineAnimationRepeatCount TimelineAnimationRepeatCountInfinite N
 
 static const NSTimeInterval TimelineAnimationMillisecond = (NSTimeInterval)0.001;
 
+/// one frame is 16ms on 60fps devices.
+static const NSTimeInterval TimelineAnimationOneFrame = (NSTimeInterval)0.016;
+
 //#endif /* Types_h */
