@@ -1091,7 +1091,7 @@ va_end(arguments); \
 
     NSParameterAssert(animation != nil);
     NSParameterAssert(layer != nil);
-    NSParameterAssert(animation.duration >= TimelineAnimationOneFrame);
+    NSParameterAssert(animation.duration > 0.0);
     NSParameterAssert(animation.keyPath != nil);
 
     if (self.hasStarted) {
@@ -1131,7 +1131,7 @@ va_end(arguments); \
 
     NSParameterAssert(animation != nil);
     NSParameterAssert(layer != nil);
-    NSParameterAssert(animation.duration >= TimelineAnimationOneFrame);
+    NSParameterAssert(animation.duration > 0.0);
     NSParameterAssert(animation.keyPath != nil);
 
     if (self.hasStarted) {
