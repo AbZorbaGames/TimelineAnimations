@@ -1484,7 +1484,7 @@ va_end(arguments); \
 
 - (instancetype)timelineWithDuration:(const NSTimeInterval)duration {
     @autoreleasepool {
-        NSParameterAssert(duration >= TimelineAnimationOneFrame);
+        NSParameterAssert(duration > 0.0);
 
 
         TimelineAnimation *const updatedTimeline = [self copy];
@@ -1577,7 +1577,7 @@ va_end(arguments); \
 }
 
 - (instancetype)reversedWithDuration:(NSTimeInterval)duration {
-    NSParameterAssert(duration >= TimelineAnimationOneFrame);
+    NSParameterAssert(duration > 0.0);
 
     NSArray<TimelineEntity *> *const sortedEntities = _animations.copy;
     NSMutableArray<TimelineEntity *> *const reversedEntities = [[NSMutableArray alloc] initWithCapacity:sortedEntities.count];

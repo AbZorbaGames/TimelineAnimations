@@ -892,7 +892,7 @@
 }
 
 - (instancetype)timelineWithDuration:(NSTimeInterval)duration {
-    NSParameterAssert(duration >= TimelineAnimationOneFrame);
+    NSParameterAssert(duration > 0.0);
     
     GroupTimelineAnimation *const updatedTimeline = [self copy];
     if ([updatedTimeline respondsToSelector:@selector(setSetsModelValues:)]) {
@@ -957,7 +957,7 @@
 }
 
 - (instancetype)reversedWithDuration:(NSTimeInterval)duration {
-    NSParameterAssert(duration >= TimelineAnimationOneFrame);
+    NSParameterAssert(duration > 0.0);
     
     NSArray<GroupTimelineEntity *> *const sortedEntities = self.sortedEntities.copy;
     NSMutableArray<GroupTimelineEntity *> *const reversedEntities = [[NSMutableArray alloc] initWithCapacity:sortedEntities.count];
