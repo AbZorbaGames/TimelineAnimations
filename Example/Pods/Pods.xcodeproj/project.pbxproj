@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0504B82D5EA2C7D1BE2F765A66DBB324 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9310556BBE996AE628441592FB1181 /* Foundation.framework */; };
 		07831202A103745FB6300AD008EA0885 /* Types.h in Headers */ = {isa = PBXBuildFile; fileRef = 14A00E71F9B766631484BD979CD9C3DD /* Types.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07BD7790DD1C1EE5819DDB032DDD9715 /* CALayer+TimelineAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8D174E69C1C038F1BB3571DCF2221A /* CALayer+TimelineAnimation.m */; };
+		081EADDAD868DA2FAC96054B5ACECB60 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF13BCB9D36F1319E01CAB18FE2FBA7 /* QuartzCore.framework */; };
 		0A4CFB4BE1CBD5C035DBE354E06B7DD1 /* AnimationsFactoryTypedValueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D58318E0CCECFEA9E2301550B79883 /* AnimationsFactoryTypedValueExtension.swift */; };
 		0EE5E0241AAE38B77C43A9903BECA4B0 /* PrivateTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 03DC2A2A194C9E0C55E7EB7AA929E998 /* PrivateTypes.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		107C96513C127315B5F12C38FF7CDB2B /* TimelineAnimationReverseCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = FB273390A2B6FE67DCF8B9E979AC54BD /* TimelineAnimationReverseCoordinator.m */; };
@@ -32,7 +34,6 @@
 		5C451C0687A81B459D61F09F8F80F615 /* CAPropertyAnimation+TimelineEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = B9D4AEC7F4AEA8537BCA058C06DCDF89 /* CAPropertyAnimation+TimelineEntity.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		5F6F09007678F257EBD98C3421329D1B /* TimelineAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 195813C67835875B7CE45A846377166F /* TimelineAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		607C4DB0BC03A62FC9A63B7FE3D6E547 /* NSSet+TimelineSwiftyAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A19C77B59EFA6A7CD29C7C23B026B6 /* NSSet+TimelineSwiftyAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		6198224283E20AF3802CF5B10420BF25 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
 		6272579B12A64A732F85ECFB5A5380BA /* NSDictionary+TimelineSwiftyAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 81311C1F84A518EA5EE7EFAEF9848450 /* NSDictionary+TimelineSwiftyAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		69E9ED28E08ED03390A46AC53CB09A33 /* TimelineAnimationDescription.h in Headers */ = {isa = PBXBuildFile; fileRef = 62F995E3859EBC8D7FB81D9356DCC764 /* TimelineAnimationDescription.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6DFB5A03FD7E696D4B3C67199F69BAE5 /* TimelineAudioAssociation.m in Sources */ = {isa = PBXBuildFile; fileRef = 93361BF2C9C991025FD5920410540B36 /* TimelineAudioAssociation.m */; };
@@ -77,7 +78,7 @@
 		E84A22AEDDBE365C449301C221B68692 /* AnimationKeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D59E30B76C7A6F775F0243F79B5A72 /* AnimationKeyPath.swift */; };
 		ED4DCF25CA249065AB0955FB273567CF /* GroupTimelineEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 10BEBA36F41AA2F1163E5FBF9E8E4A30 /* GroupTimelineEntity.m */; };
 		ED6E668DE8E8AFCE9CCB3B649F33B61B /* CALayer+TimelineAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 00D399EE8F2BB10B88EDFDFEA63F1620 /* CALayer+TimelineAnimation.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		F2BF7B1A147D590AC192C1FCB725ADBA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		F2BF7B1A147D590AC192C1FCB725ADBA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9310556BBE996AE628441592FB1181 /* Foundation.framework */; };
 		F79A57835B15E48E7B2F617D72DD0D86 /* TimelineAudioAssociation_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = C1CB6780FABDDE0839947AA7D3CF58EA /* TimelineAudioAssociation_Internal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F988F7D400D39D92A16EDF4EE5B77E57 /* TimelineAnimationProtected.h in Headers */ = {isa = PBXBuildFile; fileRef = 0740E369C422552C896AEA654AC50610 /* TimelineAnimationProtected.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		FB9EEDEEC040D5F92FA320AEB3128A2D /* TimelineAnimationSwiftAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987431AEB8C4C2C845514C69767BE642 /* TimelineAnimationSwiftAPI.swift */; };
@@ -106,6 +107,7 @@
 		0B2BCF9E897DA9BFB25B732EC4182EDF /* TimelineAudioAssociation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAudioAssociation.h; sourceTree = "<group>"; };
 		0B6A8EC9AC4FEAC972DEB42A7D3535BA /* CAPropertyAnimation+Reverse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CAPropertyAnimation+Reverse.h"; sourceTree = "<group>"; };
 		0E7F59C537508EA98B9C9A98C81050D4 /* TimelineAnimationsBlankLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TimelineAnimationsBlankLayer.m; sourceTree = "<group>"; };
+		0F9310556BBE996AE628441592FB1181 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		10BEBA36F41AA2F1163E5FBF9E8E4A30 /* GroupTimelineEntity.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GroupTimelineEntity.m; sourceTree = "<group>"; };
 		14A00E71F9B766631484BD979CD9C3DD /* Types.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Types.h; sourceTree = "<group>"; };
 		14D59E30B76C7A6F775F0243F79B5A72 /* AnimationKeyPath.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AnimationKeyPath.swift; sourceTree = "<group>"; };
@@ -128,7 +130,6 @@
 		4EA68DDC1D4629DC66F726E6AFD54760 /* AnimationsFactoryConvenienceExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AnimationsFactoryConvenienceExtensions.swift; sourceTree = "<group>"; };
 		55821EE152AD74EB4F6310D8445826F6 /* CAPropertyAnimation+Reverse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CAPropertyAnimation+Reverse.m"; sourceTree = "<group>"; };
 		5685E31738B59F75EFA366F94E56F62D /* TimelineAnimations.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TimelineAnimations.xcconfig; sourceTree = "<group>"; };
-		5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		5BD95AB47C308E7C6A78DF1F2C21612A /* AnimationsKeyPath.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AnimationsKeyPath.h; sourceTree = "<group>"; };
 		5E2EF7704948D6A31D5CB8C0DC9B9352 /* Pods-TimelineAnimations_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-TimelineAnimations_Tests.modulemap"; sourceTree = "<group>"; };
 		60DBFBC53461BC88F9DF7A63A02A9A6B /* TimelineAnimationsProgressMonitorLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TimelineAnimationsProgressMonitorLayer.h; sourceTree = "<group>"; };
@@ -161,6 +162,7 @@
 		976C616099FE7EF4D18662FB3409BA0E /* TimelineAnimations-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TimelineAnimations-umbrella.h"; sourceTree = "<group>"; };
 		987431AEB8C4C2C845514C69767BE642 /* TimelineAnimationSwiftAPI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TimelineAnimationSwiftAPI.swift; sourceTree = "<group>"; };
 		9A50063FDDCE03DDA82D8E71358F3B41 /* NSArray+TimelineSwiftyAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSArray+TimelineSwiftyAdditions.h"; sourceTree = "<group>"; };
+		9CF13BCB9D36F1319E01CAB18FE2FBA7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		9D10AD35BA52DA54F72E604C2AF358EA /* Animations.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		A15C848AC4FABE0CF3B7417F87F6EFCD /* Pods-TimelineAnimations_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TimelineAnimations_Tests-resources.sh"; sourceTree = "<group>"; };
 		A2352A419AA6EA84310315BE10205D63 /* Pods-TimelineAnimations_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TimelineAnimations_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -194,19 +196,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		800171611C689FF7D54F0CF137627374 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6198224283E20AF3802CF5B10420BF25 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A4321018C282948CB9BF1FBA2A811DB3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				F2BF7B1A147D590AC192C1FCB725ADBA /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E158E70B77F7EDE581D249E937F060FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0504B82D5EA2C7D1BE2F765A66DBB324 /* Foundation.framework in Frameworks */,
+				081EADDAD868DA2FAC96054B5ACECB60 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +278,14 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				56933BB70C933E0BF63210DD87D76AD0 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4F05153A8C4464059CFD454B1ACD22E7 /* swift */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,10 +319,11 @@
 			path = ../..;
 			sourceTree = "<group>";
 		};
-		5E0D919E635D23B70123790B8308F8EF /* iOS */ = {
+		56933BB70C933E0BF63210DD87D76AD0 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */,
+				0F9310556BBE996AE628441592FB1181 /* Foundation.framework */,
+				9CF13BCB9D36F1319E01CAB18FE2FBA7 /* QuartzCore.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
@@ -350,18 +362,10 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				F39B6461A4B5AC0211D72315868B4B82 /* Development Pods */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
 				F16FEAA1B56D9609C16DBD2A0B422A49 /* Products */,
 				3EBB825A214E16B1C9AC4803CE4622AF /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				5E0D919E635D23B70123790B8308F8EF /* iOS */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		C3F0B5BC91FB7430C8F5673E75B199E5 /* Audio */ = {
@@ -511,7 +515,7 @@
 			buildPhases = (
 				392F846517FC1942AFBC33035A2E7179 /* Headers */,
 				3169FB240594913D2BCD32585D87FD60 /* Sources */,
-				800171611C689FF7D54F0CF137627374 /* Frameworks */,
+				E158E70B77F7EDE581D249E937F060FC /* Frameworks */,
 				3724CBD3D5A0EB3254E55D2AF1FFA77F /* Resources */,
 			);
 			buildRules = (

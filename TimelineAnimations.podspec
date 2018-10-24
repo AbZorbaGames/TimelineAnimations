@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TimelineAnimations'
-  s.version          = '2.10.3'
+  s.version          = '2.10.4'
   s.summary          = 'A powerfull wrapper around CoreAnimation that facilitates the sequencing of animations.'
 
 # This description is used to generate tags and improve search results.
@@ -34,10 +34,14 @@ A powerfull wrapper around CoreAnimation that facilitates the sequencing of anim
   s.public_header_files = 'TimelineAnimations/Classes/objc/AnimationsFactory.h', 'TimelineAnimations/Classes/objc/AnimationsKeyPath.h', 'TimelineAnimations/Classes/objc/SpecialEasing/CAKeyframeAnimation+SpecialEasing.h', 'TimelineAnimations/Classes/objc/EasingTiming/EasingTimingHandler.h', 'TimelineAnimations/Classes/objc/GroupTimelineAnimation.h', 'TimelineAnimations/Classes/objc/Helper/KeyValueBlockObservation.h', 'TimelineAnimations/Classes/objc/TimelineAnimation.h', 'TimelineAnimations/Classes/objc/TimelineAnimations.h', 'TimelineAnimations/Classes/objc/Audio/TimelineAudio.h', 'TimelineAnimations/Classes/objc/Audio/TimelineAudioAssociation.h', 'TimelineAnimations/Classes/objc/Types.h', 'TimelineAnimations/Classes/objc/SpecialEasing/TimelineAnimationSpecialTimingFunction.h', 'TimelineAnimations/Classes/objc/Helper/TimelineAnimationDescription.h'
 
   
+  s.xcconfig = { 
+	  "SWIFT_VERSION" => '4.2'
+  }
+
   # s.resource_bundles = {
   #   'TimelineAnimations' => ['TimelineAnimations/Assets/*.png']
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
+  s.frameworks = 'QuartzCore'
 end

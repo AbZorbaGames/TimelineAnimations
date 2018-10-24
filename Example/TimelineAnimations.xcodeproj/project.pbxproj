@@ -8,19 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		A9F6ADB85574081490D58B26 /* Pods_TimelineAnimations_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE8A28E2ED157D5702C0D3E1 /* Pods_TimelineAnimations_Tests.framework */; };
+		A8B9A513DB079CEB065C3E01 /* Pods_TimelineAnimations_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFD5C10D50E18C3C71726996 /* Pods_TimelineAnimations_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		163A70590DA8BC363F3AB69D /* Pods-TimelineAnimations_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimelineAnimations_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimelineAnimations_Tests/Pods-TimelineAnimations_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		2F3664B5113D88A9D754A471 /* Pods-TimelineAnimations_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimelineAnimations_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TimelineAnimations_Tests/Pods-TimelineAnimations_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* TimelineAnimations_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimelineAnimations_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		7DF0FDEB75756812EDA11E7B /* TimelineAnimations.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = TimelineAnimations.podspec; path = ../TimelineAnimations.podspec; sourceTree = "<group>"; };
-		9D9F523EF84DB2D87E0597D3 /* Pods-TimelineAnimations_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimelineAnimations_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TimelineAnimations_Tests/Pods-TimelineAnimations_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		9EBC82B3A1A16869719C456C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		C5EB4B51E30D309167AC31D0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		DE8A28E2ED157D5702C0D3E1 /* Pods_TimelineAnimations_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimelineAnimations_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA6A1AE15C5F925ADD9E2053 /* Pods-TimelineAnimations_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimelineAnimations_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimelineAnimations_Tests/Pods-TimelineAnimations_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		FFD5C10D50E18C3C71726996 /* Pods_TimelineAnimations_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimelineAnimations_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,29 +28,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9F6ADB85574081490D58B26 /* Pods_TimelineAnimations_Tests.framework in Frameworks */,
+				A8B9A513DB079CEB065C3E01 /* Pods_TimelineAnimations_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		241E640285E82510380E3139 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				DE8A28E2ED157D5702C0D3E1 /* Pods_TimelineAnimations_Tests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
-				9EA70517C02E07E1D68E7769 /* Pods */,
-				241E640285E82510380E3139 /* Frameworks */,
+				6583B8433D24EB16CF071DAF /* Pods */,
+				BD02D1E85BE29E378793BC0F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,13 +81,21 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		9EA70517C02E07E1D68E7769 /* Pods */ = {
+		6583B8433D24EB16CF071DAF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9D9F523EF84DB2D87E0597D3 /* Pods-TimelineAnimations_Tests.debug.xcconfig */,
-				163A70590DA8BC363F3AB69D /* Pods-TimelineAnimations_Tests.release.xcconfig */,
+				2F3664B5113D88A9D754A471 /* Pods-TimelineAnimations_Tests.debug.xcconfig */,
+				CA6A1AE15C5F925ADD9E2053 /* Pods-TimelineAnimations_Tests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		BD02D1E85BE29E378793BC0F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FFD5C10D50E18C3C71726996 /* Pods_TimelineAnimations_Tests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -105,11 +105,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "TimelineAnimations_Tests" */;
 			buildPhases = (
-				36F5E8E9B333AE8D51C1FB13 /* [CP] Check Pods Manifest.lock */,
+				E75751E1CA7E774921FB5C4E /* [CP] Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
-				1831953AE5C6CE7BC582DA06 /* [CP] Embed Pods Frameworks */,
+				2AB858A3C540E64F18F7EBAA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -166,7 +166,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1831953AE5C6CE7BC582DA06 /* [CP] Embed Pods Frameworks */ = {
+		2AB858A3C540E64F18F7EBAA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -188,7 +188,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TimelineAnimations_Tests/Pods-TimelineAnimations_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		36F5E8E9B333AE8D51C1FB13 /* [CP] Check Pods Manifest.lock */ = {
+		E75751E1CA7E774921FB5C4E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -361,7 +361,7 @@
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D9F523EF84DB2D87E0597D3 /* Pods-TimelineAnimations_Tests.debug.xcconfig */;
+			baseConfigurationReference = 2F3664B5113D88A9D754A471 /* Pods-TimelineAnimations_Tests.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -381,7 +381,7 @@
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 163A70590DA8BC363F3AB69D /* Pods-TimelineAnimations_Tests.release.xcconfig */;
+			baseConfigurationReference = CA6A1AE15C5F925ADD9E2053 /* Pods-TimelineAnimations_Tests.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

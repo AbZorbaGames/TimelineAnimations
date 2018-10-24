@@ -892,7 +892,7 @@
 }
 
 - (instancetype)timelineWithDuration:(NSTimeInterval)duration {
-    NSParameterAssert(duration > 0.0);
+    NSParameterAssert(duration >= TimelineAnimationOneFrame);
     
     GroupTimelineAnimation *const updatedTimeline = [self copy];
     if ([updatedTimeline respondsToSelector:@selector(setSetsModelValues:)]) {
@@ -930,8 +930,14 @@
     const double factor = duration / currentDuration;
     updatedTimeline.timeNotificationAssociations = [self timeNotificationConvertedUsing:^RelativeTimeNumber * _Nonnull(RelativeTimeNumber * _Nonnull key) {
         double value = key.doubleValue;
-        if (value == TimelineAnimationMillisecond) {
+        if ((value == TimelineAnimationMillisecond)
+            || (fabs((double)(value - TimelineAnimationMillisecond)) < 0.001)) {
             return @(TimelineAnimationMillisecond);
+        }
+        // if around one frame time
+        if ((value == TimelineAnimationOneFrame)
+            || (fabs((double)(value - TimelineAnimationOneFrame)) < 0.001)) {
+            return @(TimelineAnimationOneFrame);
         }
         value *= factor;
         if (value < TimelineAnimationMillisecond) {
@@ -951,7 +957,7 @@
 }
 
 - (instancetype)reversedWithDuration:(NSTimeInterval)duration {
-    NSParameterAssert(duration > 0.0);
+    NSParameterAssert(duration >= TimelineAnimationOneFrame);
     
     NSArray<GroupTimelineEntity *> *const sortedEntities = self.sortedEntities.copy;
     NSMutableArray<GroupTimelineEntity *> *const reversedEntities = [[NSMutableArray alloc] initWithCapacity:sortedEntities.count];
@@ -985,7 +991,7 @@
     
     guard (self.isNonEmpty) else { return; }
     NSAssert(_helperTimeline != nil, @"TimelineAnimations: WTF?");
-    NSParameterAssert(duration > 0.0);
+    NSParameterAssert(duration >= TimelineAnimationOneFrame);
     
     TimelineAnimationsBlankLayer *const blankLayer = [[TimelineAnimationsBlankLayer alloc] init];
     CABasicAnimation *const blankAnimation = [CABasicAnimation animationWithKeyPath:TimelineAnimationsBlankLayer.keyPath];

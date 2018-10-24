@@ -164,7 +164,7 @@ typedef NS_ENUM(NSUInteger, AudioAssociationType) {
             time = (RelativeTime)Round((timeline.duration * 0.5));
             break;
         case AudioAssociationTypeOnCompletion:
-            time = Round(timeline.endTimeWithNoRepeating - TimelineAnimationMillisecond);
+            time = Round(timeline.endTimeWithNoRepeating - TimelineAnimationOneFrame);
             break;
         case AudioAssociationTypeAtTime:
             time = self.time;

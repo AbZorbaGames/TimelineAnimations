@@ -954,7 +954,7 @@ va_end(arguments); \
                                      }];
                                  }
                               onComplete:nil
-                            withDuration:TimelineAnimationMillisecond];
+                            withDuration:TimelineAnimationOneFrame];
     }];
 }
 
@@ -966,7 +966,7 @@ va_end(arguments); \
     // do not uncomment this. it will break GroupTimelineAnimation
     //    guard (self.isNonEmpty) else { return; }
 
-    NSParameterAssert(duration > 0.0);
+    NSParameterAssert(duration >= TimelineAnimationOneFrame);
 
     TimelineAnimationsBlankLayer *const blankLayer = [[TimelineAnimationsBlankLayer alloc] init];
     CABasicAnimation *const blankAnimation = [CABasicAnimation animationWithKeyPath:TimelineAnimationsBlankLayer.keyPath];
@@ -1091,7 +1091,7 @@ va_end(arguments); \
 
     NSParameterAssert(animation != nil);
     NSParameterAssert(layer != nil);
-    NSParameterAssert(animation.duration > 0.0);
+    NSParameterAssert(animation.duration >= TimelineAnimationOneFrame);
     NSParameterAssert(animation.keyPath != nil);
 
     if (self.hasStarted) {
@@ -1131,7 +1131,7 @@ va_end(arguments); \
 
     NSParameterAssert(animation != nil);
     NSParameterAssert(layer != nil);
-    NSParameterAssert(animation.duration > 0.0);
+    NSParameterAssert(animation.duration >= TimelineAnimationOneFrame);
     NSParameterAssert(animation.keyPath != nil);
 
     if (self.hasStarted) {
@@ -1484,7 +1484,8 @@ va_end(arguments); \
 
 - (instancetype)timelineWithDuration:(const NSTimeInterval)duration {
     @autoreleasepool {
-        NSParameterAssert(duration > 0.0);
+        NSParameterAssert(duration >= TimelineAnimationOneFrame);
+
 
         TimelineAnimation *const updatedTimeline = [self copy];
         if ([updatedTimeline respondsToSelector:@selector(setSetsModelValues:)]) {
@@ -1503,6 +1504,12 @@ va_end(arguments); \
             const NSUInteger millisecond = (NSUInteger)(TimelineAnimationMillisecond * 1000.0);
             // if duration is only 1ms then do nothing
             if (currentDurationInMilliseconds == millisecond) {
+                return updatedTimeline;
+            }
+
+            const NSUInteger frame = (NSUInteger)(TimelineAnimationOneFrame * 1000.0);
+            // if duration is only 16ms (one frame long) then do nothing
+            if (currentDurationInMilliseconds == frame) {
                 return updatedTimeline;
             }
         }
@@ -1539,8 +1546,14 @@ va_end(arguments); \
         const double factor = newTimelineDuration / oldTimelineDuration;
         updatedTimeline.timeNotificationAssociations = [self timeNotificationConvertedUsing:^RelativeTimeNumber *(RelativeTimeNumber *key) {
             double value = key.doubleValue;
-            if (value == TimelineAnimationMillisecond) {
+            if ((value == TimelineAnimationMillisecond)
+                || (fabs((double)(value - TimelineAnimationMillisecond)) < 0.001)) {
                 return @(TimelineAnimationMillisecond);
+            }
+            // if around one frame time
+            if ((value == TimelineAnimationOneFrame)
+                || (fabs((double)(value - TimelineAnimationOneFrame)) < 0.001)) {
+                return @(TimelineAnimationOneFrame);
             }
             value *= factor;
             if (value < TimelineAnimationMillisecond) {
@@ -1564,7 +1577,7 @@ va_end(arguments); \
 }
 
 - (instancetype)reversedWithDuration:(NSTimeInterval)duration {
-    NSParameterAssert(duration > 0.0);
+    NSParameterAssert(duration >= TimelineAnimationOneFrame);
 
     NSArray<TimelineEntity *> *const sortedEntities = _animations.copy;
     NSMutableArray<TimelineEntity *> *const reversedEntities = [[NSMutableArray alloc] initWithCapacity:sortedEntities.count];
@@ -1739,7 +1752,7 @@ va_end(arguments); \
 
     guard (self.isNonEmpty) else { return; }
 
-    NSParameterAssert(duration > 0.0);
+    NSParameterAssert(duration >= TimelineAnimationOneFrame);
 
     TimelineAnimationsBlankLayer *const blankLayer = [[TimelineAnimationsBlankLayer alloc] init];
     CABasicAnimation *const blankAnimation = [CABasicAnimation animationWithKeyPath:TimelineAnimationsBlankLayer.keyPath];
