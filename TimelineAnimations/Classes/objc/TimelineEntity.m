@@ -641,8 +641,8 @@
     int64_t otherEndTime = (int64_t)(other.endTime * (RelativeTime)1000.0); // make it ms
     
     // if I begin before the other ends, |or| the other begins before I end! - boumis the painter
-    if ( ((selfBeginTime >= otherBeginTime) && (selfBeginTime <= otherEndTime)) ||
-        ((otherBeginTime >= selfBeginTime) && (otherBeginTime <= selfEndTime)) ) {
+    if ( ((selfBeginTime >= otherBeginTime) && (selfBeginTime < otherEndTime)) ||
+        ((otherBeginTime >= selfBeginTime) && (otherBeginTime < selfEndTime)) ) {
         return YES; // conflict
     }
     
