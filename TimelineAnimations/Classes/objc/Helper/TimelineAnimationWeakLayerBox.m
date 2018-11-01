@@ -23,9 +23,11 @@
     guard ([object isKindOfClass:self.class]) else { return NO; }
 
     TimelineAnimationWeakLayerBox *const other = (TimelineAnimationWeakLayerBox *)object;
-    guard (_layer != nil) else { return NO; }
-    guard (other.layer != nil) else { return NO; }
-    const BOOL sameLayer = (_layer == other.layer);
+    __strong typeof(_layer) slayer = _layer;
+    guard (slayer != nil) else { return NO; }
+    __strong typeof(other.layer) otherslayer = other.layer;
+    guard (otherslayer != nil) else { return NO; }
+    const BOOL sameLayer = (slayer == otherslayer);
     return sameLayer;
 }
 

@@ -54,7 +54,7 @@
                                            to:(CGFloat)to
                                 keyframeCount:(size_t)keyframeCount {
     
-    NSMutableArray<NSNumber *> *const values = [[NSMutableArray alloc] initWithCapacity:(NSInteger)keyframeCount];
+    NSMutableArray<NSNumber *> *const values = [[NSMutableArray alloc] initWithCapacity:(NSUInteger)keyframeCount];
     
     double t = 0.0;
     const CGFloat dt = (CGFloat)(1.0 / (keyframeCount - 1));
@@ -102,7 +102,7 @@
                                          to:(CGPoint)to
                               keyframeCount:(size_t)keyframeCount {
     
-    NSMutableArray<NSValue *> *const values = [[NSMutableArray alloc] initWithCapacity:(NSInteger)keyframeCount];
+    NSMutableArray<NSValue *> *const values = [[NSMutableArray alloc] initWithCapacity:(NSUInteger)keyframeCount];
     
     double t = 0.0;
     const CGFloat dt = (CGFloat)(1.0 / (keyframeCount - 1));
@@ -141,7 +141,7 @@
                                         to:(CGSize)to
                              keyframeCount:(size_t)keyframeCount {
     
-    NSMutableArray<NSValue *> *const values = [[NSMutableArray alloc] initWithCapacity:(NSInteger)keyframeCount];
+    NSMutableArray<NSValue *> *const values = [[NSMutableArray alloc] initWithCapacity:(NSUInteger)keyframeCount];
     
     double t = 0.0;
     const CGFloat dt = (CGFloat)(1.0 / (keyframeCount - 1));
@@ -205,7 +205,7 @@
                                            from:(CGAffineTransform)from
                                              to:(CGAffineTransform)to
                                   keyframeCount:(size_t)keyframeCount {
-    NSMutableArray<NSValue *> *const values = [[NSMutableArray alloc] initWithCapacity:(NSInteger)keyframeCount];
+    NSMutableArray<NSValue *> *const values = [[NSMutableArray alloc] initWithCapacity:(NSUInteger)keyframeCount];
     
     const CGPoint fromTranslation  = CGPointMake(from.tx, from.ty);
     const CGPoint toTranslation    = CGPointMake(to.tx, to.ty);

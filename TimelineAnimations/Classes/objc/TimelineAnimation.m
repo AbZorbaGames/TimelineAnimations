@@ -2248,7 +2248,7 @@ va_end(arguments); \
     if (propertiesSize.width > size.width || propertiesSize.height > size.height) {
         return [self _findAttributesOfString:string
                                    toFitSize:size
-                  staringWithInitialFontSize:(fontSize * 0.05)];
+                  staringWithInitialFontSize:(fontSize * (CGFloat)0.05)];
     }
     return initialAttributes;
 }
