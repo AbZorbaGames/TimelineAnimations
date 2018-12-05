@@ -39,7 +39,7 @@ TimelineAnimationExceptionName TimelineAnimationElementsNotInHierarchyException 
 
 NSErrorDomain const TimelineAnimationsErrorDomain = @"TimelineAnimationsErrorDomain";
 
-NSErrorUserInfoKey const TimelineAnimationNameKey = @"name";
+NSErrorUserInfoKey const TimelineAnimationReferenceKey = @"timeline";
 NSErrorUserInfoKey const TimelineAnimationSummaryKey = @"summary";
 
 @interface TimelineAnimation ()
@@ -629,14 +629,24 @@ NSErrorUserInfoKey const TimelineAnimationSummaryKey = @"summary";
     return _cachedAffectedLayers;
 }
 
-- (BOOL)_checkForOutOfHierarchyIssues {
+- (BOOL)_checkForOutOfHierarchyIssues:(__kindof CALayer *__autoreleasing _Nullable * _Nullable)orphanLayer {
 
     // check for out of hierarchy problems
     for (TimelineAnimationWeakLayerBox *const box in self.cachedAffectedLayers) {
         __strong __kindof CALayer *const layer = box.layer;
 
-        guard (layer != nil) else { return YES; }
-        guard (layer.superlayer != nil) else { return YES; }
+        guard (layer != nil) else {
+            if (orphanLayer != nil) {
+                *orphanLayer = layer;
+            }
+            return YES;
+        }
+        guard (layer.superlayer != nil) else {
+            if (orphanLayer != nil) {
+                *orphanLayer = layer;
+            }
+            return YES;
+        }
     }
     return NO;
 }
@@ -644,37 +654,25 @@ NSErrorUserInfoKey const TimelineAnimationSummaryKey = @"summary";
 - (void)__raiseConflictingAnimationExceptionBetweenEntity:(TimelineEntity *)entity1
                                                 andEntity:(TimelineEntity *)entity2 {
 
-    NSString *const reason = [[NSString alloc] initWithFormat:
-                              @"Tried to add an animation to the "
-                              "timeline that conflicts with another "
-                              "animation that is already present.\n"
-                              "%@\n"
-                              "%@",
-                              [entity1 debugDescription],
-                              [entity2 debugDescription]];
+    NSString *const reason =
+    [[NSString alloc] initWithFormat:
+     @"Tried to add an animation to the timeline that conflicts with another"
+     " animation that is already present."
+     " The conflict resides between \n\ta: %@\n\tb: %@"
+     "\nContext: \n%@\n%@.",
+     entity1.shortDescription,
+     entity2.shortDescription,
+     [entity1.timelineAnimation summaryMarkingEntity:entity1],
+     [entity2.timelineAnimation summaryMarkingEntity:entity2]
+     ];
 
-#ifdef DEBUG
     [self __raiseConflictingAnimationExceptionWithReason:reason, nil];
-#else
-    // in RELEASE mode just log the stack trace.
-    NSArray<NSString *> *const symbols = [NSThread callStackSymbols];
-    NSString *const desc = @"Follows the stack trace:";
-    NSUInteger totalLength = ((NSNumber *)[symbols valueForKeyPath:@"@sum.length"]).unsignedIntegerValue;
-    NSMutableString *const string = [[NSMutableString alloc] initWithCapacity:totalLength + reason.length + desc.length];
-    [string appendFormat:@"%@\n%@", reason, desc];
-
-    [symbols enumerateObjectsUsingBlock:^(NSString * _Nonnull symbol, NSUInteger idx, BOOL * _Nonnull stop) {
-        [string appendFormat:@"\n%@", symbol];
-    }];
-    // always track, always use NSLog
-    NSLog(@"TimelineAnimations: %@", [string copy]);
-#endif /* DEBUG */
 }
 
 - (void)__raiseImmutableTimelineExceptionWithSelector:(SEL)sel {
     [self __raiseImmutableTimelineAnimationExceptionWithReason:
      @"Tried to modify %@.%@ in selector: \"%@\""
-     "while the animation has already started.",
+     " while the animation has already started.",
      NSStringFromClass(self.class),
      self.name,
      NSStringFromSelector(sel)];
@@ -691,10 +689,11 @@ NSErrorUserInfoKey const TimelineAnimationSummaryKey = @"summary";
         return;
     }
 
+    // log exception
     NSString *const reason = [[NSString alloc] initWithFormat:format
                                                     arguments:arguments];
     NSDictionary<NSErrorUserInfoKey, id> *const userInfo = @{
-                                                             TimelineAnimationNameKey: self.name ?: @"<no-name>",
+                                                             TimelineAnimationReferenceKey: self,
                                                              TimelineAnimationSummaryKey: self.summary,
                                                              NSLocalizedDescriptionKey: exception,
                                                              NSLocalizedFailureReasonErrorKey: reason
@@ -713,7 +712,7 @@ NSErrorUserInfoKey const TimelineAnimationSummaryKey = @"summary";
     NSString *const reason = [[NSString alloc] initWithFormat:format
                                                     arguments:arguments];
     NSDictionary<NSErrorUserInfoKey, id> *const userInfo = @{
-                                                             TimelineAnimationNameKey: self.name ?: @"<no-name>",
+                                                             TimelineAnimationReferenceKey: self,
                                                              TimelineAnimationSummaryKey: self.summary,
                                                              };
 
@@ -822,30 +821,24 @@ va_end(arguments); \
 - (NSString *)description {
     return [[NSString alloc] initWithFormat:
             @"<%@: %p; "
-            "name =\"%@\"; "
-            "beginTime = \"%.3lf\"; "
-            "endTime = \"%.3lf\"; "
-            "duration = \"%.3lf\"; "
+            "\"%@\"; "
+            "[%.3lf,%.3lf] (%.3lf); "
             "userInfo = %@;>",
             NSStringFromClass(self.class),
             (void *)self,
             _name,
-            self.beginTime,
-            self.endTime,
-            self.duration,
+            self.beginTime, self.endTime, self.duration,
             _userInfo];
 }
 
 - (NSString *)debugDescription {
     NSMutableString *string = [[NSMutableString alloc] initWithFormat:@"<%@: %p; "
                                "name = \"%@\"; "
-                               "beginTime = \"%.3lf\"; "
-                               "endTime = \"%.3lf\"; ",
+                               "[%.3lf,%.3lf]; ",
                                NSStringFromClass(self.class),
                                (void *)self,
                                _name,
-                               self.beginTime,
-                               self.endTime
+                               self.beginTime, self.endTime
                                ];
     NSString *repeats = @"0";
     if (self.isRepeating) {
@@ -856,7 +849,7 @@ va_end(arguments); \
             repeats = @(self.repeatCount).stringValue;
         }
     }
-    [string appendFormat:@"isRepeating(%@) = %@; ", repeats, @(self.isRepeating).stringValue];
+    [string appendFormat:@"isRepeating(%@) = %@; ", repeats, self.isRepeating ? @"YES" : @"NO"];
     if (self.isRepeating) {
         [string appendFormat:@"duration = \"%.3lf\", ", self.nonRepeatingDuration];
         if (self.isInfinitelyRepeating) {
@@ -982,6 +975,33 @@ va_end(arguments); \
                   onStart:start
                onComplete:complete];
 }
+
+- (NSString *)summaryMarkingEntity:(nullable TimelineEntity *)entityToMark {
+    NSMutableString *const summary =
+    [[NSMutableString alloc] initWithFormat:@"\"%@\":%p;", self.name, self];
+    [summary appendFormat:@" [%.3lf,%.3lf] (%.3lf);",
+     self.beginTime, self.endTime, self.duration];
+    [summary appendFormat:@" animations(%@) = [\n", @(_animations.count)];
+
+    NSArray<TimelineEntity *> *const sorted = [self _sortedEntitesUsingKey:SortKey(beginTime)];
+    [sorted enumerateObjectsUsingBlock:^(TimelineEntity * _Nonnull entity, NSUInteger idx, BOOL * _Nonnull stop) {
+        __strong __kindof CALayer *const slayer = entity.layer;
+        [summary appendFormat:(entity == entityToMark) ? @" -> " : @"    "];
+        [summary appendFormat:@"%@: [%.3lf,%.3lf] (%.3lf), \"%@\", layer(%@:%p of %@:%p)\n",
+         @(idx),
+         entity.beginTime, entity.endTime,
+         entity.duration,
+         entity.animation.keyPath,
+         NSStringFromClass(slayer.class),
+         slayer,
+         NSStringFromClass(slayer.delegate.class),
+         slayer.delegate];
+    }];
+    [summary appendFormat:@"]"];
+
+    return [summary copy];
+}
+
 
 @end
 
@@ -1369,11 +1389,13 @@ va_end(arguments); \
     [self _setupTimeNotifications];
     [self _setupProgressNotifications];
 
-    if ([self _checkForOutOfHierarchyIssues]) {
+    __kindof CALayer *potentialOrphanLayer = nil;
+    if ([self _checkForOutOfHierarchyIssues:&potentialOrphanLayer]) {
         [self __raiseElementsNotInHierarchyExceptionWithReason:
-         @"TimelineAnimations: You tried to play an animation with lost layers %@.\"%@\".",
-         NSStringFromClass(self.class),
-         self.name];
+         @"TimelineAnimations: You tried to play an animation with lost layers %@"
+         "\n%@",
+         [potentialOrphanLayer debugDescription],
+         [self summary]];
     }
 
     self.started = YES;
@@ -2059,28 +2081,10 @@ va_end(arguments); \
 
 @end
 
-
 @implementation TimelineAnimation (Debug)
 
 - (NSString *)summary {
-    NSMutableString *const summary = [[NSMutableString alloc] initWithFormat:@"\"%@\": ", self.name];
-    [summary appendFormat:@"duration: \"%.3lf\"; ", self.duration];
-    [summary appendFormat:@"animations(%@) = [\n", @(_animations.count)];
-
-    NSArray<TimelineEntity *> *const sorted = [self _sortedEntitesUsingKey:SortKey(beginTime)];
-    [sorted enumerateObjectsUsingBlock:^(TimelineEntity * _Nonnull entity, NSUInteger idx, BOOL * _Nonnull stop) {
-        __strong __kindof CALayer *const slayer = entity.layer;
-        [summary appendFormat:@"\t%@: time: [%.3lf,%.3lf], keypath: \"%@\", layer(%p): (%@ of %@)\n",
-         @(idx), entity.beginTime,
-         entity.endTime,
-         entity.animation.keyPath,
-         slayer,
-         NSStringFromClass(slayer.class),
-         NSStringFromClass(slayer.delegate.class)];
-    }];
-    [summary appendFormat:@"]"];
-
-    return [summary copy];
+    return [self summaryMarkingEntity:nil];
 }
 
 - (NSArray<__kindof CAPropertyAnimation *> *)animationsBeginingAtTime:(RelativeTime)time {

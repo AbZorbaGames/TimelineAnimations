@@ -251,6 +251,21 @@
 
 #pragma mark -
 
+- (NSString *)shortDescription {
+    __strong typeof(_layer) slayer = _layer;
+    return [NSString stringWithFormat:@"%@:%p;"
+            "[%.3lf,%.3lf] (%.3lf)"
+            ", \"%@\", layer(%@:%p of %@:%p)",
+            NSStringFromClass(self.class), self,
+
+            self.beginTime, self.endTime, self.duration,
+            self.animation.keyPath,
+            NSStringFromClass(slayer.class),
+            slayer,
+            NSStringFromClass(slayer.delegate.class),
+            slayer.delegate];
+}
+
 - (NSString *)debugDescription {
     __strong typeof(_timelineAnimation) stimeline = self.timelineAnimation;
     
@@ -267,41 +282,50 @@
                   basic.fromValue,
                   basic.toValue];
     }
-    
+    __strong typeof(_layer) slayer = _layer;
     return [NSString stringWithFormat:@"<%@ %p: "
             "key = \"%@\"; "
             "keyPath = \"%@\"; "
-            "beginTime = \"%.3lf\"; "
-            "endTime = \"%.3lf\"; "
+            "[\"%.3lf\", \"%.3lf\"]; "
             "duration = \"%.3lf\"; "
             "values = %@; "
             "finished = %@; "
             "paused = %@; "
             "cleared = %@; "
+            
             "type = %@; "
+            
             "onStart = %@; "
             "completion = %@; "
+            
+            "layer = %@:%p of %@:%p; "
+            
             "timeline = [%@(%p)::\"%@\"]; "
-            "layer = %@;"
             ">",
-            NSStringFromClass(self.class),
-            self,
+            NSStringFromClass(self.class), self,
+            
             _animationKey,
             _animation.keyPath,
-            self.beginTime,
-            self.endTime,
+            self.beginTime, self.endTime,
             self.duration,
             values,
-            @(self.finished).stringValue,
-            @(self.paused).stringValue,
-            @(self.cleared).stringValue,
+            self.finished ? @"YES" : @"NO",
+            self.paused ? @"YES" : @"NO",
+            self.cleared ? @"YES" : @"NO",
+            
             NSStringFromClass(_animation.class),
-            @(_onStart != nil),
-            @(_completion != nil),
+            
+            _onStart != nil ? @"YES" : @"NO",
+            _completion != nil ? @"YES" : @"NO",
+            
+            NSStringFromClass(slayer.class),
+            slayer,
+            NSStringFromClass(slayer.delegate.class),
+            slayer.delegate,
+            
             NSStringFromClass(stimeline.class),
             stimeline,
-            stimeline.name,
-            self.layer
+            stimeline.name
             ];
 }
 

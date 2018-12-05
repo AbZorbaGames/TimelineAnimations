@@ -70,7 +70,7 @@
 
 + (instancetype)together:(NSArray<__kindof TimelineAnimation *> *)animations {
     NSParameterAssert(animations != nil);
-    
+
     GroupTimelineAnimation *const group = [self groupTimelineAnimation];
     NSString *const name = [animations _reduce:[NSMutableString string]
                                      transform:^NSMutableString *_Nonnull(NSMutableString *_Nonnull partial, __kindof TimelineAnimation * _Nonnull animation) {
@@ -81,17 +81,17 @@
                                          return partial;
                                      }];
     group.name = name;
-    
+
     [animations enumerateObjectsUsingBlock:^(__kindof TimelineAnimation * _Nonnull timeline, NSUInteger idx, BOOL * _Nonnull stop) {
         [group insertTimelineAnimation:timeline atTime:(RelativeTime)0.0];
     }];
-    
+
     return group;
 }
 
 + (instancetype)sequentially:(NSArray<__kindof TimelineAnimation *> *)animations {
     NSParameterAssert(animations != nil);
-    
+
     GroupTimelineAnimation *const group = [self groupTimelineAnimation];
     NSString *const name = [animations _reduce:[NSMutableString string]
                                      transform:^NSMutableString *_Nonnull(NSMutableString *_Nonnull partial, __kindof TimelineAnimation * _Nonnull animation) {
@@ -102,11 +102,11 @@
                                          return partial;
                                      }];
     group.name = name;
-    
+
     [animations enumerateObjectsUsingBlock:^(__kindof TimelineAnimation * _Nonnull timeline, NSUInteger idx, BOOL * _Nonnull stop) {
         [group addTimelineAnimation:timeline];
     }];
-    
+
     return group;
 }
 
@@ -139,11 +139,11 @@
     if (self == object) {
         return YES;
     }
-    
+
     if (![object isMemberOfClass:[GroupTimelineAnimation class]]) {
         return NO;
     }
-    
+
     GroupTimelineAnimation *const other = (GroupTimelineAnimation *)object;
     const BOOL same = [other.timelinesEntities isEqualToSet:_timelinesEntities];
     return same;
@@ -175,18 +175,18 @@
 }
 
 - (void)delay:(NSTimeInterval)delay {
-    
+
     if (self.hasStarted) {
         [self __raiseImmutableGroupTimelineExceptionWithSelector:_cmd];
         return;
     }
-    
+
     guard (delay != (NSTimeInterval)0.0) else { return; }
-    
+
     for (GroupTimelineEntity *entity in _timelinesEntities) {
         entity.timeline.beginTime += delay;
     };
-    
+
     RelativeTime newBeginTime = self.beginTime;
     // calculate notification time changes
     self.timeNotificationAssociations = [self timeNotificationConvertedUsing:^RelativeTimeNumber * _Nonnull(RelativeTimeNumber * _Nonnull key) {
@@ -203,7 +203,7 @@
 }
 
 - (RelativeTime)endTime {
-    
+
     GroupTimelineEntity *const lastEntity = [self _sortedEntitesUsingKey:@"endTime"].lastObject;
     const RelativeTime endTime = lastEntity.endTime;
     if (self.isRepeating && !self.isInfinitelyRepeating) {
@@ -224,7 +224,7 @@
     }
     float changePercentage = speed / _speed;
     guard (changePercentage != 1.0f) else { return; }
-    
+
     _speed = speed;
     for (GroupTimelineEntity *entity in _timelinesEntities) {
         entity.timeline.speed *= changePercentage;
@@ -277,7 +277,7 @@
     if (![self containsTimelineAnimation:timelineAnimation]) {
         return nil;
     }
-    
+
     __block __kindof TimelineAnimation *tl = nil;
     [_timelinesEntities enumerateObjectsUsingBlock:^(GroupTimelineEntity *_Nonnull entity, BOOL *_Nonnull stop) {
         if ([entity.timeline isEqual:timelineAnimation]) {
@@ -291,7 +291,7 @@
 - (void)_checkForConflictsWithEntity:(GroupTimelineEntity *)entity {
     @autoreleasepool {
         NSArray<TimelineEntity *> *const myEntities = [self _entitiesOfTimelineAnimation:self];
-        
+
         NSArray<TimelineEntity *> *const otherEntities = [self _entitiesOfTimelineAnimation:entity.timeline];
         [otherEntities enumerateObjectsUsingBlock:^(TimelineEntity * _Nonnull otherEntity, NSUInteger idx, BOOL * _Nonnull stop) {
             [myEntities enumerateObjectsUsingBlock:^(TimelineEntity * _Nonnull myEntity, NSUInteger idx2, BOOL * _Nonnull stop2) {
@@ -329,22 +329,22 @@
 - (void)_addEntity:(GroupTimelineEntity *)entity {
     guard (entity.timeline.isEmpty == NO) else {
         NSParameterAssert(entity.timeline.isEmpty == NO);
-//        NSLog(@"TimelineAnimations: Tried to add an empty timeline to \"%@\"",
-//              self.name);
+        //        NSLog(@"TimelineAnimations: Tried to add an empty timeline to \"%@\"",
+        //              self.name);
         return;
     }
     // check
     [self _checkForConflictsWithEntity:entity];
-    
+
     [_timelinesEntities addObject:entity];
     entity.timeline.parent = self;
 }
 
-#pragma mark - 
+#pragma mark -
 
 - (void)_prepareForReplay {
     [super _prepareForReplay];
-    
+
     for (GroupTimelineEntity *entity in _timelinesEntities) {
         [entity.timeline _prepareForReplay];
     };
@@ -357,7 +357,7 @@
 
 - (void)_cleanUp {
     [super _cleanUp];
-    
+
     if (_helperTimeline != nil) {
         GroupTimelineEntity *const gte = [GroupTimelineEntity groupTimelineEntityWithTimeline:_helperTimeline];
         [_timelinesEntities removeObject:gte];
@@ -368,9 +368,9 @@
 - (void)pauseWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime
          alreadyPausedLayers:(NSMutableSet<__kindof CALayer *> *)pausedLayers {
     self.paused = YES;
-    
+
     NSArray<GroupTimelineEntity *> *const sortedEntities = self.sortedEntities;
-    
+
     [sortedEntities enumerateObjectsUsingBlock:^(GroupTimelineEntity * _Nonnull entity, NSUInteger idx, BOOL * _Nonnull stop) {
         [entity pauseWithCurrentTime:currentTime
                  alreadyPausedLayers:pausedLayers];
@@ -379,22 +379,26 @@
 
 - (void)resumeWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime
          alreadyResumedLayers:(nonnull NSMutableSet<__kindof CALayer *> *)resumedLayers {
-    
+
     [_timelinesEntities enumerateObjectsUsingBlock:^(GroupTimelineEntity * _Nonnull entity, BOOL * _Nonnull stop) {
         [entity resumeWithCurrentTime:currentTime
                  alreadyResumedLayers:resumedLayers];
     }];
-    
+
     self.paused = NO;
 }
 
-- (BOOL)_checkForOutOfHierarchyIssues {
-    
+- (BOOL)_checkForOutOfHierarchyIssues:(__kindof CALayer *__autoreleasing _Nullable * _Nullable)orphanLayer {
+
     for (GroupTimelineEntity *const entity in self.timelinesEntities) {
-        const BOOL outOfHierarchy = [entity.timeline _checkForOutOfHierarchyIssues];
+        const BOOL outOfHierarchy = [entity.timeline _checkForOutOfHierarchyIssues:orphanLayer];
         guard (not(outOfHierarchy)) else { return YES; }
     }
     return NO;
+}
+
+- (NSString *)summaryMarkingEntity:(nullable TimelineEntity *)entityToMark {
+    return @"<un-suported>";
 }
 
 #pragma mark - Unsupported methods
@@ -432,15 +436,15 @@
 
 - (void)__setupTimeNotifications {
     guard (self.timeNotificationAssociations.count > 0) else { return; }
-    
+
     TimelineAnimation *helper = self.helperTimeline;
-    
+
     if (self.name != nil) {
         NSString *const name = helper.name;
         helper.name = [NSString stringWithFormat:@"%@>>%@", self.name, name];
     }
-    
-    
+
+
     const RelativeTime beginTime = self.beginTime;
     const NSTimeInterval helperDuration = self.duration;
     [helper insertBlankAnimationAtTime:beginTime
@@ -449,7 +453,7 @@
                           withDuration:helperDuration];
     {
         NSAssert(helper != nil && helper.isNonEmpty, @"TimelineAnimations: WTF?");
-        
+
         {   /* fix out-of-hierarchy issues */
             __strong __kindof CALayer *const anyLayer = self.anyLayer;
             NSAssert(anyLayer != nil, @"TimelineAnimations: Try to add blank animation but there is no layer to add it to.");
@@ -460,7 +464,7 @@
         }
         GroupTimelineEntity *const groupTimelineEntity = [GroupTimelineEntity groupTimelineEntityWithTimeline:helper];
         [_timelinesEntities addObject:groupTimelineEntity];
-        
+
         groupTimelineEntity.timeline.parent = self;
     }
     [self _setupTimeNotifications];
@@ -477,11 +481,11 @@
         __strong typeof(self) strelf = welf;
         strelf.progress = progress;
     };
-    
+
     __strong __kindof CALayer *const anyLayer = self.anyLayer;
     NSAssert(anyLayer != nil, @"TimelineAnimations: Try to add blank animation but there is no layer to add it to.");
     [anyLayer addSublayer:self.progressLayer];
-    
+
     CABasicAnimation *const anim = [CABasicAnimation animationWithKeyPath:@"progress"];
     anim.duration            = self.duration;
     anim.fromValue           = @(0.0);
@@ -583,9 +587,9 @@
 
 - (void)addTimelineAnimation:(__kindof TimelineAnimation *)timelineAnimation
                    withDelay:(NSTimeInterval)delay {
-    
+
     NSParameterAssert(timelineAnimation != nil);
-    
+
     if (self.hasStarted) {
         [self __raiseImmutableGroupTimelineExceptionWithSelector:_cmd];
         return;
@@ -596,9 +600,9 @@
          NSStringFromClass(self.class)];
         return;
     }
-    
+
     __kindof TimelineAnimation *tl = timelineAnimation.copy;
-    
+
     TimelineAnimation *const lastTimeline = [self lastTimeline];
     tl.beginTime += lastTimeline.endTime + delay;
     GroupTimelineEntity *const entity = [GroupTimelineEntity groupTimelineEntityWithTimeline:tl];
@@ -606,12 +610,12 @@
 }
 
 - (void)removeTimelineAnimation:(__kindof TimelineAnimation *)timelineAnimation {
-    
+
     if (self.hasStarted) {
         [self __raiseImmutableGroupTimelineExceptionWithSelector:_cmd];
         return;
     }
-    
+
     if ([self containsTimelineAnimation:timelineAnimation]) {
         GroupTimelineEntity *const gte = [GroupTimelineEntity groupTimelineEntityWithTimeline:timelineAnimation];
         [_timelinesEntities removeObject:gte];
@@ -620,44 +624,44 @@
 
 - (void)insertTimelineAnimation:(__kindof TimelineAnimation *)timelineAnimation
                          atTime:(RelativeTime)time {
-    
-    
+
+
     NSParameterAssert(timelineAnimation != nil);
-    
+
     if (self.hasStarted) {
         [self __raiseImmutableGroupTimelineExceptionWithSelector:_cmd];
         return;
     }
-    
+
     if (timelineAnimation == nil) {
         [self __raiseInvalidArgumentExceptionWithReason:
          @"Tried to add a 'nil' TimelineAnimation to a %@",
          NSStringFromClass(self.class)];
         return;
     }
-    
+
     __kindof TimelineAnimation *const tl = timelineAnimation.copy;
-    
+
     tl.beginTime = time;
-    
+
     GroupTimelineEntity *const entity = [GroupTimelineEntity groupTimelineEntityWithTimeline:tl];
     [self _addEntity:entity];
 }
 
 - (void)addTimelineAnimations:(NSArray<__kindof TimelineAnimation *> *)animations
                     withDelay:(NSTimeInterval)delay {
-    
+
     const RelativeTime time = self.duration + delay;
     [self insertTimelineAnimations:animations atTime:time];
-    
+
 }
 
 - (void)insertTimelineAnimations:(NSArray<__kindof TimelineAnimation *> *)animations
                           atTime:(RelativeTime)time {
-    
+
     NSParameterAssert(animations != nil);
     NSParameterAssert(animations.count > 0);
-    
+
     [animations enumerateObjectsUsingBlock:^(__kindof TimelineAnimation * _Nonnull timeline, NSUInteger idx, BOOL * _Nonnull stop) {
         [self insertTimelineAnimation:timeline atTime:time];
     }];
@@ -667,7 +671,7 @@
     if (timelineAnimation == nil) {
         return NO;
     }
-    
+
     __kindof TimelineAnimation *const timeline = timelineAnimation;
     GroupTimelineEntity *const gte = [GroupTimelineEntity groupTimelineEntityWithTimeline:timeline];
     GroupTimelineEntity *const res = [_timelinesEntities member:gte];
@@ -675,21 +679,21 @@
 }
 
 - (void)merge:(TimelineAnimation *)timeline {
-    
+
     NSParameterAssert(timeline != nil);
-    
+
     if (self.hasStarted) {
         [self __raiseImmutableGroupTimelineExceptionWithSelector:_cmd];
         return;
     }
-    
+
     guard ([timeline isMemberOfClass:[GroupTimelineAnimation class]]) else {
         NSAssert(false, @"TimelineAnimations: You should merge with same kinds of timelines.");
         return;
     }
-    
+
     GroupTimelineAnimation *const group = (GroupTimelineAnimation *)timeline;
-    
+
     // add only animations
     [group.timelinesEntities enumerateObjectsUsingBlock:^(GroupTimelineEntity * _Nonnull entity, BOOL * _Nonnull stop) {
         [self _addEntity:[entity copy]];
@@ -703,16 +707,16 @@
 @implementation GroupTimelineAnimation (ProtectedControl)
 
 - (void)_playWithCurrentTime:(TimelineAnimationCurrentMediaTimeBlock)currentTime {
-    
+
     NSAssert(self.name != nil, @"TimelineAnimations: You should name your animations");
     NSAssert(self.isNonEmpty, @"TimelineAnimations: Why are you trying to play an empty %@?",
              NSStringFromClass(self.class));
-    
+
     if (self.isPaused) {
         [self resume];
         return;
     }
-    
+
     if (self.hasStarted) {
         [self __raiseOngoingTimelineAnimationWithReason:
          @"You tried to play an non paused or finished %@.\"%@\".",
@@ -720,7 +724,7 @@
          self.name];
         return;
     }
-    
+
     if (self.isCleared) {
         [self __raiseClearedTimelineAnimationExceptionWithReason:
          @"You tried to play the cleared %@.\"%@\"",
@@ -729,8 +733,8 @@
          ];
         return;
     }
-    
-    
+
+
     if (self.isEmpty) {
         if (self.onStart) {
             self.onStart();
@@ -740,26 +744,28 @@
         }
         return;
     }
-    
+
     [self __setupTimeNotifications];
     [self _setupProgressNotifications];
-    
-    if ([self _checkForOutOfHierarchyIssues]) {
+
+    __kindof CALayer *potentialOrphanLayer = nil;
+    if ([self _checkForOutOfHierarchyIssues:&potentialOrphanLayer]) {
         [self __raiseElementsNotInHierarchyExceptionWithReason:
-         @"TimelineAnimations: You tried to play an animation with lost layers %@.\"%@\".",
-         NSStringFromClass(self.class),
-         self.name];
+         @"TimelineAnimations: You tried to play an animation with lost layers %@"
+         "\n%@",
+         [potentialOrphanLayer debugDescription],
+         [self summary]];
     }
-    
+
     self.started = YES;
     self.onStartCalled = NO;
-    
+
     _unfinishedEntities = _timelinesEntities.mutableCopy;
-    
+
     NSArray<GroupTimelineEntity *> *const sortedEntities = self.sortedEntities;
     NSMutableArray<GroupTimelineEntity *> *const reversedEntities = [[NSMutableArray alloc] init];
     NSMutableArray<GroupTimelineEntity *> *const normalEntities   = [[NSMutableArray alloc] initWithCapacity:sortedEntities.count];
-    
+
     for (GroupTimelineEntity *const entity in sortedEntities) {
         // this does not work well if -delay or some other operation that changes the animations occurs
         __strong TimelineAnimation *const originate = entity.timeline.originate;
@@ -770,7 +776,7 @@
             [normalEntities addObject:entity];
         }
     };
-    
+
     for (GroupTimelineEntity *const entity in normalEntities) {
         [entity playWithCurrentTime:currentTime
                             onStart:^{
@@ -780,11 +786,11 @@
                                 [self callOnComplete:result];
                             }];
     };
-    
+
     for (GroupTimelineEntity *const entity in reversedEntities) {
         __strong TimelineAnimation *const originate = entity.timeline.originate;
         __kindof TimelineAnimation *const tl = [self timelineAnimationSimilarToTimelineAnimation:originate];
-        
+
         [entity playWithCurrentTime:currentTime
                        afterReverse:tl
                             onStart:^{
@@ -794,7 +800,7 @@
                                 [self callOnComplete:result];
                             }];
     };
-    
+
     self.paused = NO;
 }
 
@@ -810,29 +816,29 @@
     if (!self.isPaused) {
         return;
     }
-    
+
     [self resumeWithCurrentTime:self.currentTime
            alreadyResumedLayers:[[NSMutableSet alloc] init]];
-//    NSMutableSet<CALayer *> *const resumedLayers = [[NSMutableSet alloc] init];
-//    NSArray<GroupTimelineEntity *> *const sortedEntities = self.sortedEntities;
-//    for (GroupTimelineEntity *const groupEntity in sortedEntities) {
-//        for (TimelineEntity *const entity in groupEntity.timeline.animations) {
-//            __strong __kindof CALayer *const slayer = entity.layer;
-//            if ([resumedLayers member:slayer]) {
-//                return;
-//            }
-//            [entity resumeWithCurrentTime:currentTime];
-//            [resumedLayers addObject:slayer];
-//        }
-//    }
-//    self.paused = NO;
+    //    NSMutableSet<CALayer *> *const resumedLayers = [[NSMutableSet alloc] init];
+    //    NSArray<GroupTimelineEntity *> *const sortedEntities = self.sortedEntities;
+    //    for (GroupTimelineEntity *const groupEntity in sortedEntities) {
+    //        for (TimelineEntity *const entity in groupEntity.timeline.animations) {
+    //            __strong __kindof CALayer *const slayer = entity.layer;
+    //            if ([resumedLayers member:slayer]) {
+    //                return;
+    //            }
+    //            [entity resumeWithCurrentTime:currentTime];
+    //            [resumedLayers addObject:slayer];
+    //        }
+    //    }
+    //    self.paused = NO;
 }
 
 - (void)pause {
     if (!self.hasStarted) {
         return;
     }
-    
+
     [self pauseWithCurrentTime:self.currentTime
            alreadyPausedLayers:[[NSMutableSet alloc] init]];
 }
@@ -841,19 +847,19 @@
     for (GroupTimelineEntity *const entity in _timelinesEntities) {
         [entity clear];
     }
-    
+
     for (GroupTimelineEntity *const entity in _unfinishedEntities) {
         [entity clear];
     }
-    
+
     [_timelinesEntities removeAllObjects];
     [_unfinishedEntities removeAllObjects];
-    
+
     self.paused = NO;
     self.started = NO;
     self.cleared = YES;
-    
-    
+
+
     self.onUpdate = nil;
     [self removeOnStartBlocks];
     [self removeCompletionBlocks];
@@ -862,7 +868,7 @@
 
 - (void)_prepareForRepeat {
     [self reset];
-    
+
     const RelativeTime begin = self.beginTime;
     if (begin != (RelativeTime)0.0) {
         self.beginTime = (RelativeTime)0.0;
@@ -870,38 +876,38 @@
 }
 
 - (void)reset {
-    
+
     if (self.hasStarted) {
         [self __raiseImmutableGroupTimelineExceptionWithSelector:_cmd];
         return;
     }
-    
+
     NSArray<GroupTimelineEntity *> *const sortedEntities = self.sortedEntities;
     for (GroupTimelineEntity *const entity in sortedEntities) {
         [entity reset];
     }
-    
+
     _repeat.onStartCalled = NO;
     _repeat.onCompleteCalled = NO;
-    
-    
+
+
     self.onStartCalled = NO;
     self.onCompletionCalled = NO;
-    
+
     self.finished = NO;
 }
 
 - (instancetype)timelineWithDuration:(NSTimeInterval)duration {
     NSParameterAssert(duration > 0.0);
-    
+
     GroupTimelineAnimation *const updatedTimeline = [self copy];
     if ([updatedTimeline respondsToSelector:@selector(setSetsModelValues:)]) {
         updatedTimeline.setsModelValues = self.setsModelValues;
     }
-    
+
     const NSTimeInterval currentDuration = self.nonRepeatingDuration;
     guard (duration != currentDuration) else { return updatedTimeline; }
-    
+
     NSArray<GroupTimelineEntity *> *const sortedEntities = self.sortedEntities.copy;
     NSMutableArray<GroupTimelineEntity *> *const updatedEntities = [[NSMutableArray alloc] initWithCapacity:sortedEntities.count];
     const NSTimeInterval newTimelineDuration = duration;
@@ -915,8 +921,8 @@
                                                         usingTotalBeginTime:self.beginTime];
         [updatedEntities addObject:updatedEntity];
     };
-    
-    
+
+
     NSMutableSet<GroupTimelineEntity *> *timelineEntities = [[NSMutableSet alloc] initWithArray:updatedEntities];
     [timelineEntities enumerateObjectsUsingBlock:^(GroupTimelineEntity * _Nonnull entity, BOOL * _Nonnull stop) {
         entity.timeline.parent = updatedTimeline;
@@ -924,8 +930,8 @@
     updatedTimeline.timelinesEntities = timelineEntities;
     updatedTimeline.originate = self;
     updatedTimeline.duration = newTimelineDuration;
-    
-    
+
+
     // calculate notification time changes
     const double factor = duration / currentDuration;
     updatedTimeline.timeNotificationAssociations = [self timeNotificationConvertedUsing:^RelativeTimeNumber * _Nonnull(RelativeTimeNumber * _Nonnull key) {
@@ -958,17 +964,17 @@
 
 - (instancetype)reversedWithDuration:(NSTimeInterval)duration {
     NSParameterAssert(duration > 0.0);
-    
+
     NSArray<GroupTimelineEntity *> *const sortedEntities = self.sortedEntities.copy;
     NSMutableArray<GroupTimelineEntity *> *const reversedEntities = [[NSMutableArray alloc] initWithCapacity:sortedEntities.count];
     const NSTimeInterval groupTimelineDuration = duration;
-    
+
     for (GroupTimelineEntity *const entity in sortedEntities) {
         // reverse time
         GroupTimelineEntity *const reversedTimelineEntity = [entity reversedCopyWithDuration:groupTimelineDuration];
         [reversedEntities addObject:reversedTimelineEntity];
     }
-    
+
     GroupTimelineAnimation *const reversed = [self copy];
     NSMutableSet<GroupTimelineEntity *> *const timelineEntities = [[NSMutableSet alloc] initWithArray:reversedEntities];
     [timelineEntities enumerateObjectsUsingBlock:^(GroupTimelineEntity * _Nonnull entity, BOOL * _Nonnull stop) {
@@ -988,21 +994,21 @@
                            onStart:(nullable TimelineAnimationOnStartBlock)start
                         onComplete:(nullable TimelineAnimationCompletionBlock)complete
                       withDuration:(NSTimeInterval)duration {
-    
+
     guard (self.isNonEmpty) else { return; }
     NSAssert(_helperTimeline != nil, @"TimelineAnimations: WTF?");
     NSParameterAssert(duration >= TimelineAnimationOneFrame);
-    
+
     TimelineAnimationsBlankLayer *const blankLayer = [[TimelineAnimationsBlankLayer alloc] init];
     CABasicAnimation *const blankAnimation = [CABasicAnimation animationWithKeyPath:TimelineAnimationsBlankLayer.keyPath];
     blankAnimation.duration = duration;
-    
+
     __strong __kindof CALayer *const anyLayer = _timelinesEntities.anyObject.timeline.animations.firstObject.layer;
     NSAssert(anyLayer != nil, @"TimelineAnimations: Try to add blank animation but there is no layer to add it to.");
-    
+
     [anyLayer addSublayer:blankLayer];
     [self.blankLayers addObject:blankLayer];
-    
+
     [_helperTimeline insertAnimation:blankAnimation
                             forLayer:blankLayer
                               atTime:time
@@ -1018,38 +1024,38 @@
 
 - (id)copyWithZone:(NSZone *)zone {
     GroupTimelineAnimation *const copy = [[GroupTimelineAnimation alloc] initWithTimelines:nil];
-    
+
     copy.timelinesEntities = [[NSMutableSet alloc] initWithSet:_timelinesEntities copyItems:YES];
     [copy.timelinesEntities enumerateObjectsUsingBlock:^(GroupTimelineEntity * _Nonnull entity, BOOL * _Nonnull stop) {
         entity.timeline.parent = copy;
     }];
-    
+
     copy.paused             = self.paused;
     copy.finished           = self.finished;
-    
+
     copy.speed              = _speed;
-    
+
     copy.beginTime          = self.beginTime;
     copy.repeatCount        = self.repeatCount;
     copy.repeatOnStart      = [self.repeatOnStart copy];
     copy.repeatCompletion   = [self.repeatCompletion copy];
-    
+
     copy.name               = self.name.copy;
     copy.userInfo           = self.userInfo.copy;
-    
-    
+
+
     [copy _setOnStart:[self.onStart copy]];
     [copy _setCompletion:[self.completion copy]];
     copy.onUpdate           = [self.onUpdate copy];
-    
+
     copy.reversed         = self.reversed;
     copy.originate        = self.originate;
-    
+
     copy.muteAssociatedSounds = self.muteAssociatedSounds;
-    
+
     copy.progressNotificationAssociations = self.progressNotificationAssociations.mutableCopy;
     copy.timeNotificationAssociations     = self.timeNotificationAssociations.mutableCopy;
-    
+
     return copy;
 }
 
@@ -1060,27 +1066,22 @@
 - (NSString *)description {
     return [NSString stringWithFormat:
             @"<%@: %p; "
-            "name: \"%@\"; "
-            "beginTime: \"%.3lf\"; "
-            "endTime: \"%.3lf\"; "
-            "duration: \"%.3lf\"; "
+            "\"%@\"; "
+            "[%.3lf,%.3lf]; (%.3lf)"
             "userInfo: %@;"
             ">",
             NSStringFromClass(self.class),
             self,
             self.name,
-            self.beginTime,
-            self.endTime,
-            self.duration,
+            self.beginTime, self.endTime, self.duration,
             self.userInfo];
 }
 
 - (NSString *)debugDescription {
     return [[NSString alloc] initWithFormat:
             @"<%@: %p; "
-            "name: \"%@\"; "
-            "beginTime: \"%.3lf\"; "
-            "endTime: \"%.3lf\"; "
+            "\"%@\"; "
+            "[%.3lf,%.3lf] "
             "isRepeating(%@): %@; "
             "duration: \"%.3lf\", repeatingDuration: \"%.3lf\"; "
             "userInfo: %@; "
@@ -1091,10 +1092,9 @@
             NSStringFromClass(self.class),
             self,
             self.name,
-            self.beginTime,
-            self.endTime,
+            self.beginTime, self.endTime,
             @(self.repeatCount),
-            @(self.isRepeating).stringValue,
+            self.isRepeating ? @"YES" : @"NO",
             self.nonRepeatingDuration,
             self.duration,
             self.userInfo,
@@ -1104,20 +1104,24 @@
 }
 
 - (NSString *)summary {
-    NSMutableString *const summary = [[NSMutableString alloc] initWithFormat:@"\"%@\": ", self.name];
-    [summary appendFormat:@"duration: \"%.3lf\"; ", self.duration];
-    [summary appendFormat:@"animations(%@) = [\n", @(_timelinesEntities.count)];
-    
+    NSMutableString *const summary =
+    [[NSMutableString alloc] initWithFormat:@"\"%@\":%p;", self.name, self];
+    [summary appendFormat:@" [%.3lf,%.3lf] (%.3lf);",
+     self.beginTime, self.endTime, self.duration];
+    [summary appendFormat:@" animations(%@) = [\n", @(_timelinesEntities.count)];
+
     NSArray<GroupTimelineEntity *> *const sorted = self.sortedEntities;
     [sorted enumerateObjectsUsingBlock:^(GroupTimelineEntity * _Nonnull entity, NSUInteger idx, BOOL * _Nonnull stop) {
-        [summary appendFormat:@"\t%@: name: \"%@\", time: [%.3lf,%.3lf]\n",
+        [summary appendFormat:@"\t%@: \"%@\":%p, [%.3lf,%.3lf] (%.3lf)\n",
          @(idx),
          entity.timeline.name,
+         entity.timeline,
          entity.beginTime,
-         entity.endTime];
+         entity.endTime,
+         entity.timeline.nonRepeatingDuration];
     }];
     [summary appendFormat:@"]"];
-    
+
     return [summary copy];
 }
 
@@ -1125,7 +1129,7 @@
     NSSet<GroupTimelineEntity *> *const entities = [_timelinesEntities objectsPassingTest:^BOOL(GroupTimelineEntity * _Nonnull entity, BOOL * _Nonnull stop) {
         return (entity.beginTime == time);
     }];
-    
+
     NSMutableSet<__kindof TimelineAnimation *> *const timelines = [[NSMutableSet alloc] initWithCapacity:entities.count];
     [entities enumerateObjectsUsingBlock:^(GroupTimelineEntity * _Nonnull entity, BOOL * _Nonnull stop) {
         [timelines addObject:[entity.timeline copy]];
@@ -1137,7 +1141,7 @@
     NSSet<GroupTimelineEntity *> *const entities = [_timelinesEntities objectsPassingTest:^BOOL(GroupTimelineEntity * _Nonnull entity, BOOL * _Nonnull stop) {
         return (time >= entity.beginTime) && (time <= entity.endTime);
     }];
-    
+
     NSMutableSet<__kindof TimelineAnimation *> *const timelines = [[NSMutableSet alloc] initWithCapacity:entities.count];
     [entities enumerateObjectsUsingBlock:^(GroupTimelineEntity * _Nonnull entity, BOOL * _Nonnull stop) {
         [timelines addObject:[entity.timeline copy]];

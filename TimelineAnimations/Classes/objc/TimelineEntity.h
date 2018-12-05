@@ -45,6 +45,8 @@ NS_ASSUME_NONNULL_BEGIN
                    onComplete:(nullable TimelineAnimationCompletionBlock)completion
             timelineAnimation:(TimelineAnimation *)timelineAnimation;
 
+@property (nonatomic, readonly, copy) NSString *shortDescription;
+
 @end
 
 @interface TimelineEntity (Control)

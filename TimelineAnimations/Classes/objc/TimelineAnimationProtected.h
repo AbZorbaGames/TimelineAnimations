@@ -103,7 +103,9 @@
 
 - (nonnull NotificationAssociations *)timeNotificationConvertedUsing:(nonnull NS_NOESCAPE TimeNotificationCalculation)calculation;
 
-- (BOOL)_checkForOutOfHierarchyIssues;
+/// if an orphan layer is discovered returns @p NO passing to @p orphanLayer the
+/// corresponding layer.
+- (BOOL)_checkForOutOfHierarchyIssues:(__kindof CALayer *__autoreleasing _Nullable * _Nullable)orphanLayer;
 
 // exceptions
 - (void)___raiseOrLogException:(nonnull TimelineAnimationExceptionName)exception

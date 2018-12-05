@@ -57,8 +57,8 @@ typedef NS_ENUM(NSInteger, TimelineAnimationsErrorDomainCode) {
 
 };
 
-/** The error key containing the name of the TimelineAnimation. */
-FOUNDATION_EXTERN NSErrorUserInfoKey const TimelineAnimationNameKey;
+/** The error key containing the TimelineAnimation. */
+FOUNDATION_EXTERN NSErrorUserInfoKey const TimelineAnimationReferenceKey;
 /** The error key containing the summarry of the TimelineAnimation. */
 FOUNDATION_EXTERN NSErrorUserInfoKey const TimelineAnimationSummaryKey;
 
