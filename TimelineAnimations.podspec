@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TimelineAnimations'
-  s.version          = '2.10.11'
+  s.version          = '2.10.12'
   s.summary          = 'A powerfull wrapper around CoreAnimation that facilitates the sequencing of animations.'
 
 # This description is used to generate tags and improve search results.

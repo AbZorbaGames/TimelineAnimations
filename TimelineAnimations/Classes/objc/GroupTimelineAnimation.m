@@ -1003,7 +1003,7 @@
     CABasicAnimation *const blankAnimation = [CABasicAnimation animationWithKeyPath:TimelineAnimationsBlankLayer.keyPath];
     blankAnimation.duration = duration;
 
-    __strong __kindof CALayer *const anyLayer = _timelinesEntities.anyObject.timeline.animations.firstObject.layer;
+    __strong __kindof CALayer *const anyLayer = self.anyLayer;
     NSAssert(anyLayer != nil, @"TimelineAnimations: Try to add blank animation but there is no layer to add it to.");
 
     [anyLayer addSublayer:blankLayer];
